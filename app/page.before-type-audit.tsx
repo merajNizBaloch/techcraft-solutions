@@ -371,135 +371,6 @@ function MicroPattern() {
    HERO PRODUCT PREVIEW
 ========================================================= */
 
-
-function LiveCodeEditor() {
-  const codeLines = [
-    'const product = {',
-    '  design: true,',
-    '  experience: true,',
-    '  engineering: true,',
-    '};',
-    '',
-    'return (',
-    '  <TechCraft',
-    '    mode="craft"',
-    '  />',
-    ');',
-  ];
-
-  const fullCode = codeLines.join("\n");
-
-  const [visibleLength, setVisibleLength] = useState(0);
-  const [deleting, setDeleting] = useState(false);
-
-  useEffect(() => {
-    let timer: ReturnType<typeof setTimeout>;
-
-    if (!deleting && visibleLength < fullCode.length) {
-      timer = setTimeout(() => {
-        setVisibleLength((value) => value + 1);
-      }, 34);
-    } else if (!deleting && visibleLength === fullCode.length) {
-      timer = setTimeout(() => {
-        setDeleting(true);
-      }, 3200);
-    } else if (deleting && visibleLength > 0) {
-      timer = setTimeout(() => {
-        setVisibleLength((value) => value - 1);
-      }, 16);
-    } else {
-      timer = setTimeout(() => {
-        setDeleting(false);
-      }, 900);
-    }
-
-    return () => clearTimeout(timer);
-  }, [visibleLength, deleting, fullCode.length]);
-
-  const visibleCode = fullCode.slice(0, visibleLength);
-  const visibleLines = visibleCode.split("\n");
-
-  let remainingCharacters = visibleLength;
-  let activeLine = 0;
-
-  for (let i = 0; i < codeLines.length; i++) {
-    const lineLength = codeLines[i].length;
-
-    if (remainingCharacters <= lineLength) {
-      activeLine = i;
-      break;
-    }
-
-    remainingCharacters -= lineLength + 1;
-  }
-
-  return (
-    <div className="live-code-editor">
-
-      {codeLines.map((line, index) => {
-
-        const text = visibleLines[index] ?? "";
-
-        const isActive =
-          index === activeLine &&
-          visibleLength < fullCode.length;
-
-        return (
-          <div
-            className={`live-code-line ${
-              isActive ? "live-code-active" : ""
-            }`}
-            key={`${index}-${line}`}
-          >
-
-            <span className="live-line-number">
-              {String(index + 1).padStart(2, "0")}
-            </span>
-
-            <span className="live-code-text">
-
-              {text.includes("const") && text.startsWith("const") ? (
-                <>
-                  <i>const</i>
-                  {text.slice(5)}
-                </>
-              ) : text.includes("<TechCraft") ? (
-                <>
-                  {"  <"}
-                  <b>TechCraft</b>
-                  {text.slice(12)}
-                </>
-              ) : text.includes('mode="craft"') ? (
-                <>
-                  {'    mode='}
-                  <strong>"craft"</strong>
-                </>
-              ) : (
-                text
-              )}
-
-              {isActive && (
-                <span className="typing-caret" />
-              )}
-
-            </span>
-
-          </div>
-        );
-      })}
-
-      <span className="live-editor-status">
-        {deleting
-          ? "UPDATING"
-          : visibleLength === fullCode.length
-            ? "READY"
-            : "TYPING"}
-      </span>
-
-    </div>
-  );
-}
-
 function ProductPreview() {
   return (
     <div className="screen-scene">
@@ -634,7 +505,52 @@ function ProductPreview() {
                   <span>●</span>
                 </div>
 
-                <LiveCodeEditor />
+                <div className="code">
+
+                  <div>
+                    <i>const</i>{" "}
+                    <b>product</b> = {"{"}
+                  </div>
+
+                  <div className="indent">
+                    design: <strong>true</strong>,
+                  </div>
+
+                  <div className="indent">
+                    experience: <strong>true</strong>,
+                  </div>
+
+                  <div className="indent">
+                    engineering: <strong>true</strong>,
+                  </div>
+
+                  <div>
+                    {"}"};
+                  </div>
+
+                  <div className="code-space" />
+
+                  <div>
+                    <i>return</i> (
+                  </div>
+
+                  <div className="indent">
+                    &lt;<b>TechCraft</b>
+                  </div>
+
+                  <div className="indent-2">
+                    mode=<strong>"craft"</strong>
+                  </div>
+
+                  <div className="indent">
+                    /&gt;
+                  </div>
+
+                  <div>
+                    );
+                  </div>
+
+                </div>
 
                 <div className="terminal-line">
                   <span />
@@ -1094,10 +1010,6 @@ export default function Home() {
 
           </div>
 
-          <div className="hero-micro-pattern">
-            <MicroPattern />
-          </div>
-
 </div>
 
       </section>
@@ -1419,34 +1331,29 @@ export default function Home() {
                 )}
 
                 {project.mode === "dark" && (
-                  <div className="intelligent-visual">
+                  <>
+                    <div className="terminal-card">
 
-                    <div className="intelligent-heading">
-
-                      <span className="intelligent-live">
-                        <i />
-                        LIVE
-                      </span>
-
-                    </div>
-
-                    <div className="intelligent-editor">
-
-                      <div className="intelligent-editor-bar">
-                        <span>
-                          APP.TSX
-                        </span>
-
-                        <span>
-                          TECHCRAFT
-                        </span>
+                      <div className="terminal-top">
+                        <span />
+                        <span />
+                        <span />
                       </div>
 
-                      <LiveCodeEditor />
+                      <code>
+                        <i>const</i> product = {"{"}
+                        <br />
+                        &nbsp;&nbsp;design: <b>true</b>,
+                        <br />
+                        &nbsp;&nbsp;engineering: <b>true</b>,
+                        <br />
+                        &nbsp;&nbsp;intelligence: <b>true</b>
+                        <br />
+                        {"}"};
+                      </code>
 
                     </div>
-
-                  </div>
+                  </>
                 )}
 
               </div>
@@ -3292,457 +3199,77 @@ export default function Home() {
           color: #69a1ff;
         }
 
-        /* =====================================================
-           LIVE IDE EDITOR
-        ====================================================== */
-
-        .code-live {
-          position: relative;
-
-          padding: 14px 8px 18px;
+        .code {
+          padding: 15px 11px;
 
           font-family:
             ui-monospace,
             SFMono-Regular,
             Menlo,
-            Monaco,
-            Consolas,
             monospace;
 
           font-size: 6px;
-          line-height: 2.05;
 
-          color: #8f98a8;
-
-          overflow: hidden;
+          line-height: 2;
 
           animation:
-            editorPulse 8s ease-in-out infinite;
+            codePulse 8s ease-in-out infinite;
         }
 
-        .code-line {
-          position: relative;
+        @keyframes codePulse {
 
-          display: grid;
+          0%,
+          100% {
+            opacity: .78;
+          }
 
-          grid-template-columns: 16px 1fr;
+          50% {
+            opacity: 1;
+          }
 
-          min-height: 12px;
-
-          padding: 0 4px;
-
-          opacity: 0;
-
-          clip-path: inset(0 100% 0 0);
-
-          animation:
-            codeType 8s steps(1, end) infinite;
         }
 
-        .code-line::before {
-          content: "";
-
-          position: absolute;
-
-          left: 0;
-          right: 0;
-          top: 0;
-          bottom: 0;
-
-          background:
-            rgba(37,99,255,.09);
-
-          opacity: 0;
-
-          transition: opacity .2s ease;
-        }
-
-        .code-line > * {
-          position: relative;
-          z-index: 2;
-        }
-
-        .line-number {
-          color: #4f5968;
-          user-select: none;
-        }
-
-        .code-line i {
+        .code i {
           color: #7ea9ff;
           font-style: normal;
         }
 
-        .code-line b {
-          color: #edf1f7;
+        .code b {
+          color: #e8ecf3;
           font-weight: 400;
         }
 
-        .code-line strong {
+        .code strong {
           color: #9fc2ff;
           font-weight: 400;
+        }
+
+        .indent {
+          padding-left: 10px;
+        }
+
+        .indent-2 {
+          padding-left: 20px;
         }
 
         .code-space {
           height: 7px;
         }
 
-        /* sequential typing */
-
-        .line-1 {
-          animation-delay: 0s;
-        }
-
-        .line-2 {
-          animation-delay: .45s;
-        }
-
-        .line-3 {
-          animation-delay: .9s;
-        }
-
-        .line-4 {
-          animation-delay: 1.35s;
-        }
-
-        .line-5 {
-          animation-delay: 1.8s;
-        }
-
-        .line-6 {
-          animation-delay: 2.65s;
-        }
-
-        .line-7 {
-          animation-delay: 3.1s;
-        }
-
-        .line-8 {
-          animation-delay: 3.55s;
-        }
-
-        .line-9 {
-          animation-delay: 4s;
-        }
-
-        .line-10 {
-          animation-delay: 4.45s;
-        }
-
-        @keyframes codeType {
-
-          0%,
-          4% {
-            opacity: 0;
-            clip-path: inset(0 100% 0 0);
-          }
-
-          7%,
-          92% {
-            opacity: 1;
-            clip-path: inset(0 0 0 0);
-          }
-
-          100% {
-            opacity: 0;
-            clip-path: inset(0 0 0 0);
-          }
-        }
-
-        /* moving active-line highlight */
-
-        .line-1::before {
-          animation:
-            activeLine 8s ease-in-out infinite;
-        }
-
-        .line-2::before {
-          animation:
-            activeLine 8s ease-in-out infinite;
-          animation-delay: .45s;
-        }
-
-        .line-3::before {
-          animation:
-            activeLine 8s ease-in-out infinite;
-          animation-delay: .9s;
-        }
-
-        .line-4::before {
-          animation:
-            activeLine 8s ease-in-out infinite;
-          animation-delay: 1.35s;
-        }
-
-        .line-5::before {
-          animation:
-            activeLine 8s ease-in-out infinite;
-          animation-delay: 1.8s;
-        }
-
-        .line-6::before {
-          animation:
-            activeLine 8s ease-in-out infinite;
-          animation-delay: 2.65s;
-        }
-
-        .line-7::before {
-          animation:
-            activeLine 8s ease-in-out infinite;
-          animation-delay: 3.1s;
-        }
-
-        .line-8::before {
-          animation:
-            activeLine 8s ease-in-out infinite;
-          animation-delay: 3.55s;
-        }
-
-        .line-9::before {
-          animation:
-            activeLine 8s ease-in-out infinite;
-          animation-delay: 4s;
-        }
-
-        .line-10::before {
-          animation:
-            activeLine 8s ease-in-out infinite;
-          animation-delay: 4.45s;
-        }
-
-        @keyframes activeLine {
-
-          0%,
-          10% {
-            opacity: 0;
-          }
-
-          12%,
-          18% {
-            opacity: .8;
-          }
-
-          20%,
-          100% {
-            opacity: 0;
-          }
-        }
-
-        /* blinking coding cursor */
-
-        .live-caret {
+        .terminal-line {
           position: absolute;
 
-          width: 1px;
-          height: 8px;
+          left: 10px;
+          right: 10px;
+          bottom: 10px;
 
-          left: 91px;
-          top: 16px;
+          display: flex;
+          align-items: center;
+          gap: 5px;
 
-          background: #5d97ff;
+          padding-top: 7px;
 
-          box-shadow:
-            0 0 6px rgba(37,99,255,.75);
-
-          animation:
-            caretMove 8s steps(1, end) infinite,
-            caretBlink .8s steps(2, end) infinite;
-
-          pointer-events: none;
-        }
-
-        @keyframes caretMove {
-
-          0% {
-            transform: translate(0, 0);
-          }
-
-          9% {
-            transform: translate(18px, 0);
-          }
-
-          17% {
-            transform: translate(5px, 12px);
-          }
-
-          26% {
-            transform: translate(22px, 25px);
-          }
-
-          35% {
-            transform: translate(12px, 37px);
-          }
-
-          44% {
-            transform: translate(30px, 49px);
-          }
-
-          56% {
-            transform: translate(3px, 78px);
-          }
-
-          67% {
-            transform: translate(25px, 104px);
-          }
-
-          76% {
-            transform: translate(42px, 117px);
-          }
-
-          86% {
-            transform: translate(17px, 128px);
-          }
-
-          100% {
-            transform: translate(0, 0);
-          }
-        }
-
-        @keyframes caretBlink {
-
-          0%,
-          45% {
-            opacity: 1;
-          }
-
-          46%,
-          100% {
-            opacity: .15;
-          }
-        }
-
-        @keyframes editorPulse {
-
-          0%,
-          100% {
-            opacity: .84;
-          }
-
-          50% {
-            opacity: 1;
-          }
-        }
-
-        /* =====================================================
-           REAL-TIME REACT CODE EDITOR
-        ====================================================== */
-
-        .live-code-editor {
-          position: relative;
-
-          padding: 13px 8px 27px;
-
-          min-height: 190px;
-
-          overflow: hidden;
-
-          font-family:
-            ui-monospace,
-            SFMono-Regular,
-            Menlo,
-            Monaco,
-            Consolas,
-            monospace;
-
-          font-size: 6px;
-
-          line-height: 2.15;
-
-          color: #8d97a7;
-        }
-
-        .live-code-line {
-          position: relative;
-
-          display: grid;
-
-          grid-template-columns: 16px 1fr;
-
-          min-height: 12px;
-
-          padding: 0 4px;
-
-          transition:
-            background .12s ease,
-            color .12s ease;
-        }
-
-        .live-code-active {
-          background:
-            rgba(37,99,255,.10);
-        }
-
-        .live-line-number {
-          color: #4e5867;
-
-          user-select: none;
-        }
-
-        .live-code-text {
-          position: relative;
-
-          white-space: pre;
-
-          color: #8d97a7;
-        }
-
-        .live-code-text i {
-          color: #79a8ff;
-
-          font-style: normal;
-        }
-
-        .live-code-text b {
-          color: #e9edf4;
-
-          font-weight: 400;
-        }
-
-        .live-code-text strong {
-          color: #9dbfff;
-
-          font-weight: 400;
-        }
-
-        .typing-caret {
-          display: inline-block;
-
-          width: 1px;
-          height: 8px;
-
-          margin-left: 1px;
-
-          vertical-align: -1px;
-
-          background: #64a0ff;
-
-          box-shadow:
-            0 0 7px rgba(37,99,255,.8);
-
-          animation:
-            typingCaretBlink .72s steps(2,end) infinite;
-        }
-
-        @keyframes typingCaretBlink {
-
-          0%,
-          49% {
-            opacity: 1;
-          }
-
-          50%,
-          100% {
-            opacity: 0;
-          }
-
-        }
-
-        .live-editor-status {
-          position: absolute;
-
-          left: 12px;
-          bottom: 7px;
-
-          color: #657080;
+          border-top: 1px solid #292e36;
 
           font-family:
             ui-monospace,
@@ -3752,19 +3279,27 @@ export default function Home() {
 
           font-size: 5px;
 
-          letter-spacing: .1em;
+          color: #657080;
         }
 
-        .terminal-line {
+        .terminal-line span {
+          width: 4px;
+          height: 4px;
+          border-radius: 50%;
+          background: #56cf89;
+
+          box-shadow:
+            0 0 8px rgba(86,207,137,.7);
+
           animation:
-            terminalStatusPulse 2.5s ease-in-out infinite;
+            terminalPulse 1.5s ease-in-out infinite;
         }
 
-        @keyframes terminalStatusPulse {
+        @keyframes terminalPulse {
 
           0%,
           100% {
-            opacity: .45;
+            opacity: .35;
           }
 
           50% {
@@ -4242,14 +3777,6 @@ export default function Home() {
         }
 
         @media (max-width: 760px) {
-          .hero-floating-mark {
-            width: 62px;
-            height: 62px;
-            right: -4px;
-            top: 42px;
-          }
-
-
 
           .laptop-scene {
             height: 340px;
@@ -4307,14 +3834,11 @@ export default function Home() {
           .canvas-card,
           .canvas-motif,
           .selection-box,
-          .code-live,
-          .code-line,
-          .live-caret,
+          .code,
           .screen-cursor,
           .screen-click,
           .key.highlighted,
-          .laptop-shadow,
-          .terminal-line {
+          .laptop-shadow {
             animation: none !important;
           }
 
@@ -4967,29 +4491,6 @@ export default function Home() {
             terminalPulse 1.5s ease-in-out infinite;
         }
 
-        .terminal-line {
-          animation:
-            terminalBuild 8s ease-in-out infinite;
-        }
-
-        @keyframes terminalBuild {
-
-          0%,
-          72% {
-            opacity: .45;
-          }
-
-          76%,
-          90% {
-            opacity: 1;
-          }
-
-          94%,
-          100% {
-            opacity: .45;
-          }
-        }
-
         @keyframes terminalPulse {
 
           0%,
@@ -5495,51 +4996,6 @@ export default function Home() {
             animation: none !important;
           }
 
-        }
-
-        .hero-micro-pattern {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-
-          width: 100%;
-
-          margin-top: 8px;
-          padding-top: 10px;
-        }
-
-        .hero-micro-pattern .micro-pattern {
-          width: 150px;
-          height: 42px;
-
-          color: rgba(17,19,24,.32);
-
-          opacity: .85;
-
-          animation:
-            heroPatternFloat 5s ease-in-out infinite;
-        }
-
-        @keyframes heroPatternFloat {
-          0%,
-          100% {
-            transform: translateY(0);
-          }
-
-          50% {
-            transform: translateY(-3px);
-          }
-        }
-
-        @media (max-width: 760px) {
-          .hero-micro-pattern {
-            margin-top: 5px;
-          }
-
-          .hero-micro-pattern .micro-pattern {
-            width: 120px;
-            height: 35px;
-          }
         }
 
         /* =====================================================
@@ -6647,180 +6103,6 @@ export default function Home() {
         }
 
         /* =====================================================
-           INTELLIGENT PRODUCTS
-        ====================================================== */
-
-        .intelligent-visual {
-          position: relative;
-
-          width: 80%;
-          max-width: 520px;
-
-          color: white;
-        }
-
-        .intelligent-heading {
-          display: flex;
-          align-items: end;
-          justify-content: space-between;
-
-          margin-bottom: 16px;
-        }
-
-        .intelligent-heading > div {
-          display: flex;
-          flex-direction: column;
-          gap: 5px;
-        }
-
-        .intelligent-heading span {
-          color: rgba(255,255,255,.36);
-
-          font-family:
-            ui-monospace,
-            SFMono-Regular,
-            Menlo,
-            monospace;
-
-          font-size: 7px;
-          letter-spacing: .13em;
-        }
-
-        .intelligent-heading strong {
-          font-size: 23px;
-          line-height: 1;
-          letter-spacing: -.05em;
-          font-weight: 500;
-        }
-
-        .intelligent-live {
-          display: flex;
-          align-items: center;
-          gap: 6px;
-
-          color: #70a7ff !important;
-        }
-
-        .intelligent-live i {
-          width: 5px;
-          height: 5px;
-
-          display: block;
-
-          border-radius: 50%;
-
-          background: #4fda91;
-
-          box-shadow:
-            0 0 10px rgba(79,218,145,.8);
-
-          animation:
-            intelligentPulse 1.4s ease-in-out infinite;
-        }
-
-        @keyframes intelligentPulse {
-          0%,
-          100% {
-            opacity: .35;
-          }
-
-          50% {
-            opacity: 1;
-          }
-        }
-
-        .intelligent-editor {
-          position: relative;
-
-          overflow: hidden;
-
-          border:
-            1px solid rgba(112,167,255,.22);
-
-          background:
-            linear-gradient(
-              145deg,
-              #151922,
-              #0d1016
-            );
-
-          box-shadow:
-            0 35px 70px rgba(0,0,0,.28),
-            inset 0 1px 0 rgba(255,255,255,.05);
-        }
-
-        .intelligent-editor-bar {
-          height: 35px;
-
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-
-          padding: 0 11px;
-
-          border-bottom:
-            1px solid rgba(255,255,255,.07);
-
-          background:
-            rgba(255,255,255,.025);
-
-          color: #596273;
-
-          font-family:
-            ui-monospace,
-            SFMono-Regular,
-            Menlo,
-            monospace;
-
-          font-size: 6px;
-          letter-spacing: .12em;
-        }
-
-        .intelligent-editor .live-code-editor {
-          min-height: 230px;
-          padding-top: 17px;
-          padding-bottom: 28px;
-        }
-
-        .intelligent-editor .live-code-line {
-          min-height: 15px;
-          font-size: 7px;
-        }
-
-        .intelligent-editor .live-line-number {
-          color: #485364;
-        }
-
-        .intelligent-editor .live-editor-status {
-          bottom: 9px;
-          left: 11px;
-        }
-
-        @media (max-width: 1050px) {
-
-          .intelligent-visual {
-            width: 75%;
-          }
-
-        }
-
-        @media (max-width: 760px) {
-
-          .intelligent-visual {
-            width: 88%;
-          }
-
-          .intelligent-heading strong {
-            font-size: 18px;
-          }
-
-          .intelligent-editor .live-code-editor {
-            min-height: 190px;
-          }
-
-        }
-
-        /* =====================================================
            PROCESS
         ====================================================== */
 
@@ -7329,8 +6611,7 @@ export default function Home() {
 
         }
 
-      `}
-      </style>
+      `}</style>
 
     </main>
   );

@@ -1,0 +1,1288 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import {
+  ArrowDown,
+  ArrowUpRight,
+  Menu,
+  X,
+  Plus,
+} from "lucide-react";
+
+/* =========================================================
+   DATA
+========================================================= */
+
+const expertise = [
+  "EXPERIENCE DESIGN",
+  "SOFTWARE ENGINEERING",
+  "WEB DEVELOPMENT",
+  "MOBILE APPLICATIONS",
+  "AI & INTELLIGENCE",
+  "CLOUD SYSTEMS",
+  "AUTOMATION",
+  "DIGITAL PRODUCTS",
+];
+
+const services = [
+  {
+    number: "01",
+    title: "Experience",
+    accent: "Design",
+    description:
+      "We design digital experiences that make complex products feel simple, useful and human.",
+    capabilities: "UX / UI / PRODUCT / INTERACTION / DESIGN SYSTEMS",
+  },
+  {
+    number: "02",
+    title: "Software",
+    accent: "Engineering",
+    description:
+      "We engineer scalable software products across web, mobile, backend and enterprise systems.",
+    capabilities: "WEB / MOBILE / FULL STACK / API / ARCHITECTURE",
+  },
+  {
+    number: "03",
+    title: "Artificial",
+    accent: "Intelligence",
+    description:
+      "We integrate AI, computer vision and automation into products where intelligence creates value.",
+    capabilities: "AI / ML / COMPUTER VISION / AUTOMATION",
+  },
+  {
+    number: "04",
+    title: "Cloud",
+    accent: "Technology",
+    description:
+      "We build reliable infrastructure and deployment systems that allow products to perform and scale.",
+    capabilities: "CLOUD / DATABASE / DEVOPS / SECURITY",
+  },
+];
+
+const projects = [
+  {
+    number: "01",
+    type: "DIGITAL EXPERIENCE",
+    title: "Rehaan & Associates",
+    description:
+      "A digital experience for a civil engineering firm combining architectural thinking, visual identity and interactive technology.",
+  },
+  {
+    number: "02",
+    type: "PRODUCT DESIGN / SOFTWARE",
+    title: "WHS Inspection",
+    description:
+      "A field inspection experience designed to make complex workflows easier to understand, complete and manage.",
+  },
+  {
+    number: "03",
+    type: "AI / COMPUTER VISION",
+    title: "Date Recognition",
+    description:
+      "A computer vision system exploring automated recognition through modern machine-learning techniques.",
+  },
+];
+
+const process = [
+  ["01", "DISCOVER", "Understand the problem."],
+  ["02", "DESIGN", "Define the experience."],
+  ["03", "ENGINEER", "Build the technology."],
+  ["04", "DEPLOY", "Take it into production."],
+];
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+export default function Home() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [mouse, setMouse] = useState({ x: 0, y: 0 });
+  const [activeService, setActiveService] = useState<string | null>(null);
+
+  const cursorRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleMove = (event: MouseEvent) => {
+      const x = event.clientX;
+      const y = event.clientY;
+
+      setMouse({ x, y });
+
+      if (cursorRef.current) {
+        cursorRef.current.animate(
+          {
+            left: `${x}px`,
+            top: `${y}px`,
+          },
+          {
+            duration: 350,
+            fill: "forwards",
+            easing: "cubic-bezier(.22,1,.36,1)",
+          }
+        );
+      }
+    };
+
+    window.addEventListener("mousemove", handleMove);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMove);
+    };
+  }, []);
+
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({
+      behavior: "smooth",
+    });
+
+    setMenuOpen(false);
+  };
+
+  return (
+    <main className="relative min-h-screen overflow-hidden bg-[#080808] text-[#F5F4EF]">
+
+
+      {/* =====================================================
+          ATMOSPHERIC BACKGROUND
+      ====================================================== */}
+
+      <div className="pointer-events-none fixed inset-0 z-0">
+
+        {/* blue mouse glow */}
+        <div
+          className="absolute h-[600px] w-[600px] rounded-full blur-[150px]"
+          style={{
+            left: mouse.x - 300,
+            top: mouse.y - 300,
+            background: "rgba(37,99,255,.075)",
+          }}
+        />
+
+        {/* very subtle grid */}
+        <div
+          className="absolute inset-0 opacity-[0.018]"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.8) 1px, transparent 1px)",
+            backgroundSize: "80px 80px",
+          }}
+        />
+
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#080808_85%)]" />
+      </div>
+
+      {/* =====================================================
+          CURSOR
+      ====================================================== */}
+
+      <div
+        ref={cursorRef}
+        className="pointer-events-none fixed left-0 top-0 z-[100] hidden h-8 w-8 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#2563FF]/60 md:block"
+      >
+        <div className="absolute left-1/2 top-1/2 h-1 w-1 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#2563FF] shadow-[0_0_20px_#2563FF]" />
+      </div>
+
+      {/* =====================================================
+          NAVIGATION
+      ====================================================== */}
+
+      <header className="fixed left-0 right-0 top-0 z-50">
+        <nav className="mx-auto flex max-w-[1600px] items-center justify-between px-5 py-6 md:px-10">
+
+          <button
+            onClick={() => scrollTo("home")}
+            className="text-sm font-semibold tracking-[-0.05em]"
+          >
+            TECH<span className="text-[#2563FF]">CRAFT</span>
+          </button>
+
+          <div className="hidden items-center gap-8 md:flex">
+
+            <button
+              onClick={() => scrollTo("services")}
+              className="nav-link"
+            >
+              Services
+            </button>
+
+            <button
+              onClick={() => scrollTo("work")}
+              className="nav-link"
+            >
+              Work
+            </button>
+
+            <button
+              onClick={() => scrollTo("about")}
+              className="nav-link"
+            >
+              About
+            </button>
+
+            <button
+              onClick={() => scrollTo("contact")}
+              className="rounded-full bg-[#2563FF] px-5 py-2.5 text-[10px] uppercase tracking-[.15em] transition hover:bg-[#477BFF]"
+            >
+              Start a project
+            </button>
+
+          </div>
+
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="rounded-full border border-white/10 p-2 md:hidden"
+          >
+            {menuOpen ? <X size={17} /> : <Menu size={17} />}
+          </button>
+        </nav>
+
+        {menuOpen && (
+          <div className="mx-4 rounded-2xl border border-white/10 bg-[#0B0B0B]/95 p-6 backdrop-blur-xl md:hidden">
+
+            <div className="flex flex-col gap-6">
+
+              {[
+                ["services", "Services"],
+                ["work", "Work"],
+                ["about", "About"],
+                ["contact", "Contact"],
+              ].map(([id, name]) => (
+                <button
+                  key={id}
+                  onClick={() => scrollTo(id)}
+                  className="text-left text-xs uppercase tracking-[.2em] text-white/60"
+                >
+                  {name}
+                </button>
+              ))}
+
+            </div>
+          </div>
+        )}
+      </header>
+
+      {/* =====================================================
+          HERO
+      ====================================================== */}
+
+      <section
+        id="home"
+        className="relative z-10 min-h-screen px-5 pt-32 md:px-10"
+      >
+
+        <div className="mx-auto flex min-h-screen max-w-[1600px] flex-col justify-between pb-8">
+
+          {/* top metadata */}
+
+          <div className="grid grid-cols-2 border-b border-white/10 pb-4 text-[9px] uppercase tracking-[.2em] text-white/30 md:grid-cols-4">
+
+            <span>TechCraft Solutions</span>
+
+            <span className="hidden md:block">
+              Software House
+            </span>
+
+            <span className="hidden md:block">
+              Design × Engineering
+            </span>
+
+            <span className="text-right">
+              01 / 08
+            </span>
+
+          </div>
+
+          {/* main hero */}
+
+          <div className="relative py-24 md:py-32">
+
+            <div className="mb-10 text-[10px] uppercase tracking-[.25em] text-[#2563FF]">
+              / We design experiences
+            </div>
+
+            <h1 className="max-w-[1450px] text-[17vw] font-medium leading-[.72] tracking-[-.105em] md:text-[12vw]">
+
+              <span className="block">
+                WE DESIGN
+              </span>
+
+              <span className="block">
+                <span className="text-[#2563FF]">DIGITAL</span>
+              </span>
+
+              <span className="block text-white/[.17]">
+                EXPERIENCES.
+              </span>
+
+            </h1>
+
+            {/* right-side editorial information */}
+
+            <div className="mt-16 grid gap-10 md:absolute md:bottom-5 md:right-0 md:mt-0 md:w-[350px]">
+
+              <p className="text-sm leading-7 text-white/45">
+                TechCraft is a full-fledged software house creating digital
+                products through the intersection of experience design,
+                software engineering and emerging technology.
+              </p>
+
+              <button
+                onClick={() => scrollTo("services")}
+                className="group flex items-center gap-4 text-[9px] uppercase tracking-[.2em] text-white/40"
+              >
+                Explore TechCraft
+
+                <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 transition group-hover:border-[#2563FF] group-hover:bg-[#2563FF]">
+                  <ArrowDown size={14} />
+                </span>
+              </button>
+
+            </div>
+
+          </div>
+
+          {/* bottom line */}
+
+          <div className="flex justify-between border-t border-white/10 pt-4 text-[9px] uppercase tracking-[.2em] text-white/25">
+
+            <span>
+              Balochistan / Pakistan
+            </span>
+
+            <span>
+              Design / Engineering / Intelligence
+            </span>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* =====================================================
+          BALOCHI EMBROIDERY BORDER
+      ====================================================== */}
+
+      <BalochiBorder />
+
+      {/* =====================================================
+          EXPERTISE MARQUEE
+      ====================================================== */}
+
+      <section className="relative z-10 overflow-hidden border-b border-white/10">
+
+        <div className="py-4">
+
+          <div className="flex w-max animate-marquee-left">
+
+            {[...expertise, ...expertise].map((item, index) => (
+
+              <div
+                key={index}
+                className="mx-8 flex items-center gap-8 whitespace-nowrap text-[clamp(28px,4vw,64px)] font-medium uppercase leading-none tracking-[-.06em]"
+              >
+
+                <span>
+                  {item}
+                </span>
+
+                <span className="text-[#2563FF]">
+                  ✦
+                </span>
+
+              </div>
+
+            ))}
+
+          </div>
+
+        </div>
+
+        <div className="border-t border-white/10 py-4">
+
+          <div className="flex w-max animate-marquee-right">
+
+            {[...expertise.slice().reverse(), ...expertise.slice().reverse()].map(
+              (item, index) => (
+
+                <div
+                  key={index}
+                  className="mx-8 flex items-center gap-8 whitespace-nowrap text-[clamp(20px,3vw,46px)] font-medium uppercase leading-none tracking-[-.06em] text-white/20"
+                >
+
+                  <span>
+                    {item}
+                  </span>
+
+                  <span>
+                    ◆
+                  </span>
+
+                </div>
+
+              )
+            )}
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* =====================================================
+          STATEMENT
+      ====================================================== */}
+
+      <section className="relative z-10 px-5 py-40 md:px-10 md:py-64">
+
+        <div className="mx-auto max-w-[1600px]">
+
+          <div className="mb-16 grid md:grid-cols-[120px_1fr]">
+
+            <span className="text-[10px] uppercase tracking-[.2em] text-[#2563FF]">
+              02
+            </span>
+
+            <span className="text-[10px] uppercase tracking-[.2em] text-white/25">
+              Why TechCraft
+            </span>
+
+          </div>
+
+          <h2 className="max-w-[1450px] text-[12vw] font-medium leading-[.76] tracking-[-.095em] md:text-[9vw]">
+
+            TECHNOLOGY
+            <br />
+
+            <span className="text-white/[.16]">
+              IS EVERYWHERE.
+            </span>
+
+            <br />
+
+            <span>
+              EXPERIENCE
+            </span>
+
+            <br />
+
+            <span className="text-[#2563FF]">
+              ISN'T.
+            </span>
+
+          </h2>
+
+          <div className="mt-20 grid gap-10 md:grid-cols-[120px_1fr_1fr]">
+
+            <div />
+
+            <p className="max-w-xl text-sm leading-8 text-white/40 md:text-base">
+              Software can function perfectly and still feel wrong.
+              We believe the experience is part of the product itself.
+            </p>
+
+            <p className="max-w-xl text-sm leading-8 text-white/25 md:text-base">
+              That's why design isn't decoration at TechCraft.
+              It informs how we understand problems, architect products
+              and engineer the technology behind them.
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* =====================================================
+          SERVICES — EDITORIAL NOT CARDS
+      ====================================================== */}
+
+      <section
+        id="services"
+        className="relative z-10 px-5 py-24 md:px-10 md:py-40"
+      >
+
+        <div className="mx-auto max-w-[1600px]">
+
+          <div className="grid md:grid-cols-[120px_1fr]">
+
+            <div>
+              <span className="text-[10px] text-[#2563FF]">
+                03
+              </span>
+            </div>
+
+            <div>
+
+              <p className="text-[10px] uppercase tracking-[.2em] text-white/25">
+                What we build
+              </p>
+
+              <h2 className="mt-6 text-[12vw] font-medium leading-[.72] tracking-[-.1em] md:text-[9vw]">
+                OUR
+                <br />
+                <span className="text-white/[.16]">
+                  EXPERTISE.
+                </span>
+              </h2>
+
+            </div>
+
+          </div>
+
+          <div className="mt-28">
+
+            {services.map((service) => (
+
+              <article
+                key={service.number}
+                onMouseEnter={() => setActiveService(service.number)}
+                onMouseLeave={() => setActiveService(null)}
+                className="group relative border-t border-white/10 py-12 transition-colors duration-500 hover:border-[#2563FF]/40 md:py-20"
+              >
+
+                <div className="grid gap-8 md:grid-cols-[120px_1.1fr_1fr]">
+
+                  <div className="text-[10px] text-[#2563FF]">
+                    {service.number}
+                  </div>
+
+                  <div>
+
+                    <h3 className="text-[10vw] font-medium leading-[.72] tracking-[-.09em] transition-transform duration-700 group-hover:translate-x-3 md:text-[6.8vw]">
+
+                      {service.title}
+
+                      <span className="block text-[#2563FF]">
+                        {service.accent}
+                      </span>
+
+                    </h3>
+
+                  </div>
+
+                  <div className="md:pt-4">
+
+                    <p className="max-w-xl text-sm leading-8 text-white/40 md:text-base">
+                      {service.description}
+                    </p>
+
+                    <p className="mt-10 text-[9px] uppercase tracking-[.2em] text-white/20">
+                      {service.capabilities}
+                    </p>
+
+                  </div>
+
+                </div>
+
+                {activeService === service.number && (
+                  <div className="pointer-events-none absolute right-0 top-1/2 hidden -translate-y-1/2 md:block">
+                    <div className="flex h-24 w-24 items-center justify-center rounded-full border border-[#2563FF]/50">
+                      <Plus
+                        size={18}
+                        className="text-[#2563FF]"
+                      />
+                    </div>
+                  </div>
+                )}
+
+              </article>
+
+            ))}
+
+            <div className="border-t border-white/10" />
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* =====================================================
+          DESIGN / ENGINEERING
+      ====================================================== */}
+
+      <section className="relative z-10 px-5 py-40 md:px-10 md:py-60">
+
+        <div className="mx-auto max-w-[1600px]">
+
+          <div className="grid md:grid-cols-[120px_1fr]">
+
+            <span className="text-[10px] text-[#2563FF]">
+              04
+            </span>
+
+            <span className="text-[10px] uppercase tracking-[.2em] text-white/25">
+              The TechCraft approach
+            </span>
+
+          </div>
+
+          <div className="mt-24 grid border-y border-white/10 md:grid-cols-2">
+
+            <div className="border-b border-white/10 py-20 md:border-b-0 md:border-r md:pr-16">
+
+              <p className="text-[10px] uppercase tracking-[.2em] text-white/25">
+                01 / Experience
+              </p>
+
+              <h2 className="mt-12 text-[13vw] font-medium leading-[.67] tracking-[-.1em] md:text-[9vw]">
+
+                THINK
+
+                <span className="block text-[#2563FF]">
+                  FIRST.
+                </span>
+
+              </h2>
+
+              <p className="mt-14 max-w-md text-sm leading-8 text-white/35">
+                Research. Strategy. User experience. Interaction.
+                We understand what should exist before deciding how
+                it should be built.
+              </p>
+
+            </div>
+
+            <div className="py-20 md:pl-16">
+
+              <p className="text-[10px] uppercase tracking-[.2em] text-white/25">
+                02 / Technology
+              </p>
+
+              <h2 className="mt-12 text-[13vw] font-medium leading-[.67] tracking-[-.1em] md:text-[9vw]">
+
+                BUILD
+
+                <span className="block text-[#2563FF]">
+                  RIGHT.
+                </span>
+
+              </h2>
+
+              <p className="mt-14 max-w-md text-sm leading-8 text-white/35">
+                Frontend. Backend. APIs. Databases. AI. Cloud.
+                The experience becomes a real product through
+                thoughtful engineering.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* =====================================================
+          TECHNICAL / CODE VISUAL
+      ====================================================== */}
+
+      <section className="relative z-10 px-5 py-24 md:px-10 md:py-40">
+
+        <div className="mx-auto max-w-[1600px]">
+
+          <div className="grid gap-12 md:grid-cols-[120px_1fr_1fr]">
+
+            <span className="text-[10px] text-[#2563FF]">
+              05
+            </span>
+
+            <div>
+
+              <p className="text-[10px] uppercase tracking-[.2em] text-white/25">
+                Design meets code
+              </p>
+
+              <h2 className="mt-8 text-[9vw] font-medium leading-[.75] tracking-[-.09em]">
+                FROM
+                <br />
+                <span className="text-white/[.16]">
+                  IDEA
+                </span>
+                <br />
+                TO
+                <br />
+                <span className="text-[#2563FF]">
+                  PRODUCT.
+                </span>
+              </h2>
+
+            </div>
+
+            {/* code block */}
+
+            <div className="border border-white/10 bg-white/[.018] p-6 font-mono text-[11px] leading-7 text-white/35 md:p-10">
+
+              <div className="mb-8 flex gap-2 border-b border-white/10 pb-4">
+
+                <span className="h-2 w-2 rounded-full bg-white/15" />
+                <span className="h-2 w-2 rounded-full bg-white/15" />
+                <span className="h-2 w-2 rounded-full bg-white/15" />
+
+              </div>
+
+              <p>
+                <span className="text-[#2563FF]">const</span>{" "}
+                experience = {"{"}
+              </p>
+
+              <p className="pl-5">
+                design:{" "}
+                <span className="text-white/65">
+                  &quot;human-first&quot;
+                </span>,
+              </p>
+
+              <p className="pl-5">
+                engineering:{" "}
+                <span className="text-white/65">
+                  &quot;production-ready&quot;
+                </span>,
+              </p>
+
+              <p className="pl-5">
+                intelligence:{" "}
+                <span className="text-white/65">
+                  &quot;purposeful&quot;
+                </span>,
+              </p>
+
+              <p className="pl-5">
+                craft:{" "}
+                <span className="text-[#2563FF]">
+                  true
+                </span>,
+              </p>
+
+              <p>
+                {"}"};
+              </p>
+
+              <br />
+
+              <p className="text-white/60">
+                build(experience);
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* =====================================================
+          WORK
+      ====================================================== */}
+
+      <section
+        id="work"
+        className="relative z-10 px-5 py-32 md:px-10 md:py-48"
+      >
+
+        <div className="mx-auto max-w-[1600px]">
+
+          <div className="grid md:grid-cols-[120px_1fr]">
+
+            <span className="text-[10px] text-[#2563FF]">
+              06
+            </span>
+
+            <div>
+
+              <p className="text-[10px] uppercase tracking-[.2em] text-white/25">
+                Selected work
+              </p>
+
+              <h2 className="mt-7 text-[12vw] font-medium leading-[.72] tracking-[-.1em] md:text-[9vw]">
+                THINGS
+                <br />
+                <span className="text-white/[.16]">
+                  WE BUILT.
+                </span>
+              </h2>
+
+            </div>
+
+          </div>
+
+          <div className="mt-28">
+
+            {projects.map((project) => (
+
+              <article
+                key={project.number}
+                className="group border-t border-white/10 py-12 md:py-20"
+              >
+
+                <div className="grid gap-10 md:grid-cols-[120px_1.2fr_1fr_auto] md:items-center">
+
+                  <span className="text-[10px] text-[#2563FF]">
+                    {project.number}
+                  </span>
+
+                  <div>
+
+                    <p className="text-[9px] uppercase tracking-[.2em] text-white/25">
+                      {project.type}
+                    </p>
+
+                    <h3 className="mt-6 text-[9vw] font-medium leading-[.72] tracking-[-.09em] transition-colors group-hover:text-[#2563FF] md:text-[6vw]">
+                      {project.title}
+                    </h3>
+
+                  </div>
+
+                  <p className="max-w-md text-sm leading-8 text-white/35">
+                    {project.description}
+                  </p>
+
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 transition group-hover:border-[#2563FF] group-hover:bg-[#2563FF]">
+                    <ArrowUpRight size={17} />
+                  </div>
+
+                </div>
+
+              </article>
+
+            ))}
+
+            <div className="border-t border-white/10" />
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* =====================================================
+          BALOCHI CRAFT
+      ====================================================== */}
+
+      <section
+        id="about"
+        className="relative z-10 overflow-hidden px-5 py-40 md:px-10 md:py-64"
+      >
+
+        {/* embroidery artwork */}
+
+        <BalochiArtwork />
+
+        <div className="relative mx-auto max-w-[1600px]">
+
+          <div className="grid md:grid-cols-[120px_1fr]">
+
+            <span className="text-[10px] text-[#2563FF]">
+              07
+            </span>
+
+            <div>
+
+              <p className="text-[10px] uppercase tracking-[.2em] text-white/25">
+                The craft
+              </p>
+
+              <h2 className="mt-8 max-w-[1200px] text-[13vw] font-medium leading-[.72] tracking-[-.1em] md:text-[9vw]">
+
+                ROOTED
+
+                <span className="block text-white/[.16]">
+                  IN
+                </span>
+
+                <span className="block text-[#2563FF]">
+                  CRAFT.
+                </span>
+
+              </h2>
+
+              <div className="mt-20 grid gap-10 md:grid-cols-2">
+
+                <p className="max-w-xl text-sm leading-8 text-white/45 md:text-base">
+                  Balochi embroidery is built through patience, repetition,
+                  symmetry and extraordinary attention to detail.
+                </p>
+
+                <p className="max-w-xl text-sm leading-8 text-white/25 md:text-base">
+                  That idea resonates with us. We reinterpret the spirit
+                  of craftsmanship through a modern medium: digital
+                  products and technology.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* =====================================================
+          PROCESS
+      ====================================================== */}
+
+      <section className="relative z-10 px-5 py-32 md:px-10 md:py-48">
+
+        <div className="mx-auto max-w-[1600px]">
+
+          <div className="grid md:grid-cols-[120px_1fr]">
+
+            <span className="text-[10px] text-[#2563FF]">
+              08
+            </span>
+
+            <div>
+
+              <p className="text-[10px] uppercase tracking-[.2em] text-white/25">
+                Process
+              </p>
+
+              <h2 className="mt-7 text-[12vw] font-medium leading-[.72] tracking-[-.1em] md:text-[9vw]">
+                HOW WE
+                <br />
+                <span className="text-white/[.16]">
+                  WORK.
+                </span>
+              </h2>
+
+            </div>
+
+          </div>
+
+          <div className="mt-24 grid border-l border-t border-white/10 md:grid-cols-4">
+
+            {process.map(([number, title, description]) => (
+
+              <div
+                key={number}
+                className="group min-h-[300px] border-b border-r border-white/10 p-7 transition hover:bg-[#2563FF]/[.035] md:p-10"
+              >
+
+                <span className="text-[10px] text-[#2563FF]">
+                  {number}
+                </span>
+
+                <div className="mt-28">
+
+                  <h3 className="text-2xl font-medium tracking-[-.04em] group-hover:text-[#2563FF]">
+                    {title}
+                  </h3>
+
+                  <p className="mt-4 max-w-[180px] text-xs leading-6 text-white/25">
+                    {description}
+                  </p>
+
+                </div>
+
+              </div>
+
+            ))}
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* =====================================================
+          CONTACT
+      ====================================================== */}
+
+      <section
+        id="contact"
+        className="relative z-10 px-5 pb-10 pt-40 md:px-10 md:pb-16 md:pt-60"
+      >
+
+        <div className="mx-auto max-w-[1600px]">
+
+          <div className="border-t border-white/10 pt-6">
+
+            <span className="text-[10px] uppercase tracking-[.2em] text-[#2563FF]">
+              09 / Start something
+            </span>
+
+            <h2 className="mt-16 text-[17vw] font-medium leading-[.68] tracking-[-.105em] md:text-[12vw]">
+
+              HAVE
+
+              <span className="text-white/[.16]">
+                {" "}AN
+              </span>
+
+              <br />
+
+              <span className="text-[#2563FF]">
+                IDEA?
+              </span>
+
+            </h2>
+
+            <div className="mt-24 grid gap-10 border-t border-white/10 pt-8 md:grid-cols-2">
+
+              <div>
+
+                <p className="max-w-lg text-sm leading-8 text-white/35 md:text-base">
+                  Tell us what you're building, what you're solving,
+                  or simply what you're imagining.
+                </p>
+
+                <a
+                  href="mailto:hello@techcraftsolutions.com"
+                  className="mt-7 inline-flex items-center gap-2 text-lg hover:text-[#2563FF]"
+                >
+                  hello@techcraftsolutions.com
+                  <ArrowUpRight size={17} />
+                </a>
+
+              </div>
+
+              <div className="flex md:justify-end">
+
+                <button className="group flex h-fit items-center gap-5 rounded-full bg-[#2563FF] px-7 py-4 text-[10px] uppercase tracking-[.18em] transition hover:bg-[#477BFF]">
+
+                  Let's talk
+
+                  <ArrowUpRight
+                    size={15}
+                    className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
+                  />
+
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <footer className="mt-32 flex flex-col justify-between gap-4 border-t border-white/10 pt-6 text-[8px] uppercase tracking-[.2em] text-white/20 md:flex-row">
+
+            <span>
+              © {new Date().getFullYear()} TechCraft Solutions
+            </span>
+
+            <span>
+              Design / Engineering / Intelligence
+            </span>
+
+            <span>
+              Balochistan / Pakistan
+            </span>
+
+          </footer>
+
+        </div>
+
+      </section>
+
+      {/* =====================================================
+          GLOBAL CSS
+      ====================================================== */}
+
+      <style jsx global>{`
+
+        html {
+          scroll-behavior: smooth;
+        }
+
+        body {
+          margin: 0;
+          background: #080808;
+        }
+
+        .nav-link {
+          font-size: 10px;
+          text-transform: uppercase;
+          letter-spacing: .18em;
+          color: rgba(255,255,255,.35);
+          transition: color .3s ease;
+        }
+
+        .nav-link:hover {
+          color: white;
+        }
+
+        @keyframes marqueeLeft {
+          from {
+            transform: translateX(0);
+          }
+
+          to {
+            transform: translateX(-50%);
+          }
+        }
+
+        @keyframes marqueeRight {
+          from {
+            transform: translateX(-50%);
+          }
+
+          to {
+            transform: translateX(0);
+          }
+        }
+
+        .animate-marquee-left {
+          animation: marqueeLeft 35s linear infinite;
+        }
+
+        .animate-marquee-right {
+          animation: marqueeRight 42s linear infinite;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .animate-marquee-left,
+          .animate-marquee-right {
+            animation-play-state: paused;
+          }
+
+          html {
+            scroll-behavior: auto;
+          }
+        }
+
+      `}</style>
+
+    </main>
+  );
+}
+
+/* =========================================================
+   BALOCHI EMBROIDERY BORDER
+========================================================= */
+
+function BalochiBorder() {
+  const motifs = Array.from({ length: 30 });
+
+  return (
+    <div className="relative z-20 overflow-hidden border-y border-white/10 bg-[#090909]">
+
+      <div className="flex h-[54px] min-w-max items-center">
+
+        {motifs.map((_, index) => (
+
+          <div
+            key={index}
+            className="relative mx-2 h-9 w-9 shrink-0"
+          >
+
+            {/* outer diamond */}
+
+            <div className="absolute inset-1 rotate-45 border border-[#2563FF]/50" />
+
+            {/* inner diamond */}
+
+            <div className="absolute left-2 top-2 h-5 w-5 rotate-45 border border-[#D94B3D]/40" />
+
+            {/* center */}
+
+            <div className="absolute left-1/2 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rotate-45 bg-[#E7B64A]/60" />
+
+          </div>
+
+        ))}
+
+      </div>
+
+    </div>
+  );
+}
+
+/* =========================================================
+   BALOCHI EMBROIDERY ARTWORK
+========================================================= */
+
+function BalochiArtwork() {
+  return (
+    <div className="pointer-events-none absolute inset-0 overflow-hidden">
+
+      {/* left embroidered panel */}
+
+      <div className="absolute -left-20 top-1/2 h-[850px] w-[420px] -translate-y-1/2 -rotate-6 opacity-[0.13]">
+
+        <div className="absolute inset-0 border-[10px] border-[#8D2925]" />
+
+        <div className="absolute inset-5 border-[3px] border-[#D7A72D]" />
+
+        <div className="absolute inset-10 border-[2px] border-[#2563FF]" />
+
+        <div className="absolute inset-[65px]">
+
+          <EmbroideryColumn />
+
+        </div>
+
+      </div>
+
+      {/* right embroidered panel */}
+
+      <div className="absolute -right-20 top-1/2 h-[850px] w-[420px] -translate-y-1/2 rotate-6 opacity-[0.10]">
+
+        <div className="absolute inset-0 border-[10px] border-[#8D2925]" />
+
+        <div className="absolute inset-5 border-[3px] border-[#D7A72D]" />
+
+        <div className="absolute inset-10 border-[2px] border-[#2563FF]" />
+
+        <div className="absolute inset-[65px]">
+
+          <EmbroideryColumn />
+
+        </div>
+
+      </div>
+
+    </div>
+  );
+}
+
+/* =========================================================
+   EMBROIDERY COLUMN
+========================================================= */
+
+function EmbroideryColumn() {
+  const motifs = Array.from({ length: 7 });
+
+  return (
+    <div className="flex h-full flex-col justify-between">
+
+      {motifs.map((_, index) => (
+
+        <div
+          key={index}
+          className="relative mx-auto h-20 w-20"
+        >
+
+          {/* large diamond */}
+
+          <div className="absolute inset-2 rotate-45 border-4 border-[#D13F36]" />
+
+          {/* second diamond */}
+
+          <div className="absolute inset-4 rotate-45 border-2 border-[#D9A82D]" />
+
+          {/* blue diamond */}
+
+          <div className="absolute inset-6 rotate-45 border-2 border-[#2563FF]" />
+
+          {/* star-like center */}
+
+          <div className="absolute left-1/2 top-1/2 h-7 w-7 -translate-x-1/2 -translate-y-1/2 rotate-45 border-2 border-[#F0D96A]" />
+
+          {/* four corner stitches */}
+
+          <span className="absolute left-0 top-1/2 h-2 w-2 -translate-y-1/2 bg-[#2563FF]" />
+          <span className="absolute right-0 top-1/2 h-2 w-2 -translate-y-1/2 bg-[#D13F36]" />
+          <span className="absolute left-1/2 top-0 h-2 w-2 -translate-x-1/2 bg-[#D9A82D]" />
+          <span className="absolute bottom-0 left-1/2 h-2 w-2 -translate-x-1/2 bg-[#D13F36]" />
+
+        </div>
+
+      ))}
+
+    </div>
+  );
+}

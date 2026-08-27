@@ -371,148 +371,23 @@ function MicroPattern() {
    HERO PRODUCT PREVIEW
 ========================================================= */
 
-
-function LiveCodeEditor() {
-  const codeLines = [
-    'const product = {',
-    '  design: true,',
-    '  experience: true,',
-    '  engineering: true,',
-    '};',
-    '',
-    'return (',
-    '  <TechCraft',
-    '    mode="craft"',
-    '  />',
-    ');',
-  ];
-
-  const fullCode = codeLines.join("\n");
-
-  const [visibleLength, setVisibleLength] = useState(0);
-  const [deleting, setDeleting] = useState(false);
-
-  useEffect(() => {
-    let timer: ReturnType<typeof setTimeout>;
-
-    if (!deleting && visibleLength < fullCode.length) {
-      timer = setTimeout(() => {
-        setVisibleLength((value) => value + 1);
-      }, 34);
-    } else if (!deleting && visibleLength === fullCode.length) {
-      timer = setTimeout(() => {
-        setDeleting(true);
-      }, 3200);
-    } else if (deleting && visibleLength > 0) {
-      timer = setTimeout(() => {
-        setVisibleLength((value) => value - 1);
-      }, 16);
-    } else {
-      timer = setTimeout(() => {
-        setDeleting(false);
-      }, 900);
-    }
-
-    return () => clearTimeout(timer);
-  }, [visibleLength, deleting, fullCode.length]);
-
-  const visibleCode = fullCode.slice(0, visibleLength);
-  const visibleLines = visibleCode.split("\n");
-
-  let remainingCharacters = visibleLength;
-  let activeLine = 0;
-
-  for (let i = 0; i < codeLines.length; i++) {
-    const lineLength = codeLines[i].length;
-
-    if (remainingCharacters <= lineLength) {
-      activeLine = i;
-      break;
-    }
-
-    remainingCharacters -= lineLength + 1;
-  }
-
-  return (
-    <div className="live-code-editor">
-
-      {codeLines.map((line, index) => {
-
-        const text = visibleLines[index] ?? "";
-
-        const isActive =
-          index === activeLine &&
-          visibleLength < fullCode.length;
-
-        return (
-          <div
-            className={`live-code-line ${
-              isActive ? "live-code-active" : ""
-            }`}
-            key={`${index}-${line}`}
-          >
-
-            <span className="live-line-number">
-              {String(index + 1).padStart(2, "0")}
-            </span>
-
-            <span className="live-code-text">
-
-              {text.includes("const") && text.startsWith("const") ? (
-                <>
-                  <i>const</i>
-                  {text.slice(5)}
-                </>
-              ) : text.includes("<TechCraft") ? (
-                <>
-                  {"  <"}
-                  <b>TechCraft</b>
-                  {text.slice(12)}
-                </>
-              ) : text.includes('mode="craft"') ? (
-                <>
-                  {'    mode='}
-                  <strong>"craft"</strong>
-                </>
-              ) : (
-                text
-              )}
-
-              {isActive && (
-                <span className="typing-caret" />
-              )}
-
-            </span>
-
-          </div>
-        );
-      })}
-
-      <span className="live-editor-status">
-        {deleting
-          ? "UPDATING"
-          : visibleLength === fullCode.length
-            ? "READY"
-            : "TYPING"}
-      </span>
-
-    </div>
-  );
-}
-
 function ProductPreview() {
   return (
-    <div className="screen-scene">
+    <div className="laptop-scene">
 
-      <div className="screen-shadow" />
+      <div className="laptop-shadow" />
 
-      <div className="studio-screen">
+      <div className="laptop">
 
-        <div className="screen-frame">
+        {/* SCREEN LID */}
 
-          <div className="screen-camera" />
+        <div className="laptop-lid">
 
-          <div className="screen-display">
+          <div className="laptop-camera" />
+
+          <div className="laptop-screen">
+
+            {/* browser / app chrome */}
 
             <div className="software-topbar">
 
@@ -527,12 +402,16 @@ function ProductPreview() {
               </div>
 
               <div className="software-status">
-                ● LIVE
+                LIVE
               </div>
 
             </div>
 
+            {/* APP */}
+
             <div className="software-body">
+
+              {/* SIDEBAR */}
 
               <aside className="software-sidebar">
 
@@ -558,12 +437,14 @@ function ProductPreview() {
 
               </aside>
 
+              {/* MAIN DESIGN AREA */}
+
               <div className="design-area">
 
                 <div className="design-toolbar">
 
                   <span className="tool-label">
-    
+                    PRODUCT / HOME
                   </span>
 
                   <div className="design-actions">
@@ -585,7 +466,7 @@ function ProductPreview() {
                   <div className="canvas-card">
 
                     <div className="canvas-eyebrow">
-      
+                      DESIGN × ENGINEERING
                     </div>
 
                     <div className="canvas-heading">
@@ -595,7 +476,8 @@ function ProductPreview() {
                     </div>
 
                     <div className="canvas-description">
-                      Digital products designed around people.
+                      Digital products designed
+                      around people.
                     </div>
 
                     <div className="canvas-buttons">
@@ -627,6 +509,8 @@ function ProductPreview() {
 
               </div>
 
+              {/* IDE */}
+
               <div className="ide-panel">
 
                 <div className="ide-header">
@@ -634,7 +518,52 @@ function ProductPreview() {
                   <span>●</span>
                 </div>
 
-                <LiveCodeEditor />
+                <div className="code">
+
+                  <div>
+                    <i>const</i>{" "}
+                    <b>product</b> = {"{"}
+                  </div>
+
+                  <div className="indent">
+                    design: <strong>true</strong>,
+                  </div>
+
+                  <div className="indent">
+                    experience: <strong>true</strong>,
+                  </div>
+
+                  <div className="indent">
+                    engineering: <strong>true</strong>,
+                  </div>
+
+                  <div>
+                    {"}"};
+                  </div>
+
+                  <div className="code-space" />
+
+                  <div>
+                    <i>return</i> (
+                  </div>
+
+                  <div className="indent">
+                    &lt;<b>TechCraft</b>
+                  </div>
+
+                  <div className="indent-2">
+                    mode=<strong>"craft"</strong>
+                  </div>
+
+                  <div className="indent">
+                    /&gt;
+                  </div>
+
+                  <div>
+                    );
+                  </div>
+
+                </div>
 
                 <div className="terminal-line">
                   <span />
@@ -644,6 +573,8 @@ function ProductPreview() {
               </div>
 
             </div>
+
+            {/* CODE CURSOR */}
 
             <div className="screen-cursor">
 
@@ -655,21 +586,22 @@ function ProductPreview() {
 
             </div>
 
+            {/* CLICK RIPPLE */}
+
             <div className="screen-click click-one" />
             <div className="screen-click click-two" />
 
           </div>
 
         </div>
-
+        </div>
       </div>
-
     </div>
   );
 }
 
 /* =========================================================
-   SIMPLE SOFTWARE ICONS
+   SIMPLE ICONS
 ========================================================= */
 
 function PaletteIcon() {
@@ -970,7 +902,7 @@ export default function Home() {
 
               <div>
                 <Command size={15} />
-                <span>COMMAND</span>
+                <span>TECHCRAFT COMMAND</span>
               </div>
 
               <button onClick={() => setCommandOpen(false)}>
@@ -1040,9 +972,30 @@ export default function Home() {
 
         <div className="hero-container">
 
+          <div className="hero-meta">
+
+            <span>
+              DESIGN-LED SOFTWARE HOUSE
+            </span>
+
+            <span>
+              QUETTA · BALOCHISTAN
+            </span>
+
+            <span>
+              2026
+            </span>
+
+          </div>
+
           <div className="hero-grid">
 
             <div className="hero-copy">
+
+              <div className="eyebrow">
+                <span />
+                DESIGN × ENGINEERING × INTELLIGENCE
+              </div>
 
               <h1>
                 We design
@@ -1084,32 +1037,51 @@ export default function Home() {
 
             <div className="hero-product">
 
-<ProductPreview />
+              <div className="product-index">
+                01 / PRODUCT SYSTEM
+              </div>
+
+              <ProductPreview />
 
               <div className="hero-floating-mark">
                 <BalochiMark />
               </div>
 
-</div>
+              <div className="hero-tech-label">
+                <Terminal size={13} />
+                <span>BUILD / DESIGN / SHIP</span>
+              </div>
+
+            </div>
 
           </div>
 
-          <div className="hero-micro-pattern">
+          <div className="hero-bottom">
+
+            <span>
+              DIGITAL PRODUCTS
+            </span>
+
             <MicroPattern />
+
+            <span>
+              ROOTED IN BALOCHISTAN
+            </span>
+
           </div>
 
-</div>
+        </div>
 
       </section>
 
       {/* =====================================================
-
+          EXPERTISE
       ====================================================== */}
 
       <section className="ticker-section interactive-ticker">
 
         <div className="ticker-label">
-
+          EXPERTISE
         </div>
 
         <div
@@ -1194,7 +1166,26 @@ export default function Home() {
 
       <section id="about" className="about section">
 
-  <div className="about-grid">
+        <div className="section-top">
+
+          <div className="section-number">
+            02
+          </div>
+
+          <div>
+            <span className="section-kicker">
+              THE IDEA
+            </span>
+
+            <p>
+              Good technology is invisible.
+              Good experience is unforgettable.
+            </p>
+          </div>
+
+        </div>
+
+        <div className="about-grid">
 
           <h2>
             We don't just
@@ -1241,7 +1232,25 @@ export default function Home() {
 
       <section id="services" className="services section">
 
-  <div className="services-layout">
+        <div className="section-top">
+
+          <div className="section-number">
+            03
+          </div>
+
+          <div>
+            <span className="section-kicker">
+              WHAT WE DO
+            </span>
+
+            <p>
+              One studio across design, software and intelligence.
+            </p>
+          </div>
+
+        </div>
+
+        <div className="services-layout">
 
           <div className="services-title">
 
@@ -1327,7 +1336,7 @@ export default function Home() {
         <div className="culture-copy">
 
           <span className="section-kicker">
-
+            OUR ROOTS
           </span>
 
           <h2>
@@ -1368,7 +1377,25 @@ export default function Home() {
 
       <section id="work" className="work section">
 
-  <div className="work-list">
+        <div className="section-top">
+
+          <div className="section-number">
+            04
+          </div>
+
+          <div>
+            <span className="section-kicker">
+              SELECTED WORK
+            </span>
+
+            <p>
+              Projects where design meets technology.
+            </p>
+          </div>
+
+        </div>
+
+        <div className="work-list">
 
           {projects.map((project) => (
             <article
@@ -1387,7 +1414,7 @@ export default function Home() {
                     <div className="work-interface-card">
 
                       <span>
-        
+                        ARCHITECTURE / EXPERIENCE
                       </span>
 
                       <strong>
@@ -1419,34 +1446,29 @@ export default function Home() {
                 )}
 
                 {project.mode === "dark" && (
-                  <div className="intelligent-visual">
+                  <>
+                    <div className="terminal-card">
 
-                    <div className="intelligent-heading">
-
-                      <span className="intelligent-live">
-                        <i />
-                        LIVE
-                      </span>
-
-                    </div>
-
-                    <div className="intelligent-editor">
-
-                      <div className="intelligent-editor-bar">
-                        <span>
-                          APP.TSX
-                        </span>
-
-                        <span>
-                          TECHCRAFT
-                        </span>
+                      <div className="terminal-top">
+                        <span />
+                        <span />
+                        <span />
                       </div>
 
-                      <LiveCodeEditor />
+                      <code>
+                        <i>const</i> product = {"{"}
+                        <br />
+                        &nbsp;&nbsp;design: <b>true</b>,
+                        <br />
+                        &nbsp;&nbsp;engineering: <b>true</b>,
+                        <br />
+                        &nbsp;&nbsp;intelligence: <b>true</b>
+                        <br />
+                        {"}"};
+                      </code>
 
                     </div>
-
-                  </div>
+                  </>
                 )}
 
               </div>
@@ -1485,7 +1507,25 @@ export default function Home() {
 
       <section className="process section">
 
-  <div className="process-grid">
+        <div className="section-top">
+
+          <div className="section-number">
+            05
+          </div>
+
+          <div>
+            <span className="section-kicker">
+              HOW WE WORK
+            </span>
+
+            <p>
+              Simple process. Serious craft.
+            </p>
+          </div>
+
+        </div>
+
+        <div className="process-grid">
 
           <div className="process-heading">
 
@@ -1586,11 +1626,11 @@ export default function Home() {
         <div className="contact-footer">
 
           <span>
-
+            TECHCRAFT SOLUTIONS
           </span>
 
           <span>
-
+            DESIGN · ENGINEERING · INTELLIGENCE
           </span>
 
           <span>
@@ -2243,6 +2283,30 @@ export default function Home() {
           justify-content: space-between;
         }
 
+        .hero-meta {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+
+          padding-bottom: 13px;
+
+          border-bottom: 1px solid rgba(17,19,24,.11);
+
+          color: rgba(17,19,24,.35);
+
+          font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+          font-size: 8px;
+          letter-spacing: .17em;
+          text-transform: uppercase;
+        }
+
+        .hero-meta span:nth-child(2) {
+          text-align: center;
+        }
+
+        .hero-meta span:last-child {
+          text-align: right;
+        }
+
         .hero-grid {
           display: grid;
           grid-template-columns: 1.04fr .96fr;
@@ -2258,6 +2322,28 @@ export default function Home() {
         .hero-copy {
           position: relative;
           z-index: 3;
+        }
+
+        .eyebrow {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          margin-bottom: 25px;
+
+          color: #2563ff;
+
+          font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+          font-size: 9px;
+          letter-spacing: .17em;
+        }
+
+        .eyebrow > span {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: #2563ff;
+          box-shadow: 0 0 0 5px rgba(37,99,255,.09);
         }
 
         .hero h1 {
@@ -2415,6 +2501,19 @@ export default function Home() {
           display: flex;
           align-items: center;
           justify-content: center;
+        }
+
+        .product-index {
+          position: absolute;
+
+          top: 25px;
+          left: 0;
+
+          color: rgba(17,19,24,.27);
+
+          font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+          font-size: 8px;
+          letter-spacing: .16em;
         }
 
         .preview-shell {
@@ -2729,6 +2828,40 @@ export default function Home() {
           50% {
             transform: translateY(-13px) rotate(7deg);
           }
+        }
+
+        .hero-tech-label {
+          position: absolute;
+
+          right: 0;
+          bottom: 32px;
+
+          display: flex;
+          align-items: center;
+          gap: 7px;
+
+          color: rgba(17,19,24,.3);
+
+          font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+          font-size: 7px;
+          letter-spacing: .13em;
+        }
+
+        .hero-bottom {
+          display: grid;
+          grid-template-columns: 1fr auto 1fr;
+
+          align-items: center;
+
+          padding-top: 16px;
+
+          border-top: 1px solid rgba(17,19,24,.1);
+
+          color: rgba(17,19,24,.3);
+
+          font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+          font-size: 7px;
+          letter-spacing: .15em;
         }
 
         .hero-bottom span:last-child {
@@ -3292,457 +3425,77 @@ export default function Home() {
           color: #69a1ff;
         }
 
-        /* =====================================================
-           LIVE IDE EDITOR
-        ====================================================== */
-
-        .code-live {
-          position: relative;
-
-          padding: 14px 8px 18px;
+        .code {
+          padding: 15px 11px;
 
           font-family:
             ui-monospace,
             SFMono-Regular,
             Menlo,
-            Monaco,
-            Consolas,
             monospace;
 
           font-size: 6px;
-          line-height: 2.05;
 
-          color: #8f98a8;
-
-          overflow: hidden;
+          line-height: 2;
 
           animation:
-            editorPulse 8s ease-in-out infinite;
+            codePulse 8s ease-in-out infinite;
         }
 
-        .code-line {
-          position: relative;
+        @keyframes codePulse {
 
-          display: grid;
+          0%,
+          100% {
+            opacity: .78;
+          }
 
-          grid-template-columns: 16px 1fr;
+          50% {
+            opacity: 1;
+          }
 
-          min-height: 12px;
-
-          padding: 0 4px;
-
-          opacity: 0;
-
-          clip-path: inset(0 100% 0 0);
-
-          animation:
-            codeType 8s steps(1, end) infinite;
         }
 
-        .code-line::before {
-          content: "";
-
-          position: absolute;
-
-          left: 0;
-          right: 0;
-          top: 0;
-          bottom: 0;
-
-          background:
-            rgba(37,99,255,.09);
-
-          opacity: 0;
-
-          transition: opacity .2s ease;
-        }
-
-        .code-line > * {
-          position: relative;
-          z-index: 2;
-        }
-
-        .line-number {
-          color: #4f5968;
-          user-select: none;
-        }
-
-        .code-line i {
+        .code i {
           color: #7ea9ff;
           font-style: normal;
         }
 
-        .code-line b {
-          color: #edf1f7;
+        .code b {
+          color: #e8ecf3;
           font-weight: 400;
         }
 
-        .code-line strong {
+        .code strong {
           color: #9fc2ff;
           font-weight: 400;
+        }
+
+        .indent {
+          padding-left: 10px;
+        }
+
+        .indent-2 {
+          padding-left: 20px;
         }
 
         .code-space {
           height: 7px;
         }
 
-        /* sequential typing */
-
-        .line-1 {
-          animation-delay: 0s;
-        }
-
-        .line-2 {
-          animation-delay: .45s;
-        }
-
-        .line-3 {
-          animation-delay: .9s;
-        }
-
-        .line-4 {
-          animation-delay: 1.35s;
-        }
-
-        .line-5 {
-          animation-delay: 1.8s;
-        }
-
-        .line-6 {
-          animation-delay: 2.65s;
-        }
-
-        .line-7 {
-          animation-delay: 3.1s;
-        }
-
-        .line-8 {
-          animation-delay: 3.55s;
-        }
-
-        .line-9 {
-          animation-delay: 4s;
-        }
-
-        .line-10 {
-          animation-delay: 4.45s;
-        }
-
-        @keyframes codeType {
-
-          0%,
-          4% {
-            opacity: 0;
-            clip-path: inset(0 100% 0 0);
-          }
-
-          7%,
-          92% {
-            opacity: 1;
-            clip-path: inset(0 0 0 0);
-          }
-
-          100% {
-            opacity: 0;
-            clip-path: inset(0 0 0 0);
-          }
-        }
-
-        /* moving active-line highlight */
-
-        .line-1::before {
-          animation:
-            activeLine 8s ease-in-out infinite;
-        }
-
-        .line-2::before {
-          animation:
-            activeLine 8s ease-in-out infinite;
-          animation-delay: .45s;
-        }
-
-        .line-3::before {
-          animation:
-            activeLine 8s ease-in-out infinite;
-          animation-delay: .9s;
-        }
-
-        .line-4::before {
-          animation:
-            activeLine 8s ease-in-out infinite;
-          animation-delay: 1.35s;
-        }
-
-        .line-5::before {
-          animation:
-            activeLine 8s ease-in-out infinite;
-          animation-delay: 1.8s;
-        }
-
-        .line-6::before {
-          animation:
-            activeLine 8s ease-in-out infinite;
-          animation-delay: 2.65s;
-        }
-
-        .line-7::before {
-          animation:
-            activeLine 8s ease-in-out infinite;
-          animation-delay: 3.1s;
-        }
-
-        .line-8::before {
-          animation:
-            activeLine 8s ease-in-out infinite;
-          animation-delay: 3.55s;
-        }
-
-        .line-9::before {
-          animation:
-            activeLine 8s ease-in-out infinite;
-          animation-delay: 4s;
-        }
-
-        .line-10::before {
-          animation:
-            activeLine 8s ease-in-out infinite;
-          animation-delay: 4.45s;
-        }
-
-        @keyframes activeLine {
-
-          0%,
-          10% {
-            opacity: 0;
-          }
-
-          12%,
-          18% {
-            opacity: .8;
-          }
-
-          20%,
-          100% {
-            opacity: 0;
-          }
-        }
-
-        /* blinking coding cursor */
-
-        .live-caret {
+        .terminal-line {
           position: absolute;
 
-          width: 1px;
-          height: 8px;
+          left: 10px;
+          right: 10px;
+          bottom: 10px;
 
-          left: 91px;
-          top: 16px;
+          display: flex;
+          align-items: center;
+          gap: 5px;
 
-          background: #5d97ff;
+          padding-top: 7px;
 
-          box-shadow:
-            0 0 6px rgba(37,99,255,.75);
-
-          animation:
-            caretMove 8s steps(1, end) infinite,
-            caretBlink .8s steps(2, end) infinite;
-
-          pointer-events: none;
-        }
-
-        @keyframes caretMove {
-
-          0% {
-            transform: translate(0, 0);
-          }
-
-          9% {
-            transform: translate(18px, 0);
-          }
-
-          17% {
-            transform: translate(5px, 12px);
-          }
-
-          26% {
-            transform: translate(22px, 25px);
-          }
-
-          35% {
-            transform: translate(12px, 37px);
-          }
-
-          44% {
-            transform: translate(30px, 49px);
-          }
-
-          56% {
-            transform: translate(3px, 78px);
-          }
-
-          67% {
-            transform: translate(25px, 104px);
-          }
-
-          76% {
-            transform: translate(42px, 117px);
-          }
-
-          86% {
-            transform: translate(17px, 128px);
-          }
-
-          100% {
-            transform: translate(0, 0);
-          }
-        }
-
-        @keyframes caretBlink {
-
-          0%,
-          45% {
-            opacity: 1;
-          }
-
-          46%,
-          100% {
-            opacity: .15;
-          }
-        }
-
-        @keyframes editorPulse {
-
-          0%,
-          100% {
-            opacity: .84;
-          }
-
-          50% {
-            opacity: 1;
-          }
-        }
-
-        /* =====================================================
-           REAL-TIME REACT CODE EDITOR
-        ====================================================== */
-
-        .live-code-editor {
-          position: relative;
-
-          padding: 13px 8px 27px;
-
-          min-height: 190px;
-
-          overflow: hidden;
-
-          font-family:
-            ui-monospace,
-            SFMono-Regular,
-            Menlo,
-            Monaco,
-            Consolas,
-            monospace;
-
-          font-size: 6px;
-
-          line-height: 2.15;
-
-          color: #8d97a7;
-        }
-
-        .live-code-line {
-          position: relative;
-
-          display: grid;
-
-          grid-template-columns: 16px 1fr;
-
-          min-height: 12px;
-
-          padding: 0 4px;
-
-          transition:
-            background .12s ease,
-            color .12s ease;
-        }
-
-        .live-code-active {
-          background:
-            rgba(37,99,255,.10);
-        }
-
-        .live-line-number {
-          color: #4e5867;
-
-          user-select: none;
-        }
-
-        .live-code-text {
-          position: relative;
-
-          white-space: pre;
-
-          color: #8d97a7;
-        }
-
-        .live-code-text i {
-          color: #79a8ff;
-
-          font-style: normal;
-        }
-
-        .live-code-text b {
-          color: #e9edf4;
-
-          font-weight: 400;
-        }
-
-        .live-code-text strong {
-          color: #9dbfff;
-
-          font-weight: 400;
-        }
-
-        .typing-caret {
-          display: inline-block;
-
-          width: 1px;
-          height: 8px;
-
-          margin-left: 1px;
-
-          vertical-align: -1px;
-
-          background: #64a0ff;
-
-          box-shadow:
-            0 0 7px rgba(37,99,255,.8);
-
-          animation:
-            typingCaretBlink .72s steps(2,end) infinite;
-        }
-
-        @keyframes typingCaretBlink {
-
-          0%,
-          49% {
-            opacity: 1;
-          }
-
-          50%,
-          100% {
-            opacity: 0;
-          }
-
-        }
-
-        .live-editor-status {
-          position: absolute;
-
-          left: 12px;
-          bottom: 7px;
-
-          color: #657080;
+          border-top: 1px solid #292e36;
 
           font-family:
             ui-monospace,
@@ -3752,19 +3505,27 @@ export default function Home() {
 
           font-size: 5px;
 
-          letter-spacing: .1em;
+          color: #657080;
         }
 
-        .terminal-line {
+        .terminal-line span {
+          width: 4px;
+          height: 4px;
+          border-radius: 50%;
+          background: #56cf89;
+
+          box-shadow:
+            0 0 8px rgba(86,207,137,.7);
+
           animation:
-            terminalStatusPulse 2.5s ease-in-out infinite;
+            terminalPulse 1.5s ease-in-out infinite;
         }
 
-        @keyframes terminalStatusPulse {
+        @keyframes terminalPulse {
 
           0%,
           100% {
-            opacity: .45;
+            opacity: .35;
           }
 
           50% {
@@ -4242,14 +4003,6 @@ export default function Home() {
         }
 
         @media (max-width: 760px) {
-          .hero-floating-mark {
-            width: 62px;
-            height: 62px;
-            right: -4px;
-            top: 42px;
-          }
-
-
 
           .laptop-scene {
             height: 340px;
@@ -4307,14 +4060,11 @@ export default function Home() {
           .canvas-card,
           .canvas-motif,
           .selection-box,
-          .code-live,
-          .code-line,
-          .live-caret,
+          .code,
           .screen-cursor,
           .screen-click,
           .key.highlighted,
-          .laptop-shadow,
-          .terminal-line {
+          .laptop-shadow {
             animation: none !important;
           }
 
@@ -4967,29 +4717,6 @@ export default function Home() {
             terminalPulse 1.5s ease-in-out infinite;
         }
 
-        .terminal-line {
-          animation:
-            terminalBuild 8s ease-in-out infinite;
-        }
-
-        @keyframes terminalBuild {
-
-          0%,
-          72% {
-            opacity: .45;
-          }
-
-          76%,
-          90% {
-            opacity: 1;
-          }
-
-          94%,
-          100% {
-            opacity: .45;
-          }
-        }
-
         @keyframes terminalPulse {
 
           0%,
@@ -5142,6 +4869,8 @@ export default function Home() {
           }
 
         }
+
+        /* LAPTOP BASE */
 
         .keyboard {
           position: absolute;
@@ -5321,225 +5050,6 @@ export default function Home() {
             animation: none !important;
           }
 
-        }
-
-
-
-        /* =====================================================
-           SCREEN-ONLY PRODUCT SHOWCASE
-        ====================================================== */
-
-        .screen-scene {
-          position: relative;
-          width: min(680px, 100%);
-          height: 500px;
-
-          display: flex;
-          align-items: center;
-          justify-content: center;
-
-          perspective: 1600px;
-        }
-
-        .studio-screen {
-          position: relative;
-          width: min(640px, 100%);
-
-          animation: screenFloat 7s ease-in-out infinite;
-        }
-
-        @keyframes screenFloat {
-          0%, 100% {
-            transform:
-              translateY(0)
-              rotateY(-5deg)
-              rotateX(2deg);
-          }
-
-          50% {
-            transform:
-              translateY(-10px)
-              rotateY(-3deg)
-              rotateX(1deg);
-          }
-        }
-
-        .screen-frame {
-          position: relative;
-
-          width: 100%;
-          aspect-ratio: 16 / 10;
-
-          padding: 11px;
-
-          border-radius: 18px;
-
-          background:
-            linear-gradient(
-              145deg,
-              #eef1f5,
-              #cbd1d9
-            );
-
-          border: 1px solid #aeb6c1;
-
-          box-shadow:
-            0 35px 80px rgba(17,24,39,.18),
-            inset 0 1px 0 rgba(255,255,255,.95);
-        }
-
-        .screen-camera {
-          position: absolute;
-
-          top: 4px;
-          left: 50%;
-
-          width: 4px;
-          height: 4px;
-
-          transform: translateX(-50%);
-
-          border-radius: 50%;
-          background: #6f7782;
-        }
-
-        .screen-display {
-          position: relative;
-
-          width: 100%;
-          height: 100%;
-
-          overflow: hidden;
-
-          border-radius: 9px;
-
-          background: #f5f7fa;
-
-          border: 1px solid #9fa8b3;
-
-          box-shadow:
-            inset 0 0 0 1px rgba(255,255,255,.7);
-        }
-
-        .screen-shadow {
-          position: absolute;
-
-          left: 50%;
-          bottom: 0;
-
-          width: 78%;
-          height: 50px;
-
-          transform: translateX(-50%);
-
-          border-radius: 50%;
-
-          background:
-            radial-gradient(
-              ellipse,
-              rgba(15,23,42,.18),
-              transparent 70%
-            );
-
-          filter: blur(20px);
-
-          animation: screenShadowFloat 7s ease-in-out infinite;
-        }
-
-        @keyframes screenShadowFloat {
-          0%, 100% {
-            transform: translateX(-50%) scale(1);
-          }
-
-          50% {
-            transform: translateX(-50%) scale(.9);
-          }
-        }
-
-        @media (max-width: 1050px) {
-
-          .screen-scene {
-            height: 440px;
-          }
-
-          .studio-screen {
-            width: 560px;
-          }
-
-        }
-
-        @media (max-width: 760px) {
-
-          .screen-scene {
-            height: 330px;
-          }
-
-          .studio-screen {
-            width: 440px;
-          }
-
-          .ide-panel {
-            display: none;
-          }
-
-          .software-body {
-            grid-template-columns: 32px 1fr;
-          }
-
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-
-          .studio-screen,
-          .screen-shadow {
-            animation: none !important;
-          }
-
-        }
-
-        .hero-micro-pattern {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-
-          width: 100%;
-
-          margin-top: 8px;
-          padding-top: 10px;
-        }
-
-        .hero-micro-pattern .micro-pattern {
-          width: 150px;
-          height: 42px;
-
-          color: rgba(17,19,24,.32);
-
-          opacity: .85;
-
-          animation:
-            heroPatternFloat 5s ease-in-out infinite;
-        }
-
-        @keyframes heroPatternFloat {
-          0%,
-          100% {
-            transform: translateY(0);
-          }
-
-          50% {
-            transform: translateY(-3px);
-          }
-        }
-
-        @media (max-width: 760px) {
-          .hero-micro-pattern {
-            margin-top: 5px;
-          }
-
-          .hero-micro-pattern .micro-pattern {
-            width: 120px;
-            height: 35px;
-          }
         }
 
         /* =====================================================
@@ -5746,6 +5256,26 @@ export default function Home() {
           gap: 40px;
 
           color: rgba(17,19,24,.35);
+        }
+
+        .section-number {
+          color: #2563ff;
+
+          font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+          font-size: 9px;
+        }
+
+        .section-kicker {
+          display: block;
+
+          margin-bottom: 8px;
+
+          color: rgba(17,19,24,.42);
+
+          font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+          font-size: 8px;
+          letter-spacing: .17em;
+          text-transform: uppercase;
         }
 
         .section-top p {
@@ -6647,180 +6177,6 @@ export default function Home() {
         }
 
         /* =====================================================
-           INTELLIGENT PRODUCTS
-        ====================================================== */
-
-        .intelligent-visual {
-          position: relative;
-
-          width: 80%;
-          max-width: 520px;
-
-          color: white;
-        }
-
-        .intelligent-heading {
-          display: flex;
-          align-items: end;
-          justify-content: space-between;
-
-          margin-bottom: 16px;
-        }
-
-        .intelligent-heading > div {
-          display: flex;
-          flex-direction: column;
-          gap: 5px;
-        }
-
-        .intelligent-heading span {
-          color: rgba(255,255,255,.36);
-
-          font-family:
-            ui-monospace,
-            SFMono-Regular,
-            Menlo,
-            monospace;
-
-          font-size: 7px;
-          letter-spacing: .13em;
-        }
-
-        .intelligent-heading strong {
-          font-size: 23px;
-          line-height: 1;
-          letter-spacing: -.05em;
-          font-weight: 500;
-        }
-
-        .intelligent-live {
-          display: flex;
-          align-items: center;
-          gap: 6px;
-
-          color: #70a7ff !important;
-        }
-
-        .intelligent-live i {
-          width: 5px;
-          height: 5px;
-
-          display: block;
-
-          border-radius: 50%;
-
-          background: #4fda91;
-
-          box-shadow:
-            0 0 10px rgba(79,218,145,.8);
-
-          animation:
-            intelligentPulse 1.4s ease-in-out infinite;
-        }
-
-        @keyframes intelligentPulse {
-          0%,
-          100% {
-            opacity: .35;
-          }
-
-          50% {
-            opacity: 1;
-          }
-        }
-
-        .intelligent-editor {
-          position: relative;
-
-          overflow: hidden;
-
-          border:
-            1px solid rgba(112,167,255,.22);
-
-          background:
-            linear-gradient(
-              145deg,
-              #151922,
-              #0d1016
-            );
-
-          box-shadow:
-            0 35px 70px rgba(0,0,0,.28),
-            inset 0 1px 0 rgba(255,255,255,.05);
-        }
-
-        .intelligent-editor-bar {
-          height: 35px;
-
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-
-          padding: 0 11px;
-
-          border-bottom:
-            1px solid rgba(255,255,255,.07);
-
-          background:
-            rgba(255,255,255,.025);
-
-          color: #596273;
-
-          font-family:
-            ui-monospace,
-            SFMono-Regular,
-            Menlo,
-            monospace;
-
-          font-size: 6px;
-          letter-spacing: .12em;
-        }
-
-        .intelligent-editor .live-code-editor {
-          min-height: 230px;
-          padding-top: 17px;
-          padding-bottom: 28px;
-        }
-
-        .intelligent-editor .live-code-line {
-          min-height: 15px;
-          font-size: 7px;
-        }
-
-        .intelligent-editor .live-line-number {
-          color: #485364;
-        }
-
-        .intelligent-editor .live-editor-status {
-          bottom: 9px;
-          left: 11px;
-        }
-
-        @media (max-width: 1050px) {
-
-          .intelligent-visual {
-            width: 75%;
-          }
-
-        }
-
-        @media (max-width: 760px) {
-
-          .intelligent-visual {
-            width: 88%;
-          }
-
-          .intelligent-heading strong {
-            font-size: 18px;
-          }
-
-          .intelligent-editor .live-code-editor {
-            min-height: 190px;
-          }
-
-        }
-
-        /* =====================================================
            PROCESS
         ====================================================== */
 
@@ -7146,6 +6502,18 @@ export default function Home() {
             padding-top: 105px;
           }
 
+          .hero-meta {
+            grid-template-columns: 1fr 1fr;
+          }
+
+          .hero-meta span:nth-child(2) {
+            display: none;
+          }
+
+          .hero-meta span:last-child {
+            text-align: right;
+          }
+
           .hero-grid {
             padding-top: 55px;
           }
@@ -7177,11 +6545,19 @@ export default function Home() {
             min-height: 330px;
           }
 
+          .product-index {
+            display: none;
+          }
+
           .hero-floating-mark {
             width: 70px;
             height: 70px;
             right: -5px;
             top: 40px;
+          }
+
+          .hero-tech-label {
+            display: none;
           }
 
           .preview-card {
@@ -7329,8 +6705,7 @@ export default function Home() {
 
         }
 
-      `}
-      </style>
+      `}</style>
 
     </main>
   );

@@ -371,148 +371,23 @@ function MicroPattern() {
    HERO PRODUCT PREVIEW
 ========================================================= */
 
-
-function LiveCodeEditor() {
-  const codeLines = [
-    'const product = {',
-    '  design: true,',
-    '  experience: true,',
-    '  engineering: true,',
-    '};',
-    '',
-    'return (',
-    '  <TechCraft',
-    '    mode="craft"',
-    '  />',
-    ');',
-  ];
-
-  const fullCode = codeLines.join("\n");
-
-  const [visibleLength, setVisibleLength] = useState(0);
-  const [deleting, setDeleting] = useState(false);
-
-  useEffect(() => {
-    let timer: ReturnType<typeof setTimeout>;
-
-    if (!deleting && visibleLength < fullCode.length) {
-      timer = setTimeout(() => {
-        setVisibleLength((value) => value + 1);
-      }, 34);
-    } else if (!deleting && visibleLength === fullCode.length) {
-      timer = setTimeout(() => {
-        setDeleting(true);
-      }, 3200);
-    } else if (deleting && visibleLength > 0) {
-      timer = setTimeout(() => {
-        setVisibleLength((value) => value - 1);
-      }, 16);
-    } else {
-      timer = setTimeout(() => {
-        setDeleting(false);
-      }, 900);
-    }
-
-    return () => clearTimeout(timer);
-  }, [visibleLength, deleting, fullCode.length]);
-
-  const visibleCode = fullCode.slice(0, visibleLength);
-  const visibleLines = visibleCode.split("\n");
-
-  let remainingCharacters = visibleLength;
-  let activeLine = 0;
-
-  for (let i = 0; i < codeLines.length; i++) {
-    const lineLength = codeLines[i].length;
-
-    if (remainingCharacters <= lineLength) {
-      activeLine = i;
-      break;
-    }
-
-    remainingCharacters -= lineLength + 1;
-  }
-
-  return (
-    <div className="live-code-editor">
-
-      {codeLines.map((line, index) => {
-
-        const text = visibleLines[index] ?? "";
-
-        const isActive =
-          index === activeLine &&
-          visibleLength < fullCode.length;
-
-        return (
-          <div
-            className={`live-code-line ${
-              isActive ? "live-code-active" : ""
-            }`}
-            key={`${index}-${line}`}
-          >
-
-            <span className="live-line-number">
-              {String(index + 1).padStart(2, "0")}
-            </span>
-
-            <span className="live-code-text">
-
-              {text.includes("const") && text.startsWith("const") ? (
-                <>
-                  <i>const</i>
-                  {text.slice(5)}
-                </>
-              ) : text.includes("<TechCraft") ? (
-                <>
-                  {"  <"}
-                  <b>TechCraft</b>
-                  {text.slice(12)}
-                </>
-              ) : text.includes('mode="craft"') ? (
-                <>
-                  {'    mode='}
-                  <strong>"craft"</strong>
-                </>
-              ) : (
-                text
-              )}
-
-              {isActive && (
-                <span className="typing-caret" />
-              )}
-
-            </span>
-
-          </div>
-        );
-      })}
-
-      <span className="live-editor-status">
-        {deleting
-          ? "UPDATING"
-          : visibleLength === fullCode.length
-            ? "READY"
-            : "TYPING"}
-      </span>
-
-    </div>
-  );
-}
-
 function ProductPreview() {
   return (
-    <div className="screen-scene">
+    <div className="laptop-scene">
 
-      <div className="screen-shadow" />
+      <div className="laptop-shadow" />
 
-      <div className="studio-screen">
+      <div className="laptop">
 
-        <div className="screen-frame">
+        {/* SCREEN LID */}
 
-          <div className="screen-camera" />
+        <div className="laptop-lid">
 
-          <div className="screen-display">
+          <div className="laptop-camera" />
+
+          <div className="laptop-screen">
+
+            {/* browser / app chrome */}
 
             <div className="software-topbar">
 
@@ -527,12 +402,16 @@ function ProductPreview() {
               </div>
 
               <div className="software-status">
-                ● LIVE
+                LIVE
               </div>
 
             </div>
 
+            {/* APP */}
+
             <div className="software-body">
+
+              {/* SIDEBAR */}
 
               <aside className="software-sidebar">
 
@@ -558,12 +437,14 @@ function ProductPreview() {
 
               </aside>
 
+              {/* MAIN DESIGN AREA */}
+
               <div className="design-area">
 
                 <div className="design-toolbar">
 
                   <span className="tool-label">
-    
+                    PRODUCT / HOME
                   </span>
 
                   <div className="design-actions">
@@ -585,7 +466,7 @@ function ProductPreview() {
                   <div className="canvas-card">
 
                     <div className="canvas-eyebrow">
-      
+                      DESIGN × ENGINEERING
                     </div>
 
                     <div className="canvas-heading">
@@ -595,7 +476,8 @@ function ProductPreview() {
                     </div>
 
                     <div className="canvas-description">
-                      Digital products designed around people.
+                      Digital products designed
+                      around people.
                     </div>
 
                     <div className="canvas-buttons">
@@ -627,6 +509,8 @@ function ProductPreview() {
 
               </div>
 
+              {/* IDE */}
+
               <div className="ide-panel">
 
                 <div className="ide-header">
@@ -634,7 +518,52 @@ function ProductPreview() {
                   <span>●</span>
                 </div>
 
-                <LiveCodeEditor />
+                <div className="code">
+
+                  <div>
+                    <i>const</i>{" "}
+                    <b>product</b> = {"{"}
+                  </div>
+
+                  <div className="indent">
+                    design: <strong>true</strong>,
+                  </div>
+
+                  <div className="indent">
+                    experience: <strong>true</strong>,
+                  </div>
+
+                  <div className="indent">
+                    engineering: <strong>true</strong>,
+                  </div>
+
+                  <div>
+                    {"}"};
+                  </div>
+
+                  <div className="code-space" />
+
+                  <div>
+                    <i>return</i> (
+                  </div>
+
+                  <div className="indent">
+                    &lt;<b>TechCraft</b>
+                  </div>
+
+                  <div className="indent-2">
+                    mode=<strong>"craft"</strong>
+                  </div>
+
+                  <div className="indent">
+                    /&gt;
+                  </div>
+
+                  <div>
+                    );
+                  </div>
+
+                </div>
 
                 <div className="terminal-line">
                   <span />
@@ -644,6 +573,8 @@ function ProductPreview() {
               </div>
 
             </div>
+
+            {/* CODE CURSOR */}
 
             <div className="screen-cursor">
 
@@ -655,6 +586,8 @@ function ProductPreview() {
 
             </div>
 
+            {/* CLICK RIPPLE */}
+
             <div className="screen-click click-one" />
             <div className="screen-click click-two" />
 
@@ -662,14 +595,36 @@ function ProductPreview() {
 
         </div>
 
-      </div>
+        {/* LAPTOP BASE */}
 
+        <div className="laptop-base">
+
+          <div className="keyboard">
+
+            {Array.from({ length: 48 }).map((_, index) => (
+              <span
+                key={index}
+                className={
+                  index === 18 || index === 19 || index === 20
+                    ? "key highlighted"
+                    : "key"
+                }
+              />
+            ))}
+
+          </div>
+
+          <div className="trackpad" />
+
+        </div>
+
+      </div>
     </div>
   );
 }
 
 /* =========================================================
-   SIMPLE SOFTWARE ICONS
+   SIMPLE ICONS
 ========================================================= */
 
 function PaletteIcon() {
@@ -970,7 +925,7 @@ export default function Home() {
 
               <div>
                 <Command size={15} />
-                <span>COMMAND</span>
+                <span>TECHCRAFT COMMAND</span>
               </div>
 
               <button onClick={() => setCommandOpen(false)}>
@@ -1040,9 +995,30 @@ export default function Home() {
 
         <div className="hero-container">
 
+          <div className="hero-meta">
+
+            <span>
+              DESIGN-LED SOFTWARE HOUSE
+            </span>
+
+            <span>
+              QUETTA · BALOCHISTAN
+            </span>
+
+            <span>
+              2026
+            </span>
+
+          </div>
+
           <div className="hero-grid">
 
             <div className="hero-copy">
+
+              <div className="eyebrow">
+                <span />
+                DESIGN × ENGINEERING × INTELLIGENCE
+              </div>
 
               <h1>
                 We design
@@ -1084,32 +1060,51 @@ export default function Home() {
 
             <div className="hero-product">
 
-<ProductPreview />
+              <div className="product-index">
+                01 / PRODUCT SYSTEM
+              </div>
+
+              <ProductPreview />
 
               <div className="hero-floating-mark">
                 <BalochiMark />
               </div>
 
-</div>
+              <div className="hero-tech-label">
+                <Terminal size={13} />
+                <span>BUILD / DESIGN / SHIP</span>
+              </div>
+
+            </div>
 
           </div>
 
-          <div className="hero-micro-pattern">
+          <div className="hero-bottom">
+
+            <span>
+              DIGITAL PRODUCTS
+            </span>
+
             <MicroPattern />
+
+            <span>
+              ROOTED IN BALOCHISTAN
+            </span>
+
           </div>
 
-</div>
+        </div>
 
       </section>
 
       {/* =====================================================
-
+          EXPERTISE
       ====================================================== */}
 
       <section className="ticker-section interactive-ticker">
 
         <div className="ticker-label">
-
+          EXPERTISE
         </div>
 
         <div
@@ -1194,7 +1189,26 @@ export default function Home() {
 
       <section id="about" className="about section">
 
-  <div className="about-grid">
+        <div className="section-top">
+
+          <div className="section-number">
+            02
+          </div>
+
+          <div>
+            <span className="section-kicker">
+              THE IDEA
+            </span>
+
+            <p>
+              Good technology is invisible.
+              Good experience is unforgettable.
+            </p>
+          </div>
+
+        </div>
+
+        <div className="about-grid">
 
           <h2>
             We don't just
@@ -1241,7 +1255,25 @@ export default function Home() {
 
       <section id="services" className="services section">
 
-  <div className="services-layout">
+        <div className="section-top">
+
+          <div className="section-number">
+            03
+          </div>
+
+          <div>
+            <span className="section-kicker">
+              WHAT WE DO
+            </span>
+
+            <p>
+              One studio across design, software and intelligence.
+            </p>
+          </div>
+
+        </div>
+
+        <div className="services-layout">
 
           <div className="services-title">
 
@@ -1327,7 +1359,7 @@ export default function Home() {
         <div className="culture-copy">
 
           <span className="section-kicker">
-
+            OUR ROOTS
           </span>
 
           <h2>
@@ -1368,7 +1400,25 @@ export default function Home() {
 
       <section id="work" className="work section">
 
-  <div className="work-list">
+        <div className="section-top">
+
+          <div className="section-number">
+            04
+          </div>
+
+          <div>
+            <span className="section-kicker">
+              SELECTED WORK
+            </span>
+
+            <p>
+              Projects where design meets technology.
+            </p>
+          </div>
+
+        </div>
+
+        <div className="work-list">
 
           {projects.map((project) => (
             <article
@@ -1387,7 +1437,7 @@ export default function Home() {
                     <div className="work-interface-card">
 
                       <span>
-        
+                        ARCHITECTURE / EXPERIENCE
                       </span>
 
                       <strong>
@@ -1419,34 +1469,29 @@ export default function Home() {
                 )}
 
                 {project.mode === "dark" && (
-                  <div className="intelligent-visual">
+                  <>
+                    <div className="terminal-card">
 
-                    <div className="intelligent-heading">
-
-                      <span className="intelligent-live">
-                        <i />
-                        LIVE
-                      </span>
-
-                    </div>
-
-                    <div className="intelligent-editor">
-
-                      <div className="intelligent-editor-bar">
-                        <span>
-                          APP.TSX
-                        </span>
-
-                        <span>
-                          TECHCRAFT
-                        </span>
+                      <div className="terminal-top">
+                        <span />
+                        <span />
+                        <span />
                       </div>
 
-                      <LiveCodeEditor />
+                      <code>
+                        <i>const</i> product = {"{"}
+                        <br />
+                        &nbsp;&nbsp;design: <b>true</b>,
+                        <br />
+                        &nbsp;&nbsp;engineering: <b>true</b>,
+                        <br />
+                        &nbsp;&nbsp;intelligence: <b>true</b>
+                        <br />
+                        {"}"};
+                      </code>
 
                     </div>
-
-                  </div>
+                  </>
                 )}
 
               </div>
@@ -1485,7 +1530,25 @@ export default function Home() {
 
       <section className="process section">
 
-  <div className="process-grid">
+        <div className="section-top">
+
+          <div className="section-number">
+            05
+          </div>
+
+          <div>
+            <span className="section-kicker">
+              HOW WE WORK
+            </span>
+
+            <p>
+              Simple process. Serious craft.
+            </p>
+          </div>
+
+        </div>
+
+        <div className="process-grid">
 
           <div className="process-heading">
 
@@ -1586,11 +1649,11 @@ export default function Home() {
         <div className="contact-footer">
 
           <span>
-
+            TECHCRAFT SOLUTIONS
           </span>
 
           <span>
-
+            DESIGN · ENGINEERING · INTELLIGENCE
           </span>
 
           <span>
@@ -2243,6 +2306,30 @@ export default function Home() {
           justify-content: space-between;
         }
 
+        .hero-meta {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+
+          padding-bottom: 13px;
+
+          border-bottom: 1px solid rgba(17,19,24,.11);
+
+          color: rgba(17,19,24,.35);
+
+          font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+          font-size: 8px;
+          letter-spacing: .17em;
+          text-transform: uppercase;
+        }
+
+        .hero-meta span:nth-child(2) {
+          text-align: center;
+        }
+
+        .hero-meta span:last-child {
+          text-align: right;
+        }
+
         .hero-grid {
           display: grid;
           grid-template-columns: 1.04fr .96fr;
@@ -2258,6 +2345,28 @@ export default function Home() {
         .hero-copy {
           position: relative;
           z-index: 3;
+        }
+
+        .eyebrow {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          margin-bottom: 25px;
+
+          color: #2563ff;
+
+          font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+          font-size: 9px;
+          letter-spacing: .17em;
+        }
+
+        .eyebrow > span {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: #2563ff;
+          box-shadow: 0 0 0 5px rgba(37,99,255,.09);
         }
 
         .hero h1 {
@@ -2415,6 +2524,19 @@ export default function Home() {
           display: flex;
           align-items: center;
           justify-content: center;
+        }
+
+        .product-index {
+          position: absolute;
+
+          top: 25px;
+          left: 0;
+
+          color: rgba(17,19,24,.27);
+
+          font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+          font-size: 8px;
+          letter-spacing: .16em;
         }
 
         .preview-shell {
@@ -2731,6 +2853,40 @@ export default function Home() {
           }
         }
 
+        .hero-tech-label {
+          position: absolute;
+
+          right: 0;
+          bottom: 32px;
+
+          display: flex;
+          align-items: center;
+          gap: 7px;
+
+          color: rgba(17,19,24,.3);
+
+          font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+          font-size: 7px;
+          letter-spacing: .13em;
+        }
+
+        .hero-bottom {
+          display: grid;
+          grid-template-columns: 1fr auto 1fr;
+
+          align-items: center;
+
+          padding-top: 16px;
+
+          border-top: 1px solid rgba(17,19,24,.1);
+
+          color: rgba(17,19,24,.3);
+
+          font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+          font-size: 7px;
+          letter-spacing: .15em;
+        }
+
         .hero-bottom span:last-child {
           text-align: right;
         }
@@ -2739,1585 +2895,6 @@ export default function Home() {
           width: 130px;
           height: 40px;
           color: rgba(17,19,24,.28);
-        }
-
-        /* =====================================================
-           3D LAPTOP PRODUCT SHOWCASE
-        ====================================================== */
-
-        .laptop-scene {
-          position: relative;
-          width: min(700px, 100%);
-          height: 560px;
-
-          display: flex;
-          align-items: center;
-          justify-content: center;
-
-          perspective: 1800px;
-        }
-
-        .laptop {
-          position: relative;
-          width: 650px;
-
-          transform-style: preserve-3d;
-
-          animation:
-            laptopFloat 7s ease-in-out infinite;
-
-          transition:
-            transform .35s ease-out;
-        }
-
-        @keyframes laptopFloat {
-
-          0%,
-          100% {
-            transform:
-              translateY(0)
-              rotateX(1deg)
-              rotateY(-7deg)
-              rotateZ(-1deg);
-          }
-
-          50% {
-            transform:
-              translateY(-13px)
-              rotateX(2deg)
-              rotateY(-4deg)
-              rotateZ(0deg);
-          }
-
-        }
-
-        .laptop-lid {
-          position: relative;
-
-          width: 100%;
-          aspect-ratio: 1.58 / 1;
-
-          padding: 12px;
-
-          border-radius: 18px 18px 8px 8px;
-
-          background:
-            linear-gradient(
-              145deg,
-              #eef1f5,
-              #cfd4db
-            );
-
-          border: 1px solid #b9c0c9;
-
-          box-shadow:
-            0 25px 60px rgba(17,24,39,.18),
-            inset 0 1px 0 rgba(255,255,255,.95);
-
-          transform:
-            rotateX(2deg)
-            translateZ(15px);
-
-          transform-origin: bottom center;
-        }
-
-        .laptop-camera {
-          position: absolute;
-
-          width: 5px;
-          height: 5px;
-
-          left: 50%;
-          top: 5px;
-
-          transform: translateX(-50%);
-
-          border-radius: 50%;
-
-          background: #7b8189;
-        }
-
-        .laptop-screen {
-          position: relative;
-
-          width: 100%;
-          height: 100%;
-
-          overflow: hidden;
-
-          border-radius: 10px;
-
-          background: #f4f6f9;
-
-          border: 1px solid #aeb5be;
-
-          box-shadow:
-            inset 0 0 0 1px rgba(255,255,255,.7);
-        }
-
-        .software-topbar {
-          height: 30px;
-
-          display: grid;
-          grid-template-columns: 85px 1fr 50px;
-          align-items: center;
-
-          padding: 0 10px;
-
-          background: #eef1f4;
-
-          border-bottom: 1px solid #d5d9df;
-
-          color: #7e848d;
-
-          font-family:
-            ui-monospace,
-            SFMono-Regular,
-            Menlo,
-            monospace;
-
-          font-size: 6px;
-          letter-spacing: .1em;
-        }
-
-        .software-dots {
-          display: flex;
-          gap: 4px;
-        }
-
-        .software-dots span {
-          width: 5px;
-          height: 5px;
-          border-radius: 50%;
-          background: #c5cad1;
-        }
-
-        .software-dots span:first-child {
-          background: #2563ff;
-        }
-
-        .software-title {
-          text-align: center;
-        }
-
-        .software-status {
-          text-align: right;
-          color: #2563ff;
-        }
-
-        .software-body {
-          display: grid;
-
-          height: calc(100% - 30px);
-
-          grid-template-columns: 38px 1fr 145px;
-        }
-
-        .software-sidebar {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-
-          gap: 14px;
-
-          padding: 11px 0;
-
-          border-right: 1px solid #d7dbe0;
-
-          background: #eef1f4;
-        }
-
-        .software-logo {
-          width: 22px;
-          height: 22px;
-
-          display: grid;
-          place-items: center;
-
-          margin-bottom: 8px;
-
-          background: #111318;
-          color: white;
-
-          font-size: 6px;
-          font-weight: 700;
-        }
-
-        .tool-icon {
-          width: 20px;
-          height: 20px;
-
-          display: grid;
-          place-items: center;
-
-          color: #a0a6af;
-
-          border-radius: 5px;
-
-          transition: .2s ease;
-        }
-
-        .tool-icon.active {
-          color: #2563ff;
-          background: rgba(37,99,255,.1);
-        }
-
-        .tool-icon svg {
-          width: 12px;
-          height: 12px;
-          stroke: currentColor;
-          stroke-width: 1.4;
-        }
-
-        .design-area {
-          min-width: 0;
-          background: #f7f8fa;
-        }
-
-        .design-toolbar {
-          height: 34px;
-
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-
-          padding: 0 10px;
-
-          border-bottom: 1px solid #e0e3e7;
-        }
-
-        .tool-label {
-          color: #8a9098;
-
-          font-family:
-            ui-monospace,
-            SFMono-Regular,
-            Menlo,
-            monospace;
-
-          font-size: 6px;
-          letter-spacing: .09em;
-        }
-
-        .design-actions {
-          display: flex;
-          gap: 5px;
-        }
-
-        .fake-button {
-          border: 1px solid #d7dbe1;
-
-          padding: 4px 7px;
-
-          background: white;
-
-          color: #777e87;
-
-          font-size: 6px;
-
-          animation:
-            screenButton 5s ease-in-out infinite;
-        }
-
-        .fake-button.primary {
-          color: white;
-          background: #2563ff;
-          border-color: #2563ff;
-
-          animation-delay: 2.1s;
-        }
-
-        @keyframes screenButton {
-
-          0%,
-          42%,
-          100% {
-            transform: scale(1);
-            box-shadow: none;
-          }
-
-          45% {
-            transform: scale(.91);
-            box-shadow:
-              inset 0 2px 4px rgba(0,0,0,.15);
-          }
-
-          50% {
-            transform: scale(1);
-          }
-
-        }
-
-        .design-canvas {
-          position: relative;
-
-          height: calc(100% - 34px);
-
-          display: grid;
-          place-items: center;
-
-          overflow: hidden;
-
-          background:
-            linear-gradient(
-              rgba(37,99,255,.035) 1px,
-              transparent 1px
-            ),
-            linear-gradient(
-              90deg,
-              rgba(37,99,255,.035) 1px,
-              transparent 1px
-            );
-
-          background-size: 22px 22px;
-        }
-
-        .canvas-card {
-          position: relative;
-
-          width: 72%;
-          height: 70%;
-
-          padding: 15px;
-
-          overflow: hidden;
-
-          background: white;
-
-          border: 1px solid #dfe3e8;
-
-          box-shadow:
-            0 18px 35px rgba(17,24,39,.08);
-
-          animation:
-            canvasFloat 6s ease-in-out infinite;
-        }
-
-        @keyframes canvasFloat {
-
-          0%,
-          100% {
-            transform: translateY(0);
-          }
-
-          50% {
-            transform: translateY(-4px);
-          }
-
-        }
-
-        .canvas-eyebrow {
-          color: #2563ff;
-
-          font-family:
-            ui-monospace,
-            SFMono-Regular,
-            Menlo,
-            monospace;
-
-          font-size: 5px;
-          letter-spacing: .12em;
-        }
-
-        .canvas-heading {
-          margin-top: 12px;
-
-          color: #111318;
-
-          font-size: 24px;
-          line-height: .82;
-
-          letter-spacing: -.07em;
-        }
-
-        .canvas-heading span {
-          color: #2563ff;
-        }
-
-        .canvas-description {
-          max-width: 115px;
-
-          margin-top: 12px;
-
-          color: #969ca4;
-
-          font-size: 6px;
-          line-height: 1.6;
-        }
-
-        .canvas-buttons {
-          display: flex;
-          gap: 5px;
-
-          margin-top: 14px;
-        }
-
-        .canvas-button {
-          padding: 5px 8px;
-
-          font-size: 5px;
-        }
-
-        .canvas-button.dark {
-          color: white;
-          background: #111318;
-        }
-
-        .canvas-button.light {
-          color: #717780;
-          border: 1px solid #dfe3e8;
-        }
-
-        .canvas-motif {
-          position: absolute;
-
-          width: 110px;
-          height: 110px;
-
-          right: -15px;
-          bottom: -12px;
-
-          color: rgba(37,99,255,.18);
-
-          animation:
-            canvasMotif 9s linear infinite;
-        }
-
-        @keyframes canvasMotif {
-
-          from {
-            transform: rotate(0deg);
-          }
-
-          to {
-            transform: rotate(360deg);
-          }
-
-        }
-
-        .selection-box {
-          position: absolute;
-
-          width: 40%;
-          height: 30%;
-
-          right: 11%;
-          bottom: 16%;
-
-          border: 1px dashed rgba(37,99,255,.45);
-
-          animation:
-            selectionMove 7s ease-in-out infinite;
-        }
-
-        @keyframes selectionMove {
-
-          0%,
-          100% {
-            transform: translate(0,0);
-          }
-
-          50% {
-            transform: translate(-8px,-5px);
-          }
-
-        }
-
-        .selection-handle {
-          position: absolute;
-
-          width: 5px;
-          height: 5px;
-
-          border: 1px solid #2563ff;
-          background: white;
-        }
-
-        .selection-handle.one {
-          left: -3px;
-          top: -3px;
-        }
-
-        .selection-handle.two {
-          right: -3px;
-          top: -3px;
-        }
-
-        .selection-handle.three {
-          left: -3px;
-          bottom: -3px;
-        }
-
-        .selection-handle.four {
-          right: -3px;
-          bottom: -3px;
-        }
-
-        /* IDE */
-
-        .ide-panel {
-          position: relative;
-
-          overflow: hidden;
-
-          background: #171a20;
-
-          border-left: 1px solid #282d35;
-
-          color: #8f98a8;
-        }
-
-        .ide-header {
-          height: 34px;
-
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-
-          padding: 0 10px;
-
-          border-bottom: 1px solid #282d35;
-
-          font-family:
-            ui-monospace,
-            SFMono-Regular,
-            Menlo,
-            monospace;
-
-          font-size: 6px;
-          color: #677181;
-        }
-
-        .ide-header span:last-child {
-          color: #69a1ff;
-        }
-
-        /* =====================================================
-           LIVE IDE EDITOR
-        ====================================================== */
-
-        .code-live {
-          position: relative;
-
-          padding: 14px 8px 18px;
-
-          font-family:
-            ui-monospace,
-            SFMono-Regular,
-            Menlo,
-            Monaco,
-            Consolas,
-            monospace;
-
-          font-size: 6px;
-          line-height: 2.05;
-
-          color: #8f98a8;
-
-          overflow: hidden;
-
-          animation:
-            editorPulse 8s ease-in-out infinite;
-        }
-
-        .code-line {
-          position: relative;
-
-          display: grid;
-
-          grid-template-columns: 16px 1fr;
-
-          min-height: 12px;
-
-          padding: 0 4px;
-
-          opacity: 0;
-
-          clip-path: inset(0 100% 0 0);
-
-          animation:
-            codeType 8s steps(1, end) infinite;
-        }
-
-        .code-line::before {
-          content: "";
-
-          position: absolute;
-
-          left: 0;
-          right: 0;
-          top: 0;
-          bottom: 0;
-
-          background:
-            rgba(37,99,255,.09);
-
-          opacity: 0;
-
-          transition: opacity .2s ease;
-        }
-
-        .code-line > * {
-          position: relative;
-          z-index: 2;
-        }
-
-        .line-number {
-          color: #4f5968;
-          user-select: none;
-        }
-
-        .code-line i {
-          color: #7ea9ff;
-          font-style: normal;
-        }
-
-        .code-line b {
-          color: #edf1f7;
-          font-weight: 400;
-        }
-
-        .code-line strong {
-          color: #9fc2ff;
-          font-weight: 400;
-        }
-
-        .code-space {
-          height: 7px;
-        }
-
-        /* sequential typing */
-
-        .line-1 {
-          animation-delay: 0s;
-        }
-
-        .line-2 {
-          animation-delay: .45s;
-        }
-
-        .line-3 {
-          animation-delay: .9s;
-        }
-
-        .line-4 {
-          animation-delay: 1.35s;
-        }
-
-        .line-5 {
-          animation-delay: 1.8s;
-        }
-
-        .line-6 {
-          animation-delay: 2.65s;
-        }
-
-        .line-7 {
-          animation-delay: 3.1s;
-        }
-
-        .line-8 {
-          animation-delay: 3.55s;
-        }
-
-        .line-9 {
-          animation-delay: 4s;
-        }
-
-        .line-10 {
-          animation-delay: 4.45s;
-        }
-
-        @keyframes codeType {
-
-          0%,
-          4% {
-            opacity: 0;
-            clip-path: inset(0 100% 0 0);
-          }
-
-          7%,
-          92% {
-            opacity: 1;
-            clip-path: inset(0 0 0 0);
-          }
-
-          100% {
-            opacity: 0;
-            clip-path: inset(0 0 0 0);
-          }
-        }
-
-        /* moving active-line highlight */
-
-        .line-1::before {
-          animation:
-            activeLine 8s ease-in-out infinite;
-        }
-
-        .line-2::before {
-          animation:
-            activeLine 8s ease-in-out infinite;
-          animation-delay: .45s;
-        }
-
-        .line-3::before {
-          animation:
-            activeLine 8s ease-in-out infinite;
-          animation-delay: .9s;
-        }
-
-        .line-4::before {
-          animation:
-            activeLine 8s ease-in-out infinite;
-          animation-delay: 1.35s;
-        }
-
-        .line-5::before {
-          animation:
-            activeLine 8s ease-in-out infinite;
-          animation-delay: 1.8s;
-        }
-
-        .line-6::before {
-          animation:
-            activeLine 8s ease-in-out infinite;
-          animation-delay: 2.65s;
-        }
-
-        .line-7::before {
-          animation:
-            activeLine 8s ease-in-out infinite;
-          animation-delay: 3.1s;
-        }
-
-        .line-8::before {
-          animation:
-            activeLine 8s ease-in-out infinite;
-          animation-delay: 3.55s;
-        }
-
-        .line-9::before {
-          animation:
-            activeLine 8s ease-in-out infinite;
-          animation-delay: 4s;
-        }
-
-        .line-10::before {
-          animation:
-            activeLine 8s ease-in-out infinite;
-          animation-delay: 4.45s;
-        }
-
-        @keyframes activeLine {
-
-          0%,
-          10% {
-            opacity: 0;
-          }
-
-          12%,
-          18% {
-            opacity: .8;
-          }
-
-          20%,
-          100% {
-            opacity: 0;
-          }
-        }
-
-        /* blinking coding cursor */
-
-        .live-caret {
-          position: absolute;
-
-          width: 1px;
-          height: 8px;
-
-          left: 91px;
-          top: 16px;
-
-          background: #5d97ff;
-
-          box-shadow:
-            0 0 6px rgba(37,99,255,.75);
-
-          animation:
-            caretMove 8s steps(1, end) infinite,
-            caretBlink .8s steps(2, end) infinite;
-
-          pointer-events: none;
-        }
-
-        @keyframes caretMove {
-
-          0% {
-            transform: translate(0, 0);
-          }
-
-          9% {
-            transform: translate(18px, 0);
-          }
-
-          17% {
-            transform: translate(5px, 12px);
-          }
-
-          26% {
-            transform: translate(22px, 25px);
-          }
-
-          35% {
-            transform: translate(12px, 37px);
-          }
-
-          44% {
-            transform: translate(30px, 49px);
-          }
-
-          56% {
-            transform: translate(3px, 78px);
-          }
-
-          67% {
-            transform: translate(25px, 104px);
-          }
-
-          76% {
-            transform: translate(42px, 117px);
-          }
-
-          86% {
-            transform: translate(17px, 128px);
-          }
-
-          100% {
-            transform: translate(0, 0);
-          }
-        }
-
-        @keyframes caretBlink {
-
-          0%,
-          45% {
-            opacity: 1;
-          }
-
-          46%,
-          100% {
-            opacity: .15;
-          }
-        }
-
-        @keyframes editorPulse {
-
-          0%,
-          100% {
-            opacity: .84;
-          }
-
-          50% {
-            opacity: 1;
-          }
-        }
-
-        /* =====================================================
-           REAL-TIME REACT CODE EDITOR
-        ====================================================== */
-
-        .live-code-editor {
-          position: relative;
-
-          padding: 13px 8px 27px;
-
-          min-height: 190px;
-
-          overflow: hidden;
-
-          font-family:
-            ui-monospace,
-            SFMono-Regular,
-            Menlo,
-            Monaco,
-            Consolas,
-            monospace;
-
-          font-size: 6px;
-
-          line-height: 2.15;
-
-          color: #8d97a7;
-        }
-
-        .live-code-line {
-          position: relative;
-
-          display: grid;
-
-          grid-template-columns: 16px 1fr;
-
-          min-height: 12px;
-
-          padding: 0 4px;
-
-          transition:
-            background .12s ease,
-            color .12s ease;
-        }
-
-        .live-code-active {
-          background:
-            rgba(37,99,255,.10);
-        }
-
-        .live-line-number {
-          color: #4e5867;
-
-          user-select: none;
-        }
-
-        .live-code-text {
-          position: relative;
-
-          white-space: pre;
-
-          color: #8d97a7;
-        }
-
-        .live-code-text i {
-          color: #79a8ff;
-
-          font-style: normal;
-        }
-
-        .live-code-text b {
-          color: #e9edf4;
-
-          font-weight: 400;
-        }
-
-        .live-code-text strong {
-          color: #9dbfff;
-
-          font-weight: 400;
-        }
-
-        .typing-caret {
-          display: inline-block;
-
-          width: 1px;
-          height: 8px;
-
-          margin-left: 1px;
-
-          vertical-align: -1px;
-
-          background: #64a0ff;
-
-          box-shadow:
-            0 0 7px rgba(37,99,255,.8);
-
-          animation:
-            typingCaretBlink .72s steps(2,end) infinite;
-        }
-
-        @keyframes typingCaretBlink {
-
-          0%,
-          49% {
-            opacity: 1;
-          }
-
-          50%,
-          100% {
-            opacity: 0;
-          }
-
-        }
-
-        .live-editor-status {
-          position: absolute;
-
-          left: 12px;
-          bottom: 7px;
-
-          color: #657080;
-
-          font-family:
-            ui-monospace,
-            SFMono-Regular,
-            Menlo,
-            monospace;
-
-          font-size: 5px;
-
-          letter-spacing: .1em;
-        }
-
-        .terminal-line {
-          animation:
-            terminalStatusPulse 2.5s ease-in-out infinite;
-        }
-
-        @keyframes terminalStatusPulse {
-
-          0%,
-          100% {
-            opacity: .45;
-          }
-
-          50% {
-            opacity: 1;
-          }
-
-        }
-
-        /* SCREEN CURSOR */
-
-        .screen-cursor {
-          position: absolute;
-
-          left: 63%;
-          top: 65%;
-
-          z-index: 8;
-
-          display: flex;
-          align-items: center;
-          gap: 4px;
-
-          animation:
-            screenCursor 6s ease-in-out infinite;
-
-          pointer-events: none;
-        }
-
-        @keyframes screenCursor {
-
-          0% {
-            transform: translate(20px, 18px);
-          }
-
-          20% {
-            transform: translate(-55px, -25px);
-          }
-
-          37% {
-            transform: translate(50px, -15px);
-          }
-
-          49% {
-            transform: translate(35px, 22px);
-          }
-
-          53% {
-            transform: translate(35px, 22px) scale(.94);
-          }
-
-          58% {
-            transform: translate(35px, 22px) scale(1);
-          }
-
-          76% {
-            transform: translate(-30px, 5px);
-          }
-
-          100% {
-            transform: translate(20px, 18px);
-          }
-
-        }
-
-        .cursor-arrow {
-          width: 0;
-          height: 0;
-
-          border-left: 7px solid transparent;
-          border-right: 4px solid transparent;
-          border-bottom: 15px solid #111318;
-
-          transform:
-            rotate(-40deg);
-        }
-
-        .screen-cursor span {
-          padding: 3px 5px;
-
-          border-radius: 4px;
-
-          background: #2563ff;
-          color: white;
-
-          font-family:
-            ui-monospace,
-            SFMono-Regular,
-            Menlo,
-            monospace;
-
-          font-size: 5px;
-        }
-
-        /* CLICK RIPPLE */
-
-        .screen-click {
-          position: absolute;
-
-          width: 11px;
-          height: 11px;
-
-          border: 1px solid #2563ff;
-          border-radius: 50%;
-
-          opacity: 0;
-
-          pointer-events: none;
-
-          animation:
-            screenClick 6s ease-out infinite;
-        }
-
-        .click-one {
-          left: 79%;
-          top: 28%;
-        }
-
-        .click-two {
-          left: 63%;
-          top: 67%;
-          animation-delay: 2.8s;
-        }
-
-        @keyframes screenClick {
-
-          0%,
-          43% {
-            opacity: 0;
-            transform: scale(.4);
-          }
-
-          45% {
-            opacity: .7;
-            transform: scale(.4);
-          }
-
-          58% {
-            opacity: 0;
-            transform: scale(3);
-          }
-
-          100% {
-            opacity: 0;
-            transform: scale(3);
-          }
-
-        }
-
-        /* =====================================================
-           3D LAPTOP BASE / REALISTIC KEYBOARD
-        ====================================================== */
-
-        /*
-         * Recessed keyboard well
-         */
-
-        /*
-         * KEYBOARD
-         */
-
-        .keyboard {
-          position: absolute;
-
-          z-index: 5;
-
-          left: 7%;
-          right: 7%;
-          top: 13px;
-
-          height: 54px;
-
-          display: flex;
-          flex-direction: column;
-
-          justify-content: space-between;
-
-          transform:
-            perspective(700px)
-            rotateX(-3deg);
-        }
-
-        .keyboard-row {
-          width: 100%;
-
-          display: grid;
-
-          grid-template-columns:
-            repeat(12, minmax(0, 1fr));
-
-          gap: 3px;
-        }
-
-        .function-row {
-          opacity: .68;
-          gap: 4px;
-        }
-
-        .key {
-          position: relative;
-
-          display: block;
-
-          height: 8px;
-          min-width: 0;
-
-          border-radius: 2px;
-
-          background:
-            linear-gradient(
-              180deg,
-              #707987 0%,
-              #4e5763 100%
-            );
-
-          border-top:
-            1px solid rgba(255,255,255,.34);
-
-          border-left:
-            1px solid rgba(255,255,255,.12);
-
-          border-right:
-            1px solid rgba(25,31,40,.18);
-
-          box-shadow:
-            0 2px 0 #414955,
-            0 3px 4px rgba(15,23,42,.15);
-
-          transition:
-            transform .08s ease,
-            background .15s ease,
-            box-shadow .15s ease;
-        }
-
-        /*
-         * Tiny highlight on every key
-         */
-
-        .key::after {
-          content: "";
-
-          position: absolute;
-
-          left: 2px;
-          right: 2px;
-          top: 1px;
-
-          height: 1px;
-
-          background: rgba(255,255,255,.16);
-
-          border-radius: 2px;
-        }
-
-        /*
-         * Different sized laptop keys
-         */
-
-        .wide-key {
-          grid-column: span 1.15;
-        }
-
-        .wider-key {
-          grid-column: span 1.35;
-        }
-
-        /*
-         * Bottom modifier keys
-         */
-
-        .bottom-row {
-          grid-template-columns:
-            1.2fr
-            .7fr
-            .7fr
-            4.7fr
-            .7fr
-            .7fr
-            1.2fr;
-        }
-
-        .modifier-key {
-          height: 8px;
-        }
-
-        .space-key {
-          height: 8px;
-
-          box-shadow:
-            0 2px 0 #414955,
-            0 4px 5px rgba(15,23,42,.18);
-        }
-
-        /*
-         * Blue active keys
-         */
-
-        .key.highlighted {
-          background:
-            linear-gradient(
-              180deg,
-              #5e95ff 0%,
-              #2563ff 100%
-            );
-
-          border-top-color:
-            rgba(255,255,255,.45);
-
-          box-shadow:
-            0 2px 0 #1748b0,
-            0 3px 6px rgba(37,99,255,.28);
-
-          animation:
-            physicalKeyPress 4.2s ease-in-out infinite;
-        }
-
-        .bottom-row .key.highlighted {
-          animation-delay: 1.2s;
-        }
-
-        .keyboard-row:nth-child(3) .highlighted {
-          animation-delay: .55s;
-        }
-
-        .keyboard-row:nth-child(4) .highlighted {
-          animation-delay: 1.9s;
-        }
-
-        @keyframes physicalKeyPress {
-
-          0%,
-          68%,
-          100% {
-            transform:
-              translateY(0);
-
-            box-shadow:
-              0 2px 0 #1748b0,
-              0 3px 6px rgba(37,99,255,.28);
-          }
-
-          71% {
-            transform:
-              translateY(2px);
-
-            box-shadow:
-              0 0 0 #1748b0,
-              inset 0 2px 3px rgba(15,23,42,.25);
-          }
-
-          75% {
-            transform:
-              translateY(0);
-          }
-        }
-
-        /*
-         * PALM REST
-         */
-
-        .palm-rest {
-          position: absolute;
-
-          z-index: 4;
-
-          left: 0;
-          right: 0;
-
-          bottom: 1px;
-
-          height: 35px;
-
-          background:
-            linear-gradient(
-              180deg,
-              rgba(221,225,230,.45),
-              rgba(199,205,212,.7)
-            );
-        }
-
-        /*
-         * Trackpad recess
-         */
-
-        .trackpad {
-          position: absolute;
-
-          z-index: 6;
-
-          width: 25%;
-          height: 19px;
-
-          left: 37.5%;
-          top: 6px;
-
-          border-radius: 4px;
-
-          background:
-            linear-gradient(
-              180deg,
-              #d9dde2,
-              #c4cad1
-            );
-
-          border:
-            1px solid rgba(127,136,147,.55);
-
-          box-shadow:
-            inset 0 2px 3px rgba(15,23,42,.13),
-            0 1px 0 rgba(255,255,255,.55);
-        }
-
-        /*
-         * Small front bevel
-         */
-
-        /*
-         * Laptop shadow
-         */
-
-        .laptop-shadow {
-          position: absolute;
-
-          left: 50%;
-          bottom: -2px;
-
-          width: 88%;
-          height: 55px;
-
-          transform:
-            translateX(-50%);
-
-          border-radius: 50%;
-
-          background:
-            radial-gradient(
-              ellipse,
-              rgba(15,23,42,.20) 0%,
-              rgba(15,23,42,.08) 42%,
-              transparent 72%
-            );
-
-          filter: blur(18px);
-
-          animation:
-            shadowFloat 7s ease-in-out infinite;
-        }
-
-        @keyframes shadowFloat {
-
-          0%,
-          100% {
-            transform:
-              translateX(-50%)
-              scale(1);
-          }
-
-          50% {
-            transform:
-              translateX(-50%)
-              scale(.91);
-          }
-
-        }
-
-        @media (max-width: 1050px) {
-
-          .laptop-scene {
-            height: 460px;
-          }
-
-          .laptop {
-            width: 550px;
-          }
-
-        }
-
-        @media (max-width: 760px) {
-          .hero-floating-mark {
-            width: 62px;
-            height: 62px;
-            right: -4px;
-            top: 42px;
-          }
-
-
-
-          .laptop-scene {
-            height: 340px;
-          }
-
-          .laptop {
-            width: 420px;
-          }
-
-          .ide-panel {
-            display: none;
-          }
-
-          .software-body {
-            grid-template-columns: 32px 1fr;
-          }
-
-          .hero-floating-mark {
-            display: none;
-          }
-
-          .keyboard {
-            top: 9px;
-            height: 37px;
-            left: 8%;
-            right: 8%;
-          }
-
-          .keyboard-row {
-            gap: 2px;
-          }
-
-          .key {
-            height: 5px;
-          }
-
-          .palm-rest {
-            height: 26px;
-          }
-
-          .trackpad {
-            width: 24%;
-            left: 38%;
-            height: 12px;
-            top: 5px;
-          }
-
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-
-          .laptop,
-          .preview-shell,
-          .fake-button,
-          .canvas-card,
-          .canvas-motif,
-          .selection-box,
-          .code-live,
-          .code-line,
-          .live-caret,
-          .screen-cursor,
-          .screen-click,
-          .key.highlighted,
-          .laptop-shadow,
-          .terminal-line {
-            animation: none !important;
-          }
-
         }
 
         /* =====================================================
@@ -4967,29 +3544,6 @@ export default function Home() {
             terminalPulse 1.5s ease-in-out infinite;
         }
 
-        .terminal-line {
-          animation:
-            terminalBuild 8s ease-in-out infinite;
-        }
-
-        @keyframes terminalBuild {
-
-          0%,
-          72% {
-            opacity: .45;
-          }
-
-          76%,
-          90% {
-            opacity: 1;
-          }
-
-          94%,
-          100% {
-            opacity: .45;
-          }
-        }
-
         @keyframes terminalPulse {
 
           0%,
@@ -5143,6 +3697,42 @@ export default function Home() {
 
         }
 
+        /* LAPTOP BASE */
+
+        .laptop-base {
+          position: relative;
+
+          width: 108%;
+
+          height: 45px;
+
+          margin-left: -4%;
+
+          background:
+            linear-gradient(
+              180deg,
+              #dce1e7,
+              #c2c8d0
+            );
+
+          border:
+            1px solid #afb6bf;
+
+          border-top: 0;
+
+          border-radius:
+            0 0 15px 15px;
+
+          transform:
+            perspective(500px)
+            rotateX(72deg);
+
+          transform-origin: top center;
+
+          box-shadow:
+            0 18px 30px rgba(17,24,39,.12);
+        }
+
         .keyboard {
           position: absolute;
 
@@ -5291,6 +3881,10 @@ export default function Home() {
             display: none;
           }
 
+          .laptop-base {
+            height: 32px;
+          }
+
           .keyboard {
             gap: 2px;
           }
@@ -5321,225 +3915,6 @@ export default function Home() {
             animation: none !important;
           }
 
-        }
-
-
-
-        /* =====================================================
-           SCREEN-ONLY PRODUCT SHOWCASE
-        ====================================================== */
-
-        .screen-scene {
-          position: relative;
-          width: min(680px, 100%);
-          height: 500px;
-
-          display: flex;
-          align-items: center;
-          justify-content: center;
-
-          perspective: 1600px;
-        }
-
-        .studio-screen {
-          position: relative;
-          width: min(640px, 100%);
-
-          animation: screenFloat 7s ease-in-out infinite;
-        }
-
-        @keyframes screenFloat {
-          0%, 100% {
-            transform:
-              translateY(0)
-              rotateY(-5deg)
-              rotateX(2deg);
-          }
-
-          50% {
-            transform:
-              translateY(-10px)
-              rotateY(-3deg)
-              rotateX(1deg);
-          }
-        }
-
-        .screen-frame {
-          position: relative;
-
-          width: 100%;
-          aspect-ratio: 16 / 10;
-
-          padding: 11px;
-
-          border-radius: 18px;
-
-          background:
-            linear-gradient(
-              145deg,
-              #eef1f5,
-              #cbd1d9
-            );
-
-          border: 1px solid #aeb6c1;
-
-          box-shadow:
-            0 35px 80px rgba(17,24,39,.18),
-            inset 0 1px 0 rgba(255,255,255,.95);
-        }
-
-        .screen-camera {
-          position: absolute;
-
-          top: 4px;
-          left: 50%;
-
-          width: 4px;
-          height: 4px;
-
-          transform: translateX(-50%);
-
-          border-radius: 50%;
-          background: #6f7782;
-        }
-
-        .screen-display {
-          position: relative;
-
-          width: 100%;
-          height: 100%;
-
-          overflow: hidden;
-
-          border-radius: 9px;
-
-          background: #f5f7fa;
-
-          border: 1px solid #9fa8b3;
-
-          box-shadow:
-            inset 0 0 0 1px rgba(255,255,255,.7);
-        }
-
-        .screen-shadow {
-          position: absolute;
-
-          left: 50%;
-          bottom: 0;
-
-          width: 78%;
-          height: 50px;
-
-          transform: translateX(-50%);
-
-          border-radius: 50%;
-
-          background:
-            radial-gradient(
-              ellipse,
-              rgba(15,23,42,.18),
-              transparent 70%
-            );
-
-          filter: blur(20px);
-
-          animation: screenShadowFloat 7s ease-in-out infinite;
-        }
-
-        @keyframes screenShadowFloat {
-          0%, 100% {
-            transform: translateX(-50%) scale(1);
-          }
-
-          50% {
-            transform: translateX(-50%) scale(.9);
-          }
-        }
-
-        @media (max-width: 1050px) {
-
-          .screen-scene {
-            height: 440px;
-          }
-
-          .studio-screen {
-            width: 560px;
-          }
-
-        }
-
-        @media (max-width: 760px) {
-
-          .screen-scene {
-            height: 330px;
-          }
-
-          .studio-screen {
-            width: 440px;
-          }
-
-          .ide-panel {
-            display: none;
-          }
-
-          .software-body {
-            grid-template-columns: 32px 1fr;
-          }
-
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-
-          .studio-screen,
-          .screen-shadow {
-            animation: none !important;
-          }
-
-        }
-
-        .hero-micro-pattern {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-
-          width: 100%;
-
-          margin-top: 8px;
-          padding-top: 10px;
-        }
-
-        .hero-micro-pattern .micro-pattern {
-          width: 150px;
-          height: 42px;
-
-          color: rgba(17,19,24,.32);
-
-          opacity: .85;
-
-          animation:
-            heroPatternFloat 5s ease-in-out infinite;
-        }
-
-        @keyframes heroPatternFloat {
-          0%,
-          100% {
-            transform: translateY(0);
-          }
-
-          50% {
-            transform: translateY(-3px);
-          }
-        }
-
-        @media (max-width: 760px) {
-          .hero-micro-pattern {
-            margin-top: 5px;
-          }
-
-          .hero-micro-pattern .micro-pattern {
-            width: 120px;
-            height: 35px;
-          }
         }
 
         /* =====================================================
@@ -5746,6 +4121,26 @@ export default function Home() {
           gap: 40px;
 
           color: rgba(17,19,24,.35);
+        }
+
+        .section-number {
+          color: #2563ff;
+
+          font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+          font-size: 9px;
+        }
+
+        .section-kicker {
+          display: block;
+
+          margin-bottom: 8px;
+
+          color: rgba(17,19,24,.42);
+
+          font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+          font-size: 8px;
+          letter-spacing: .17em;
+          text-transform: uppercase;
         }
 
         .section-top p {
@@ -6647,180 +5042,6 @@ export default function Home() {
         }
 
         /* =====================================================
-           INTELLIGENT PRODUCTS
-        ====================================================== */
-
-        .intelligent-visual {
-          position: relative;
-
-          width: 80%;
-          max-width: 520px;
-
-          color: white;
-        }
-
-        .intelligent-heading {
-          display: flex;
-          align-items: end;
-          justify-content: space-between;
-
-          margin-bottom: 16px;
-        }
-
-        .intelligent-heading > div {
-          display: flex;
-          flex-direction: column;
-          gap: 5px;
-        }
-
-        .intelligent-heading span {
-          color: rgba(255,255,255,.36);
-
-          font-family:
-            ui-monospace,
-            SFMono-Regular,
-            Menlo,
-            monospace;
-
-          font-size: 7px;
-          letter-spacing: .13em;
-        }
-
-        .intelligent-heading strong {
-          font-size: 23px;
-          line-height: 1;
-          letter-spacing: -.05em;
-          font-weight: 500;
-        }
-
-        .intelligent-live {
-          display: flex;
-          align-items: center;
-          gap: 6px;
-
-          color: #70a7ff !important;
-        }
-
-        .intelligent-live i {
-          width: 5px;
-          height: 5px;
-
-          display: block;
-
-          border-radius: 50%;
-
-          background: #4fda91;
-
-          box-shadow:
-            0 0 10px rgba(79,218,145,.8);
-
-          animation:
-            intelligentPulse 1.4s ease-in-out infinite;
-        }
-
-        @keyframes intelligentPulse {
-          0%,
-          100% {
-            opacity: .35;
-          }
-
-          50% {
-            opacity: 1;
-          }
-        }
-
-        .intelligent-editor {
-          position: relative;
-
-          overflow: hidden;
-
-          border:
-            1px solid rgba(112,167,255,.22);
-
-          background:
-            linear-gradient(
-              145deg,
-              #151922,
-              #0d1016
-            );
-
-          box-shadow:
-            0 35px 70px rgba(0,0,0,.28),
-            inset 0 1px 0 rgba(255,255,255,.05);
-        }
-
-        .intelligent-editor-bar {
-          height: 35px;
-
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-
-          padding: 0 11px;
-
-          border-bottom:
-            1px solid rgba(255,255,255,.07);
-
-          background:
-            rgba(255,255,255,.025);
-
-          color: #596273;
-
-          font-family:
-            ui-monospace,
-            SFMono-Regular,
-            Menlo,
-            monospace;
-
-          font-size: 6px;
-          letter-spacing: .12em;
-        }
-
-        .intelligent-editor .live-code-editor {
-          min-height: 230px;
-          padding-top: 17px;
-          padding-bottom: 28px;
-        }
-
-        .intelligent-editor .live-code-line {
-          min-height: 15px;
-          font-size: 7px;
-        }
-
-        .intelligent-editor .live-line-number {
-          color: #485364;
-        }
-
-        .intelligent-editor .live-editor-status {
-          bottom: 9px;
-          left: 11px;
-        }
-
-        @media (max-width: 1050px) {
-
-          .intelligent-visual {
-            width: 75%;
-          }
-
-        }
-
-        @media (max-width: 760px) {
-
-          .intelligent-visual {
-            width: 88%;
-          }
-
-          .intelligent-heading strong {
-            font-size: 18px;
-          }
-
-          .intelligent-editor .live-code-editor {
-            min-height: 190px;
-          }
-
-        }
-
-        /* =====================================================
            PROCESS
         ====================================================== */
 
@@ -7146,6 +5367,18 @@ export default function Home() {
             padding-top: 105px;
           }
 
+          .hero-meta {
+            grid-template-columns: 1fr 1fr;
+          }
+
+          .hero-meta span:nth-child(2) {
+            display: none;
+          }
+
+          .hero-meta span:last-child {
+            text-align: right;
+          }
+
           .hero-grid {
             padding-top: 55px;
           }
@@ -7177,11 +5410,19 @@ export default function Home() {
             min-height: 330px;
           }
 
+          .product-index {
+            display: none;
+          }
+
           .hero-floating-mark {
             width: 70px;
             height: 70px;
             right: -5px;
             top: 40px;
+          }
+
+          .hero-tech-label {
+            display: none;
           }
 
           .preview-card {
@@ -7329,8 +5570,7 @@ export default function Home() {
 
         }
 
-      `}
-      </style>
+      `}</style>
 
     </main>
   );

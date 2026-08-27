@@ -1094,10 +1094,6 @@ export default function Home() {
 
           </div>
 
-          <div className="hero-micro-pattern">
-            <MicroPattern />
-          </div>
-
 </div>
 
       </section>
@@ -4242,14 +4238,6 @@ export default function Home() {
         }
 
         @media (max-width: 760px) {
-          .hero-floating-mark {
-            width: 62px;
-            height: 62px;
-            right: -4px;
-            top: 42px;
-          }
-
-
 
           .laptop-scene {
             height: 340px;
@@ -5495,51 +5483,6 @@ export default function Home() {
             animation: none !important;
           }
 
-        }
-
-        .hero-micro-pattern {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-
-          width: 100%;
-
-          margin-top: 8px;
-          padding-top: 10px;
-        }
-
-        .hero-micro-pattern .micro-pattern {
-          width: 150px;
-          height: 42px;
-
-          color: rgba(17,19,24,.32);
-
-          opacity: .85;
-
-          animation:
-            heroPatternFloat 5s ease-in-out infinite;
-        }
-
-        @keyframes heroPatternFloat {
-          0%,
-          100% {
-            transform: translateY(0);
-          }
-
-          50% {
-            transform: translateY(-3px);
-          }
-        }
-
-        @media (max-width: 760px) {
-          .hero-micro-pattern {
-            margin-top: 5px;
-          }
-
-          .hero-micro-pattern .micro-pattern {
-            width: 120px;
-            height: 35px;
-          }
         }
 
         /* =====================================================
