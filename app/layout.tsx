@@ -17,6 +17,7 @@ import "./portfolio/portfolio.css";
 import "./portfolio/portfolio-refinements.css";
 import "./portfolio/portfolio-hero-fix.css";
 import "./portfolio/portfolio-vision.css";
+import "./team/team.css";
 import Navbar from "./components/navbar";
 import GlobalMouseEffect from "./components/global-mouse-effect";
 import GlobalScrollMotion from "./components/global-scroll-motion";
