@@ -134,7 +134,7 @@ export default function PortfolioPage() {
           </div>
 
           <div className="portfolio-project-copy">
-            <div className="portfolio-project-index"><span>CLIENT WEBSITE</span><span>01 / 01</span></div>
+            <div className="portfolio-project-index"><span>CLIENT WEBSITE</span><span>01 / 02</span></div>
             <h3>Engineering with a stronger digital presence.</h3>
             <p>
               The experience translates Rehaan &amp; Associates' engineering expertise into a distinctive online system—using architectural composition, technical details and restrained motion to communicate trust and capability.
@@ -149,6 +149,63 @@ export default function PortfolioPage() {
 
             <a href="https://rehanconsultants.com/" target="_blank" rel="noreferrer" className="portfolio-live-link">
               <span>Visit rehanconsultants.com</span>
+              <ArrowUpRight size={16} />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="hopline" className="portfolio-feature portfolio-feature-secondary border-t border-black/10 bg-white/40 px-[7vw] py-24">
+        <div className="mb-14 flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
+          <div>
+            <p className="font-mono text-[8px] tracking-[.16em] text-black/35">SELECTED DIGITAL WORK</p>
+            <h2 className="mt-6 text-[clamp(52px,7vw,96px)] font-medium leading-[.84] tracking-[-.08em]">Hopline <span className="text-[#2563ff]">platform.</span></h2>
+            <p className="mt-7 max-w-[680px] text-sm leading-7 text-black/45">
+              A TechCraft-built digital product focused on creating a fast, modern and connected web experience.
+            </p>
+          </div>
+          <div className="portfolio-client-meta">
+            <span>PROJECT</span>
+            <strong>DIGITAL PLATFORM</strong>
+            <small>TECHCRAFT / WEB EXPERIENCE</small>
+            <a href="https://hopline.techcraftsolution.com/" target="_blank" rel="noreferrer" className="portfolio-site-link">
+              hopline.techcraftsolution.com <ArrowUpRight size={13} />
+            </a>
+          </div>
+        </div>
+
+        <div className="portfolio-project-shell portfolio-hopline-shell">
+          <div className="portfolio-project-visual portfolio-website-preview">
+            <iframe
+              src="https://hopline.techcraftsolution.com/"
+              title="Hopline website preview"
+              loading="lazy"
+              className="portfolio-website-frame"
+            />
+            <div className="portfolio-website-overlay">
+              <span>LIVE PROJECT</span>
+              <a href="https://hopline.techcraftsolution.com/" target="_blank" rel="noreferrer" aria-label="Open Hopline website">
+                <ArrowUpRight size={15} />
+              </a>
+            </div>
+          </div>
+
+          <div className="portfolio-project-copy">
+            <div className="portfolio-project-index"><span>DIGITAL PLATFORM</span><span>02 / 02</span></div>
+            <h3>A product experience shaped for the web.</h3>
+            <p>
+              Hopline extends TechCraft's approach from concept to working interface—combining product thinking, interface design and development into a live digital experience.
+            </p>
+
+            <div className="portfolio-project-stats">
+              <div><span>DISCIPLINE</span><strong>PRODUCT DESIGN + DEVELOPMENT</strong></div>
+              <div><span>FOCUS</span><strong>INTERFACE + INTERACTION</strong></div>
+              <div><span>STATUS</span><strong>LIVE DIGITAL PRODUCT</strong></div>
+              <div><span>URL</span><strong>HOPLINE.TECHCRAFTSOLUTION.COM</strong></div>
+            </div>
+
+            <a href="https://hopline.techcraftsolution.com/" target="_blank" rel="noreferrer" className="portfolio-live-link">
+              <span>Visit hopline.techcraftsolution.com</span>
               <ArrowUpRight size={16} />
             </a>
           </div>
