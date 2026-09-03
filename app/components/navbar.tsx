@@ -28,35 +28,12 @@ export default function Navbar() {
     setMobileOpen(false);
   }, [pathname]);
 
-  const handleSection = (id: string) => {
-    setMobileOpen(false);
-
-    if (!isHome) {
-      window.location.assign(`/#${id}`);
-      return;
-    }
-
-    document.getElementById(id)?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  };
-
-  const brand = (
-    <span className="site-navbar-brand">
-      <span className="site-navbar-symbol" aria-hidden="true">
-        <span />
-        <span />
-        <span />
-      </span>
-      <span className="site-navbar-name">
-        TECH<span>CRAFT</span>
-      </span>
-    </span>
-  );
-
   const isPageLink = (id: string) =>
-    id === "about" || id === "services" || id === "products" || id === "freebies" || id === "contact";
+    id === "about" ||
+    id === "services" ||
+    id === "products" ||
+    id === "freebies" ||
+    id === "contact";
 
   const isActive = (id: string) =>
     (id === "about" && isAbout) ||
@@ -74,26 +51,23 @@ export default function Navbar() {
       );
     }
 
-    if (isHome) {
-      return (
-        <button key={id} type="button" onClick={() => handleSection(id)}>
-          <span>{label}</span>
-        </button>
-      );
-    }
-
-    return (
-      <Link key={id} href={`/#${id}`}>
-        <span>{label}</span>
-      </Link>
-    );
+    return null;
   };
 
   return (
     <header className="site-navbar-wrap">
       <div className="site-navbar">
         <Link href="/" className="site-navbar-home" aria-label="TechCraft home">
-          {brand}
+          <span className="site-navbar-brand">
+            <span className="site-navbar-symbol" aria-hidden="true">
+              <span />
+              <span />
+              <span />
+            </span>
+            <span className="site-navbar-name">
+              TECH<span>CRAFT</span>
+            </span>
+          </span>
         </Link>
 
         <nav className="site-navbar-nav" aria-label="Primary navigation">
