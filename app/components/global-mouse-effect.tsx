@@ -16,143 +16,140 @@ export default function GlobalMouseEffect() {
     let width = 0;
     let height = 0;
     let dpr = 1;
+    let visible = false;
 
     const pointer = { x: -1000, y: -1000 };
-
-    const nodes: {
-      x: number;
-      y: number;
-      vx: number;
-      vy: number;
-      r: number;
-    }[] = [];
+    const cursor = { x: -1000, y: -1000 };
+    const velocity = { x: 0, y: 0 };
 
     const resize = () => {
       dpr = Math.min(window.devicePixelRatio || 1, 2);
-      width = canvas.clientWidth;
-      height = canvas.clientHeight;
-
+      width = window.innerWidth;
+      height = window.innerHeight;
       canvas.width = width * dpr;
       canvas.height = height * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-      nodes.length = 0;
-
-      const count = Math.min(
-        95,
-        Math.max(38, Math.floor((width * height) / 18000)),
-      );
-
-      for (let i = 0; i < count; i += 1) {
-        nodes.push({
-          x: Math.random() * width,
-          y: Math.random() * height,
-          vx: (Math.random() - 0.5) * 0.18,
-          vy: (Math.random() - 0.5) * 0.18,
-          r: Math.random() * 1.5 + 0.4,
-        });
-      }
     };
 
     const move = (event: MouseEvent) => {
       pointer.x = event.clientX;
       pointer.y = event.clientY;
+      visible = true;
     };
 
     const leave = () => {
-      pointer.x = -1000;
-      pointer.y = -1000;
+      visible = false;
     };
 
-    const draw = () => {
+    const drawRay = (
+      centerX: number,
+      centerY: number,
+      angle: number,
+      length: number,
+      opacity: number,
+      widthPx = 1,
+    ) => {
+      const start = 21;
+      const end = start + length;
+      const cos = Math.cos(angle);
+      const sin = Math.sin(angle);
+
+      const gradient = ctx.createLinearGradient(
+        centerX + cos * start,
+        centerY + sin * start,
+        centerX + cos * end,
+        centerY + sin * end,
+      );
+      gradient.addColorStop(0, `rgba(37, 99, 255, ${opacity})`);
+      gradient.addColorStop(0.55, `rgba(37, 99, 255, ${opacity * 0.62})`);
+      gradient.addColorStop(1, "rgba(37, 99, 255, 0)");
+
+      ctx.strokeStyle = gradient;
+      ctx.lineWidth = widthPx;
+      ctx.beginPath();
+      ctx.moveTo(centerX + cos * start, centerY + sin * start);
+      ctx.lineTo(centerX + cos * end, centerY + sin * end);
+      ctx.stroke();
+    };
+
+    const draw = (time: number) => {
       ctx.clearRect(0, 0, width, height);
 
-      const spacing = 70;
-      const offset = (performance.now() * 0.008) % spacing;
+      if (visible) {
+        cursor.x += (pointer.x - cursor.x) * 0.2;
+        cursor.y += (pointer.y - cursor.y) * 0.2;
 
-      ctx.strokeStyle = "rgba(17, 24, 39, 0.045)";
-      ctx.lineWidth = 0.5;
+        velocity.x += (pointer.x - cursor.x) * 0.02;
+        velocity.y += (pointer.y - cursor.y) * 0.02;
+        velocity.x *= 0.82;
+        velocity.y *= 0.82;
 
-      for (let x = -spacing + offset; x < width + spacing; x += spacing) {
-        ctx.beginPath();
-        ctx.moveTo(x, 0);
-        ctx.lineTo(x, height);
-        ctx.stroke();
-      }
+        const speed = Math.min(1, Math.hypot(velocity.x, velocity.y) / 5);
+        const pulse = 0.92 + Math.sin(time * 0.006) * 0.08;
+        const rayBoost = 0.75 + speed * 0.7;
 
-      for (let y = -spacing + offset; y < height + spacing; y += spacing) {
-        ctx.beginPath();
-        ctx.moveTo(0, y);
-        ctx.lineTo(width, y);
-        ctx.stroke();
-      }
+        ctx.save();
+        ctx.translate(cursor.x, cursor.y);
 
-      for (const node of nodes) {
-        node.x += node.vx;
-        node.y += node.vy;
-
-        if (node.x < -20) node.x = width + 20;
-        if (node.x > width + 20) node.x = -20;
-        if (node.y < -20) node.y = height + 20;
-        if (node.y > height + 20) node.y = -20;
-      }
-
-      for (let i = 0; i < nodes.length; i += 1) {
-        for (let j = i + 1; j < nodes.length; j += 1) {
-          const a = nodes[i];
-          const b = nodes[j];
-          const dx = a.x - b.x;
-          const dy = a.y - b.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-
-          if (distance < 125) {
-            const opacity = (1 - distance / 125) * 0.12;
-            ctx.strokeStyle = `rgba(37, 99, 255, ${opacity})`;
-            ctx.beginPath();
-            ctx.moveTo(a.x, a.y);
-            ctx.lineTo(b.x, b.y);
-            ctx.stroke();
-          }
-        }
-      }
-
-      if (pointer.x > -500) {
-        const radius = 190;
-
-        for (const node of nodes) {
-          const dx = pointer.x - node.x;
-          const dy = pointer.y - node.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-
-          if (distance < radius && distance > 5) {
-            const force = (1 - distance / radius) * 0.016;
-            node.vx -= dx * force;
-            node.vy -= dy * force;
-          }
+        // Design/dev rays: four primary axes plus four diagonal accents.
+        for (let i = 0; i < 8; i += 1) {
+          const angle = (Math.PI * 2 * i) / 8 - Math.PI / 8;
+          const length = (i % 2 === 0 ? 42 : 27) * rayBoost;
+          drawRay(0, 0, angle, length, (i % 2 === 0 ? 0.42 : 0.2) * pulse);
         }
 
-        const gradient = ctx.createRadialGradient(
-          pointer.x,
-          pointer.y,
-          0,
-          pointer.x,
-          pointer.y,
-          radius,
-        );
-
-        gradient.addColorStop(0, "rgba(37, 99, 255, 0.10)");
-        gradient.addColorStop(1, "rgba(37, 99, 255, 0)");
-
-        ctx.fillStyle = gradient;
+        // Soft technical halo.
+        const halo = ctx.createRadialGradient(0, 0, 5, 0, 0, 43 + speed * 13);
+        halo.addColorStop(0, "rgba(37, 99, 255, 0.14)");
+        halo.addColorStop(0.45, "rgba(37, 99, 255, 0.045)");
+        halo.addColorStop(1, "rgba(37, 99, 255, 0)");
+        ctx.fillStyle = halo;
         ctx.beginPath();
-        ctx.arc(pointer.x, pointer.y, radius, 0, Math.PI * 2);
+        ctx.arc(0, 0, 43 + speed * 13, 0, Math.PI * 2);
         ctx.fill();
-      }
 
-      for (const node of nodes) {
+        // Outer precision ring.
+        ctx.strokeStyle = "rgba(37, 99, 255, 0.48)";
+        ctx.lineWidth = 1;
         ctx.beginPath();
-        ctx.fillStyle = "rgba(37, 99, 255, 0.26)";
-        ctx.arc(node.x, node.y, node.r, 0, Math.PI * 2);
+        ctx.arc(0, 0, 17 + speed * 2, 0, Math.PI * 2);
+        ctx.stroke();
+
+        // Rotating engineering guides.
+        ctx.save();
+        ctx.rotate(time * 0.00045);
+        ctx.strokeStyle = "rgba(37, 99, 255, 0.34)";
+        ctx.setLineDash([5, 5]);
+        ctx.beginPath();
+        ctx.arc(0, 0, 23, -0.9, 1.15);
+        ctx.stroke();
+        ctx.restore();
+
+        // Central diamond / design marker.
+        ctx.rotate(Math.PI / 4);
+        ctx.fillStyle = "rgba(244, 246, 248, 0.96)";
+        ctx.strokeStyle = "#111318";
+        ctx.lineWidth = 1.1;
+        ctx.fillRect(-7, -7, 14, 14);
+        ctx.strokeRect(-7, -7, 14, 14);
+        ctx.fillStyle = "#2563ff";
+        ctx.fillRect(-2.5, -2.5, 5, 5);
+        ctx.restore();
+
+        // Code markers: < />
+        ctx.save();
+        ctx.fillStyle = "rgba(37, 99, 255, 0.88)";
+        ctx.font = "600 11px SFMono-Regular, Consolas, Liberation Mono, monospace";
+        ctx.textBaseline = "middle";
+        ctx.textAlign = "center";
+        ctx.fillText("<", cursor.x - 30 - speed * 3, cursor.y);
+        ctx.fillText("/>", cursor.x + 32 + speed * 3, cursor.y);
+        ctx.restore();
+
+        // Tiny live status point.
+        ctx.fillStyle = "#c83a32";
+        ctx.beginPath();
+        ctx.arc(cursor.x + 0, cursor.y - 27, 2.4 + speed * 1.2, 0, Math.PI * 2);
         ctx.fill();
       }
 
