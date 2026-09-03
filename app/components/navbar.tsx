@@ -59,26 +59,29 @@ export default function Navbar() {
 
         <nav className="site-navbar-nav" aria-label="Primary navigation">
           {sections.map(([label, id]) => {
-            const active = (id === "about" && isAbout) || false;
+            const active = id === "about" && isAbout;
+
+            if (id === "about") {
+              return (
+                <Link
+                  key={id}
+                  href="/about"
+                  className={active ? "active" : ""}
+                >
+                  <span>{label}</span>
+                </Link>
+              );
+            }
 
             if (isHome) {
               return (
                 <button
                   key={id}
                   type="button"
-                  className={active ? "active" : ""}
                   onClick={() => handleSection(id)}
                 >
                   <span>{label}</span>
                 </button>
-              );
-            }
-
-            if (id === "about") {
-              return (
-                <Link key={id} href="/about" className={active ? "active" : ""}>
-                  <span>{label}</span>
-                </Link>
               );
             }
 
@@ -115,19 +118,27 @@ export default function Navbar() {
         {sections.map(([label, id]) => {
           const active = id === "about" && isAbout;
 
-          if (isHome) {
+          if (id === "about") {
             return (
-              <button key={id} type="button" className={active ? "active" : ""} onClick={() => handleSection(id)}>
+              <Link
+                key={id}
+                href="/about"
+                className={active ? "active" : ""}
+              >
                 <span>{label}</span>
-              </button>
+              </Link>
             );
           }
 
-          if (id === "about") {
+          if (isHome) {
             return (
-              <Link key={id} href="/about" className={active ? "active" : ""}>
+              <button
+                key={id}
+                type="button"
+                onClick={() => handleSection(id)}
+              >
                 <span>{label}</span>
-              </Link>
+              </button>
             );
           }
 
