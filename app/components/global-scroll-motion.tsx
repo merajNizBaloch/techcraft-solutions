@@ -7,12 +7,17 @@ import { useEffect } from "react";
 const SECTION_SELECTORS = [
   ".techcraft main section:not(.hero)",
   ".about-page > section:not(.about-hero)",
+  ".services-page > section:not(.services-hero)",
 ];
 
-const HERO_SELECTORS = [".techcraft .hero", ".about-page .about-hero"];
+const HERO_SELECTORS = [
+  ".techcraft .hero",
+  ".about-page .about-hero",
+  ".services-page .services-hero",
+];
 
 const TARGET_SELECTOR =
-  ".service-card, .project-card, .about-stat, .about-capability, .about-process, .about-principle, .about-side-card";
+  ".service-card, .project-card, .service-detail-card, .service-process, .about-stat, .about-capability, .about-process, .about-principle, .about-side-card";
 
 function getTargets(section: Element) {
   const direct = Array.from(section.children).filter(
