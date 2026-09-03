@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 const sections = [
   ["Services", "services"],
   ["Products", "products"],
+  ["Freebies", "freebies"],
   ["About", "about"],
   ["Contact", "contact"],
 ] as const;
@@ -20,6 +21,7 @@ export default function Navbar() {
   const isAbout = pathname === "/about";
   const isServices = pathname === "/services";
   const isProducts = pathname === "/products";
+  const isFreebies = pathname === "/freebies";
 
   useEffect(() => {
     setMobileOpen(false);
@@ -52,6 +54,39 @@ export default function Navbar() {
     </span>
   );
 
+  const isPageLink = (id: string) =>
+    id === "about" || id === "services" || id === "products" || id === "freebies";
+
+  const isActive = (id: string) =>
+    (id === "about" && isAbout) ||
+    (id === "services" && isServices) ||
+    (id === "products" && isProducts) ||
+    (id === "freebies" && isFreebies);
+
+  const renderItem = ([label, id]: (typeof sections)[number]) => {
+    if (isPageLink(id)) {
+      return (
+        <Link key={id} href={`/${id}`} className={isActive(id) ? "active" : ""}>
+          <span>{label}</span>
+        </Link>
+      );
+    }
+
+    if (isHome) {
+      return (
+        <button key={id} type="button" onClick={() => handleSection(id)}>
+          <span>{label}</span>
+        </button>
+      );
+    }
+
+    return (
+      <Link key={id} href={`/#${id}`}>
+        <span>{label}</span>
+      </Link>
+    );
+  };
+
   return (
     <header className="site-navbar-wrap">
       <div className="site-navbar">
@@ -60,42 +95,7 @@ export default function Navbar() {
         </Link>
 
         <nav className="site-navbar-nav" aria-label="Primary navigation">
-          {sections.map(([label, id]) => {
-            const active =
-              (id === "about" && isAbout) ||
-              (id === "services" && isServices) ||
-              (id === "products" && isProducts);
-
-            if (id === "about" || id === "services" || id === "products") {
-              return (
-                <Link
-                  key={id}
-                  href={`/${id}`}
-                  className={active ? "active" : ""}
-                >
-                  <span>{label}</span>
-                </Link>
-              );
-            }
-
-            if (isHome) {
-              return (
-                <button
-                  key={id}
-                  type="button"
-                  onClick={() => handleSection(id)}
-                >
-                  <span>{label}</span>
-                </button>
-              );
-            }
-
-            return (
-              <Link key={id} href={`/#${id}`}>
-                <span>{label}</span>
-              </Link>
-            );
-          })}
+          {sections.map(renderItem)}
         </nav>
 
         <div className="site-navbar-actions">
@@ -120,42 +120,7 @@ export default function Navbar() {
         className={`site-navbar-mobile-menu${mobileOpen ? " open" : ""}`}
         aria-label="Mobile navigation"
       >
-        {sections.map(([label, id]) => {
-          const active =
-            (id === "about" && isAbout) ||
-            (id === "services" && isServices) ||
-            (id === "products" && isProducts);
-
-          if (id === "about" || id === "services" || id === "products") {
-            return (
-              <Link
-                key={id}
-                href={`/${id}`}
-                className={active ? "active" : ""}
-              >
-                <span>{label}</span>
-              </Link>
-            );
-          }
-
-          if (isHome) {
-            return (
-              <button
-                key={id}
-                type="button"
-                onClick={() => handleSection(id)}
-              >
-                <span>{label}</span>
-              </button>
-            );
-          }
-
-          return (
-            <Link key={id} href={`/#${id}`}>
-              <span>{label}</span>
-            </Link>
-          );
-        })}
+        {sections.map(renderItem)}
       </nav>
     </header>
   );
