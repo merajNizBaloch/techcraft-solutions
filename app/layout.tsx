@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "./global-interactions.css";
+import "./theme.css";
 import "./about/about-position.css";
 import "./products/products.css";
 import "./products-home.css";
