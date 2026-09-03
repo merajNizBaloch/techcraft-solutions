@@ -1,18 +1,10 @@
 import type { LucideIcon } from "lucide-react";
-import {
-  ArrowUpRight,
-  Building2,
-  Compass,
-  Layers3,
-  MapPin,
-  Ruler,
-  Sparkles,
-} from "lucide-react";
+import { ArrowUpRight, Compass, Layers3, MapPin, Sparkles } from "lucide-react";
 
 export const metadata = {
   title: "Portfolio — TechCraft Solutions",
   description:
-    "Selected client work and digital experiences created by TechCraft Solutions.",
+    "Selected client work and digital experiences crafted by TechCraft Solutions.",
 };
 
 type WorkPoint = {
@@ -63,9 +55,9 @@ export default function PortfolioPage() {
         <div className="portfolio-glow portfolio-glow-a" />
         <div className="portfolio-glow portfolio-glow-b" />
 
-        <div className="relative z-10 grid items-center gap-16 lg:grid-cols-[.88fr_1.12fr]">
+        <div className="relative z-10 grid items-center gap-16 lg:grid-cols-[.92fr_1.08fr]">
           <div>
-            <p className="font-mono text-[9px] tracking-[.18em] text-black/38">SELECTED CLIENT WORK</p>
+            <p className="font-mono text-[9px] tracking-[.2em] text-black/38">OUR APPROACH</p>
             <h1 className="portfolio-title mt-7 max-w-[920px] text-[clamp(68px,10.5vw,150px)] font-medium leading-[.8] tracking-[-.1em]">
               Work that<br />
               <span className="text-[#2563ff]">gets built.</span>
@@ -74,46 +66,34 @@ export default function PortfolioPage() {
               Selected client work where strategy, interface design and engineering come together to create a useful digital presence.
             </p>
             <div className="portfolio-hero-index mt-9">
-              <span>CLIENT PROJECT / 001</span>
-              <span>WEB DESIGN + DEVELOPMENT</span>
+              <span>CRAFT</span>
+              <span>DESIGN</span>
+              <span>DEVELOPMENT</span>
+              <span>CULTURE</span>
             </div>
           </div>
 
-          <div className="portfolio-hero-orbit" aria-hidden="true">
-            <div className="portfolio-orbit-field" />
-            <div className="portfolio-orbit-ring orbit-ring-a" />
-            <div className="portfolio-orbit-ring orbit-ring-b" />
-            <div className="portfolio-orbit-ring orbit-ring-c" />
-            <div className="portfolio-orbit-path path-a" />
-            <div className="portfolio-orbit-path path-b" />
-            <div className="portfolio-orbit-path path-c" />
-
-            <div className="portfolio-hero-project">
-              <div className="hero-project-topline">
-                <span>R&amp;A / CIVIL ENGINEERING</span>
-                <i />
-              </div>
-              <div className="hero-project-mast">
-                <div className="mast-core" />
-                <div className="mast-wing wing-left" />
-                <div className="mast-wing wing-right" />
-                <div className="mast-deck" />
-                <div className="mast-windows" />
-              </div>
-              <div className="hero-project-ground" />
-              <div className="hero-project-readout">DIGITAL PRESENCE / ACTIVE</div>
+          <div className="portfolio-vision" aria-label="TechCraft vision: craft, design, development and culture">
+            <div className="vision-orbit vision-orbit-a" />
+            <div className="vision-orbit vision-orbit-b" />
+            <div className="vision-orbit vision-orbit-c" />
+            <div className="vision-thread thread-a" />
+            <div className="vision-thread thread-b" />
+            <div className="vision-thread thread-c" />
+            <div className="vision-core">
+              <div className="vision-core-mark">TC</div>
+              <span>TECHCRAFT</span>
+              <small>CRAFTING DIGITAL EXPERIENCES</small>
             </div>
-
-            <span className="portfolio-data-point data-a" />
-            <span className="portfolio-data-point data-b" />
-            <span className="portfolio-data-point data-c" />
-            <span className="portfolio-data-point data-d" />
-            <span className="portfolio-data-packet packet-a" />
-            <span className="portfolio-data-packet packet-b" />
-            <div className="portfolio-hero-label label-a"><span>01</span> STRUCTURE</div>
-            <div className="portfolio-hero-label label-b"><span>02</span> SYSTEM</div>
-            <div className="portfolio-hero-label label-c"><span>03</span> EXPERIENCE</div>
-            <div className="portfolio-hero-pulse"><i /> LIVE PROJECT / REHAAN &amp; ASSOCIATES</div>
+            <div className="vision-node node-craft"><strong>CRAFT</strong><small>DETAIL</small></div>
+            <div className="vision-node node-design"><strong>DESIGN</strong><small>FORM</small></div>
+            <div className="vision-node node-development"><strong>DEVELOPMENT</strong><small>BUILD</small></div>
+            <div className="vision-node node-culture"><strong>CULTURE</strong><small>CONTEXT</small></div>
+            <span className="vision-particle particle-a" />
+            <span className="vision-particle particle-b" />
+            <span className="vision-particle particle-c" />
+            <span className="vision-particle particle-d" />
+            <div className="vision-caption">IDEA → FORM → CODE → CONTEXT</div>
           </div>
         </div>
       </section>
@@ -138,21 +118,19 @@ export default function PortfolioPage() {
         </div>
 
         <div className="portfolio-project-shell">
-          <div className="portfolio-project-visual">
-            <div className="portfolio-blueprint-lines" />
-            <div className="portfolio-site-marker"><span>R&amp;A</span><small>PROJECT / 001</small></div>
-            <div className="portfolio-project-building main-building">
-              <div className="tower-core" />
-              <div className="tower-wing wing-left" />
-              <div className="tower-wing wing-right" />
-              <div className="tower-base" />
-              <div className="tower-window-grid" />
+          <div className="portfolio-project-visual portfolio-website-preview">
+            <iframe
+              src="https://rehanconsultants.com/"
+              title="Rehaan & Associates website preview"
+              loading="lazy"
+              className="portfolio-website-frame"
+            />
+            <div className="portfolio-website-overlay">
+              <span>LIVE CLIENT WEBSITE</span>
+              <a href="https://rehanconsultants.com/" target="_blank" rel="noreferrer" aria-label="Open Rehaan and Associates website">
+                <ArrowUpRight size={15} />
+              </a>
             </div>
-            <div className="portfolio-dimension dim-one"><span>24.8 M</span></div>
-            <div className="portfolio-dimension dim-two"><span>18.2 M</span></div>
-            <div className="portfolio-project-tag tag-one"><Ruler size={13} /> STRUCTURE / FORM</div>
-            <div className="portfolio-project-tag tag-two"><Compass size={13} /> SITE / CONTEXT</div>
-            <div className="portfolio-project-scan" />
           </div>
 
           <div className="portfolio-project-copy">
