@@ -15,6 +15,7 @@ import {
   Shrink,
   Sparkles,
   Wand2,
+  Zap,
 } from "lucide-react";
 
 export const metadata = {
@@ -63,30 +64,25 @@ export default function FreebiesPage() {
         <div className="freebies-grid" />
         <div className="freebies-glow freebies-glow-a" />
         <div className="freebies-glow freebies-glow-b" />
-        <div className="relative z-10 grid items-end gap-14 lg:grid-cols-[.88fr_1.12fr]">
+        <div className="relative z-10 grid items-center gap-14 lg:grid-cols-[.9fr_1.1fr]">
           <div>
             <p className="font-mono text-[8px] tracking-[.18em] text-[#2563ff]">01 / FREEBIES</p>
             <h1 className="freebies-title mt-7 max-w-[920px] text-[clamp(70px,11vw,156px)] font-medium leading-[.78] tracking-[-.1em]">Useful tools.<br /><span className="text-[#2563ff]">No paywall.</span></h1>
             <p className="mt-10 max-w-[650px] text-[15px] leading-[1.9] text-black/50">A growing collection of small tools built by TechCraft for the things people need to get done every day. Free to use, simple by design.</p>
           </div>
 
-          <div className="freebies-hero-panel">
-            <div className="freebies-hero-panel-line"><span>FREE TOOLKIT / ACTIVE</span><span>10 AVAILABLE</span></div>
-            <div className="freebies-hero-scanline" />
-            <div className="freebies-orbit-label orbit-label-a">INPUT</div>
-            <div className="freebies-orbit-label orbit-label-b">PROCESS</div>
-            <div className="freebies-orbit-label orbit-label-c">OUTPUT</div>
-            <div className="freebies-tool-float tool-float-a"><FileImage size={16} /><span>PNG</span><small>2.8 MB</small></div>
-            <div className="freebies-tool-float tool-float-b"><Shrink size={16} /><span>OPTIMIZE</span><small>−61%</small></div>
-            <div className="freebies-tool-float tool-float-c"><FileOutput size={16} /><span>JPG</span><small>1.1 MB</small></div>
-            <div className="freebies-hero-panel-core">
-              <div className="freebies-core-mark"><Sparkles size={18} /></div>
-              <strong>FREE<br />TOOL<br />ENGINE</strong>
-              <small>INPUT → PROCESS → OUTPUT</small>
-            </div>
-            <div className="freebies-hero-orbit orbit-a" /><div className="freebies-hero-orbit orbit-b" />
-            <span className="freebies-hero-pulse pulse-a" /><span className="freebies-hero-pulse pulse-b" />
-            <span className="freebies-data-packet data-a" /><span className="freebies-data-packet data-b" /><span className="freebies-data-packet data-c" />
+          <div className="freebies-hero-machine" aria-hidden="true">
+            <div className="freebies-machine-grid" />
+            <div className="freebies-machine-orbit machine-orbit-a" />
+            <div className="freebies-machine-orbit machine-orbit-b" />
+            <div className="freebies-machine-beam beam-one" />
+            <div className="freebies-machine-beam beam-two" />
+            <div className="freebies-machine-node machine-node-image"><FileImage size={18} /><strong>PNG</strong><small>INPUT FILE</small></div>
+            <div className="freebies-machine-node machine-node-pdf"><FileText size={18} /><strong>PDF</strong><small>DOCUMENT</small></div>
+            <div className="freebies-machine-core"><div className="machine-core-halo" /><div className="machine-core-inner"><Zap size={22} /><strong>FREE</strong><small>TOOL ENGINE</small></div></div>
+            <div className="freebies-machine-node machine-node-output"><Sparkles size={18} /><strong>READY</strong><small>USEFUL OUTPUT</small></div>
+            <div className="freebies-machine-status"><i /> BROWSER PROCESSING / LOCAL WORKFLOW</div>
+            <span className="machine-particle particle-one" /><span className="machine-particle particle-two" /><span className="machine-particle particle-three" /><span className="machine-particle particle-four" />
           </div>
         </div>
       </section>
@@ -95,17 +91,7 @@ export default function FreebiesPage() {
         <div className="freebie-factory-grid" />
         <div className="relative z-10 grid items-center gap-14 lg:grid-cols-[.72fr_1.28fr]">
           <div><p className="font-mono text-[8px] tracking-[.18em] text-[#70a7ff]">02 / LIVE TOOL ENGINE</p><h2 className="mt-6 text-[clamp(48px,6vw,88px)] font-medium leading-[.84] tracking-[-.08em]">Watch a file<br /><span className="text-[#70a7ff]">transform.</span></h2><p className="mt-8 max-w-[470px] text-sm leading-7 text-white/45">The idea behind Freebies is simple: drop in a file, let the browser do the work, and leave with the result.</p></div>
-          <div className="freebie-factory" aria-label="Animated file conversion demonstration">
-            <div className="freebie-factory-header"><span>TC / FREE TOOL ENGINE</span><span className="freebie-engine-live"><i /> PROCESSING</span></div>
-            <div className="freebie-factory-stage">
-              <div className="factory-node factory-input"><span className="factory-file-icon"><FileImage size={27} /></span><b>IMAGE.PNG</b><small>2.8 MB</small></div>
-              <div className="factory-track"><span className="factory-beam" /><span className="factory-particle particle-a" /><span className="factory-particle particle-b" /><span className="factory-particle particle-c" /></div>
-              <div className="factory-core"><div className="factory-core-ring" /><strong>CONVERT</strong><small>01 / 03</small></div>
-              <div className="factory-track track-right"><span className="factory-beam" /><span className="factory-particle particle-d" /><span className="factory-particle particle-e" /></div>
-              <div className="factory-node factory-output"><span className="factory-file-icon"><FileOutput size={27} /></span><b>IMAGE.JPG</b><small>1.1 MB</small><em>READY</em></div>
-            </div>
-            <div className="freebie-factory-footer"><span>INPUT DETECTED</span><span>OPTIMIZING → CONVERTING → READY</span></div>
-          </div>
+          <div className="freebie-factory" aria-label="Animated file conversion demonstration"><div className="freebie-factory-header"><span>TC / FREE TOOL ENGINE</span><span className="freebie-engine-live"><i /> PROCESSING</span></div><div className="freebie-factory-stage"><div className="factory-node factory-input"><span className="factory-file-icon"><FileImage size={27} /></span><b>IMAGE.PNG</b><small>2.8 MB</small></div><div className="factory-track"><span className="factory-beam" /><span className="factory-particle particle-a" /><span className="factory-particle particle-b" /><span className="factory-particle particle-c" /></div><div className="factory-core"><div className="factory-core-ring" /><strong>CONVERT</strong><small>01 / 03</small></div><div className="factory-track track-right"><span className="factory-beam" /><span className="factory-particle particle-d" /><span className="factory-particle particle-e" /></div><div className="factory-node factory-output"><span className="factory-file-icon"><FileOutput size={27} /></span><b>IMAGE.JPG</b><small>1.1 MB</small><em>READY</em></div></div><div className="freebie-factory-footer"><span>INPUT DETECTED</span><span>OPTIMIZING → CONVERTING → READY</span></div></div>
         </div>
       </section>
 
@@ -115,7 +101,6 @@ export default function FreebiesPage() {
       </section>
 
       <section className="freebies-upcoming-section border-t border-black/10 px-[7vw] py-24"><div className="grid gap-14 lg:grid-cols-[.72fr_1.28fr]"><div><p className="font-mono text-[8px] tracking-[.16em] text-[#c83a32]">04 / UPCOMING</p><h2 className="mt-6 text-[clamp(52px,6vw,92px)] font-medium leading-[.84] tracking-[-.08em]">More useful<br /><span className="text-[#c83a32]">things coming.</span></h2><p className="mt-8 max-w-[480px] text-sm leading-7 text-black/45">We are building the next batch around the repetitive jobs that waste time: files, images, links, web assets and everyday developer tasks.</p></div><div className="freebies-upcoming-list">{upcomingTools.map(([number, name, description, Icon], index) => <article key={name} className="freebies-upcoming-card" style={{ animationDelay: `${index * 90}ms` }}><span className="freebies-upcoming-number">{number}</span><span className="freebies-upcoming-icon"><Icon size={18} /></span><div><div className="flex items-center gap-3"><h3>{name}</h3><span className="freebies-soon">COMING SOON</span></div><p>{description}</p></div></article>)}</div></div></section>
-
       <section className="freebies-cta border-t border-black/10 bg-[#111318] px-[7vw] py-24 text-white"><div className="flex flex-col justify-between gap-10 lg:flex-row lg:items-end"><div><p className="font-mono text-[8px] tracking-[.16em] text-[#70a7ff]">05 / KEEP IT FREE</p><h2 className="mt-6 max-w-[850px] text-[clamp(48px,6vw,86px)] font-medium leading-[.87] tracking-[-.08em]">Small tools can solve <span className="text-[#70a7ff]">big annoyances.</span></h2></div><a href="#free-tool-list" className="techcraft-button techcraft-button-primary">Explore the toolkit <ArrowRight size={16} /></a></div></section>
     </main>
   );
