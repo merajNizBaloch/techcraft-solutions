@@ -1,85 +1,111 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { useAnimate } from "framer-motion";
 import type { ReactNode } from "react";
-import { useRef } from "react";
+import { useEffect } from "react";
 
-const sectionSelectors = [
+const SECTION_SELECTORS = [
   ".techcraft main section:not(.hero)",
   ".about-page > section:not(.about-hero)",
 ];
 
-const slideVariants = {
-  hidden: { opacity: 0, x: -70, y: 18, filter: "blur(6px)" },
-  visible: {
-    opacity: 1,
-    x: 0,
-    y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
-  },
-};
+const TARGET_SELECTOR =
+  ".service-card, .project-card, .about-stat, .about-capability, .about-process, .about-principle, .about-side-card";
 
-const slideRightVariants = {
-  hidden: { opacity: 0, x: 70, y: 18, filter: "blur(6px)" },
-  visible: {
-    opacity: 1,
-    x: 0,
-    y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
-  },
-};
-
-const slideUpVariants = {
-  hidden: { opacity: 0, y: 70, scale: 0.985, filter: "blur(6px)" },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    filter: "blur(0px)",
-    transition: { duration: 0.85, ease: [0.16, 1, 0.3, 1] },
-  },
-};
-
-function Reveal({
-  children,
-  variant = "left",
-  delay = 0,
-  className,
-}: {
-  children: ReactNode;
-  variant?: "left" | "right" | "up";
-  delay?: number;
-  className?: string;
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, amount: 0.16, margin: "0px 0px -10% 0px" });
-
-  const variants =
-    variant === "right" ? slideRightVariants : variant === "up" ? slideUpVariants : slideVariants;
-
-  return (
-    <motion.div
-      ref={ref}
-      className={className}
-      initial="hidden"
-      animate={inView ? "visible" : "hidden"}
-      variants={variants}
-      transition={{ delay }}
-    >
-      {children}
-    </motion.div>
+function getTargets(section: Element) {
+  const direct = Array.from(section.children).filter(
+    (element) =>
+      !element.classList.contains("about-grid") &&
+      !element.classList.contains("about-scan"),
   );
+
+  const cards = Array.from(section.querySelectorAll<HTMLElement>(TARGET_SELECTOR));
+
+  return Array.from(new Set([...direct, ...cards]));
 }
 
 export default function GlobalScrollMotion({ children }: { children: ReactNode }) {
+  const [scope, animate] = useAnimate();
+
+  useEffect(() => {
+    const root = scope.current;
+    if (!root) return;
+
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) return;
+
+    const sections = SECTION_SELECTORS.flatMap((selector) =>
+      Array.from(root.querySelectorAll<HTMLElement>(selector)),
+    );
+
+    if (!sections.length) return;
+
+    const revealed = new WeakSet<Element>();
+
+    sections.forEach((section) => {
+      const targets = getTargets(section);
+      targets.forEach((target, index) => {
+        const element = target as HTMLElement;
+        element.dataset.scrollReveal = "pending";
+        element.style.opacity = "0";
+        element.style.transform = index % 3 === 0
+          ? "translate3d(-54px, 18px, 0)"
+          : index % 3 === 1
+            ? "translate3d(0, 54px, 0)"
+            : "translate3d(54px, 18px, 0)";
+        element.style.filter = "blur(5px)";
+        element.style.willChange = "opacity, transform, filter";
+      });
+    });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting || revealed.has(entry.target)) return;
+          revealed.add(entry.target);
+
+          const targets = getTargets(entry.target);
+
+          void animate(
+            targets,
+            {
+              opacity: 1,
+              x: 0,
+              y: 0,
+              filter: "blur(0px)",
+            },
+            {
+              duration: 0.78,
+              ease: [0.16, 1, 0.3, 1],
+              delay: 0.03,
+              stagger: 0.09,
+            },
+          ).then(() => {
+            targets.forEach((target) => {
+              const element = target as HTMLElement;
+              element.dataset.scrollReveal = "revealed";
+              element.style.willChange = "auto";
+            });
+          });
+
+          observer.unobserve(entry.target);
+        });
+      },
+      {
+        threshold: 0.14,
+        rootMargin: "0px 0px -12% 0px",
+      },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, [animate, scope, children]);
+
   return (
-    <div className="global-scroll-motion-root">
+    <div ref={scope} className="global-scroll-motion-root">
       <div className="global-scroll-progress" aria-hidden="true" />
       {children}
     </div>
   );
 }
-
-export { Reveal, sectionSelectors };
