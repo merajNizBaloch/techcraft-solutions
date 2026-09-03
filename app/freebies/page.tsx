@@ -72,9 +72,21 @@ export default function FreebiesPage() {
 
           <div className="freebies-hero-panel">
             <div className="freebies-hero-panel-line"><span>FREE TOOLKIT / ACTIVE</span><span>10 AVAILABLE</span></div>
-            <div className="freebies-hero-panel-core"><div className="freebies-core-mark"><Sparkles size={18} /></div><strong>TECHCRAFT<br />FREEBIES</strong><small>TOOLS FOR REAL WORK</small></div>
+            <div className="freebies-hero-scanline" />
+            <div className="freebies-orbit-label orbit-label-a">INPUT</div>
+            <div className="freebies-orbit-label orbit-label-b">PROCESS</div>
+            <div className="freebies-orbit-label orbit-label-c">OUTPUT</div>
+            <div className="freebies-tool-float tool-float-a"><FileImage size={16} /><span>PNG</span><small>2.8 MB</small></div>
+            <div className="freebies-tool-float tool-float-b"><Shrink size={16} /><span>OPTIMIZE</span><small>−61%</small></div>
+            <div className="freebies-tool-float tool-float-c"><FileOutput size={16} /><span>JPG</span><small>1.1 MB</small></div>
+            <div className="freebies-hero-panel-core">
+              <div className="freebies-core-mark"><Sparkles size={18} /></div>
+              <strong>FREE<br />TOOL<br />ENGINE</strong>
+              <small>INPUT → PROCESS → OUTPUT</small>
+            </div>
             <div className="freebies-hero-orbit orbit-a" /><div className="freebies-hero-orbit orbit-b" />
             <span className="freebies-hero-pulse pulse-a" /><span className="freebies-hero-pulse pulse-b" />
+            <span className="freebies-data-packet data-a" /><span className="freebies-data-packet data-b" /><span className="freebies-data-packet data-c" />
           </div>
         </div>
       </section>
@@ -82,12 +94,7 @@ export default function FreebiesPage() {
       <section className="freebie-factory-section relative overflow-hidden border-y border-black/10 bg-[#0b1120] px-[7vw] py-24 text-white">
         <div className="freebie-factory-grid" />
         <div className="relative z-10 grid items-center gap-14 lg:grid-cols-[.72fr_1.28fr]">
-          <div>
-            <p className="font-mono text-[8px] tracking-[.18em] text-[#70a7ff]">02 / LIVE TOOL ENGINE</p>
-            <h2 className="mt-6 text-[clamp(48px,6vw,88px)] font-medium leading-[.84] tracking-[-.08em]">Watch a file<br /><span className="text-[#70a7ff]">transform.</span></h2>
-            <p className="mt-8 max-w-[470px] text-sm leading-7 text-white/45">The idea behind Freebies is simple: drop in a file, let the browser do the work, and leave with the result.</p>
-          </div>
-
+          <div><p className="font-mono text-[8px] tracking-[.18em] text-[#70a7ff]">02 / LIVE TOOL ENGINE</p><h2 className="mt-6 text-[clamp(48px,6vw,88px)] font-medium leading-[.84] tracking-[-.08em]">Watch a file<br /><span className="text-[#70a7ff]">transform.</span></h2><p className="mt-8 max-w-[470px] text-sm leading-7 text-white/45">The idea behind Freebies is simple: drop in a file, let the browser do the work, and leave with the result.</p></div>
           <div className="freebie-factory" aria-label="Animated file conversion demonstration">
             <div className="freebie-factory-header"><span>TC / FREE TOOL ENGINE</span><span className="freebie-engine-live"><i /> PROCESSING</span></div>
             <div className="freebie-factory-stage">
@@ -103,21 +110,11 @@ export default function FreebiesPage() {
       </section>
 
       <section id="free-tool-list" className="freebies-tools-section border-t border-black/10 bg-white/55 px-[7vw] py-24">
-        <div className="mb-14 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
-          <div><p className="font-mono text-[8px] tracking-[.16em] text-black/35">03 / FREE TOOLKIT</p><h2 className="mt-6 text-[clamp(50px,6vw,90px)] font-medium leading-[.86] tracking-[-.08em]">Pick a tool.<br /><span className="text-[#2563ff]">Get it done.</span></h2></div>
-          <div className="freebies-count-box"><strong>10</strong><span>FREE TOOLS</span><small>NO ACCOUNT REQUIRED</small></div>
-        </div>
-        <div className="freebies-tool-grid">
-          {freeTools.map((tool) => { const Icon = tool.icon; return <article key={tool.name} className="freebies-tool-card"><div className="freebies-tool-card-top"><span>{tool.number}</span><span className="freebie-status"><Check size={11} /> FREE</span></div><div className="freebies-tool-icon"><Icon size={21} /></div><p className="mt-7 font-mono text-[7px] tracking-[.16em] text-[#2563ff]">{tool.eyebrow}</p><h3>{tool.name}</h3><p className="freebies-tool-description">{tool.description}</p><div className="freebies-tool-footer"><span>{tool.tag}</span><span className="freebies-tool-action">AVAILABLE <ArrowRight size={13} /></span></div></article>; })}
-        </div>
+        <div className="mb-14 flex flex-col justify-between gap-6 lg:flex-row lg:items-end"><div><p className="font-mono text-[8px] tracking-[.16em] text-black/35">03 / FREE TOOLKIT</p><h2 className="mt-6 text-[clamp(50px,6vw,90px)] font-medium leading-[.86] tracking-[-.08em]">Pick a tool.<br /><span className="text-[#2563ff]">Get it done.</span></h2></div><div className="freebies-count-box"><strong>10</strong><span>FREE TOOLS</span><small>NO ACCOUNT REQUIRED</small></div></div>
+        <div className="freebies-tool-grid">{freeTools.map((tool) => { const Icon = tool.icon; return <article key={tool.name} className="freebies-tool-card"><div className="freebies-tool-card-top"><span>{tool.number}</span><span className="freebie-status"><Check size={11} /> FREE</span></div><div className="freebies-tool-icon"><Icon size={21} /></div><p className="mt-7 font-mono text-[7px] tracking-[.16em] text-[#2563ff]">{tool.eyebrow}</p><h3>{tool.name}</h3><p className="freebies-tool-description">{tool.description}</p><div className="freebies-tool-footer"><span>{tool.tag}</span><span className="freebies-tool-action">AVAILABLE <ArrowRight size={13} /></span></div></article>; })}</div>
       </section>
 
-      <section className="freebies-upcoming-section border-t border-black/10 px-[7vw] py-24">
-        <div className="grid gap-14 lg:grid-cols-[.72fr_1.28fr]">
-          <div><p className="font-mono text-[8px] tracking-[.16em] text-[#c83a32]">04 / UPCOMING</p><h2 className="mt-6 text-[clamp(52px,6vw,92px)] font-medium leading-[.84] tracking-[-.08em]">More useful<br /><span className="text-[#c83a32]">things coming.</span></h2><p className="mt-8 max-w-[480px] text-sm leading-7 text-black/45">We are building the next batch around the repetitive jobs that waste time: files, images, links, web assets and everyday developer tasks.</p></div>
-          <div className="freebies-upcoming-list">{upcomingTools.map(([number, name, description, Icon], index) => <article key={name} className="freebies-upcoming-card" style={{ animationDelay: `${index * 90}ms` }}><span className="freebies-upcoming-number">{number}</span><span className="freebies-upcoming-icon"><Icon size={18} /></span><div><div className="flex items-center gap-3"><h3>{name}</h3><span className="freebies-soon">COMING SOON</span></div><p>{description}</p></div></article>)}</div>
-        </div>
-      </section>
+      <section className="freebies-upcoming-section border-t border-black/10 px-[7vw] py-24"><div className="grid gap-14 lg:grid-cols-[.72fr_1.28fr]"><div><p className="font-mono text-[8px] tracking-[.16em] text-[#c83a32]">04 / UPCOMING</p><h2 className="mt-6 text-[clamp(52px,6vw,92px)] font-medium leading-[.84] tracking-[-.08em]">More useful<br /><span className="text-[#c83a32]">things coming.</span></h2><p className="mt-8 max-w-[480px] text-sm leading-7 text-black/45">We are building the next batch around the repetitive jobs that waste time: files, images, links, web assets and everyday developer tasks.</p></div><div className="freebies-upcoming-list">{upcomingTools.map(([number, name, description, Icon], index) => <article key={name} className="freebies-upcoming-card" style={{ animationDelay: `${index * 90}ms` }}><span className="freebies-upcoming-number">{number}</span><span className="freebies-upcoming-icon"><Icon size={18} /></span><div><div className="flex items-center gap-3"><h3>{name}</h3><span className="freebies-soon">COMING SOON</span></div><p>{description}</p></div></article>)}</div></div></section>
 
       <section className="freebies-cta border-t border-black/10 bg-[#111318] px-[7vw] py-24 text-white"><div className="flex flex-col justify-between gap-10 lg:flex-row lg:items-end"><div><p className="font-mono text-[8px] tracking-[.16em] text-[#70a7ff]">05 / KEEP IT FREE</p><h2 className="mt-6 max-w-[850px] text-[clamp(48px,6vw,86px)] font-medium leading-[.87] tracking-[-.08em]">Small tools can solve <span className="text-[#70a7ff]">big annoyances.</span></h2></div><a href="#free-tool-list" className="techcraft-button techcraft-button-primary">Explore the toolkit <ArrowRight size={16} /></a></div></section>
     </main>
