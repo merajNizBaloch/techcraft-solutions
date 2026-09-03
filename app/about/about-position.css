@@ -5,3 +5,46 @@
 .about-page .about-orbit {
   top: 76% !important;
 }
+
+.about-page .about-orbit-core {
+  width: 220px !important;
+  height: 170px !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  animation: about-neural-float 6s ease-in-out infinite;
+}
+
+.about-page .about-orbit-core span {
+  display: none !important;
+}
+
+.about-page .about-orbit-core::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 170'%3E%3Cg fill='none' stroke='%232563ff' stroke-opacity='.42' stroke-width='1'%3E%3Cpath d='M24 42L78 28L112 72L78 124L30 112L24 42M78 28L164 38L188 86L150 126L78 124M112 72L188 86M78 124L30 150M150 126L196 146'/%3E%3Cpath d='M24 42L30 112M78 28L78 124M164 38L150 126' stroke-opacity='.2'/%3E%3C/g%3E%3Cg fill='%232563ff'%3E%3Ccircle cx='24' cy='42' r='4'/%3E%3Ccircle cx='78' cy='28' r='4'/%3E%3Ccircle cx='112' cy='72' r='5'/%3E%3Ccircle cx='78' cy='124' r='4'/%3E%3Ccircle cx='30' cy='112' r='3.5'/%3E%3Ccircle cx='164' cy='38' r='4'/%3E%3Ccircle cx='188' cy='86' r='4.5'/%3E%3Ccircle cx='150' cy='126' r='4'/%3E%3C/g%3E%3Cg fill='%23c83a32'%3E%3Ccircle cx='30' cy='150' r='3'/%3E%3C/g%3E%3Cg fill='%23d7a52a'%3E%3Ccircle cx='196' cy='146' r='3'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: drop-shadow(0 0 12px rgba(37, 99, 255, 0.16));
+}
+
+.about-page .about-orbit-core::after {
+  content: "AI / NEURAL NETWORK";
+  position: absolute;
+  left: 50%;
+  bottom: -18px;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 7px;
+  letter-spacing: .16em;
+  color: rgba(17, 19, 24, .3);
+}
+
+@keyframes about-neural-float {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+  50% { transform: translate(-50%, -50%) translateY(-10px); }
+}
