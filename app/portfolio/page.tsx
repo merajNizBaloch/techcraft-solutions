@@ -1,12 +1,10 @@
 import type { LucideIcon } from "lucide-react";
 import {
-  ArrowRight,
   ArrowUpRight,
   Building2,
   Compass,
   Layers3,
   MapPin,
-  MoveUpRight,
   Ruler,
   Sparkles,
 } from "lucide-react";
@@ -74,9 +72,10 @@ export default function PortfolioPage() {
             <p className="mt-10 max-w-[650px] text-[15px] leading-[1.9] text-black/50">
               Selected client work where strategy, interface design and engineering come together to create a useful digital presence.
             </p>
-            <a href="#rehaan" className="techcraft-button techcraft-button-primary mt-9">
-              View featured work <ArrowRight size={16} />
-            </a>
+            <div className="portfolio-hero-index mt-9">
+              <span>CLIENT PROJECT / 001</span>
+              <span>WEB DESIGN + DEVELOPMENT</span>
+            </div>
           </div>
 
           <div className="portfolio-hero-structure" aria-hidden="true">
@@ -89,8 +88,9 @@ export default function PortfolioPage() {
             <div className="portfolio-building building-b"><i /><i /><i /><i /></div>
             <div className="portfolio-structure-label label-top">CLIENT WORK / SELECTED 01</div>
             <div className="portfolio-structure-label label-bottom">ARCHITECTURE · ENGINEERING · DIGITAL</div>
-            <div className="portfolio-structure-node"><Building2 size={18} /><span>REHAAN &amp; ASSOCIATES</span><small>DIGITAL EXPERIENCE</small></div>
+            <div className="portfolio-structure-node"><Building2 size={18} /><span>REHAAN &amp; ASSOCIATES</span><small>CLIENT WEBSITE</small></div>
             <span className="portfolio-structure-point point-a" /><span className="portfolio-structure-point point-b" /><span className="portfolio-structure-point point-c" />
+            <div className="portfolio-hero-signal"><i /> LIVE CASE STUDY <span>↗</span></div>
           </div>
         </div>
       </section>
@@ -108,6 +108,9 @@ export default function PortfolioPage() {
             <span>CLIENT</span>
             <strong>CIVIL ENGINEERING</strong>
             <small>BALOCHISTAN / PAKISTAN</small>
+            <a href="https://rehanconsultants.com/" target="_blank" rel="noreferrer" className="portfolio-site-link">
+              rehanconsultants.com <ArrowUpRight size={13} />
+            </a>
           </div>
         </div>
 
@@ -143,10 +146,10 @@ export default function PortfolioPage() {
               <div><span>PLATFORM</span><strong>RESPONSIVE WEB EXPERIENCE</strong></div>
             </div>
 
-            <div className="portfolio-project-actions">
-              <a href="#contact" className="techcraft-button techcraft-button-primary">Start a project <ArrowRight size={16} /></a>
-              <a href="/contact" className="techcraft-button">Talk to TechCraft <ArrowUpRight size={16} /></a>
-            </div>
+            <a href="https://rehanconsultants.com/" target="_blank" rel="noreferrer" className="portfolio-live-link">
+              <span>Visit rehanconsultants.com</span>
+              <ArrowUpRight size={16} />
+            </a>
           </div>
         </div>
       </section>
@@ -169,17 +172,6 @@ export default function PortfolioPage() {
               );
             })}
           </div>
-        </div>
-      </section>
-
-      <section className="portfolio-cta border-t border-black/10 bg-[#111318] px-[7vw] py-24 text-white">
-        <div className="portfolio-cta-grid" />
-        <div className="relative z-10 flex flex-col justify-between gap-10 lg:flex-row lg:items-end">
-          <div>
-            <p className="font-mono text-[8px] tracking-[.16em] text-[#70a7ff]">04 / YOUR PROJECT</p>
-            <h2 className="mt-6 max-w-[900px] text-[clamp(50px,6vw,88px)] font-medium leading-[.86] tracking-[-.08em]">Your next project could be the <span className="text-[#70a7ff]">next case study.</span></h2>
-          </div>
-          <a href="/contact" className="techcraft-button techcraft-button-primary">Work with TechCraft <MoveUpRight size={16} /></a>
         </div>
       </section>
     </main>
