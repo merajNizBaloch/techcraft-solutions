@@ -22,6 +22,7 @@ export default function Navbar() {
   const isServices = pathname === "/services";
   const isProducts = pathname === "/products";
   const isFreebies = pathname === "/freebies";
+  const isContact = pathname === "/contact";
 
   useEffect(() => {
     setMobileOpen(false);
@@ -55,13 +56,14 @@ export default function Navbar() {
   );
 
   const isPageLink = (id: string) =>
-    id === "about" || id === "services" || id === "products" || id === "freebies";
+    id === "about" || id === "services" || id === "products" || id === "freebies" || id === "contact";
 
   const isActive = (id: string) =>
     (id === "about" && isAbout) ||
     (id === "services" && isServices) ||
     (id === "products" && isProducts) ||
-    (id === "freebies" && isFreebies);
+    (id === "freebies" && isFreebies) ||
+    (id === "contact" && isContact);
 
   const renderItem = ([label, id]: (typeof sections)[number]) => {
     if (isPageLink(id)) {
@@ -99,7 +101,7 @@ export default function Navbar() {
         </nav>
 
         <div className="site-navbar-actions">
-          <Link href="/#contact" className="site-navbar-cta">
+          <Link href="/contact" className="site-navbar-cta">
             <span>Let's talk</span>
             <ArrowUpRight size={14} />
           </Link>
