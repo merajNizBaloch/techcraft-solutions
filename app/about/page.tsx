@@ -78,7 +78,7 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="about-orbit absolute -right-28 top-[56%] hidden aspect-square w-[46vw] max-w-[690px] -translate-y-1/2 md:block" aria-hidden="true">
+        <div className="about-orbit absolute -right-28 top-[64%] hidden aspect-square w-[46vw] max-w-[690px] -translate-y-1/2 md:block" aria-hidden="true">
           <div className="about-orbit-ring about-orbit-ring-a absolute inset-[4%] rounded-full border border-[#2563ff]/15" />
           <div className="about-orbit-ring about-orbit-ring-b absolute inset-[15%] rotate-45 rounded-[38%] border border-[#2563ff]/20" />
           <div className="about-orbit-ring about-orbit-ring-c absolute inset-[28%] rounded-full border border-[#2563ff]/25" />
