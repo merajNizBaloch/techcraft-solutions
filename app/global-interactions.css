@@ -1,8 +1,9 @@
 /* =========================================================
-   UNIVERSAL DESIGN + DEVELOPMENT CURSOR
-   One interaction layer shared by every route.
+   UNIVERSAL TECHCRAFT INTERACTIONS
+   One interaction language shared by every route.
 ========================================================= */
 
+/* Global design + development cursor layer. */
 .global-network-canvas {
   position: fixed;
   inset: 0;
@@ -14,7 +15,6 @@
   cursor: none;
 }
 
-/* Desktop only: the custom precision cursor replaces the native arrow. */
 @media (hover: hover) and (pointer: fine) {
   html,
   body,
@@ -41,6 +41,54 @@
   z-index: 1;
 }
 
+/* =========================================================
+   GLOBAL BUTTON NORMALIZATION
+   Every CTA / action button uses the same geometry and motion.
+========================================================= */
+
+.techcraft-button,
+.about-button {
+  border-radius: 0 !important;
+}
+
+.techcraft-button:not(.techcraft-button-primary):not(.about-button-dark),
+.about-button:not(.about-button-dark) {
+  transition: color .28s ease, background .28s ease, border-color .28s ease,
+    transform .28s cubic-bezier(.16,1,.3,1), box-shadow .28s ease, padding .28s ease;
+}
+
+/* White / light button: same blue sweep as every other secondary action. */
+.techcraft-button:not(.techcraft-button-primary):hover,
+.techcraft-button:not(.techcraft-button-primary):focus-visible,
+.about-button:not(.about-button-dark):hover,
+.about-button:not(.about-button-dark):focus-visible {
+  color: #111318;
+  border-color: #2563ff;
+  background: linear-gradient(100deg,
+    rgba(255,255,255,.94) 0%,
+    rgba(223,233,255,.96) 42%,
+    rgba(255,255,255,.94) 65%);
+  background-size: 220% 100%;
+  animation: siteSecondaryButtonSweep 1.2s linear infinite;
+  outline: none;
+}
+
+@keyframes siteSecondaryButtonSweep {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+
+/* One consistent keyboard-focus treatment site-wide. */
+.techcraft-button:focus-visible,
+.about-button:focus-visible {
+  outline: 2px solid rgba(37,99,255,.48);
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   GLOBAL RESPONSIVE / MOTION SAFETY
+========================================================= */
+
 @media (hover: none), (pointer: coarse) {
   .global-network-canvas {
     display: none;
@@ -56,5 +104,15 @@
   body,
   body * {
     cursor: auto !important;
+  }
+
+  .techcraft-button,
+  .about-button,
+  .techcraft-button::before,
+  .techcraft-button::after,
+  .about-button::before,
+  .about-button::after {
+    animation: none !important;
+    transition-duration: .001ms !important;
   }
 }
