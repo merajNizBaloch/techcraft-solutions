@@ -263,6 +263,158 @@ body {
 }
 
 /* =========================================================
+   GLOBAL TECHCRAFT BUTTON SYSTEM
+   Reusable across Home, About and future routes.
+========================================================= */
+
+.techcraft-button,
+.about-button {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 13px 20px;
+  border: 1px solid rgba(17,19,24,.11);
+  border-radius: 13px;
+  background: rgba(255,255,255,.58);
+  color: #111318;
+  font: inherit;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .01em;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.95), 0 8px 25px rgba(17,24,39,.045);
+  transition: color .28s ease, background .28s ease, border-color .28s ease, transform .28s cubic-bezier(.16,1,.3,1), box-shadow .28s ease, padding .28s ease;
+}
+
+.techcraft-button > *,
+.about-button > * {
+  position: relative;
+  z-index: 2;
+}
+
+.techcraft-button::before,
+.techcraft-button::after,
+.about-button::before,
+.about-button::after {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  color: #2563ff;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 10px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease, transform .32s cubic-bezier(.16,1,.3,1);
+}
+
+.techcraft-button::before,
+.about-button::before {
+  content: "<";
+  left: 10px;
+  transform: translate(-12px,-50%) scale(.72);
+}
+
+.techcraft-button::after,
+.about-button::after {
+  content: "/>";
+  right: 10px;
+  transform: translate(12px,-50%) scale(.72);
+}
+
+.techcraft-button:hover,
+.techcraft-button:focus-visible,
+.about-button:hover,
+.about-button:focus-visible {
+  transform: translateY(-3px);
+  padding-left: 29px;
+  padding-right: 29px;
+  color: #111318;
+  border-color: rgba(37,99,255,.24);
+  background: linear-gradient(135deg, rgba(255,255,255,.94), rgba(239,244,255,.76));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.98), 0 15px 35px rgba(17,24,39,.1), 0 0 0 1px rgba(37,99,255,.035);
+  outline: none;
+}
+
+.techcraft-button:hover::before,
+.techcraft-button:hover::after,
+.techcraft-button:focus-visible::before,
+.techcraft-button:focus-visible::after,
+.about-button:hover::before,
+.about-button:hover::after,
+.about-button:focus-visible::before,
+.about-button:focus-visible::after {
+  opacity: 1;
+  transform: translate(0,-50%) scale(1);
+  animation: siteNavbarBracketIn .45s ease-out;
+}
+
+.techcraft-button::selection,
+.about-button::selection { background: rgba(37,99,255,.2); }
+
+.techcraft-button-primary,
+.about-button-dark {
+  border-color: #2563ff;
+  background: #111318;
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(17,19,24,.15), inset 0 1px 0 rgba(255,255,255,.12);
+}
+
+.techcraft-button-primary::before,
+.techcraft-button-primary::after,
+.about-button-dark::before,
+.about-button-dark::after {
+  color: #fff;
+}
+
+.techcraft-button-primary:hover,
+.techcraft-button-primary:focus-visible,
+.about-button-dark:hover,
+.about-button-dark:focus-visible {
+  border-color: #2563ff;
+  background: linear-gradient(90deg,#111318,#2563ff,#111318);
+  background-size: 220% 100%;
+  color: #fff;
+  animation: siteButtonSweep 1.25s linear infinite;
+  box-shadow: 0 15px 38px rgba(37,99,255,.2), inset 0 1px 0 rgba(255,255,255,.18);
+}
+
+.techcraft-button-accent,
+.about-button-accent {
+  background: #2563ff;
+  border-color: #2563ff;
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(37,99,255,.2), inset 0 1px 0 rgba(255,255,255,.28);
+}
+
+.techcraft-button-accent::before,
+.techcraft-button-accent::after,
+.about-button-accent::before,
+.about-button-accent::after { color: #fff; }
+
+.techcraft-button-accent:hover,
+.techcraft-button-accent:focus-visible,
+.about-button-accent:hover,
+.about-button-accent:focus-visible {
+  background: linear-gradient(90deg,#2563ff,#4c82ff,#2563ff);
+  background-size: 220% 100%;
+  color: #fff;
+  animation: siteButtonSweep 1.25s linear infinite;
+  border-color: #2563ff;
+  box-shadow: 0 16px 38px rgba(37,99,255,.25), inset 0 1px 0 rgba(255,255,255,.3);
+}
+
+@keyframes siteButtonSweep {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+
+/* =========================================================
    ABOUT PAGE MOTION
    Purposeful entrance, float and hover movement; respects reduced motion.
 ========================================================= */
@@ -342,9 +494,6 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
-.about-page .about-button { transition: transform .3s ease, box-shadow .3s ease, background .3s ease, color .3s ease, border-color .3s ease; }
-.about-page .about-button:hover { transform: translateY(-4px); box-shadow: 0 16px 35px rgba(17,24,39,.1); }
-.about-page .about-button-dark:hover { background: #2563ff; }
 .about-page .about-capability::after {
   content: "";
   position: absolute;
@@ -393,7 +542,10 @@ body {
   .site-navbar-nav button::after,
   .site-navbar-cta,
   .site-navbar-cta::before,
-  .site-navbar-cta::after { animation: none !important; transition: none !important; }
+  .site-navbar-cta::after,
+  .techcraft-button,
+  .techcraft-button::before,
+  .techcraft-button::after { animation: none !important; transition: none !important; }
 }
 
 @media (max-width: 760px) {
@@ -441,4 +593,11 @@ body {
   .site-navbar-mobile-menu button:hover,
   .site-navbar-mobile-menu a.active,
   .site-navbar-mobile-menu button.active { background: rgba(37,99,255,.08); color: #2563ff; }
+
+  .techcraft-button,
+  .about-button {
+    min-height: 46px;
+    width: 100%;
+    justify-content: center;
+  }
 }
