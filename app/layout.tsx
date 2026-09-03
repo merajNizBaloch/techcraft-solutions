@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import NavRouter from "../components/nav-router";
 
 export const metadata: Metadata = {
   title: "TechCraft Solutions",
@@ -14,7 +15,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full antialiased">
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <NavRouter />
+        {children}
+      </body>
     </html>
   );
 }
