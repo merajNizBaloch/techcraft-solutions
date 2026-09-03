@@ -1,92 +1,85 @@
 "use client";
 
-import { useAnimate } from "framer-motion";
+import { motion, useAnimate } from "framer-motion";
+import type { ReactNode } from "react";
 import { useEffect } from "react";
 
-const SELECTORS = [
+const SECTION_SELECTORS = [
   ".techcraft main section:not(.hero)",
   ".about-page > section:not(.about-hero)",
 ];
 
 function getAnimatedTargets(section: Element) {
   const directChildren = Array.from(section.children).filter(
-    (element) => !element.classList.contains("about-grid") && !element.classList.contains("about-scan"),
+    (element) =>
+      !element.classList.contains("about-grid") &&
+      !element.classList.contains("about-scan"),
   );
 
-  const cards = section.querySelectorAll(
-    ".service-card, .project-card, .about-stat, .about-capability, .about-process, .about-principle, .about-side-card, article",
+  const cards = Array.from(
+    section.querySelectorAll<HTMLElement>(
+      ".service-card, .project-card, .about-stat, .about-capability, .about-process, .about-principle, .about-side-card, article",
+    ),
   );
 
-  return Array.from(new Set([...directChildren, ...Array.from(cards)]));
+  return Array.from(new Set([...directChildren, ...cards]));
 }
 
-export default function GlobalScrollMotion() {
+export default function GlobalScrollMotion({ children }: { children: ReactNode }) {
   const [scope, animate] = useAnimate();
 
   useEffect(() => {
     const root = scope.current;
     if (!root) return;
 
-    const sections = SELECTORS.flatMap((selector) =>
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const sections = SECTION_SELECTORS.flatMap((selector) =>
       Array.from(root.querySelectorAll<HTMLElement>(selector)),
     );
 
     if (!sections.length) return;
 
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reducedMotion) return;
-
-    const animatedSections = new Set<Element>();
-
-    const reveal = async (section: Element) => {
-      if (animatedSections.has(section)) return;
-      animatedSections.add(section);
-
-      const targets = getAnimatedTargets(section);
-      if (!targets.length) return;
-
-      await animate(
-        targets,
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          filter: "blur(0px)",
-        },
-        {
-          duration: 0.72,
-          ease: [0.16, 1, 0.3, 1],
-          delay: 0.04,
-          stagger: 0.075,
-        },
-      );
-    };
-
-    const prepare = (section: Element) => {
-      const targets = getAnimatedTargets(section);
-      targets.forEach((target) => {
-        target.setAttribute("data-scroll-motion", "pending");
+    sections.forEach((section) => {
+      getAnimatedTargets(section).forEach((target) => {
+        const element = target as HTMLElement;
+        element.dataset.scrollMotion = "pending";
+        element.style.opacity = "0";
+        element.style.transform = "translate3d(0, 34px, 0) scale(.985)";
+        element.style.filter = "blur(4px)";
+        element.style.willChange = "opacity, transform, filter";
       });
-
-      targets.forEach((target) => {
-        Object.assign((target as HTMLElement).style, {
-          opacity: "0",
-          transform: "translate3d(0, 34px, 0) scale(.985)",
-          filter: "blur(4px)",
-          willChange: "opacity, transform, filter",
-        });
-      });
-    };
-
-    sections.forEach(prepare);
+    });
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            void reveal(entry.target);
-            observer.unobserve(entry.target);
-          }
+          if (!entry.isIntersecting) return;
+
+          const targets = getAnimatedTargets(entry.target);
+
+          void animate(
+            targets,
+            {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              filter: "blur(0px)",
+            },
+            {
+              duration: 0.72,
+              ease: [0.16, 1, 0.3, 1],
+              stagger: 0.075,
+            },
+          ).then(() => {
+            targets.forEach((target) => {
+              const element = target as HTMLElement;
+              element.style.willChange = "auto";
+              element.dataset.scrollMotion = "revealed";
+            });
+          });
+
+          observer.unobserve(entry.target);
         });
       },
       {
@@ -100,5 +93,5 @@ export default function GlobalScrollMotion() {
     return () => observer.disconnect();
   }, [animate, scope]);
 
-  return <div ref={scope} className="global-scroll-motion-root" aria-hidden="true" />;
+  return <motion.div ref={scope} className="global-scroll-motion-root">{children}</motion.div>;
 }
