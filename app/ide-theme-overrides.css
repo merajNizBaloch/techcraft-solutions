@@ -94,14 +94,10 @@ html[data-theme="ide"] .about-button-dark:hover {
   background: #2ea043 !important;
 }
 
-/* Replace white/light surfaces with editor surfaces, without changing dimensions. */
+/* Replace standard white/light surfaces with editor surfaces, without changing dimensions. */
 html[data-theme="ide"] main [class*="bg-white"],
 html[data-theme="ide"] .site-navbar-mobile-menu [class*="bg-white"] {
   background-color: #111827 !important;
-}
-html[data-theme="ide"] main [class*="bg-[#f4f6f8"],
-html[data-theme="ide"] main [class*="bg-[#eef2f6"]] {
-  background-color: #0b1020 !important;
 }
 html[data-theme="ide"] main [class*="border-white"],
 html[data-theme="ide"] .site-navbar-mobile-menu [class*="border-white"] {
