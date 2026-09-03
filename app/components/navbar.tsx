@@ -19,6 +19,7 @@ export default function Navbar() {
   const isHome = pathname === "/";
   const isAbout = pathname === "/about";
   const isServices = pathname === "/services";
+  const isProducts = pathname === "/products";
 
   useEffect(() => {
     setMobileOpen(false);
@@ -60,9 +61,12 @@ export default function Navbar() {
 
         <nav className="site-navbar-nav" aria-label="Primary navigation">
           {sections.map(([label, id]) => {
-            const active = (id === "about" && isAbout) || (id === "services" && isServices);
+            const active =
+              (id === "about" && isAbout) ||
+              (id === "services" && isServices) ||
+              (id === "products" && isProducts);
 
-            if (id === "about" || id === "services") {
+            if (id === "about" || id === "services" || id === "products") {
               return (
                 <Link
                   key={id}
@@ -117,9 +121,12 @@ export default function Navbar() {
         aria-label="Mobile navigation"
       >
         {sections.map(([label, id]) => {
-          const active = (id === "about" && isAbout) || (id === "services" && isServices);
+          const active =
+            (id === "about" && isAbout) ||
+            (id === "services" && isServices) ||
+            (id === "products" && isProducts);
 
-          if (id === "about" || id === "services") {
+          if (id === "about" || id === "services" || id === "products") {
             return (
               <Link
                 key={id}
