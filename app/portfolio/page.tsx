@@ -62,9 +62,10 @@ export default function PortfolioPage() {
         <div className="portfolio-grid" />
         <div className="portfolio-glow portfolio-glow-a" />
         <div className="portfolio-glow portfolio-glow-b" />
-        <div className="relative z-10 grid items-center gap-14 lg:grid-cols-[.9fr_1.1fr]">
+
+        <div className="relative z-10 grid items-center gap-16 lg:grid-cols-[.88fr_1.12fr]">
           <div>
-            <p className="font-mono text-[8px] tracking-[.18em] text-[#2563ff]">01 / PORTFOLIO</p>
+            <p className="font-mono text-[9px] tracking-[.18em] text-black/38">SELECTED CLIENT WORK</p>
             <h1 className="portfolio-title mt-7 max-w-[920px] text-[clamp(68px,10.5vw,150px)] font-medium leading-[.8] tracking-[-.1em]">
               Work that<br />
               <span className="text-[#2563ff]">gets built.</span>
@@ -78,19 +79,41 @@ export default function PortfolioPage() {
             </div>
           </div>
 
-          <div className="portfolio-hero-structure" aria-hidden="true">
-            <div className="portfolio-structure-grid" />
-            <div className="portfolio-structure-frame frame-a" />
-            <div className="portfolio-structure-frame frame-b" />
-            <div className="portfolio-structure-axis axis-a" />
-            <div className="portfolio-structure-axis axis-b" />
-            <div className="portfolio-building building-a"><i /><i /><i /><i /><i /></div>
-            <div className="portfolio-building building-b"><i /><i /><i /><i /></div>
-            <div className="portfolio-structure-label label-top">CLIENT WORK / SELECTED 01</div>
-            <div className="portfolio-structure-label label-bottom">ARCHITECTURE · ENGINEERING · DIGITAL</div>
-            <div className="portfolio-structure-node"><Building2 size={18} /><span>REHAAN &amp; ASSOCIATES</span><small>CLIENT WEBSITE</small></div>
-            <span className="portfolio-structure-point point-a" /><span className="portfolio-structure-point point-b" /><span className="portfolio-structure-point point-c" />
-            <div className="portfolio-hero-signal"><i /> LIVE CASE STUDY <span>↗</span></div>
+          <div className="portfolio-hero-orbit" aria-hidden="true">
+            <div className="portfolio-orbit-field" />
+            <div className="portfolio-orbit-ring orbit-ring-a" />
+            <div className="portfolio-orbit-ring orbit-ring-b" />
+            <div className="portfolio-orbit-ring orbit-ring-c" />
+            <div className="portfolio-orbit-path path-a" />
+            <div className="portfolio-orbit-path path-b" />
+            <div className="portfolio-orbit-path path-c" />
+
+            <div className="portfolio-hero-project">
+              <div className="hero-project-topline">
+                <span>R&amp;A / CIVIL ENGINEERING</span>
+                <i />
+              </div>
+              <div className="hero-project-mast">
+                <div className="mast-core" />
+                <div className="mast-wing wing-left" />
+                <div className="mast-wing wing-right" />
+                <div className="mast-deck" />
+                <div className="mast-windows" />
+              </div>
+              <div className="hero-project-ground" />
+              <div className="hero-project-readout">DIGITAL PRESENCE / ACTIVE</div>
+            </div>
+
+            <span className="portfolio-data-point data-a" />
+            <span className="portfolio-data-point data-b" />
+            <span className="portfolio-data-point data-c" />
+            <span className="portfolio-data-point data-d" />
+            <span className="portfolio-data-packet packet-a" />
+            <span className="portfolio-data-packet packet-b" />
+            <div className="portfolio-hero-label label-a"><span>01</span> STRUCTURE</div>
+            <div className="portfolio-hero-label label-b"><span>02</span> SYSTEM</div>
+            <div className="portfolio-hero-label label-c"><span>03</span> EXPERIENCE</div>
+            <div className="portfolio-hero-pulse"><i /> LIVE PROJECT / REHAAN &amp; ASSOCIATES</div>
           </div>
         </div>
       </section>
@@ -98,7 +121,7 @@ export default function PortfolioPage() {
       <section id="rehaan" className="portfolio-feature border-t border-black/10 bg-white/65 px-[7vw] py-24">
         <div className="mb-14 flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
           <div>
-            <p className="font-mono text-[8px] tracking-[.16em] text-black/35">02 / FEATURED CLIENT WORK</p>
+            <p className="font-mono text-[8px] tracking-[.16em] text-black/35">FEATURED CLIENT WORK</p>
             <h2 className="mt-6 text-[clamp(52px,7vw,96px)] font-medium leading-[.84] tracking-[-.08em]">Rehaan <span className="text-[#2563ff]">&amp; Associates.</span></h2>
             <p className="mt-7 max-w-[680px] text-sm leading-7 text-black/45">
               A website created for a civil engineering firm in Balochistan, combining an architectural visual language with a clear digital presentation of the firm's work and capabilities.
@@ -157,7 +180,7 @@ export default function PortfolioPage() {
       <section className="portfolio-details border-t border-black/10 px-[7vw] py-24">
         <div className="grid gap-14 lg:grid-cols-[.72fr_1.28fr]">
           <div>
-            <p className="font-mono text-[8px] tracking-[.16em] text-[#2563ff]">03 / WHAT WE DID</p>
+            <p className="font-mono text-[8px] tracking-[.16em] text-[#2563ff]">WHAT WE DID</p>
             <h2 className="mt-6 text-[clamp(48px,6vw,84px)] font-medium leading-[.86] tracking-[-.08em]">Design the<br /><span className="text-[#2563ff]">whole experience.</span></h2>
           </div>
           <div className="grid border-t border-black/10 sm:grid-cols-2">
