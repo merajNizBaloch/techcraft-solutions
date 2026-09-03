@@ -13,46 +13,190 @@ html[data-theme="ide"] .portfolio-page {
   --ide-surface: #111827;
   --ide-surface-2: #0f172a;
   --ide-line: rgba(88,166,255,.13);
-  --ide-text: #d7e3f4;
+  --ide-text: #c9d7ea;
   --ide-muted: #8292a8;
   --ide-blue: #58a6ff;
   --ide-cyan: #79c7ff;
   --ide-green: #7ee787;
   --ide-purple: #bc8cff;
+  --ide-yellow: #f2cc60;
+  --ide-orange: #ffa657;
+  --ide-red: #ff7b72;
 }
 
+/* The IDE theme reads like an editor: monospace typography, denser rhythm,
+   and syntax-inspired accents without turning every surface neon. */
+html[data-theme="ide"] body,
+html[data-theme="ide"] button,
+html[data-theme="ide"] input,
+html[data-theme="ide"] textarea,
+html[data-theme="ide"] select,
+html[data-theme="ide"] .site-navbar,
+html[data-theme="ide"] main {
+  font-family: "JetBrains Mono", "Fira Code", "Cascadia Code", "SFMono-Regular", Consolas, "Liberation Mono", monospace !important;
+}
+
+html[data-theme="ide"] .site-navbar,
+html[data-theme="ide"] .site-navbar-mobile-menu {
+  background: rgba(11,16,32,.94) !important;
+  border-color: rgba(88,166,255,.16) !important;
+  box-shadow: 0 18px 55px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.025) !important;
+}
+
+html[data-theme="ide"] .site-navbar-home,
+html[data-theme="ide"] .site-navbar-nav a,
+html[data-theme="ide"] .site-navbar-nav button,
+html[data-theme="ide"] .site-navbar-mobile-toggle {
+  color: #9eabc0 !important;
+}
+
+html[data-theme="ide"] .site-navbar-nav a:hover,
+html[data-theme="ide"] .site-navbar-nav button:hover,
+html[data-theme="ide"] .site-navbar-nav a:focus-visible,
+html[data-theme="ide"] .site-navbar-nav button:focus-visible,
+html[data-theme="ide"] .site-navbar-nav a.active {
+  color: #d7e3f4 !important;
+  background: rgba(88,166,255,.075) !important;
+  box-shadow: inset 0 -1px 0 rgba(88,166,255,.3) !important;
+}
+
+html[data-theme="ide"] .site-navbar-nav a:nth-child(1) { color: #bc8cff !important; }
+html[data-theme="ide"] .site-navbar-nav a:nth-child(2) { color: #79c7ff !important; }
+html[data-theme="ide"] .site-navbar-nav a:nth-child(3) { color: #7ee787 !important; }
+html[data-theme="ide"] .site-navbar-nav a:nth-child(4) { color: #f2cc60 !important; }
+html[data-theme="ide"] .site-navbar-nav a:nth-child(5) { color: #ffa657 !important; }
+html[data-theme="ide"] .site-navbar-nav a:nth-child(6) { color: #58a6ff !important; }
+
+html[data-theme="ide"] .site-navbar-symbol {
+  border-color: #9eabc0 !important;
+}
+html[data-theme="ide"] .site-navbar-symbol span {
+  border-color: #58a6ff !important;
+}
 html[data-theme="ide"] .site-navbar-symbol span:nth-child(3) {
   background: var(--ide-cyan) !important;
 }
+html[data-theme="ide"] .site-navbar-name span {
+  color: var(--ide-blue) !important;
+}
 
+/* Keep the green CTA — it is the strongest editor-like action accent. */
 html[data-theme="ide"] .site-navbar-cta,
 html[data-theme="ide"] .techcraft-button-primary,
 html[data-theme="ide"] .about-button-dark {
-  background: #1769aa !important;
-  border-color: #58a6ff !important;
-  color: #f0f6fc !important;
-  box-shadow: 0 8px 24px rgba(18,101,163,.22) !important;
+  background: #238636 !important;
+  border-color: #3fb950 !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 24px rgba(35,134,54,.2) !important;
 }
 
 html[data-theme="ide"] .site-navbar-cta:hover,
 html[data-theme="ide"] .techcraft-button-primary:hover,
 html[data-theme="ide"] .about-button-dark:hover {
-  background: #1f7bc2 !important;
+  background: #2ea043 !important;
+}
+
+/* Darken formerly-white UI so text and controls have a true editor surface. */
+html[data-theme="ide"] main [class*="bg-white"],
+html[data-theme="ide"] main [class*="bg-[#ffffff]"],
+html[data-theme="ide"] .site-navbar-mobile-menu [class*="bg-white"] {
+  background-color: #111827 !important;
+}
+
+html[data-theme="ide"] main [class*="border-white"],
+html[data-theme="ide"] .site-navbar-mobile-menu [class*="border-white"] {
+  border-color: rgba(88,166,255,.12) !important;
 }
 
 html[data-theme="ide"] .site-theme-switcher {
   color: var(--ide-cyan) !important;
   background: #0f172a !important;
   border-color: rgba(88,166,255,.26) !important;
+  font-family: inherit !important;
 }
 
 html[data-theme="ide"] .site-theme-switcher i b {
   background: var(--ide-blue) !important;
 }
 
-html[data-theme="ide"] .site-navbar-name span,
+/* Syntax-inspired text hierarchy. */
+html[data-theme="ide"] main h1,
+html[data-theme="ide"] main h2 {
+  color: #79c7ff !important;
+  letter-spacing: -.025em;
+}
+html[data-theme="ide"] main h3,
+html[data-theme="ide"] main h4 {
+  color: #bc8cff !important;
+}
+html[data-theme="ide"] main p,
+html[data-theme="ide"] main li,
+html[data-theme="ide"] main label,
+html[data-theme="ide"] main small,
+html[data-theme="ide"] main [class*="text-black"] {
+  color: #8fa0b5 !important;
+}
 html[data-theme="ide"] main [class*="text-[#2563ff]"] {
-  color: var(--ide-blue) !important;
+  color: #58a6ff !important;
+}
+html[data-theme="ide"] main a:not(.site-navbar-nav a) {
+  color: #58a6ff;
+}
+html[data-theme="ide"] main strong,
+html[data-theme="ide"] main b {
+  color: #7ee787;
+}
+html[data-theme="ide"] main code,
+html[data-theme="ide"] main pre,
+html[data-theme="ide"] main kbd {
+  color: #7ee787 !important;
+  font-family: inherit !important;
+}
+html[data-theme="ide"] main em,
+html[data-theme="ide"] main blockquote {
+  color: #ffa657 !important;
+}
+
+html[data-theme="ide"] main section,
+html[data-theme="ide"] main article {
+  border-color: rgba(88,166,255,.12) !important;
+}
+
+html[data-theme="ide"] main,
+html[data-theme="ide"] .techcraft,
+html[data-theme="ide"] .about-page,
+html[data-theme="ide"] .services-page,
+html[data-theme="ide"] .products-page,
+html[data-theme="ide"] .freebies-page,
+html[data-theme="ide"] .contact-page,
+html[data-theme="ide"] .portfolio-page {
+  background-color: #0b1020 !important;
+  color: #c9d7ea !important;
+}
+
+html[data-theme="ide"] main [class*="bg-[#f4f6f8"]] { background-color: #0b1020 !important; }
+html[data-theme="ide"] main [class*="bg-[#eef2f6"]] { background-color: #0f1726 !important; }
+
+html[data-theme="ide"] .techcraft-button,
+html[data-theme="ide"] .about-button,
+html[data-theme="ide"] .portfolio-live-link,
+html[data-theme="ide"] .portfolio-site-link {
+  color: #c9d7ea !important;
+  background: #111827 !important;
+  border-color: rgba(88,166,255,.22) !important;
+  border-radius: 8px;
+}
+
+html[data-theme="ide"] .portfolio-project-shell,
+html[data-theme="ide"] .portfolio-client-meta,
+html[data-theme="ide"] .portfolio-detail-card {
+  background-color: #111827 !important;
+  border-color: rgba(88,166,255,.13) !important;
+}
+
+html[data-theme="ide"] .portfolio-project-visual,
+html[data-theme="ide"] .portfolio-website-preview {
+  box-shadow: inset 0 0 0 1px rgba(88,166,255,.08);
 }
 
 html[data-theme="ide"] .portfolio-vision,
@@ -65,13 +209,8 @@ html[data-theme="ide"] .contact-page {
   position: relative;
 }
 
-html[data-theme="ide"] .ide-binary-background {
-  display: block;
-}
-
-html:not([data-theme="ide"]) .ide-binary-background {
-  display: none;
-}
+html[data-theme="ide"] .ide-binary-background { display: block; }
+html:not([data-theme="ide"]) .ide-binary-background { display: none; }
 
 .ide-binary-background {
   position: fixed;
