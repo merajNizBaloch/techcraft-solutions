@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "./global-interactions.css";
 import "./theme.css";
+import "./dark-theme-overrides.css";
 import "./ide-theme-overrides.css";
 import "./about/about-position.css";
 import "./products/products.css";
