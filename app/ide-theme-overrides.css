@@ -30,7 +30,7 @@ html[data-theme="ide"] body {
   --ide-red: #ff7b72;
 }
 
-/* Remove the navbar's light/white highlight completely in IDE mode. */
+/* Navbar: editor surface only, with no light/white gradient or highlight. */
 html[data-theme="ide"] .site-navbar {
   background: #0d1424 !important;
   border-color: rgba(88,166,255,.16) !important;
@@ -40,23 +40,20 @@ html[data-theme="ide"] .site-navbar::before,
 html[data-theme="ide"] .site-navbar::after {
   background: none !important;
   opacity: 0 !important;
+  box-shadow: none !important;
 }
-
 html[data-theme="ide"] .site-navbar-home,
 html[data-theme="ide"] .site-navbar-nav a,
 html[data-theme="ide"] .site-navbar-nav button,
 html[data-theme="ide"] .site-navbar-mobile-toggle {
   color: #9eabc0 !important;
 }
-
-/* Editor-like syntax colors for navigation. */
 html[data-theme="ide"] .site-navbar-nav a:nth-child(1) { color: #bc8cff !important; }
 html[data-theme="ide"] .site-navbar-nav a:nth-child(2) { color: #79c7ff !important; }
 html[data-theme="ide"] .site-navbar-nav a:nth-child(3) { color: #7ee787 !important; }
 html[data-theme="ide"] .site-navbar-nav a:nth-child(4) { color: #f2cc60 !important; }
 html[data-theme="ide"] .site-navbar-nav a:nth-child(5) { color: #ffa657 !important; }
 html[data-theme="ide"] .site-navbar-nav a:nth-child(6) { color: #58a6ff !important; }
-
 html[data-theme="ide"] .site-navbar-nav a:hover,
 html[data-theme="ide"] .site-navbar-nav button:hover,
 html[data-theme="ide"] .site-navbar-nav a:focus-visible,
@@ -65,19 +62,10 @@ html[data-theme="ide"] .site-navbar-nav a.active {
   color: #d7e3f4 !important;
   background: rgba(88,166,255,.075) !important;
 }
-
-html[data-theme="ide"] .site-navbar-symbol {
-  border-color: #9eabc0 !important;
-}
-html[data-theme="ide"] .site-navbar-symbol span {
-  border-color: #58a6ff !important;
-}
-html[data-theme="ide"] .site-navbar-symbol span:nth-child(3) {
-  background: #79c7ff !important;
-}
-html[data-theme="ide"] .site-navbar-name span {
-  color: #58a6ff !important;
-}
+html[data-theme="ide"] .site-navbar-symbol { border-color: #9eabc0 !important; }
+html[data-theme="ide"] .site-navbar-symbol span { border-color: #58a6ff !important; }
+html[data-theme="ide"] .site-navbar-symbol span:nth-child(3) { background: #79c7ff !important; }
+html[data-theme="ide"] .site-navbar-name span { color: #58a6ff !important; }
 
 /* Keep the green CTA exactly as the IDE action color. */
 html[data-theme="ide"] .site-navbar-cta,
@@ -90,11 +78,9 @@ html[data-theme="ide"] .about-button-dark {
 }
 html[data-theme="ide"] .site-navbar-cta:hover,
 html[data-theme="ide"] .techcraft-button-primary:hover,
-html[data-theme="ide"] .about-button-dark:hover {
-  background: #2ea043 !important;
-}
+html[data-theme="ide"] .about-button-dark:hover { background: #2ea043 !important; }
 
-/* Replace standard white/light surfaces with editor surfaces, without changing dimensions. */
+/* Replace light surfaces with editor surfaces; dimensions remain untouched. */
 html[data-theme="ide"] main [class*="bg-white"],
 html[data-theme="ide"] .site-navbar-mobile-menu [class*="bg-white"] {
   background-color: #111827 !important;
@@ -103,15 +89,11 @@ html[data-theme="ide"] main [class*="border-white"],
 html[data-theme="ide"] .site-navbar-mobile-menu [class*="border-white"] {
   border-color: rgba(88,166,255,.12) !important;
 }
-
-/* Neutralize white text utilities that otherwise leak the light theme into IDE mode. */
 html[data-theme="ide"] main [class*="text-white"],
 html[data-theme="ide"] .site-navbar-mobile-menu [class*="text-white"] {
   color: #c9d7ea !important;
 }
-html[data-theme="ide"] main [class*="text-black"] {
-  color: #8fa0b5 !important;
-}
+html[data-theme="ide"] main [class*="text-black"] { color: #8fa0b5 !important; }
 
 html[data-theme="ide"] .site-theme-switcher {
   color: #79c7ff !important;
@@ -119,36 +101,22 @@ html[data-theme="ide"] .site-theme-switcher {
   border-color: rgba(88,166,255,.26) !important;
   font-family: inherit !important;
 }
-html[data-theme="ide"] .site-theme-switcher i b {
-  background: #58a6ff !important;
-}
+html[data-theme="ide"] .site-theme-switcher i b { background: #58a6ff !important; }
 
 /* Syntax-colored typography. Only colors and font family change. */
 html[data-theme="ide"] main h1,
-html[data-theme="ide"] main h2 {
-  color: #79c7ff !important;
-}
+html[data-theme="ide"] main h2 { color: #79c7ff !important; }
 html[data-theme="ide"] main h3,
-html[data-theme="ide"] main h4 {
-  color: #bc8cff !important;
-}
+html[data-theme="ide"] main h4 { color: #bc8cff !important; }
 html[data-theme="ide"] main h5,
-html[data-theme="ide"] main h6 {
-  color: #f2cc60 !important;
-}
+html[data-theme="ide"] main h6 { color: #f2cc60 !important; }
 html[data-theme="ide"] main p,
 html[data-theme="ide"] main li,
 html[data-theme="ide"] main label,
-html[data-theme="ide"] main small {
-  color: #8fa0b5 !important;
-}
-html[data-theme="ide"] main a:not(.site-navbar-nav a) {
-  color: #58a6ff;
-}
+html[data-theme="ide"] main small { color: #8fa0b5 !important; }
+html[data-theme="ide"] main a:not(.site-navbar-nav a) { color: #58a6ff; }
 html[data-theme="ide"] main strong,
-html[data-theme="ide"] main b {
-  color: #7ee787;
-}
+html[data-theme="ide"] main b { color: #7ee787; }
 html[data-theme="ide"] main code,
 html[data-theme="ide"] main pre,
 html[data-theme="ide"] main kbd {
@@ -156,15 +124,9 @@ html[data-theme="ide"] main kbd {
   font-family: inherit !important;
 }
 html[data-theme="ide"] main em,
-html[data-theme="ide"] main blockquote {
-  color: #ffa657 !important;
-}
-
+html[data-theme="ide"] main blockquote { color: #ffa657 !important; }
 html[data-theme="ide"] main section,
-html[data-theme="ide"] main article {
-  border-color: rgba(88,166,255,.12) !important;
-}
-
+html[data-theme="ide"] main article { border-color: rgba(88,166,255,.12) !important; }
 html[data-theme="ide"] main,
 html[data-theme="ide"] .techcraft,
 html[data-theme="ide"] .about-page,
@@ -177,6 +139,64 @@ html[data-theme="ide"] .portfolio-page {
   color: #c9d7ea !important;
 }
 
+/* Animated hero/feature visuals: eliminate their light/white gradients in IDE mode. */
+html[data-theme="ide"] .portfolio-vision,
+html[data-theme="ide"] .contact-satellite-network,
+html[data-theme="ide"] .contact-connection,
+html[data-theme="ide"] .freebies-hero-machine {
+  background: #0f1726 !important;
+  border-color: rgba(88,166,255,.14) !important;
+}
+html[data-theme="ide"] .portfolio-vision::before,
+html[data-theme="ide"] .contact-satellite-network::before,
+html[data-theme="ide"] .contact-satellite-network::after,
+html[data-theme="ide"] .contact-connection::before,
+html[data-theme="ide"] .contact-connection::after,
+html[data-theme="ide"] .freebies-hero-machine::before,
+html[data-theme="ide"] .freebies-hero-machine::after {
+  opacity: .55;
+}
+
+/* Animated node/status cards must not retain white translucent backgrounds. */
+html[data-theme="ide"] .vision-node,
+html[data-theme="ide"] .contact-network-node,
+html[data-theme="ide"] .contact-connection-core,
+html[data-theme="ide"] .contact-satellite-status,
+html[data-theme="ide"] .freebies-machine-node,
+html[data-theme="ide"] .freebies-machine-status {
+  background: #111827 !important;
+  border-color: rgba(88,166,255,.18) !important;
+  color: #c9d7ea !important;
+  box-shadow: 0 18px 45px rgba(0,0,0,.28) !important;
+}
+html[data-theme="ide"] .vision-node small,
+html[data-theme="ide"] .contact-network-node small,
+html[data-theme="ide"] .contact-connection-label,
+html[data-theme="ide"] .contact-network-node,
+html[data-theme="ide"] .freebies-machine-node small,
+html[data-theme="ide"] .freebies-machine-status {
+  color: #8fa0b5 !important;
+}
+html[data-theme="ide"] .vision-caption { color: #8292a8 !important; }
+
+/* Satellite body: remove the white hardware gradient while preserving its geometry. */
+html[data-theme="ide"] .satellite-body-core {
+  background: #162238 !important;
+  border-color: rgba(112,167,255,.42) !important;
+  box-shadow: inset 0 0 0 3px rgba(37,99,255,.12) !important;
+}
+html[data-theme="ide"] .satellite-dish { background: #1b2a42 !important; }
+html[data-theme="ide"] .satellite-panel {
+  background: repeating-linear-gradient(90deg,#254e7d 0 7px,#79a9dc 7px 8px),repeating-linear-gradient(0deg,rgba(121,199,255,.08) 0 7px,transparent 7px 8px) !important;
+}
+
+/* Freebies machine status should read as a dark editor diagnostic, not a white label. */
+html[data-theme="ide"] .freebies-machine-status,
+html[data-theme="ide"] .contact-satellite-status {
+  color: #8fa0b5 !important;
+}
+
+/* Project shells/readability against dark surfaces. */
 html[data-theme="ide"] .techcraft-button,
 html[data-theme="ide"] .about-button,
 html[data-theme="ide"] .portfolio-live-link,
@@ -185,23 +205,22 @@ html[data-theme="ide"] .portfolio-site-link {
   background: #111827 !important;
   border-color: rgba(88,166,255,.22) !important;
 }
-
 html[data-theme="ide"] .portfolio-project-shell,
 html[data-theme="ide"] .portfolio-client-meta,
 html[data-theme="ide"] .portfolio-detail-card {
   background-color: #111827 !important;
   border-color: rgba(88,166,255,.13) !important;
 }
-
 html[data-theme="ide"] .portfolio-project-visual,
 html[data-theme="ide"] .portfolio-website-preview {
   box-shadow: inset 0 0 0 1px rgba(88,166,255,.08);
 }
 
+/* Embedded client sites remain untouched; they are intentionally shown as real websites. */
+
 /* Binary ambience stays behind the existing page; no page positioning is changed. */
 html[data-theme="ide"] .ide-binary-background { display: block; }
 html:not([data-theme="ide"]) .ide-binary-background { display: none; }
-
 .ide-binary-background {
   position: fixed;
   inset: 0;
@@ -226,17 +245,14 @@ html:not([data-theme="ide"]) .ide-binary-background { display: none; }
   animation: ideBinaryFloat linear infinite;
   transform: translate3d(0,0,0);
 }
-
 @keyframes ideBinaryFloat {
-  0%, 100% { transform: translate3d(-6px,0,0); }
+  0%,100% { transform: translate3d(-6px,0,0); }
   50% { transform: translate3d(8px,-10px,0); }
 }
-
-@media (max-width: 640px) {
-  .ide-binary-background { font-size: 8px; }
-  .ide-binary-background span { letter-spacing: .12em; }
+@media (max-width:640px) {
+  .ide-binary-background { font-size:8px; }
+  .ide-binary-background span { letter-spacing:.12em; }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .ide-binary-background span { animation: none !important; }
+@media (prefers-reduced-motion:reduce) {
+  .ide-binary-background span { animation:none !important; }
 }
