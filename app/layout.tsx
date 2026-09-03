@@ -10,6 +10,7 @@ import "./freebies/freebie-factory.css";
 import "./freebies/freebies-hero-unique.css";
 import "./contact/contact.css";
 import "./contact/satellite.css";
+import "./portfolio/portfolio.css";
 import Navbar from "./components/navbar";
 import GlobalMouseEffect from "./components/global-mouse-effect";
 import GlobalScrollMotion from "./components/global-scroll-motion";
