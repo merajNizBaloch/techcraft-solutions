@@ -6,7 +6,6 @@ import {
   Check,
   Code2,
   Compass,
-  Cpu,
   Layers3,
   Palette,
   Sparkles,
@@ -203,7 +202,7 @@ export default function AboutPage() {
           </div>
           <div className="mt-14 border-t border-black/10">
             {principles.map(([number, title, description], index) => (
-              <div key={number} className={`about-principle about-stagger-${index + 1} grid min-h-[145px] items-center gap-6 border-b border-black/10 py-7 sm:grid-cols-[55px_1fr_1.3fr]`}>
+              <div key={number} className={`about-principle about-stagger-${index + 1} group grid min-h-[145px] items-center gap-6 border-b border-black/10 py-7 sm:grid-cols-[55px_1fr_1.3fr]`}>
                 <span className="font-mono text-[8px] text-[#2563ff]">{number}</span>
                 <h3 className="text-[28px] font-medium tracking-[-.05em] transition-transform duration-500 group-hover:translate-x-2">{title}</h3>
                 <p className="text-xs leading-7 text-black/45">{description}</p>
@@ -225,7 +224,7 @@ export default function AboutPage() {
           <div className="about-location-card border border-black/10 bg-white/70 p-6 backdrop-blur-sm">
             <div className="font-mono text-[8px] tracking-[.16em] text-black/35">ORIGIN</div>
             <div className="mt-3 text-[22px] font-medium tracking-[-.04em]">Balochistan / Pakistan</div>
-            <div className="mt-5 flex items-center gap-2 text-[9px] text-black/40"><span className="h-1.5 w-1.5 rounded-full bg-[#2563ff] animate-pulse" /> Building beyond borders</div>
+            <div className="mt-5 flex items-center gap-2 text-[9px] text-black/40"><span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#2563ff]" /> Building beyond borders</div>
           </div>
         </div>
       </section>
