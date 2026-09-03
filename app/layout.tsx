@@ -4,6 +4,7 @@ import "./global-interactions.css";
 import "./about/about-position.css";
 import Navbar from "./components/navbar";
 import GlobalMouseEffect from "./components/global-mouse-effect";
+import GlobalScrollMotion from "./components/global-scroll-motion";
 
 export const metadata: Metadata = {
   title: "TechCraft Solutions",
@@ -21,7 +22,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <Navbar />
         <GlobalMouseEffect />
-        {children}
+        <GlobalScrollMotion>{children}</GlobalScrollMotion>
       </body>
     </html>
   );
