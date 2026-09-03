@@ -36,7 +36,8 @@
 }
 
 .techcraft,
-.about-page {
+.about-page,
+.services-page {
   position: relative;
   z-index: 1;
 }
@@ -71,7 +72,8 @@
 }
 
 .techcraft main section:not(.hero),
-.about-page > section:not(.about-hero) {
+.about-page > section:not(.about-hero),
+.services-page > section:not(:first-child) {
   position: relative;
   transform: translate3d(0, var(--scroll-shift, 0px), 0)
     scale(var(--scroll-scale, 1))
@@ -81,7 +83,8 @@
 }
 
 .techcraft main section:not(.hero)::after,
-.about-page > section:not(.about-hero)::after {
+.about-page > section:not(.about-hero)::after,
+.services-page > section:not(:first-child)::after {
   content: "";
   position: absolute;
   inset: 8% 12%;
@@ -96,6 +99,8 @@
 
 .techcraft .service-card,
 .techcraft .project-card,
+.services-page .service-detail-card,
+.services-page .service-process,
 .about-page .about-stat,
 .about-page .about-capability,
 .about-page .about-process,
@@ -109,14 +114,18 @@
 .techcraft main section:not(.hero):nth-of-type(odd) .service-card,
 .techcraft main section:not(.hero):nth-of-type(odd) .project-card,
 .about-page > section:not(.about-hero):nth-of-type(odd) .about-capability,
-.about-page > section:not(.about-hero):nth-of-type(odd) .about-process {
+.about-page > section:not(.about-hero):nth-of-type(odd) .about-process,
+.services-page > section:not(:first-child):nth-of-type(odd) .service-detail-card,
+.services-page > section:not(:first-child):nth-of-type(odd) .service-process {
   --card-scroll-shift: calc(var(--scroll-shift, 0px) * .32);
 }
 
 .techcraft main section:not(.hero):nth-of-type(even) .service-card,
 .techcraft main section:not(.hero):nth-of-type(even) .project-card,
 .about-page > section:not(.about-hero):nth-of-type(even) .about-capability,
-.about-page > section:not(.about-hero):nth-of-type(even) .about-process {
+.about-page > section:not(.about-hero):nth-of-type(even) .about-process,
+.services-page > section:not(:first-child):nth-of-type(even) .service-detail-card,
+.services-page > section:not(:first-child):nth-of-type(even) .service-process {
   --card-scroll-shift: calc(var(--scroll-shift, 0px) * -.22);
 }
 
@@ -189,7 +198,8 @@
   .about-button::before,
   .about-button::after,
   .techcraft main section:not(.hero),
-  .about-page > section:not(.about-hero) {
+  .about-page > section:not(.about-hero),
+  .services-page > section:not(:first-child) {
     animation: none !important;
     transition-duration: .001ms !important;
     transform: none !important;
