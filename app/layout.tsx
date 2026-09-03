@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "./global-interactions.css";
 import "./theme.css";
+import "./ide-theme-overrides.css";
 import "./about/about-position.css";
 import "./products/products.css";
 import "./products-home.css";
@@ -19,6 +20,7 @@ import Navbar from "./components/navbar";
 import GlobalMouseEffect from "./components/global-mouse-effect";
 import GlobalScrollMotion from "./components/global-scroll-motion";
 import HomeProductsReplacement from "./components/home-products-replacement";
+import IdeBinaryBackground from "./components/ide-binary-background";
 
 export const metadata: Metadata = {
   title: "TechCraft Solutions",
@@ -34,6 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full antialiased">
       <body className="min-h-full flex flex-col">
+        <IdeBinaryBackground />
         <Navbar />
         <GlobalMouseEffect />
         <GlobalScrollMotion>
