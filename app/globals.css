@@ -33,3 +33,105 @@ body {
   right: 0;
   z-index: 100;
 }
+
+/* Keep the About navbar interaction language identical to the homepage. */
+.about-page nav a {
+  position: relative;
+  overflow: hidden;
+  transition:
+    color .25s ease,
+    background .25s ease,
+    transform .25s ease,
+    padding .25s ease;
+}
+
+.about-page nav a::before {
+  content: "<";
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  transform: translate(-12px,-50%) scale(.7);
+  color: #2563ff;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 11px;
+  font-weight: 500;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity .18s ease,
+    transform .28s cubic-bezier(.16,1,.3,1);
+}
+
+.about-page nav a::after {
+  content: "/>";
+  position: absolute;
+  right: 7px;
+  top: 50%;
+  transform: translate(12px,-50%) scale(.7);
+  color: #2563ff;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 10px;
+  font-weight: 500;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity .18s ease,
+    transform .28s cubic-bezier(.16,1,.3,1);
+}
+
+.about-page nav a:hover {
+  color: #111318;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.78),
+      rgba(255,255,255,.34)
+    );
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.95),
+    inset 0 -1px 0 rgba(37,99,255,.12),
+    0 5px 18px rgba(17,24,39,.06);
+  transform: translateY(-1px);
+  padding-left: 25px;
+  padding-right: 25px;
+  background-image:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(37,99,255,.04) 45%,
+      transparent 100%
+    );
+  background-size: 200% 100%;
+  animation: aboutNavCodeSweep 1.2s linear infinite;
+}
+
+.about-page nav a:hover::before,
+.about-page nav a:hover::after {
+  opacity: 1;
+  transform: translate(0,-50%) scale(1);
+  animation: aboutNavBracketIn .45s ease-out;
+}
+
+@keyframes aboutNavBracketIn {
+  0% {
+    opacity: 0;
+    filter: blur(3px);
+  }
+  45% {
+    opacity: .35;
+    filter: blur(1px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes aboutNavCodeSweep {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
