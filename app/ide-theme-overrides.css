@@ -13,7 +13,6 @@ html[data-theme="ide"] main {
   font-family: "JetBrains Mono", "Fira Code", "Cascadia Code", "SFMono-Regular", Consolas, "Liberation Mono", monospace !important;
 }
 
-/* Core IDE palette. */
 html[data-theme="ide"] body {
   --ide-bg: #0b1020;
   --ide-surface: #111827;
@@ -30,7 +29,6 @@ html[data-theme="ide"] body {
   --ide-red: #ff7b72;
 }
 
-/* Navbar: editor surface only, with no light/white gradient or highlight. */
 html[data-theme="ide"] .site-navbar {
   background: #0d1424 !important;
   border-color: rgba(88,166,255,.16) !important;
@@ -45,9 +43,7 @@ html[data-theme="ide"] .site-navbar::after {
 html[data-theme="ide"] .site-navbar-home,
 html[data-theme="ide"] .site-navbar-nav a,
 html[data-theme="ide"] .site-navbar-nav button,
-html[data-theme="ide"] .site-navbar-mobile-toggle {
-  color: #9eabc0 !important;
-}
+html[data-theme="ide"] .site-navbar-mobile-toggle { color: #9eabc0 !important; }
 html[data-theme="ide"] .site-navbar-nav a:nth-child(1) { color: #bc8cff !important; }
 html[data-theme="ide"] .site-navbar-nav a:nth-child(2) { color: #79c7ff !important; }
 html[data-theme="ide"] .site-navbar-nav a:nth-child(3) { color: #7ee787 !important; }
@@ -67,7 +63,6 @@ html[data-theme="ide"] .site-navbar-symbol span { border-color: #58a6ff !importa
 html[data-theme="ide"] .site-navbar-symbol span:nth-child(3) { background: #79c7ff !important; }
 html[data-theme="ide"] .site-navbar-name span { color: #58a6ff !important; }
 
-/* Keep the green CTA exactly as the IDE action color. */
 html[data-theme="ide"] .site-navbar-cta,
 html[data-theme="ide"] .techcraft-button-primary,
 html[data-theme="ide"] .about-button-dark {
@@ -80,19 +75,12 @@ html[data-theme="ide"] .site-navbar-cta:hover,
 html[data-theme="ide"] .techcraft-button-primary:hover,
 html[data-theme="ide"] .about-button-dark:hover { background: #2ea043 !important; }
 
-/* Replace light surfaces with editor surfaces; dimensions remain untouched. */
 html[data-theme="ide"] main [class*="bg-white"],
-html[data-theme="ide"] .site-navbar-mobile-menu [class*="bg-white"] {
-  background-color: #111827 !important;
-}
+html[data-theme="ide"] .site-navbar-mobile-menu [class*="bg-white"] { background-color: #111827 !important; }
 html[data-theme="ide"] main [class*="border-white"],
-html[data-theme="ide"] .site-navbar-mobile-menu [class*="border-white"] {
-  border-color: rgba(88,166,255,.12) !important;
-}
+html[data-theme="ide"] .site-navbar-mobile-menu [class*="border-white"] { border-color: rgba(88,166,255,.12) !important; }
 html[data-theme="ide"] main [class*="text-white"],
-html[data-theme="ide"] .site-navbar-mobile-menu [class*="text-white"] {
-  color: #c9d7ea !important;
-}
+html[data-theme="ide"] .site-navbar-mobile-menu [class*="text-white"] { color: #c9d7ea !important; }
 html[data-theme="ide"] main [class*="text-black"] { color: #8fa0b5 !important; }
 
 html[data-theme="ide"] .site-theme-switcher {
@@ -103,7 +91,6 @@ html[data-theme="ide"] .site-theme-switcher {
 }
 html[data-theme="ide"] .site-theme-switcher i b { background: #58a6ff !important; }
 
-/* Syntax-colored typography. Only colors and font family change. */
 html[data-theme="ide"] main h1,
 html[data-theme="ide"] main h2 { color: #79c7ff !important; }
 html[data-theme="ide"] main h3,
@@ -119,14 +106,12 @@ html[data-theme="ide"] main strong,
 html[data-theme="ide"] main b { color: #7ee787; }
 html[data-theme="ide"] main code,
 html[data-theme="ide"] main pre,
-html[data-theme="ide"] main kbd {
-  color: #7ee787 !important;
-  font-family: inherit !important;
-}
+html[data-theme="ide"] main kbd { color: #7ee787 !important; font-family: inherit !important; }
 html[data-theme="ide"] main em,
 html[data-theme="ide"] main blockquote { color: #ffa657 !important; }
 html[data-theme="ide"] main section,
 html[data-theme="ide"] main article { border-color: rgba(88,166,255,.12) !important; }
+
 html[data-theme="ide"] main,
 html[data-theme="ide"] .techcraft,
 html[data-theme="ide"] .about-page,
@@ -139,25 +124,18 @@ html[data-theme="ide"] .portfolio-page {
   color: #c9d7ea !important;
 }
 
-/* Animated hero/feature visuals: eliminate their light/white gradients in IDE mode. */
+/* Animated hero/feature visuals: remove white/light gradients in IDE mode. */
 html[data-theme="ide"] .portfolio-vision,
 html[data-theme="ide"] .contact-satellite-network,
 html[data-theme="ide"] .contact-connection,
-html[data-theme="ide"] .freebies-hero-machine {
-  background: #0f1726 !important;
-  border-color: rgba(88,166,255,.14) !important;
-}
+html[data-theme="ide"] .freebies-hero-machine { background: #0f1726 !important; border-color: rgba(88,166,255,.14) !important; }
 html[data-theme="ide"] .portfolio-vision::before,
 html[data-theme="ide"] .contact-satellite-network::before,
 html[data-theme="ide"] .contact-satellite-network::after,
 html[data-theme="ide"] .contact-connection::before,
 html[data-theme="ide"] .contact-connection::after,
 html[data-theme="ide"] .freebies-hero-machine::before,
-html[data-theme="ide"] .freebies-hero-machine::after {
-  opacity: .55;
-}
-
-/* Animated node/status cards must not retain white translucent backgrounds. */
+html[data-theme="ide"] .freebies-hero-machine::after { opacity: .55; }
 html[data-theme="ide"] .vision-node,
 html[data-theme="ide"] .contact-network-node,
 html[data-theme="ide"] .contact-connection-core,
@@ -172,87 +150,90 @@ html[data-theme="ide"] .freebies-machine-status {
 html[data-theme="ide"] .vision-node small,
 html[data-theme="ide"] .contact-network-node small,
 html[data-theme="ide"] .contact-connection-label,
-html[data-theme="ide"] .contact-network-node,
 html[data-theme="ide"] .freebies-machine-node small,
-html[data-theme="ide"] .freebies-machine-status {
-  color: #8fa0b5 !important;
-}
+html[data-theme="ide"] .freebies-machine-status { color: #8fa0b5 !important; }
 html[data-theme="ide"] .vision-caption { color: #8292a8 !important; }
-
-/* Satellite body: remove the white hardware gradient while preserving its geometry. */
-html[data-theme="ide"] .satellite-body-core {
-  background: #162238 !important;
-  border-color: rgba(112,167,255,.42) !important;
-  box-shadow: inset 0 0 0 3px rgba(37,99,255,.12) !important;
-}
+html[data-theme="ide"] .satellite-body-core { background: #162238 !important; border-color: rgba(112,167,255,.42) !important; box-shadow: inset 0 0 0 3px rgba(37,99,255,.12) !important; }
 html[data-theme="ide"] .satellite-dish { background: #1b2a42 !important; }
-html[data-theme="ide"] .satellite-panel {
-  background: repeating-linear-gradient(90deg,#254e7d 0 7px,#79a9dc 7px 8px),repeating-linear-gradient(0deg,rgba(121,199,255,.08) 0 7px,transparent 7px 8px) !important;
-}
+html[data-theme="ide"] .satellite-panel { background: repeating-linear-gradient(90deg,#254e7d 0 7px,#79a9dc 7px 8px),repeating-linear-gradient(0deg,rgba(121,199,255,.08) 0 7px,transparent 7px 8px) !important; }
 
-/* Freebies machine status should read as a dark editor diagnostic, not a white label. */
-html[data-theme="ide"] .freebies-machine-status,
-html[data-theme="ide"] .contact-satellite-status {
-  color: #8fa0b5 !important;
+/* Products page: all editor-preview whites become dark IDE surfaces for readable text. */
+html[data-theme="ide"] .products-hero-system .hero-system-node,
+html[data-theme="ide"] .products-hero-system .hero-system-signal,
+html[data-theme="ide"] .product-visual,
+html[data-theme="ide"] .academiq-dashboard,
+html[data-theme="ide"] .academiq-kpis > div,
+html[data-theme="ide"] .academiq-chart,
+html[data-theme="ide"] .academiq-classes,
+html[data-theme="ide"] .product-floating-tag,
+html[data-theme="ide"] .estara-dashboard,
+html[data-theme="ide"] .estara-toolbar div,
+html[data-theme="ide"] .estara-listing-card,
+html[data-theme="ide"] .estara-side-panel {
+  background: #111827 !important;
+  color: #c9d7ea !important;
+  border-color: rgba(88,166,255,.13) !important;
 }
+html[data-theme="ide"] .product-visual-estara { background: #0f172a !important; }
+html[data-theme="ide"] .hero-system-ring.ring-c { border-color: rgba(88,166,255,.14) !important; }
+html[data-theme="ide"] .hero-system-signal,
+html[data-theme="ide"] .product-floating-tag { color: #8fa0b5 !important; border-left-color: rgba(88,166,255,.34) !important; }
+html[data-theme="ide"] .academiq-windowbar,
+html[data-theme="ide"] .estara-header { color: #8fa0b5 !important; border-bottom-color: rgba(88,166,255,.12) !important; }
+html[data-theme="ide"] .academiq-sidebar,
+html[data-theme="ide"] .estara-toolbar { background: #0f172a !important; color: #8292a8 !important; }
+html[data-theme="ide"] .academiq-topline strong,
+html[data-theme="ide"] .academiq-kpis strong,
+html[data-theme="ide"] .class-row,
+html[data-theme="ide"] .estara-toolbar strong,
+html[data-theme="ide"] .property-copy strong,
+html[data-theme="ide"] .property-copy b,
+html[data-theme="ide"] .pipeline-row { color: #d7e3f4 !important; }
+html[data-theme="ide"] .academiq-kpis span,
+html[data-theme="ide"] .academiq-kpis .panel-head,
+html[data-theme="ide"] .panel-head,
+html[data-theme="ide"] .estara-toolbar span,
+html[data-theme="ide"] .property-copy small,
+html[data-theme="ide"] .pipeline-row small,
+html[data-theme="ide"] .class-row small { color: #8292a8 !important; }
+html[data-theme="ide"] .academiq-online { color: #7ee787 !important; }
+html[data-theme="ide"] .hero-system-core,
+html[data-theme="ide"] .academiq-brandmark,
+html[data-theme="ide"] .estara-logo { color: #fff !important; }
+html[data-theme="ide"] .hero-system-core strong,
+html[data-theme="ide"] .hero-system-core small,
+html[data-theme="ide"] .hero-system-core span { color: #c9d7ea !important; }
+html[data-theme="ide"] .property-image { background: linear-gradient(135deg,#162338,#1b293d 60%,#101a2a) !important; }
+html[data-theme="ide"] .building-ground { background: #223047 !important; }
+html[data-theme="ide"] .building-slab { background: #314158 !important; border-color: rgba(88,166,255,.16) !important; }
+html[data-theme="ide"] .estara-tag-a,
+html[data-theme="ide"] .estara-tag-b,
+html[data-theme="ide"] .product-showcase .product-floating-tag { color: #79c7ff !important; }
+html[data-theme="ide"] .estara-side-panel > span,
+html[data-theme="ide"] .property-copy span { color: #f2cc60 !important; }
+html[data-theme="ide"] .hero-system-node small,
+html[data-theme="ide"] .hero-system-node span { color: #8fa0b5 !important; }
+html[data-theme="ide"] .hero-system-node svg,
+html[data-theme="ide"] .academiq-topline span,
+html[data-theme="ide"] .academiq-kpis small { color: #58a6ff !important; }
+html[data-theme="ide"] .pipeline-row i { background: #475569 !important; }
+html[data-theme="ide"] .pipeline-row i.active { background: #f2cc60 !important; box-shadow: 0 0 0 4px rgba(242,204,96,.1) !important; }
 
-/* Project shells/readability against dark surfaces. */
 html[data-theme="ide"] .techcraft-button,
 html[data-theme="ide"] .about-button,
 html[data-theme="ide"] .portfolio-live-link,
-html[data-theme="ide"] .portfolio-site-link {
-  color: #c9d7ea !important;
-  background: #111827 !important;
-  border-color: rgba(88,166,255,.22) !important;
-}
+html[data-theme="ide"] .portfolio-site-link { color: #c9d7ea !important; background: #111827 !important; border-color: rgba(88,166,255,.22) !important; }
 html[data-theme="ide"] .portfolio-project-shell,
 html[data-theme="ide"] .portfolio-client-meta,
-html[data-theme="ide"] .portfolio-detail-card {
-  background-color: #111827 !important;
-  border-color: rgba(88,166,255,.13) !important;
-}
+html[data-theme="ide"] .portfolio-detail-card { background-color: #111827 !important; border-color: rgba(88,166,255,.13) !important; }
 html[data-theme="ide"] .portfolio-project-visual,
-html[data-theme="ide"] .portfolio-website-preview {
-  box-shadow: inset 0 0 0 1px rgba(88,166,255,.08);
-}
+html[data-theme="ide"] .portfolio-website-preview { box-shadow: inset 0 0 0 1px rgba(88,166,255,.08); }
 
-/* Embedded client sites remain untouched; they are intentionally shown as real websites. */
-
-/* Binary ambience stays behind the existing page; no page positioning is changed. */
 html[data-theme="ide"] .ide-binary-background { display: block; }
 html:not([data-theme="ide"]) .ide-binary-background { display: none; }
-.ide-binary-background {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-  pointer-events: none;
-  font: 10px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  color: #58a6ff;
-  user-select: none;
-}
-.ide-binary-background::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 50% 42%, transparent 0 24%, rgba(11,16,32,.28) 58%, rgba(11,16,32,.68) 100%);
-}
-.ide-binary-background span {
-  position: absolute;
-  white-space: nowrap;
-  letter-spacing: .16em;
-  text-shadow: 0 0 14px rgba(88,166,255,.18);
-  animation: ideBinaryFloat linear infinite;
-  transform: translate3d(0,0,0);
-}
-@keyframes ideBinaryFloat {
-  0%,100% { transform: translate3d(-6px,0,0); }
-  50% { transform: translate3d(8px,-10px,0); }
-}
-@media (max-width:640px) {
-  .ide-binary-background { font-size:8px; }
-  .ide-binary-background span { letter-spacing:.12em; }
-}
-@media (prefers-reduced-motion:reduce) {
-  .ide-binary-background span { animation:none !important; }
-}
+.ide-binary-background { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; font: 10px/1 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace; color: #58a6ff; user-select: none; }
+.ide-binary-background::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 50% 42%,transparent 0 24%,rgba(11,16,32,.28) 58%,rgba(11,16,32,.68) 100%); }
+.ide-binary-background span { position: absolute; white-space: nowrap; letter-spacing: .16em; text-shadow: 0 0 14px rgba(88,166,255,.18); animation: ideBinaryFloat linear infinite; transform: translate3d(0,0,0); }
+@keyframes ideBinaryFloat { 0%,100% { transform: translate3d(-6px,0,0); } 50% { transform: translate3d(8px,-10px,0); } }
+@media(max-width:640px){.ide-binary-background{font-size:8px}.ide-binary-background span{letter-spacing:.12em}}
+@media(prefers-reduced-motion:reduce){.ide-binary-background span{animation:none!important}}
