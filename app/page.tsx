@@ -73,27 +73,19 @@ const keyboardItems = [
 const projects = [
   {
     number: "01",
-    category: "DIGITAL EXPERIENCE",
-    title: "Rehaan & Associates",
+    category: "PRODUCT / EDUCATION",
+    title: "Academiq",
     description:
-      "A distinctive digital experience connecting architecture, engineering and modern interaction.",
+      "A school operating system bringing students, teachers, attendance, fees, exams and reporting into one connected digital workspace.",
     mode: "blue",
   },
   {
     number: "02",
-    category: "PRODUCT DESIGN",
-    title: "Field Systems",
+    category: "PRODUCT / DIGITAL PLATFORM",
+    title: "Estara",
     description:
-      "Human-centered interfaces for workflows that happen outside the office.",
+      "A focused digital product built around a clear experience, connected workflows and a foundation designed to evolve with its users.",
     mode: "light",
-  },
-  {
-    number: "03",
-    category: "AI / SOFTWARE",
-    title: "Intelligent Products",
-    description:
-      "Software experiences where automation and intelligence become part of the product.",
-    mode: "dark",
   },
 ];
 
@@ -997,7 +989,7 @@ export default function Home() {
             >
               <span>
                 <Sparkles size={17} />
-                Selected work
+                Products
               </span>
 
               <kbd>02</kbd>
@@ -1363,12 +1355,20 @@ export default function Home() {
       </section>
 
       {/* =====================================================
-          WORK
+          PRODUCTS
       ====================================================== */}
 
-      <section id="work" className="work section">
+      <section id="work" aria-label="Products" className="work products-section section">
 
-  <div className="work-list">
+  <div className="products-heading">
+  <div>
+    <span className="section-kicker">05 / PRODUCTS</span>
+    <h2>We build <span>products</span> too.</h2>
+    <p>Our own digital products are where strategy, design and engineering come together to solve problems we understand deeply.</p>
+  </div>
+</div>
+
+<div className="work-list">
 
           {projects.map((project) => (
             <article
