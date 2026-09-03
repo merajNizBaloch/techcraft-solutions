@@ -7,6 +7,7 @@ import "./products-home.css";
 import "./products-animations.css";
 import "./freebies/freebies.css";
 import "./freebies/freebie-factory.css";
+import "./freebies/freebies-hero-unique.css";
 import "./contact/contact.css";
 import "./contact/satellite.css";
 import Navbar from "./components/navbar";
