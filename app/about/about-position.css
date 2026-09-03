@@ -6,9 +6,10 @@
   top: 76% !important;
 }
 
+/* Neural network lives cleanly inside the first / largest orbit. */
 .about-page .about-orbit-core {
-  width: 220px !important;
-  height: 170px !important;
+  width: 190px !important;
+  height: 138px !important;
   border: 0 !important;
   background: transparent !important;
   box-shadow: none !important;
@@ -23,28 +24,30 @@
 .about-page .about-orbit-core::before {
   content: "";
   position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 170'%3E%3Cg fill='none' stroke='%232563ff' stroke-opacity='.42' stroke-width='1'%3E%3Cpath d='M24 42L78 28L112 72L78 124L30 112L24 42M78 28L164 38L188 86L150 126L78 124M112 72L188 86M78 124L30 150M150 126L196 146'/%3E%3Cpath d='M24 42L30 112M78 28L78 124M164 38L150 126' stroke-opacity='.2'/%3E%3C/g%3E%3Cg fill='%232563ff'%3E%3Ccircle cx='24' cy='42' r='4'/%3E%3Ccircle cx='78' cy='28' r='4'/%3E%3Ccircle cx='112' cy='72' r='5'/%3E%3Ccircle cx='78' cy='124' r='4'/%3E%3Ccircle cx='30' cy='112' r='3.5'/%3E%3Ccircle cx='164' cy='38' r='4'/%3E%3Ccircle cx='188' cy='86' r='4.5'/%3E%3Ccircle cx='150' cy='126' r='4'/%3E%3C/g%3E%3Cg fill='%23c83a32'%3E%3Ccircle cx='30' cy='150' r='3'/%3E%3C/g%3E%3Cg fill='%23d7a52a'%3E%3Ccircle cx='196' cy='146' r='3'/%3E%3C/g%3E%3C/svg%3E");
+  inset: 7px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 176 124'%3E%3Cg fill='none' stroke='%232563ff' stroke-opacity='.48' stroke-width='1'%3E%3Cpath d='M16 61L52 27L88 45L124 23L160 61'/%3E%3Cpath d='M16 61L52 96L88 78L124 100L160 61'/%3E%3Cpath d='M52 27L52 96M88 45L88 78M124 23L124 100' stroke-opacity='.18'/%3E%3Cpath d='M52 27L88 78M52 96L88 45M88 45L124 100M88 78L124 23' stroke-opacity='.3'/%3E%3C/g%3E%3Cg stroke='%23f4f6f8' stroke-width='1.5'%3E%3Ccircle cx='16' cy='61' r='4' fill='%23c83a32'/%3E%3Ccircle cx='52' cy='27' r='3.5' fill='%232563ff'/%3E%3Ccircle cx='52' cy='96' r='3.5' fill='%23d7a52a'/%3E%3Ccircle cx='88' cy='45' r='4' fill='%232563ff'/%3E%3Ccircle cx='88' cy='78' r='4' fill='%232563ff'/%3E%3Ccircle cx='124' cy='23' r='3.5' fill='%23d7a52a'/%3E%3Ccircle cx='124' cy='100' r='3.5' fill='%23c83a32'/%3E%3Ccircle cx='160' cy='61' r='4' fill='%232563ff'/%3E%3C/g%3E%3C/svg%3E");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  filter: drop-shadow(0 0 12px rgba(37, 99, 255, 0.16));
+  filter: drop-shadow(0 0 14px rgba(37, 99, 255, 0.12));
 }
 
 .about-page .about-orbit-core::after {
-  content: "AI / NEURAL NETWORK";
+  content: "";
   position: absolute;
-  left: 50%;
-  bottom: -18px;
-  transform: translateX(-50%);
-  white-space: nowrap;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 7px;
-  letter-spacing: .16em;
-  color: rgba(17, 19, 24, .3);
+  width: 58px;
+  height: 58px;
+  border-radius: 999px;
+  border: 1px solid rgba(37, 99, 255, .12);
+  animation: about-neural-pulse 3.4s ease-in-out infinite;
 }
 
 @keyframes about-neural-float {
   0%, 100% { transform: translate(-50%, -50%) translateY(0); }
-  50% { transform: translate(-50%, -50%) translateY(-10px); }
+  50% { transform: translate(-50%, -50%) translateY(-7px); }
+}
+
+@keyframes about-neural-pulse {
+  0%, 100% { transform: scale(.8); opacity: .32; }
+  50% { transform: scale(1.2); opacity: .08; }
 }
