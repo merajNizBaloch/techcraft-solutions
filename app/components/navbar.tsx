@@ -4,6 +4,7 @@ import { ArrowUpRight, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import ThemeSwitcher from "./theme-switcher";
 
 const sections = [
   ["Services", "services"],
@@ -78,6 +79,8 @@ export default function Navbar() {
         </nav>
 
         <div className="site-navbar-actions">
+          <ThemeSwitcher />
+
           <Link href="/contact" className="site-navbar-cta">
             <span>Let's talk</span>
             <ArrowUpRight size={14} />
@@ -100,6 +103,9 @@ export default function Navbar() {
         aria-label="Mobile navigation"
       >
         {sections.map(renderItem)}
+        <div className="site-navbar-mobile-theme">
+          <ThemeSwitcher />
+        </div>
       </nav>
     </header>
   );
