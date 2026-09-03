@@ -1,6 +1,6 @@
 "use client";
 
-import { useAnimate } from "framer-motion";
+import { motion, useAnimate } from "framer-motion";
 import type { ReactNode } from "react";
 import { useEffect } from "react";
 
@@ -8,6 +8,8 @@ const SECTION_SELECTORS = [
   ".techcraft main section:not(.hero)",
   ".about-page > section:not(.about-hero)",
 ];
+
+const HERO_SELECTORS = [".techcraft .hero", ".about-page .about-hero"];
 
 const TARGET_SELECTOR =
   ".service-card, .project-card, .about-stat, .about-capability, .about-process, .about-principle, .about-side-card";
@@ -24,6 +26,21 @@ function getTargets(section: Element) {
   return Array.from(new Set([...direct, ...cards]));
 }
 
+function setInitialState(targets: Element[]) {
+  targets.forEach((target, index) => {
+    const element = target as HTMLElement;
+    element.dataset.scrollReveal = "pending";
+    element.style.opacity = "0";
+    element.style.transform = index % 3 === 0
+      ? "translate3d(-54px, 18px, 0)"
+      : index % 3 === 1
+        ? "translate3d(0, 54px, 0)"
+        : "translate3d(54px, 18px, 0)";
+    element.style.filter = "blur(5px)";
+    element.style.willChange = "opacity, transform, filter";
+  });
+}
+
 export default function GlobalScrollMotion({ children }: { children: ReactNode }) {
   const [scope, animate] = useAnimate();
 
@@ -34,30 +51,45 @@ export default function GlobalScrollMotion({ children }: { children: ReactNode }
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduced) return;
 
+    const heroes = HERO_SELECTORS.flatMap((selector) =>
+      Array.from(root.querySelectorAll<HTMLElement>(selector)),
+    );
+
     const sections = SECTION_SELECTORS.flatMap((selector) =>
       Array.from(root.querySelectorAll<HTMLElement>(selector)),
     );
 
-    if (!sections.length) return;
-
-    const revealed = new WeakSet<Element>();
-
-    sections.forEach((section) => {
-      const targets = getTargets(section);
-      targets.forEach((target, index) => {
-        const element = target as HTMLElement;
-        element.dataset.scrollReveal = "pending";
-        element.style.opacity = "0";
-        element.style.transform = index % 3 === 0
-          ? "translate3d(-54px, 18px, 0)"
-          : index % 3 === 1
-            ? "translate3d(0, 54px, 0)"
-            : "translate3d(54px, 18px, 0)";
-        element.style.filter = "blur(5px)";
-        element.style.willChange = "opacity, transform, filter";
-      });
+    const heroTargets = heroes.flatMap((hero) => getTargets(hero));
+    heroTargets.forEach((target, index) => {
+      const element = target as HTMLElement;
+      element.style.opacity = "0";
+      element.style.transform = index % 2 === 0
+        ? "translate3d(-32px, 18px, 0)"
+        : "translate3d(32px, 24px, 0)";
+      element.style.filter = "blur(4px)";
+      element.style.willChange = "opacity, transform, filter";
     });
 
+    const heroTimer = window.setTimeout(() => {
+      void animate(
+        heroTargets,
+        { opacity: 1, x: 0, y: 0, filter: "blur(0px)" },
+        {
+          duration: 0.9,
+          ease: [0.16, 1, 0.3, 1],
+          delay: 0.08,
+          stagger: 0.1,
+        },
+      ).then(() => {
+        heroTargets.forEach((target) => {
+          (target as HTMLElement).style.willChange = "auto";
+        });
+      });
+    }, 80);
+
+    sections.forEach((section) => setInitialState(getTargets(section)));
+
+    const revealed = new WeakSet<Element>();
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -68,12 +100,7 @@ export default function GlobalScrollMotion({ children }: { children: ReactNode }
 
           void animate(
             targets,
-            {
-              opacity: 1,
-              x: 0,
-              y: 0,
-              filter: "blur(0px)",
-            },
+            { opacity: 1, x: 0, y: 0, filter: "blur(0px)" },
             {
               duration: 0.78,
               ease: [0.16, 1, 0.3, 1],
@@ -99,13 +126,16 @@ export default function GlobalScrollMotion({ children }: { children: ReactNode }
 
     sections.forEach((section) => observer.observe(section));
 
-    return () => observer.disconnect();
+    return () => {
+      window.clearTimeout(heroTimer);
+      observer.disconnect();
+    };
   }, [animate, scope, children]);
 
   return (
-    <div ref={scope} className="global-scroll-motion-root">
+    <motion.div ref={scope} className="global-scroll-motion-root">
       <div className="global-scroll-progress" aria-hidden="true" />
       {children}
-    </div>
+    </motion.div>
   );
 }
