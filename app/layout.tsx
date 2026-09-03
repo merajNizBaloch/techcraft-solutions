@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import NavRouter from "../components/nav-router";
+import Navbar from "./components/navbar";
 
 export const metadata: Metadata = {
   title: "TechCraft Solutions",
@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full antialiased">
       <body className="min-h-full flex flex-col">
-        <NavRouter />
+        <Navbar />
         {children}
       </body>
     </html>
