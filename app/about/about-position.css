@@ -1,3 +1,7 @@
+.about-page .about-hero {
+  min-height: 100vh !important;
+}
+
 .about-page .about-orbit {
-  top: 50% !important;
+  top: 56% !important;
 }
