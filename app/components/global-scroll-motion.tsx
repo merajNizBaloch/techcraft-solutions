@@ -7,13 +7,13 @@ import { useEffect } from "react";
 const SECTION_SELECTORS = [
   ".techcraft main section:not(.hero)",
   ".about-page > section:not(.about-hero)",
-  ".services-page > section:not(.services-hero)",
+  ".services-page > section:not(:first-child)",
 ];
 
 const HERO_SELECTORS = [
   ".techcraft .hero",
   ".about-page .about-hero",
-  ".services-page .services-hero",
+  ".services-page > section:first-of-type",
 ];
 
 const TARGET_SELECTOR =
