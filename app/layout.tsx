@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "./global-interactions.css";
 import "./about/about-position.css";
+import "./products/products.css";
 import "./products-home.css";
 import Navbar from "./components/navbar";
 import GlobalMouseEffect from "./components/global-mouse-effect";
