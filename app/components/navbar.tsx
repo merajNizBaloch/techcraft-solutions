@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 const sections = [
   ["Services", "services"],
   ["Products", "products"],
+  ["Portfolio", "portfolio"],
   ["Freebies", "freebies"],
   ["About", "about"],
   ["Contact", "contact"],
@@ -17,10 +18,10 @@ export default function Navbar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const isHome = pathname === "/";
   const isAbout = pathname === "/about";
   const isServices = pathname === "/services";
   const isProducts = pathname === "/products";
+  const isPortfolio = pathname === "/portfolio";
   const isFreebies = pathname === "/freebies";
   const isContact = pathname === "/contact";
 
@@ -32,6 +33,7 @@ export default function Navbar() {
     id === "about" ||
     id === "services" ||
     id === "products" ||
+    id === "portfolio" ||
     id === "freebies" ||
     id === "contact";
 
@@ -39,6 +41,7 @@ export default function Navbar() {
     (id === "about" && isAbout) ||
     (id === "services" && isServices) ||
     (id === "products" && isProducts) ||
+    (id === "portfolio" && isPortfolio) ||
     (id === "freebies" && isFreebies) ||
     (id === "contact" && isContact);
 
