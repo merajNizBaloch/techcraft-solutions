@@ -171,6 +171,58 @@
 }
 
 /* =========================================================
+   MOBILE HERO VISUALS
+   Keep the editorial hero graphics visible on phones, but scale and
+   reposition them so they support the copy instead of consuming the viewport.
+========================================================= */
+@media (max-width: 1023px) {
+  .services-page section:first-of-type > div.relative.z-10 > div.relative.mx-auto {
+    display: block !important;
+    width: min(82vw, 430px) !important;
+    max-width: 430px !important;
+    margin-top: 1rem;
+  }
+
+  .services-page section:first-of-type > div.relative.z-10 > div.relative.mx-auto svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .services-page section:first-of-type > div.relative.z-10 {
+    gap: 2rem;
+  }
+
+  .services-page section:first-of-type {
+    min-height: auto;
+    padding-top: 8rem;
+  }
+
+  .about-page .about-orbit {
+    display: block !important;
+    position: relative !important;
+    inset: auto !important;
+    right: auto !important;
+    top: auto !important;
+    width: min(82vw, 440px) !important;
+    max-width: 440px !important;
+    margin: 1rem auto 0 !important;
+    transform: none !important;
+  }
+
+  .about-page .about-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-height: auto !important;
+    padding-top: 8rem;
+  }
+
+  .about-page .about-hero > .relative.z-10 {
+    max-width: 100%;
+  }
+}
+
+/* =========================================================
    GLOBAL RESPONSIVE / MOTION SAFETY
 ========================================================= */
 @media (hover: none), (pointer: coarse) {
