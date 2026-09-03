@@ -67,4 +67,20 @@
 .techcraft .about-button-dark,
 .techcraft-button {
   border-radius: 0 !important;
-} 
+}
+
+/* Secondary About button: white surface with the same blue technical sweep. */
+.about-page .about-button:not(.about-button-dark):hover,
+.about-page .about-button:not(.about-button-dark):focus-visible {
+  color: #111318;
+  border-color: #2563ff;
+  background: linear-gradient(100deg, rgba(255,255,255,.94) 0%, rgba(223,233,255,.96) 42%, rgba(255,255,255,.94) 65%);
+  background-size: 220% 100%;
+  animation: aboutSecondaryButtonSweep 1.2s linear infinite;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.98), 0 15px 35px rgba(37,99,255,.14), 0 0 0 1px rgba(37,99,255,.08);
+}
+
+@keyframes aboutSecondaryButtonSweep {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
