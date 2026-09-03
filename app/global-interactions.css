@@ -1,20 +1,30 @@
 /* =========================================================
-   UNIVERSAL MOUSE EFFECT
+   UNIVERSAL DESIGN + DEVELOPMENT CURSOR
    One interaction layer shared by every route.
 ========================================================= */
 
 .global-network-canvas {
   position: fixed;
   inset: 0;
-  z-index: 0;
+  z-index: 9999;
   width: 100%;
   height: 100%;
   pointer-events: none;
   overflow: hidden;
+  cursor: none;
+}
+
+/* Desktop only: the custom precision cursor replaces the native arrow. */
+@media (hover: hover) and (pointer: fine) {
+  html,
+  body,
+  body * {
+    cursor: none !important;
+  }
 }
 
 /* Home previously owned its own copy. Keep it invisible so there is only
-   one mouse-reactive canvas running across the entire site. */
+   one mouse-reactive system running across the entire site. */
 .techcraft .network-canvas {
   display: none !important;
   visibility: hidden !important;
@@ -22,7 +32,7 @@
 
 /* Keep the site content above the shared interaction layer. */
 .site-navbar-wrap {
-  z-index: 1000;
+  z-index: 10000;
 }
 
 .techcraft,
@@ -31,8 +41,20 @@
   z-index: 1;
 }
 
+@media (hover: none), (pointer: coarse) {
+  .global-network-canvas {
+    display: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .global-network-canvas {
     display: none;
+  }
+
+  html,
+  body,
+  body * {
+    cursor: auto !important;
   }
 }
