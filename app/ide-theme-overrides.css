@@ -96,9 +96,8 @@ html[data-theme="ide"] .about-button-dark:hover {
   background: #2ea043 !important;
 }
 
-/* Darken formerly-white UI so text and controls have a true editor surface. */
+/* Darken formerly-white UI surfaces without relying on Tailwind arbitrary-value selectors. */
 html[data-theme="ide"] main [class*="bg-white"],
-html[data-theme="ide"] main [class*="bg-[#ffffff]"],
 html[data-theme="ide"] .site-navbar-mobile-menu [class*="bg-white"] {
   background-color: #111827 !important;
 }
@@ -136,9 +135,6 @@ html[data-theme="ide"] main small,
 html[data-theme="ide"] main [class*="text-black"] {
   color: #8fa0b5 !important;
 }
-html[data-theme="ide"] main [class*="text-[#2563ff]"] {
-  color: #58a6ff !important;
-}
 html[data-theme="ide"] main a:not(.site-navbar-nav a) {
   color: #58a6ff;
 }
@@ -173,9 +169,6 @@ html[data-theme="ide"] .portfolio-page {
   background-color: #0b1020 !important;
   color: #c9d7ea !important;
 }
-
-html[data-theme="ide"] main [class*="bg-[#f4f6f8"]] { background-color: #0b1020 !important; }
-html[data-theme="ide"] main [class*="bg-[#eef2f6"]] { background-color: #0f1726 !important; }
 
 html[data-theme="ide"] .techcraft-button,
 html[data-theme="ide"] .about-button,
