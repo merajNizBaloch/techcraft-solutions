@@ -1,20 +1,26 @@
-/* IDE palette refinement + ambient binary field. */
+/* IDE MODE ONLY — color and typography overrides. No layout or positioning changes. */
+
+html[data-theme="ide"] {
+  color-scheme: dark;
+}
 
 html[data-theme="ide"] body,
-html[data-theme="ide"] main,
-html[data-theme="ide"] .techcraft,
-html[data-theme="ide"] .about-page,
-html[data-theme="ide"] .services-page,
-html[data-theme="ide"] .products-page,
-html[data-theme="ide"] .freebies-page,
-html[data-theme="ide"] .contact-page,
-html[data-theme="ide"] .portfolio-page {
+html[data-theme="ide"] button,
+html[data-theme="ide"] input,
+html[data-theme="ide"] textarea,
+html[data-theme="ide"] select,
+html[data-theme="ide"] main {
+  font-family: "JetBrains Mono", "Fira Code", "Cascadia Code", "SFMono-Regular", Consolas, "Liberation Mono", monospace !important;
+}
+
+/* Core IDE palette. */
+html[data-theme="ide"] body {
   --ide-bg: #0b1020;
   --ide-surface: #111827;
   --ide-surface-2: #0f172a;
-  --ide-line: rgba(88,166,255,.13);
+  --ide-line: rgba(88,166,255,.14);
   --ide-text: #c9d7ea;
-  --ide-muted: #8292a8;
+  --ide-muted: #8fa0b5;
   --ide-blue: #58a6ff;
   --ide-cyan: #79c7ff;
   --ide-green: #7ee787;
@@ -24,23 +30,16 @@ html[data-theme="ide"] .portfolio-page {
   --ide-red: #ff7b72;
 }
 
-/* The IDE theme reads like an editor: monospace typography, denser rhythm,
-   and syntax-inspired accents without turning every surface neon. */
-html[data-theme="ide"] body,
-html[data-theme="ide"] button,
-html[data-theme="ide"] input,
-html[data-theme="ide"] textarea,
-html[data-theme="ide"] select,
-html[data-theme="ide"] .site-navbar,
-html[data-theme="ide"] main {
-  font-family: "JetBrains Mono", "Fira Code", "Cascadia Code", "SFMono-Regular", Consolas, "Liberation Mono", monospace !important;
-}
-
-html[data-theme="ide"] .site-navbar,
-html[data-theme="ide"] .site-navbar-mobile-menu {
-  background: rgba(11,16,32,.94) !important;
+/* Remove the navbar's light/white highlight completely in IDE mode. */
+html[data-theme="ide"] .site-navbar {
+  background: #0d1424 !important;
   border-color: rgba(88,166,255,.16) !important;
-  box-shadow: 0 18px 55px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.025) !important;
+  box-shadow: 0 18px 55px rgba(0,0,0,.42), inset 0 1px 0 rgba(88,166,255,.025) !important;
+}
+html[data-theme="ide"] .site-navbar::before,
+html[data-theme="ide"] .site-navbar::after {
+  background: none !important;
+  opacity: 0 !important;
 }
 
 html[data-theme="ide"] .site-navbar-home,
@@ -50,6 +49,14 @@ html[data-theme="ide"] .site-navbar-mobile-toggle {
   color: #9eabc0 !important;
 }
 
+/* Editor-like syntax colors for navigation. */
+html[data-theme="ide"] .site-navbar-nav a:nth-child(1) { color: #bc8cff !important; }
+html[data-theme="ide"] .site-navbar-nav a:nth-child(2) { color: #79c7ff !important; }
+html[data-theme="ide"] .site-navbar-nav a:nth-child(3) { color: #7ee787 !important; }
+html[data-theme="ide"] .site-navbar-nav a:nth-child(4) { color: #f2cc60 !important; }
+html[data-theme="ide"] .site-navbar-nav a:nth-child(5) { color: #ffa657 !important; }
+html[data-theme="ide"] .site-navbar-nav a:nth-child(6) { color: #58a6ff !important; }
+
 html[data-theme="ide"] .site-navbar-nav a:hover,
 html[data-theme="ide"] .site-navbar-nav button:hover,
 html[data-theme="ide"] .site-navbar-nav a:focus-visible,
@@ -57,15 +64,7 @@ html[data-theme="ide"] .site-navbar-nav button:focus-visible,
 html[data-theme="ide"] .site-navbar-nav a.active {
   color: #d7e3f4 !important;
   background: rgba(88,166,255,.075) !important;
-  box-shadow: inset 0 -1px 0 rgba(88,166,255,.3) !important;
 }
-
-html[data-theme="ide"] .site-navbar-nav a:nth-child(1) { color: #bc8cff !important; }
-html[data-theme="ide"] .site-navbar-nav a:nth-child(2) { color: #79c7ff !important; }
-html[data-theme="ide"] .site-navbar-nav a:nth-child(3) { color: #7ee787 !important; }
-html[data-theme="ide"] .site-navbar-nav a:nth-child(4) { color: #f2cc60 !important; }
-html[data-theme="ide"] .site-navbar-nav a:nth-child(5) { color: #ffa657 !important; }
-html[data-theme="ide"] .site-navbar-nav a:nth-child(6) { color: #58a6ff !important; }
 
 html[data-theme="ide"] .site-navbar-symbol {
   border-color: #9eabc0 !important;
@@ -74,65 +73,77 @@ html[data-theme="ide"] .site-navbar-symbol span {
   border-color: #58a6ff !important;
 }
 html[data-theme="ide"] .site-navbar-symbol span:nth-child(3) {
-  background: var(--ide-cyan) !important;
+  background: #79c7ff !important;
 }
 html[data-theme="ide"] .site-navbar-name span {
-  color: var(--ide-blue) !important;
+  color: #58a6ff !important;
 }
 
-/* Keep the green CTA — it is the strongest editor-like action accent. */
+/* Keep the green CTA exactly as the IDE action color. */
 html[data-theme="ide"] .site-navbar-cta,
 html[data-theme="ide"] .techcraft-button-primary,
 html[data-theme="ide"] .about-button-dark {
   background: #238636 !important;
   border-color: #3fb950 !important;
-  color: #ffffff !important;
+  color: #fff !important;
   box-shadow: 0 8px 24px rgba(35,134,54,.2) !important;
 }
-
 html[data-theme="ide"] .site-navbar-cta:hover,
 html[data-theme="ide"] .techcraft-button-primary:hover,
 html[data-theme="ide"] .about-button-dark:hover {
   background: #2ea043 !important;
 }
 
-/* Darken formerly-white UI surfaces without relying on Tailwind arbitrary-value selectors. */
+/* Replace white/light surfaces with editor surfaces, without changing dimensions. */
 html[data-theme="ide"] main [class*="bg-white"],
 html[data-theme="ide"] .site-navbar-mobile-menu [class*="bg-white"] {
   background-color: #111827 !important;
 }
-
+html[data-theme="ide"] main [class*="bg-[#f4f6f8"],
+html[data-theme="ide"] main [class*="bg-[#eef2f6"]] {
+  background-color: #0b1020 !important;
+}
 html[data-theme="ide"] main [class*="border-white"],
 html[data-theme="ide"] .site-navbar-mobile-menu [class*="border-white"] {
   border-color: rgba(88,166,255,.12) !important;
 }
 
+/* Neutralize white text utilities that otherwise leak the light theme into IDE mode. */
+html[data-theme="ide"] main [class*="text-white"],
+html[data-theme="ide"] .site-navbar-mobile-menu [class*="text-white"] {
+  color: #c9d7ea !important;
+}
+html[data-theme="ide"] main [class*="text-black"] {
+  color: #8fa0b5 !important;
+}
+
 html[data-theme="ide"] .site-theme-switcher {
-  color: var(--ide-cyan) !important;
+  color: #79c7ff !important;
   background: #0f172a !important;
   border-color: rgba(88,166,255,.26) !important;
   font-family: inherit !important;
 }
-
 html[data-theme="ide"] .site-theme-switcher i b {
-  background: var(--ide-blue) !important;
+  background: #58a6ff !important;
 }
 
-/* Syntax-inspired text hierarchy. */
+/* Syntax-colored typography. Only colors and font family change. */
 html[data-theme="ide"] main h1,
 html[data-theme="ide"] main h2 {
   color: #79c7ff !important;
-  letter-spacing: -.025em;
 }
 html[data-theme="ide"] main h3,
 html[data-theme="ide"] main h4 {
   color: #bc8cff !important;
 }
+html[data-theme="ide"] main h5,
+html[data-theme="ide"] main h6 {
+  color: #f2cc60 !important;
+}
 html[data-theme="ide"] main p,
 html[data-theme="ide"] main li,
 html[data-theme="ide"] main label,
-html[data-theme="ide"] main small,
-html[data-theme="ide"] main [class*="text-black"] {
+html[data-theme="ide"] main small {
   color: #8fa0b5 !important;
 }
 html[data-theme="ide"] main a:not(.site-navbar-nav a) {
@@ -177,7 +188,6 @@ html[data-theme="ide"] .portfolio-site-link {
   color: #c9d7ea !important;
   background: #111827 !important;
   border-color: rgba(88,166,255,.22) !important;
-  border-radius: 8px;
 }
 
 html[data-theme="ide"] .portfolio-project-shell,
@@ -192,16 +202,7 @@ html[data-theme="ide"] .portfolio-website-preview {
   box-shadow: inset 0 0 0 1px rgba(88,166,255,.08);
 }
 
-html[data-theme="ide"] .portfolio-vision,
-html[data-theme="ide"] .portfolio-hero,
-html[data-theme="ide"] .services-page,
-html[data-theme="ide"] .about-page,
-html[data-theme="ide"] .products-page,
-html[data-theme="ide"] .freebies-page,
-html[data-theme="ide"] .contact-page {
-  position: relative;
-}
-
+/* Binary ambience stays behind the existing page; no page positioning is changed. */
 html[data-theme="ide"] .ide-binary-background { display: block; }
 html:not([data-theme="ide"]) .ide-binary-background { display: none; }
 
@@ -215,40 +216,24 @@ html:not([data-theme="ide"]) .ide-binary-background { display: none; }
   color: #58a6ff;
   user-select: none;
 }
-
 .ide-binary-background::before {
   content: "";
   position: absolute;
   inset: 0;
   background: radial-gradient(circle at 50% 42%, transparent 0 24%, rgba(11,16,32,.28) 58%, rgba(11,16,32,.68) 100%);
 }
-
 .ide-binary-background span {
   position: absolute;
   white-space: nowrap;
   letter-spacing: .16em;
   text-shadow: 0 0 14px rgba(88,166,255,.18);
   animation: ideBinaryFloat linear infinite;
-  transform: translate3d(0, 0, 0);
-}
-
-html[data-theme="ide"] .site-navbar,
-html[data-theme="ide"] .site-navbar-mobile-menu,
-html[data-theme="ide"] main {
-  isolation: isolate;
-}
-
-html[data-theme="ide"] .site-navbar,
-html[data-theme="ide"] .site-navbar-mobile-menu,
-html[data-theme="ide"] main > *,
-html[data-theme="ide"] main section > * {
-  position: relative;
-  z-index: 1;
+  transform: translate3d(0,0,0);
 }
 
 @keyframes ideBinaryFloat {
-  0%, 100% { transform: translate3d(-6px, 0, 0); }
-  50% { transform: translate3d(8px, -10px, 0); }
+  0%, 100% { transform: translate3d(-6px,0,0); }
+  50% { transform: translate3d(8px,-10px,0); }
 }
 
 @media (max-width: 640px) {
