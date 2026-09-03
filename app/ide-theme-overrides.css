@@ -1,0 +1,129 @@
+/* IDE palette refinement + ambient binary field. */
+
+html[data-theme="ide"] body,
+html[data-theme="ide"] main,
+html[data-theme="ide"] .techcraft,
+html[data-theme="ide"] .about-page,
+html[data-theme="ide"] .services-page,
+html[data-theme="ide"] .products-page,
+html[data-theme="ide"] .freebies-page,
+html[data-theme="ide"] .contact-page,
+html[data-theme="ide"] .portfolio-page {
+  --ide-bg: #0b1020;
+  --ide-surface: #111827;
+  --ide-surface-2: #0f172a;
+  --ide-line: rgba(88,166,255,.13);
+  --ide-text: #d7e3f4;
+  --ide-muted: #8292a8;
+  --ide-blue: #58a6ff;
+  --ide-cyan: #79c7ff;
+  --ide-green: #7ee787;
+  --ide-purple: #bc8cff;
+}
+
+html[data-theme="ide"] .site-navbar-symbol span:nth-child(3) {
+  background: var(--ide-cyan) !important;
+}
+
+html[data-theme="ide"] .site-navbar-cta,
+html[data-theme="ide"] .techcraft-button-primary,
+html[data-theme="ide"] .about-button-dark {
+  background: #1769aa !important;
+  border-color: #58a6ff !important;
+  color: #f0f6fc !important;
+  box-shadow: 0 8px 24px rgba(18,101,163,.22) !important;
+}
+
+html[data-theme="ide"] .site-navbar-cta:hover,
+html[data-theme="ide"] .techcraft-button-primary:hover,
+html[data-theme="ide"] .about-button-dark:hover {
+  background: #1f7bc2 !important;
+}
+
+html[data-theme="ide"] .site-theme-switcher {
+  color: var(--ide-cyan) !important;
+  background: #0f172a !important;
+  border-color: rgba(88,166,255,.26) !important;
+}
+
+html[data-theme="ide"] .site-theme-switcher i b {
+  background: var(--ide-blue) !important;
+}
+
+html[data-theme="ide"] .site-navbar-name span,
+html[data-theme="ide"] main [class*="text-[#2563ff]"] {
+  color: var(--ide-blue) !important;
+}
+
+html[data-theme="ide"] .portfolio-vision,
+html[data-theme="ide"] .portfolio-hero,
+html[data-theme="ide"] .services-page,
+html[data-theme="ide"] .about-page,
+html[data-theme="ide"] .products-page,
+html[data-theme="ide"] .freebies-page,
+html[data-theme="ide"] .contact-page {
+  position: relative;
+}
+
+html[data-theme="ide"] .ide-binary-background {
+  display: block;
+}
+
+html:not([data-theme="ide"]) .ide-binary-background {
+  display: none;
+}
+
+.ide-binary-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  font: 10px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  color: #58a6ff;
+  user-select: none;
+}
+
+.ide-binary-background::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 42%, transparent 0 24%, rgba(11,16,32,.28) 58%, rgba(11,16,32,.68) 100%);
+}
+
+.ide-binary-background span {
+  position: absolute;
+  white-space: nowrap;
+  letter-spacing: .16em;
+  text-shadow: 0 0 14px rgba(88,166,255,.18);
+  animation: ideBinaryFloat linear infinite;
+  transform: translate3d(0, 0, 0);
+}
+
+html[data-theme="ide"] .site-navbar,
+html[data-theme="ide"] .site-navbar-mobile-menu,
+html[data-theme="ide"] main {
+  isolation: isolate;
+}
+
+html[data-theme="ide"] .site-navbar,
+html[data-theme="ide"] .site-navbar-mobile-menu,
+html[data-theme="ide"] main > *,
+html[data-theme="ide"] main section > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes ideBinaryFloat {
+  0%, 100% { transform: translate3d(-6px, 0, 0); }
+  50% { transform: translate3d(8px, -10px, 0); }
+}
+
+@media (max-width: 640px) {
+  .ide-binary-background { font-size: 8px; }
+  .ide-binary-background span { letter-spacing: .12em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ide-binary-background span { animation: none !important; }
+}
