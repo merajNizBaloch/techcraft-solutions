@@ -5,6 +5,7 @@ import "./about/about-position.css";
 import "./products/products.css";
 import "./products-home.css";
 import "./products-animations.css";
+import "./freebies/freebies.css";
 import Navbar from "./components/navbar";
 import GlobalMouseEffect from "./components/global-mouse-effect";
 import GlobalScrollMotion from "./components/global-scroll-motion";
