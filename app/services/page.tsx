@@ -10,8 +10,6 @@ import {
   Palette,
   Smartphone,
   Sparkles,
-  Workflow,
-  Zap,
 } from "lucide-react";
 
 const services = [
@@ -127,7 +125,7 @@ export default function ServicesPage() {
 
       <section className="relative flex min-h-[92vh] items-center overflow-hidden px-[7vw] pb-24 pt-36">
         <div className="absolute inset-0 opacity-50 [background-image:linear-gradient(rgba(37,99,255,.045)_1px,transparent_1px),linear-gradient(90deg,rgba(37,99,255,.045)_1px,transparent_1px)] [background-size:72px_72px]" />
-        <div className="relative z-10 grid w-full gap-16 lg:grid-cols-[1fr_.72fr] lg:items-end lg:gap-[8vw]">
+        <div className="relative z-10 grid w-full gap-16 lg:grid-cols-[1fr_.88fr] lg:items-center lg:gap-[6vw]">
           <div>
             <p className="font-mono text-[8px] tracking-[.18em] text-[#2563ff]">01 / SERVICES</p>
             <h1 className="mt-7 max-w-[920px] text-[clamp(62px,10.5vw,154px)] font-medium leading-[.8] tracking-[-.09em]">
@@ -146,16 +144,102 @@ export default function ServicesPage() {
             </div>
           </div>
 
-          <div className="relative hidden min-h-[360px] lg:block">
-            <div className="absolute right-[8%] top-[4%] h-64 w-64 rounded-full border border-[#2563ff]/20" />
-            <div className="absolute right-[19%] top-[15%] h-48 w-48 rotate-45 border border-[#2563ff]/20" />
-            <div className="absolute right-[29%] top-[28%] h-28 w-28 rounded-full border border-[#2563ff]/30 bg-white/40 backdrop-blur-sm" />
-            <div className="absolute right-[24%] top-[36%] grid h-16 w-16 place-items-center bg-[#111318] text-white shadow-[0_20px_60px_rgba(17,24,39,.18)]">
-              <Zap size={20} className="text-[#70a7ff]" />
+          <div className="relative mx-auto hidden aspect-square w-full max-w-[570px] lg:block">
+            <div className="absolute inset-[7%] rounded-full border border-[#2563ff]/10" />
+            <div className="absolute inset-[14%] rounded-full border border-dashed border-[#2563ff]/20 [animation:spin_30s_linear_infinite]" />
+            <div className="absolute inset-[22%] rounded-full border border-[#111318]/10" />
+            <div className="absolute left-1/2 top-1/2 h-[42%] w-[42%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/70 shadow-[0_28px_90px_rgba(37,99,255,.12)] backdrop-blur-sm" />
+
+            <svg viewBox="0 0 600 600" className="absolute inset-0 h-full w-full overflow-visible">
+              <defs>
+                <linearGradient id="service-path" x1="0" x2="1">
+                  <stop offset="0" stopColor="#2563ff" stopOpacity=".12" />
+                  <stop offset=".5" stopColor="#2563ff" stopOpacity=".9" />
+                  <stop offset="1" stopColor="#c83a32" stopOpacity=".25" />
+                </linearGradient>
+                <filter id="service-glow" x="-80%" y="-80%" width="260%" height="260%">
+                  <feGaussianBlur stdDeviation="5" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+              </defs>
+
+              <g fill="none" stroke="url(#service-path)" strokeWidth="1.15">
+                <path id="p1" d="M300 300 L160 165" />
+                <path id="p2" d="M300 300 L440 165" />
+                <path id="p3" d="M300 300 L500 300" />
+                <path id="p4" d="M300 300 L440 435" />
+                <path id="p5" d="M300 300 L160 435" />
+                <path id="p6" d="M300 300 L100 300" />
+              </g>
+
+              <g fill="#2563ff" filter="url(#service-glow)">
+                <circle r="3"><animateMotion dur="2.8s" repeatCount="indefinite"><mpath href="#p1" /></animateMotion></circle>
+                <circle r="3"><animateMotion begin=".45s" dur="3.1s" repeatCount="indefinite"><mpath href="#p2" /></animateMotion></circle>
+                <circle r="3"><animateMotion begin=".8s" dur="2.6s" repeatCount="indefinite"><mpath href="#p3" /></animateMotion></circle>
+                <circle r="3"><animateMotion begin=".25s" dur="3.3s" repeatCount="indefinite"><mpath href="#p4" /></animateMotion></circle>
+                <circle r="3"><animateMotion begin=".9s" dur="2.9s" repeatCount="indefinite"><mpath href="#p5" /></animateMotion></circle>
+                <circle r="3"><animateMotion begin=".6s" dur="2.7s" repeatCount="indefinite"><mpath href="#p6" /></animateMotion></circle>
+              </g>
+
+              <circle cx="300" cy="300" r="74" fill="#111318" />
+              <circle cx="300" cy="300" r="76" fill="none" stroke="#2563ff" strokeOpacity=".35" strokeWidth="1" />
+              <circle cx="300" cy="300" r="86" fill="none" stroke="#2563ff" strokeOpacity=".13" strokeDasharray="3 10" />
+              <text x="300" y="294" textAnchor="middle" fill="#70a7ff" fontSize="9" fontFamily="monospace" letterSpacing="3">TECHCRAFT</text>
+              <text x="300" y="314" textAnchor="middle" fill="white" fontSize="21" fontFamily="system-ui" fontWeight="600">SYSTEM</text>
+
+              <g fontFamily="monospace" textAnchor="middle">
+                <g transform="translate(160 165)">
+                  <circle r="31" fill="#f4f6f8" stroke="#2563ff" strokeOpacity=".5" />
+                  <circle r="24" fill="white" />
+                  <text y="-4" fontSize="8" fill="#2563ff" letterSpacing="1">DESIGN</text>
+                  <text y="9" fontSize="7" fill="#111318" opacity=".45">UX / UI</text>
+                </g>
+                <g transform="translate(440 165)">
+                  <circle r="31" fill="#f4f6f8" stroke="#2563ff" strokeOpacity=".5" />
+                  <circle r="24" fill="white" />
+                  <text y="-4" fontSize="8" fill="#2563ff" letterSpacing="1">CODE</text>
+                  <text y="9" fontSize="7" fill="#111318" opacity=".45">WEB</text>
+                </g>
+                <g transform="translate(500 300)">
+                  <circle r="31" fill="#f4f6f8" stroke="#c83a32" strokeOpacity=".45" />
+                  <circle r="24" fill="white" />
+                  <text y="-4" fontSize="8" fill="#c83a32" letterSpacing="1">MOBILE</text>
+                  <text y="9" fontSize="7" fill="#111318" opacity=".45">APPS</text>
+                </g>
+                <g transform="translate(440 435)">
+                  <circle r="31" fill="#f4f6f8" stroke="#2563ff" strokeOpacity=".5" />
+                  <circle r="24" fill="white" />
+                  <text y="-4" fontSize="8" fill="#2563ff" letterSpacing="1">CLOUD</text>
+                  <text y="9" fontSize="7" fill="#111318" opacity=".45">SYSTEMS</text>
+                </g>
+                <g transform="translate(160 435)">
+                  <circle r="31" fill="#f4f6f8" stroke="#d7a52a" strokeOpacity=".55" />
+                  <circle r="24" fill="white" />
+                  <text y="-4" fontSize="8" fill="#b48609" letterSpacing="1">BRAND</text>
+                  <text y="9" fontSize="7" fill="#111318" opacity=".45">IDENTITY</text>
+                </g>
+                <g transform="translate(100 300)">
+                  <circle r="31" fill="#f4f6f8" stroke="#2563ff" strokeOpacity=".5" />
+                  <circle r="24" fill="white" />
+                  <text y="-4" fontSize="8" fill="#2563ff" letterSpacing="1">AI</text>
+                  <text y="9" fontSize="7" fill="#111318" opacity=".45">AUTOMATION</text>
+                </g>
+              </g>
+            </svg>
+
+            <div className="absolute left-[2%] top-[11%] font-mono text-[7px] leading-4 tracking-[.14em] text-black/30">
+              <div>ARCHITECTURE</div>
+              <div>CONNECTED CAPABILITIES</div>
             </div>
-            <div className="absolute bottom-4 right-0 max-w-[240px] border-l border-black/10 pl-5 font-mono text-[8px] leading-5 tracking-[.12em] text-black/35">
-              PRODUCT / SOFTWARE / AI / CLOUD
+            <div className="absolute bottom-[9%] right-[2%] border-l border-[#2563ff]/30 pl-4 font-mono text-[7px] leading-5 tracking-[.15em] text-black/35">
+              <div className="text-[#2563ff]">SYSTEM STATUS / ONLINE</div>
+              <div>06 ACTIVE DISCIPLINES</div>
+              <div>ONE DIGITAL PRODUCT LANGUAGE</div>
             </div>
+            <div className="absolute left-[11%] top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-[#c83a32] shadow-[0_0_0_5px_rgba(200,58,50,.08)]" />
           </div>
         </div>
       </section>
