@@ -12,6 +12,7 @@ const sections = [
   ["Portfolio", "portfolio"],
   ["Freebies", "freebies"],
   ["About", "about"],
+  ["Our Team", "team"],
   ["Contact", "contact"],
 ] as const;
 
@@ -19,32 +20,20 @@ export default function Navbar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const isAbout = pathname === "/about";
-  const isServices = pathname === "/services";
-  const isProducts = pathname === "/products";
-  const isPortfolio = pathname === "/portfolio";
-  const isFreebies = pathname === "/freebies";
-  const isContact = pathname === "/contact";
-
-  useEffect(() => {
-    setMobileOpen(false);
-  }, [pathname]);
-
   const isPageLink = (id: string) =>
     id === "about" ||
     id === "services" ||
     id === "products" ||
     id === "portfolio" ||
     id === "freebies" ||
+    id === "team" ||
     id === "contact";
 
-  const isActive = (id: string) =>
-    (id === "about" && isAbout) ||
-    (id === "services" && isServices) ||
-    (id === "products" && isProducts) ||
-    (id === "portfolio" && isPortfolio) ||
-    (id === "freebies" && isFreebies) ||
-    (id === "contact" && isContact);
+  const isActive = (id: string) => pathname === `/${id}`;
+
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
 
   const renderItem = ([label, id]: (typeof sections)[number]) => {
     if (isPageLink(id)) {
