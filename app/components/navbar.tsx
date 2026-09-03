@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 
 const sections = [
   ["Services", "services"],
-  ["Products", "work"],
+  ["Products", "products"],
   ["About", "about"],
   ["Contact", "contact"],
 ] as const;
