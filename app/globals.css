@@ -262,6 +262,140 @@ body {
   to { background-position: -200% 0; }
 }
 
+/* =========================================================
+   ABOUT PAGE MOTION
+   Purposeful entrance, float and hover movement; respects reduced motion.
+========================================================= */
+
+.about-page .about-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  animation: aboutReveal .9s cubic-bezier(.16,1,.3,1) forwards;
+}
+.about-page .about-copy-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  animation: aboutReveal .95s .18s cubic-bezier(.16,1,.3,1) forwards;
+}
+.about-page .about-delay-1 { animation-delay: .12s; }
+.about-page .about-delay-2 { animation-delay: .24s; }
+.about-page .about-delay-3 { animation-delay: .38s; }
+
+@keyframes aboutReveal {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.about-page .about-grid {
+  opacity: .72;
+  background-image: linear-gradient(rgba(37,99,255,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,255,.045) 1px, transparent 1px);
+  background-size: 75px 75px;
+  mask-image: linear-gradient(to bottom, black, transparent 88%);
+}
+.about-page .about-scan { animation: aboutScan 5.5s ease-in-out infinite; }
+@keyframes aboutScan {
+  0%, 100% { opacity: .12; transform: translateY(0); }
+  50% { opacity: .6; transform: translateY(64vh); }
+}
+
+.about-page .about-orbit { animation: aboutOrbitFloat 8s ease-in-out infinite; }
+.about-page .about-orbit-ring-a { animation: aboutOrbitSpin 25s linear infinite; }
+.about-page .about-orbit-ring-b { animation: aboutOrbitSpinReverse 18s linear infinite; }
+.about-page .about-orbit-ring-c { animation: aboutOrbitSpin 13s linear infinite; }
+.about-page .about-orbit-core { animation: aboutCoreFloat 4s ease-in-out infinite; }
+.about-page .about-orbit-dot { animation: aboutDotPulse 2.6s ease-in-out infinite; }
+
+@keyframes aboutOrbitFloat {
+  0%,100% { transform: translateY(-50%) translate3d(0,0,0); }
+  50% { transform: translateY(calc(-50% - 12px)) translate3d(-8px,0,0); }
+}
+@keyframes aboutOrbitSpin { to { transform: rotate(405deg); } }
+@keyframes aboutOrbitSpinReverse { to { transform: rotate(-315deg); } }
+@keyframes aboutCoreFloat {
+  0%,100% { transform: translate(-50%,-50%) scale(1); box-shadow: 0 20px 70px rgba(37,99,255,.14); }
+  50% { transform: translate(-50%,-50%) scale(1.045); box-shadow: 0 28px 85px rgba(37,99,255,.2); }
+}
+@keyframes aboutDotPulse {
+  0%,100% { transform: scale(.75); opacity: .5; }
+  50% { transform: scale(1.45); opacity: 1; box-shadow: 0 0 20px currentColor; }
+}
+
+.about-page .about-side-card { animation: aboutCardFloat 6.5s ease-in-out infinite; }
+.about-page .about-location-card { animation: aboutCardFloat 7.5s 1s ease-in-out infinite; }
+@keyframes aboutCardFloat {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+.about-page .about-stat,
+.about-page .about-capability,
+.about-page .about-process,
+.about-page .about-principle {
+  opacity: 0;
+  transform: translateY(22px);
+  animation: aboutListIn .8s cubic-bezier(.16,1,.3,1) forwards;
+}
+.about-page .about-stagger-1 { animation-delay: .08s; }
+.about-page .about-stagger-2 { animation-delay: .18s; }
+.about-page .about-stagger-3 { animation-delay: .28s; }
+.about-page .about-stagger-4 { animation-delay: .38s; }
+@keyframes aboutListIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.about-page .about-button { transition: transform .3s ease, box-shadow .3s ease, background .3s ease, color .3s ease, border-color .3s ease; }
+.about-page .about-button:hover { transform: translateY(-4px); box-shadow: 0 16px 35px rgba(17,24,39,.1); }
+.about-page .about-button-dark:hover { background: #2563ff; }
+.about-page .about-capability::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: #2563ff;
+  transition: transform .5s cubic-bezier(.16,1,.3,1);
+}
+.about-page .about-capability:hover::after { transform: scaleX(1); }
+.about-page .about-process { position: relative; }
+.about-page .about-process::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -1px;
+  height: 1px;
+  width: 0;
+  background: #70a7ff;
+  transition: width .55s cubic-bezier(.16,1,.3,1);
+}
+.about-page .about-process:hover::before { width: 100%; }
+.about-page .about-cta-button { animation: aboutCtaPulse 4s ease-in-out infinite; }
+.about-page .about-cta-button:hover { transform: scale(1.06) rotate(-2deg); background: #fff; color: #111318; }
+@keyframes aboutCtaPulse {
+  0%,100% { box-shadow: 0 20px 60px rgba(37,99,255,.22); }
+  50% { box-shadow: 0 28px 85px rgba(37,99,255,.38); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-page *,
+  .about-page *::before,
+  .about-page *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .001ms !important;
+  }
+
+  .site-navbar-nav a,
+  .site-navbar-nav button,
+  .site-navbar-nav a::before,
+  .site-navbar-nav a::after,
+  .site-navbar-nav button::before,
+  .site-navbar-nav button::after,
+  .site-navbar-cta,
+  .site-navbar-cta::before,
+  .site-navbar-cta::after { animation: none !important; transition: none !important; }
+}
+
 @media (max-width: 760px) {
   .site-navbar-wrap { padding: 10px; }
   .site-navbar { height: 58px; padding-left: 12px; }
@@ -307,16 +441,4 @@ body {
   .site-navbar-mobile-menu button:hover,
   .site-navbar-mobile-menu a.active,
   .site-navbar-mobile-menu button.active { background: rgba(37,99,255,.08); color: #2563ff; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .site-navbar-nav a,
-  .site-navbar-nav button,
-  .site-navbar-nav a::before,
-  .site-navbar-nav a::after,
-  .site-navbar-nav button::before,
-  .site-navbar-nav button::after,
-  .site-navbar-cta,
-  .site-navbar-cta::before,
-  .site-navbar-cta::after { animation: none !important; transition: none !important; }
 }
