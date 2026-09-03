@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./global-interactions.css";
 import "./about/about-position.css";
 import Navbar from "./components/navbar";
+import GlobalMouseEffect from "./components/global-mouse-effect";
 
 export const metadata: Metadata = {
   title: "TechCraft Solutions",
@@ -18,6 +20,7 @@ export default function RootLayout({
     <html lang="en" className="h-full antialiased">
       <body className="min-h-full flex flex-col">
         <Navbar />
+        <GlobalMouseEffect />
         {children}
       </body>
     </html>
