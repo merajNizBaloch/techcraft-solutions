@@ -4,7 +4,6 @@ import {
   BrainCircuit,
   Code2,
   Compass,
-  Linkedin,
   Palette,
   Sparkles,
 } from "lucide-react";
@@ -152,8 +151,8 @@ export default function TeamPage() {
               <article key={member.name} className={`team-member-card team-member-${member.accent}`}>
                 <div className="team-member-top">
                   <span className="font-mono text-[8px] tracking-[.16em] text-black/32">0{index + 1} / TEAM</span>
-                  <Link href={member.linkedin} aria-label={`${member.name} on LinkedIn`} className="team-member-link">
-                    <Linkedin size={14} />
+                  <Link href={member.linkedin} aria-label={`${member.name} social profile`} className="team-member-link">
+                    <span className="font-mono text-[7px] tracking-[.08em]">PROFILE</span>
                     <ArrowUpRight size={13} />
                   </Link>
                 </div>
