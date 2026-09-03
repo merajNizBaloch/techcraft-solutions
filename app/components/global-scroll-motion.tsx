@@ -8,12 +8,20 @@ const SECTION_SELECTORS = [
   ".techcraft main section:not(.hero)",
   ".about-page > section:not(.about-hero)",
   ".services-page > section:not(:first-child)",
+  ".products-page > section:not(:first-child)",
+  ".freebies-page > section:not(:first-child)",
+  ".contact-page > section:not(:first-child)",
+  ".portfolio-page > section:not(.portfolio-hero)",
 ];
 
 const HERO_SELECTORS = [
   ".techcraft .hero",
   ".about-page .about-hero",
   ".services-page > section:first-of-type",
+  ".products-page > section:first-of-type",
+  ".freebies-page > section:first-of-type",
+  ".contact-page > section:first-of-type",
+  ".portfolio-page .portfolio-hero",
 ];
 
 const TARGET_SELECTOR =
@@ -76,6 +84,8 @@ export default function GlobalScrollMotion({ children }: { children: ReactNode }
     });
 
     const heroTimer = window.setTimeout(() => {
+      if (heroTargets.length === 0) return;
+
       void animate(
         heroTargets,
         { opacity: 1, x: 0, y: 0, filter: "blur(0px)" },
@@ -102,6 +112,10 @@ export default function GlobalScrollMotion({ children }: { children: ReactNode }
           revealed.add(entry.target);
 
           const targets = getTargets(entry.target);
+          if (targets.length === 0) {
+            observer.unobserve(entry.target);
+            return;
+          }
 
           void animate(
             targets,
