@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "./global-interactions.css";
 import "./about/about-position.css";
+import "./products-home.css";
 import Navbar from "./components/navbar";
 import GlobalMouseEffect from "./components/global-mouse-effect";
 import GlobalScrollMotion from "./components/global-scroll-motion";
+import HomeProductsReplacement from "./components/home-products-replacement";
 
 export const metadata: Metadata = {
   title: "TechCraft Solutions",
@@ -22,7 +24,10 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <Navbar />
         <GlobalMouseEffect />
-        <GlobalScrollMotion>{children}</GlobalScrollMotion>
+        <GlobalScrollMotion>
+          {children}
+          <HomeProductsReplacement />
+        </GlobalScrollMotion>
       </body>
     </html>
   );
