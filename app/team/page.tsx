@@ -11,45 +11,68 @@ import {
 export const metadata = {
   title: "Our Team | TechCraft Solutions",
   description:
-    "Meet the people behind TechCraft Solutions — design, engineering, AI and digital product craft from Balochistan.",
+    "Meet the people behind TechCraft Solutions — product design, engineering, AI, design systems and digital growth from Balochistan.",
 };
 
-// Replace these dummy members tomorrow. The layout only depends on this data shape.
 const team = [
   {
-    name: "Alex Khan",
-    role: "Founder & Product Designer",
-    initials: "AK",
+    name: "Meraj Niaz Baloch",
+    role: "CEO & Founder · Product Design & Development",
+    education: "BS Computer Science",
+    initials: "MN",
     accent: "blue",
-    bio: "Shapes product direction, experience strategy and the visual systems that turn complicated ideas into clear products.",
-    focus: ["Product strategy", "UX / UI", "Design systems"],
+    bio: "Leads TechCraft across product direction, design and development — connecting business thinking, user experience and engineering into products built to work in the real world.",
+    focus: ["Product strategy", "UI / UX", "Web engineering"],
     linkedin: "#",
   },
   {
-    name: "Sara Ahmed",
-    role: "Software Engineer",
-    initials: "SA",
+    name: "Hamza Shah",
+    role: "Full-Stack Developer · PHP / Laravel",
+    education: "BS Computer Science",
+    initials: "HS",
     accent: "green",
-    bio: "Turns interfaces into dependable software with a focus on architecture, performance and production-ready implementation.",
-    focus: ["Web engineering", "APIs", "Architecture"],
+    bio: "Builds robust application foundations across backend services, business logic and APIs, with Laravel at the centre of dependable production systems.",
+    focus: ["Laravel", "PHP", "APIs"],
     linkedin: "#",
   },
   {
-    name: "Hamza Baloch",
-    role: "AI & Automation Engineer",
-    initials: "HB",
+    name: "Niyaz Phullain",
+    role: "Front-End Developer · Next.js",
+    education: "BS Computer Science",
+    initials: "NP",
     accent: "purple",
-    bio: "Builds practical AI workflows and intelligent integrations that solve real operational problems instead of adding noise.",
-    focus: ["AI integrations", "Automation", "Computer vision"],
+    bio: "Turns product ideas and interface systems into fast, responsive front ends using modern React and Next.js architecture with a strong eye for interaction detail.",
+    focus: ["Next.js", "React", "Front-end systems"],
     linkedin: "#",
   },
   {
-    name: "Mariam Raza",
-    role: "Visual & Brand Designer",
-    initials: "MR",
+    name: "Javed Khan",
+    role: "Full-Stack Developer · PHP / Laravel",
+    education: "BS Computer Science",
+    initials: "JK",
     accent: "gold",
-    bio: "Brings identity, motion and visual detail together so every product feels distinctive before the first click.",
-    focus: ["Brand identity", "Art direction", "Motion"],
+    bio: "Works across the full application stack, shaping practical business software from database and backend logic through to usable production interfaces.",
+    focus: ["Full-stack", "Laravel", "Business software"],
+    linkedin: "#",
+  },
+  {
+    name: "Kashif Baloch",
+    role: "Design Systems Lead",
+    education: "BS Architecture",
+    initials: "KB",
+    accent: "red",
+    bio: "Brings an architectural approach to digital design systems, creating visual rules, structure and consistency that make complex product experiences feel intentional and coherent.",
+    focus: ["Design systems", "Visual language", "UI consistency"],
+    linkedin: "#",
+  },
+  {
+    name: "Changez Baloch",
+    role: "Social Media & Marketing Lead",
+    education: "BS Computer Science",
+    initials: "CB",
+    accent: "cyan",
+    bio: "Leads TechCraft's digital presence and growth communication, turning products, ideas and capabilities into clear stories that reach the right audience.",
+    focus: ["Growth strategy", "Content", "Social media"],
     linkedin: "#",
   },
 ] as const;
@@ -88,16 +111,16 @@ export default function TeamPage() {
             </h1>
           </div>
           <p className="team-reveal team-delay-2 mt-10 max-w-[650px] text-[15px] leading-[1.9] text-black/55">
-            TechCraft is built by a small, multidisciplinary team that likes to stay close to the work. We bring product thinking, design, engineering and intelligence into the same room — and keep the conversation moving until the product makes sense.
+            TechCraft is built by a focused multidisciplinary team spanning product leadership, engineering, front-end architecture, design systems and digital growth. Different disciplines, one standard: make the work clear, useful and well crafted.
           </p>
           <div className="team-reveal team-delay-3 mt-9 flex flex-wrap items-center gap-x-8 gap-y-3 font-mono text-[8px] tracking-[.14em] text-black/38">
-            <span>DESIGN</span>
+            <span>PRODUCT</span>
             <span className="text-[#2563ff]">●</span>
             <span>ENGINEERING</span>
             <span className="text-[#7a58c6]">●</span>
-            <span>AI</span>
+            <span>DESIGN SYSTEMS</span>
             <span className="text-[#d7a52a]">●</span>
-            <span>PRODUCT</span>
+            <span>GROWTH</span>
           </div>
         </div>
 
@@ -136,13 +159,13 @@ export default function TeamPage() {
             <div>
               <div className="font-mono text-[8px] tracking-[.16em] text-black/35">02 / PEOPLE</div>
               <h2 className="mt-6 text-[clamp(48px,6vw,94px)] font-medium leading-[.87] tracking-[-.08em]">
-                A small team.
+                Six disciplines.
                 <br />
-                <span className="text-[#2563ff]">Big range.</span>
+                <span className="text-[#2563ff]">One team.</span>
               </h2>
             </div>
-            <p className="max-w-[360px] text-xs leading-7 text-black/42">
-              Dummy profiles are intentionally easy to replace. Tomorrow you can update the team data at the top of this page without rebuilding the structure.
+            <p className="max-w-[390px] text-xs leading-7 text-black/42">
+              Product leadership, software engineering, front-end craft, design systems and growth work together as one connected team — not as separate departments.
             </p>
           </div>
 
@@ -165,6 +188,7 @@ export default function TeamPage() {
                   <div className="min-w-0">
                     <h3>{member.name}</h3>
                     <div className="team-role">{member.role}</div>
+                    <div className="team-education">{member.education}</div>
                     <p>{member.bio}</p>
                   </div>
                 </div>
@@ -224,7 +248,7 @@ export default function TeamPage() {
           </div>
           <Link
             href="/contact"
-            className="inline-flex w-fit items-center gap-2 border border-[#111318] bg-[#111318] px-5 py-3.5 font-mono text-[9px] tracking-[.08em] text-white transition hover:-translate-y-1 hover:bg-[#2563ff] hover:border-[#2563ff]"
+            className="inline-flex w-fit items-center gap-2 border border-[#111318] bg-[#111318] px-5 py-3.5 font-mono text-[9px] tracking-[.08em] text-white transition hover:-translate-y-1 hover:border-[#2563ff] hover:bg-[#2563ff]"
           >
             START A CONVERSATION <ArrowUpRight size={16} />
           </Link>
