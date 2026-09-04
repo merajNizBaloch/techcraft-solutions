@@ -1,1 +1,25 @@
-html[data-theme="ide"] .site-navbar-nav a:nth-child(6){color:#58a6ff!important}html[data-theme="ide"] .site-navbar-nav a:nth-child(7){color:#ff7b72!important}
+/* IDE NAV TYPOGRAPHY */
+html[data-theme="ide"] .site-navbar-nav a,
+html[data-theme="ide"] .site-navbar-nav button {
+  font-family: "JetBrains Mono", "Fira Code", "Cascadia Code", "SFMono-Regular", Consolas, "Liberation Mono", monospace !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: .04em !important;
+}
+html[data-theme="ide"] .site-navbar-nav a:nth-child(1){color:#bc8cff!important}
+html[data-theme="ide"] .site-navbar-nav a:nth-child(2){color:#79c7ff!important}
+html[data-theme="ide"] .site-navbar-nav a:nth-child(3){color:#7ee787!important}
+html[data-theme="ide"] .site-navbar-nav a:nth-child(4){color:#f2cc60!important}
+html[data-theme="ide"] .site-navbar-nav a:nth-child(5){color:#ffa657!important}
+html[data-theme="ide"] .site-navbar-nav a:nth-child(6){color:#58a6ff!important}
+html[data-theme="ide"] .site-navbar-nav a:nth-child(7){color:#ff7b72!important}
+html[data-theme="ide"] .site-navbar-nav a:hover,
+html[data-theme="ide"] .site-navbar-nav a:focus-visible,
+html[data-theme="ide"] .site-navbar-nav a.active{color:#d7e3f4!important}
+html[data-theme="ide"] .site-navbar-mobile-menu a,
+html[data-theme="ide"] .site-navbar-mobile-menu button{
+  font-family:"JetBrains Mono","Fira Code","Cascadia Code","SFMono-Regular",Consolas,"Liberation Mono",monospace!important;
+  font-size:11px!important;
+  font-weight:600!important;
+  letter-spacing:.04em!important;
+}
