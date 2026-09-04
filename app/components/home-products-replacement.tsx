@@ -85,7 +85,7 @@ export default function HomeProductsReplacement() {
         <div>
           <span className="section-kicker">05 / PRODUCTS</span>
           <h2>We build <span>products</span> too.</h2>
-          <p>TechCraft is not only the team behind digital experiences. We also build focused products where design, engineering and practical technology come together.</p>
+          <p>Our own digital products are where strategy, design and engineering come together to solve problems we understand deeply.</p>
         </div>
         <div className="home-products-index">TC / PRODUCTS / 2026</div>
       </div>
