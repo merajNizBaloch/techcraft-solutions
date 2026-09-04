@@ -130,7 +130,7 @@ export default function LoadingScreen() {
         </div>
 
         <div className="boot-status">
-          <span><i /> SYSTEM READY</span>
+          <span><i /> LOADING TECHCRAFT</span>
           <span>{Math.min(100, Math.round((visibleChars / fullCode.length) * 100))}%</span>
         </div>
       </div>
