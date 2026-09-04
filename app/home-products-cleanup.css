@@ -1,6 +1,8 @@
 /* HOMEPAGE PRODUCTS CLEANUP */
-/* Remove both legacy/replacement headings so only the existing product cards remain. */
-.techcraft #work.products-section-host > .products-heading,
-.techcraft #work.products-section-host .home-products-heading {
+/* Remove only the legacy heading; keep the replacement Products heading visible. */
+.techcraft #work > .products-heading {
+  display: none !important;
+}
+.techcraft #work > .work-list {
   display: none !important;
 }
