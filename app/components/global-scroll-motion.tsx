@@ -27,30 +27,32 @@ const HERO_SELECTORS = [
 const TARGET_SELECTOR =
   ".service-card, .project-card, .service-detail-card, .service-process, .about-stat, .about-capability, .about-process, .about-principle, .about-side-card";
 
-function getTargets(section: Element) {
+function getTargets(section: Element): HTMLElement[] {
   const direct = Array.from(section.children).filter(
-    (element) =>
+    (element): element is HTMLElement =>
+      element instanceof HTMLElement &&
       !element.classList.contains("about-grid") &&
       !element.classList.contains("about-scan"),
   );
 
-  const cards = Array.from(section.querySelectorAll<HTMLElement>(TARGET_SELECTOR));
+  const cards = Array.from(section.querySelectorAll(TARGET_SELECTOR)).filter(
+    (element): element is HTMLElement => element instanceof HTMLElement,
+  );
 
   return Array.from(new Set([...direct, ...cards]));
 }
 
-function setInitialState(targets: Element[]) {
+function setInitialState(targets: HTMLElement[]) {
   targets.forEach((target, index) => {
-    const element = target as HTMLElement;
-    element.dataset.scrollReveal = "pending";
-    element.style.opacity = "0";
-    element.style.transform = index % 3 === 0
+    target.dataset.scrollReveal = "pending";
+    target.style.opacity = "0";
+    target.style.transform = index % 3 === 0
       ? "translate3d(-54px, 18px, 0)"
       : index % 3 === 1
         ? "translate3d(0, 54px, 0)"
         : "translate3d(54px, 18px, 0)";
-    element.style.filter = "blur(5px)";
-    element.style.willChange = "opacity, transform, filter";
+    target.style.filter = "blur(5px)";
+    target.style.willChange = "opacity, transform, filter";
   });
 }
 
@@ -58,7 +60,7 @@ export default function GlobalScrollMotion({ children }: { children: ReactNode }
   const [scope, animate] = useAnimate();
 
   useEffect(() => {
-    const root = scope.current;
+    const root = scope.current as HTMLElement | null;
     if (!root) return;
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -74,13 +76,12 @@ export default function GlobalScrollMotion({ children }: { children: ReactNode }
 
     const heroTargets = heroes.flatMap((hero) => getTargets(hero));
     heroTargets.forEach((target, index) => {
-      const element = target as HTMLElement;
-      element.style.opacity = "0";
-      element.style.transform = index % 2 === 0
+      target.style.opacity = "0";
+      target.style.transform = index % 2 === 0
         ? "translate3d(-32px, 18px, 0)"
         : "translate3d(32px, 24px, 0)";
-      element.style.filter = "blur(4px)";
-      element.style.willChange = "opacity, transform, filter";
+      target.style.filter = "blur(4px)";
+      target.style.willChange = "opacity, transform, filter";
     });
 
     const heroTimer = window.setTimeout(() => {
@@ -97,18 +98,18 @@ export default function GlobalScrollMotion({ children }: { children: ReactNode }
         },
       ).then(() => {
         heroTargets.forEach((target) => {
-          (target as HTMLElement).style.willChange = "auto";
+          target.style.willChange = "auto";
         });
       });
     }, 80);
 
     sections.forEach((section) => setInitialState(getTargets(section)));
 
-    const revealed = new WeakSet<Element>();
+    const revealed = new WeakSet<HTMLElement>();
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (!entry.isIntersecting || revealed.has(entry.target)) return;
+          if (!entry.isIntersecting || !(entry.target instanceof HTMLElement) || revealed.has(entry.target)) return;
           revealed.add(entry.target);
 
           const targets = getTargets(entry.target);
@@ -128,9 +129,8 @@ export default function GlobalScrollMotion({ children }: { children: ReactNode }
             },
           ).then(() => {
             targets.forEach((target) => {
-              const element = target as HTMLElement;
-              element.dataset.scrollReveal = "revealed";
-              element.style.willChange = "auto";
+              target.dataset.scrollReveal = "revealed";
+              target.style.willChange = "auto";
             });
           });
 
