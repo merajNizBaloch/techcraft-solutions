@@ -56,6 +56,29 @@ function setInitialState(targets: HTMLElement[]) {
   });
 }
 
+function animateTargets(
+  animate: ReturnType<typeof useAnimate>[1],
+  targets: HTMLElement[],
+  duration: number,
+  delay: number,
+  stagger: number,
+) {
+  targets.forEach((target, index) => {
+    void animate(
+      target,
+      { opacity: 1, x: 0, y: 0, filter: "blur(0px)" },
+      {
+        duration,
+        ease: [0.16, 1, 0.3, 1],
+        delay: delay + index * stagger,
+      },
+    ).then(() => {
+      target.style.willChange = "auto";
+      target.dataset.scrollReveal = "revealed";
+    });
+  });
+}
+
 export default function GlobalScrollMotion({ children }: { children: ReactNode }) {
   const [scope, animate] = useAnimate();
 
@@ -86,21 +109,7 @@ export default function GlobalScrollMotion({ children }: { children: ReactNode }
 
     const heroTimer = window.setTimeout(() => {
       if (heroTargets.length === 0) return;
-
-      void animate(
-        heroTargets,
-        { opacity: 1, x: 0, y: 0, filter: "blur(0px)" },
-        {
-          duration: 0.9,
-          ease: [0.16, 1, 0.3, 1],
-          delay: 0.08,
-          stagger: 0.1,
-        },
-      ).then(() => {
-        heroTargets.forEach((target) => {
-          target.style.willChange = "auto";
-        });
-      });
+      animateTargets(animate, heroTargets, 0.9, 0.08, 0.1);
     }, 80);
 
     sections.forEach((section) => setInitialState(getTargets(section)));
@@ -118,22 +127,7 @@ export default function GlobalScrollMotion({ children }: { children: ReactNode }
             return;
           }
 
-          void animate(
-            targets,
-            { opacity: 1, x: 0, y: 0, filter: "blur(0px)" },
-            {
-              duration: 0.78,
-              ease: [0.16, 1, 0.3, 1],
-              delay: 0.03,
-              stagger: 0.09,
-            },
-          ).then(() => {
-            targets.forEach((target) => {
-              target.dataset.scrollReveal = "revealed";
-              target.style.willChange = "auto";
-            });
-          });
-
+          animateTargets(animate, targets, 0.78, 0.03, 0.09);
           observer.unobserve(entry.target);
         });
       },
