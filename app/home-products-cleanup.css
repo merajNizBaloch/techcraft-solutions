@@ -1,6 +1,6 @@
 /* HOMEPAGE PRODUCTS CLEANUP */
-/* Keep the existing product typography/visuals; hide only the legacy heading
-   that duplicates the replacement Products section mounted into #work. */
-.techcraft #work.products-section-host > .products-heading {
+/* Remove both legacy/replacement headings so only the existing product cards remain. */
+.techcraft #work.products-section-host > .products-heading,
+.techcraft #work.products-section-host .home-products-heading {
   display: none !important;
 }
