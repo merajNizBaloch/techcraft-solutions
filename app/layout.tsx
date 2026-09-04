@@ -5,6 +5,7 @@ import "./theme.css";
 import "./dark-theme-overrides.css";
 import "./ide-theme-overrides.css";
 import "./theme-final-overrides.css";
+import "./home-theme-overrides.css";
 import "./about/about-position.css";
 import "./products/products.css";
 import "./products-home.css";
