@@ -2,7 +2,7 @@
 
 import { motion, useAnimate } from "framer-motion";
 import type { ReactNode } from "react";
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 
 const SECTION_SELECTORS = [
   ".techcraft main section:not(.hero)",
@@ -82,7 +82,7 @@ function animateTargets(
 export default function GlobalScrollMotion({ children }: { children: ReactNode }) {
   const [scope, animate] = useAnimate();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const root = scope.current as HTMLElement | null;
     if (!root) return;
 
@@ -110,7 +110,7 @@ export default function GlobalScrollMotion({ children }: { children: ReactNode }
     const heroTimer = window.setTimeout(() => {
       if (heroTargets.length === 0) return;
       animateTargets(animate, heroTargets, 0.9, 0.08, 0.1);
-    }, 80);
+    }, 40);
 
     sections.forEach((section) => setInitialState(getTargets(section)));
 
@@ -144,6 +144,16 @@ export default function GlobalScrollMotion({ children }: { children: ReactNode }
       observer.disconnect();
     };
   }, [animate, scope, children]);
+
+  useEffect(() => {
+    const root = scope.current as HTMLElement | null;
+    if (!root) return;
+
+    root.dataset.motionInitialized = "true";
+    return () => {
+      delete root.dataset.motionInitialized;
+    };
+  }, [scope]);
 
   return (
     <motion.div ref={scope} className="global-scroll-motion-root">
