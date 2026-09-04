@@ -32,6 +32,17 @@ export const metadata: Metadata = {
     "TechCraft Solutions — digital product design, software engineering and intelligent technology.",
 };
 
+const themeInitScript = `(() => {
+  try {
+    const saved = localStorage.getItem("techcraft-theme");
+    if (saved === "dark" || saved === "ide") {
+      document.documentElement.dataset.theme = saved;
+    } else {
+      document.documentElement.removeAttribute("data-theme");
+    }
+  } catch {}
+})();`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -39,6 +50,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full antialiased">
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body className="min-h-full flex flex-col">
         <IdeBinaryBackground />
         <Navbar />
