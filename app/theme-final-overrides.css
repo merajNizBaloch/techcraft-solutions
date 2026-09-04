@@ -1,0 +1,219 @@
+/* FINAL THEME + RESPONSIVE HARDENING
+   Light remains untouched. Dark/IDE only replace remaining light surfaces.
+   Mobile rules only collapse the navigation at tablet width and prevent overflow.
+*/
+
+/* =========================
+   DARK MODE — remaining light surfaces
+========================= */
+html[data-theme="dark"] .home-products-content {
+  background: #0d0f12 !important;
+}
+html[data-theme="dark"] .home-products-grid {
+  background: rgba(255,255,255,.07) !important;
+  border-color: rgba(255,255,255,.09) !important;
+}
+html[data-theme="dark"] .home-product-card-estara {
+  background: #151922 !important;
+  color: #d7dee8 !important;
+}
+html[data-theme="dark"] .home-product-card-meta,
+html[data-theme="dark"] .home-product-card-copy {
+  border-color: rgba(255,255,255,.09) !important;
+  color: #a9b4c3 !important;
+}
+html[data-theme="dark"] .home-product-window,
+html[data-theme="dark"] .home-product-dashboard aside,
+html[data-theme="dark"] .home-product-metrics > div,
+html[data-theme="dark"] .home-product-preview-estara,
+html[data-theme="dark"] .home-estara-node {
+  background: #111827 !important;
+  color: #d7dee8 !important;
+  border-color: rgba(255,255,255,.10) !important;
+}
+html[data-theme="dark"] .home-product-dashboard aside {
+  background: #0f141c !important;
+}
+html[data-theme="dark"] .home-product-topline small,
+html[data-theme="dark"] .home-product-metrics small,
+html[data-theme="dark"] .home-product-topline > span,
+html[data-theme="dark"] .home-product-chart-head b,
+html[data-theme="dark"] .home-estara-caption,
+html[data-theme="dark"] .home-estara-node b {
+  color: #7f8da1 !important;
+}
+html[data-theme="dark"] .home-product-chart-head {
+  color: #cfd8e5 !important;
+}
+html[data-theme="dark"] .home-product-windowbar {
+  background: #0b1020 !important;
+}
+html[data-theme="dark"] .home-products-index,
+html[data-theme="dark"] .home-products-heading p {
+  color: rgba(215,222,232,.55) !important;
+  border-color: rgba(255,255,255,.10) !important;
+}
+html[data-theme="dark"] .home-estara-node span { color: #70a7ff !important; }
+
+html[data-theme="dark"] .freebies-tool-card {
+  background: #151922 !important;
+  color: #d7dee8 !important;
+}
+html[data-theme="dark"] .freebies-tool-card:hover { background: #1a202b !important; }
+html[data-theme="dark"] .freebies-tool-card-top,
+html[data-theme="dark"] .freebies-tool-footer,
+html[data-theme="dark"] .freebies-upcoming-number,
+html[data-theme="dark"] .freebies-upcoming-card p,
+html[data-theme="dark"] .freebies-count-box small {
+  color: #7f8da1 !important;
+}
+html[data-theme="dark"] .freebies-tool-description { color: #9aa7b8 !important; }
+html[data-theme="dark"] .freebies-tool-footer,
+html[data-theme="dark"] .freebies-upcoming-card,
+html[data-theme="dark"] .freebies-upcoming-list {
+  border-color: rgba(255,255,255,.09) !important;
+}
+html[data-theme="dark"] .freebies-upcoming-section { background: #11151b !important; }
+html[data-theme="dark"] .portfolio-hero-orbit {
+  background: #111720 !important;
+  border-color: rgba(112,167,255,.14) !important;
+}
+html[data-theme="dark"] .portfolio-hero-label,
+html[data-theme="dark"] .portfolio-hero-pulse,
+html[data-theme="dark"] .portfolio-hero-index {
+  color: rgba(233,237,243,.48) !important;
+}
+html[data-theme="dark"] .portfolio-detail-card:hover { background: #1a202b !important; }
+html[data-theme="dark"] .about-page .about-cta-button:hover { background: #151922 !important; color: #e9edf3 !important; }
+
+/* =========================
+   IDE MODE — remaining light surfaces
+========================= */
+html[data-theme="ide"] .home-products-content {
+  background: #0b1020 !important;
+}
+html[data-theme="ide"] .home-products-grid {
+  background: rgba(88,166,255,.08) !important;
+  border-color: rgba(88,166,255,.14) !important;
+}
+html[data-theme="ide"] .home-product-card-estara {
+  background: #111827 !important;
+  color: #c9d7ea !important;
+}
+html[data-theme="ide"] .home-product-card-meta,
+html[data-theme="ide"] .home-product-card-copy {
+  border-color: rgba(88,166,255,.12) !important;
+  color: #8fa0b5 !important;
+}
+html[data-theme="ide"] .home-product-window,
+html[data-theme="ide"] .home-product-dashboard aside,
+html[data-theme="ide"] .home-product-metrics > div,
+html[data-theme="ide"] .home-product-preview-estara,
+html[data-theme="ide"] .home-estara-node {
+  background: #111827 !important;
+  color: #c9d7ea !important;
+  border-color: rgba(88,166,255,.13) !important;
+}
+html[data-theme="ide"] .home-product-dashboard aside { background: #0f172a !important; }
+html[data-theme="ide"] .home-product-topline small,
+html[data-theme="ide"] .home-product-metrics small,
+html[data-theme="ide"] .home-product-topline > span,
+html[data-theme="ide"] .home-product-chart-head b,
+html[data-theme="ide"] .home-estara-caption,
+html[data-theme="ide"] .home-estara-node b {
+  color: #8292a8 !important;
+}
+html[data-theme="ide"] .home-product-chart-head { color: #c9d7ea !important; }
+html[data-theme="ide"] .home-product-windowbar { background: #0b1020 !important; }
+html[data-theme="ide"] .home-products-index,
+html[data-theme="ide"] .home-products-heading p {
+  color: #8292a8 !important;
+  border-color: rgba(88,166,255,.12) !important;
+}
+html[data-theme="ide"] .home-estara-node span { color: #58a6ff !important; }
+
+html[data-theme="ide"] .freebies-tool-card {
+  background: #111827 !important;
+  color: #c9d7ea !important;
+}
+html[data-theme="ide"] .freebies-tool-card:hover { background: #162033 !important; }
+html[data-theme="ide"] .freebies-tool-card-top,
+html[data-theme="ide"] .freebies-tool-footer,
+html[data-theme="ide"] .freebies-upcoming-number,
+html[data-theme="ide"] .freebies-upcoming-card p,
+html[data-theme="ide"] .freebies-count-box small {
+  color: #8292a8 !important;
+}
+html[data-theme="ide"] .freebies-tool-description { color: #8fa0b5 !important; }
+html[data-theme="ide"] .freebies-tool-footer,
+html[data-theme="ide"] .freebies-upcoming-card,
+html[data-theme="ide"] .freebies-upcoming-list {
+  border-color: rgba(88,166,255,.12) !important;
+}
+html[data-theme="ide"] .freebies-upcoming-section { background: #0f1726 !important; }
+html[data-theme="ide"] .portfolio-hero-orbit {
+  background: #0f1726 !important;
+  border-color: rgba(88,166,255,.14) !important;
+}
+html[data-theme="ide"] .portfolio-hero-label,
+html[data-theme="ide"] .portfolio-hero-pulse,
+html[data-theme="ide"] .portfolio-hero-index {
+  color: #8292a8 !important;
+}
+html[data-theme="ide"] .portfolio-detail-card:hover { background: #162033 !important; }
+html[data-theme="ide"] .about-page .about-cta-button:hover { background: #111827 !important; color: #c9d7ea !important; }
+
+/* =========================
+   TABLET / MOBILE NAVIGATION
+========================= */
+@media (max-width: 900px) {
+  .site-navbar-wrap { padding: 10px; }
+  .site-navbar { height: 58px; padding-left: 12px; }
+  .site-navbar-nav,
+  .site-navbar-cta,
+  .site-navbar-actions > .site-theme-switcher { display: none !important; }
+  .site-navbar-mobile-toggle { display: flex !important; }
+  .site-navbar-mobile-menu {
+    display: flex !important;
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    top: 76px;
+    z-index: 1001;
+    padding: 10px;
+    flex-direction: column;
+    border: 1px solid rgba(255,255,255,.16);
+    border-radius: 18px;
+    background: rgba(17,24,39,.92);
+    box-shadow: 0 20px 60px rgba(0,0,0,.20);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: .25s ease;
+  }
+  .site-navbar-mobile-menu.open { opacity: 1; pointer-events: auto; transform: translateY(0); }
+  .site-navbar-mobile-theme { display: flex !important; }
+}
+
+html[data-theme="light"] .site-navbar-mobile-menu {
+  background: rgba(255,255,255,.92);
+  border-color: rgba(17,19,24,.10);
+}
+html[data-theme="light"] .site-navbar-mobile-menu a,
+html[data-theme="light"] .site-navbar-mobile-menu button { color: #111318; }
+html[data-theme="dark"] .site-navbar-mobile-menu,
+html[data-theme="ide"] .site-navbar-mobile-menu { background: rgba(17,24,39,.95) !important; }
+html[data-theme="dark"] .site-navbar-mobile-menu a,
+html[data-theme="dark"] .site-navbar-mobile-menu button { color: #d7dee8 !important; }
+html[data-theme="ide"] .site-navbar-mobile-menu a,
+html[data-theme="ide"] .site-navbar-mobile-menu button { color: #c9d7ea !important; }
+
+@media (max-width: 900px) {
+  html, body { max-width: 100%; overflow-x: clip; }
+  main, .techcraft, .about-page, .services-page, .products-page, .freebies-page, .contact-page, .portfolio-page, .team-page {
+    max-width: 100%;
+  }
+  iframe, img, video { max-width: 100%; }
+}
