@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import ThemeSwitcher from "./theme-switcher";
 
 const sections = [
+  ["Home", "home"],
   ["Services", "services"],
   ["Products", "products"],
   ["Portfolio", "portfolio"],
@@ -21,6 +22,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const isPageLink = (id: string) =>
+    id === "home" ||
     id === "about" ||
     id === "services" ||
     id === "products" ||
@@ -29,7 +31,8 @@ export default function Navbar() {
     id === "team" ||
     id === "contact";
 
-  const isActive = (id: string) => pathname === `/${id}`;
+  const isActive = (id: string) =>
+    id === "home" ? pathname === "/" : pathname === `/${id}`;
 
   useEffect(() => {
     setMobileOpen(false);
@@ -38,7 +41,12 @@ export default function Navbar() {
   const renderItem = ([label, id]: (typeof sections)[number]) => {
     if (isPageLink(id)) {
       return (
-        <Link key={id} href={`/${id}`} className={isActive(id) ? "active" : ""}>
+        <Link
+          key={id}
+          href={id === "home" ? "/" : `/${id}`}
+          className={isActive(id) ? "active" : ""}
+          aria-current={isActive(id) ? "page" : undefined}
+        >
           <span>{label}</span>
         </Link>
       );
