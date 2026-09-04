@@ -20,11 +20,13 @@ import "./portfolio/portfolio-refinements.css";
 import "./portfolio/portfolio-hero-fix.css";
 import "./portfolio/portfolio-vision.css";
 import "./team/team.css";
+import "./components/loading-screen.css";
 import Navbar from "./components/navbar";
 import GlobalMouseEffect from "./components/global-mouse-effect";
 import GlobalScrollMotion from "./components/global-scroll-motion";
 import HomeProductsReplacement from "./components/home-products-replacement";
 import IdeBinaryBackground from "./components/ide-binary-background";
+import LoadingScreen from "./components/loading-screen";
 
 export const metadata: Metadata = {
   title: "TechCraft Solutions",
@@ -54,6 +56,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body className="min-h-full flex flex-col">
+        <LoadingScreen />
         <IdeBinaryBackground />
         <Navbar />
         <GlobalMouseEffect />
