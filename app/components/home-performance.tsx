@@ -3,24 +3,25 @@
 import { useEffect } from "react";
 
 /**
- * Applies lightweight runtime safeguards to the existing homepage effects.
- *
- * The visual design stays unchanged on capable desktop devices, while
- * reduced-motion users and touch-first devices avoid the heaviest animation
- * loops already present in the homepage.
+ * Keeps the existing visual system intact while reducing the cost of
+ * animation-heavy effects on touch devices and for reduced-motion users.
  */
 export default function HomePerformance() {
   useEffect(() => {
-    const root = document.documentElement;
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const coarsePointer = window.matchMedia("(pointer: coarse)");
 
     const apply = () => {
-      root.toggleAttribute("data-reduced-motion", reducedMotion.matches);
-      root.toggleAttribute("data-coarse-pointer", coarsePointer.matches);
+      const shouldReduce = reducedMotion.matches || coarsePointer.matches;
 
       document.querySelectorAll<HTMLCanvasElement>("canvas.network-canvas").forEach((canvas) => {
-        canvas.toggleAttribute("data-performance-hidden", reducedMotion.matches || coarsePointer.matches);
+        canvas.style.display = shouldReduce ? "none" : "";
+      });
+
+      document.querySelectorAll<HTMLElement>(
+        ".animate-marquee-left, .animate-marquee-right"
+      ).forEach((element) => {
+        element.style.animationPlayState = reducedMotion.matches ? "paused" : "";
       });
     };
 
