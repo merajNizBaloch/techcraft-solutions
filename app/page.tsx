@@ -169,10 +169,59 @@ function MicroPattern() {
 }
 
 /* =========================================================
+   BALOCHI MARK
+========================================================= */
+
+function BalochiMark() {
+  return (
+    <svg
+      viewBox="0 0 64 64"
+      className="balochi-mark"
+      aria-hidden="true"
+      fill="none"
+    >
+      <path
+        d="M32 4 56 18v28L32 60 8 46V18L32 4Z"
+        stroke="currentColor"
+        strokeWidth="2"
+      />
+      <path
+        d="m20 24 12-8 12 8-12 8-12-8Zm0 0v16l12 8 12-8V24M32 32v16"
+        stroke="currentColor"
+        strokeWidth="2"
+      />
+    </svg>
+  );
+}
+
+/* =========================================================
    HERO PRODUCT PREVIEW
 ========================================================= */
 
 import HomeProductPreview from "./components/home-product-preview";
+/* =========================================================
+   LIVE CODE EDITOR
+========================================================= */
+
+function LiveCodeEditor() {
+  return (
+    <div className="live-code-editor">
+      <div className="live-line">
+        <span className="live-line-number">01</span>
+        <span><Braces size={12} /> const product = <strong>TechCraft</strong>;</span>
+      </div>
+      <div className="live-line">
+        <span className="live-line-number">02</span>
+        <span><Terminal size={12} /> buildExperience(product);</span>
+      </div>
+      <div className="live-line">
+        <span className="live-line-number">03</span>
+        <span>return digitalFuture;</span>
+      </div>
+    </div>
+  );
+}
+
 /* =========================================================
    KEYBOARD PANEL
 ========================================================= */
