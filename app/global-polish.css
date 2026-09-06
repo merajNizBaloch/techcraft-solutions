@@ -1,0 +1,86 @@
+/* =========================================================
+   TECHCRAFT GLOBAL POLISH
+   Shared, non-destructive baseline for every route.
+   Keep route-specific visual systems in their existing CSS files.
+========================================================= */
+
+html {
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-width: 320px;
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img,
+picture,
+svg,
+canvas,
+video {
+  max-width: 100%;
+}
+
+img,
+picture,
+video {
+  display: block;
+}
+
+button,
+a,
+input,
+textarea,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid rgba(37, 99, 255, 0.72);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: rgba(37, 99, 255, 0.18);
+  color: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@media (max-width: 640px) {
+  body {
+    overflow-x: clip;
+  }
+}
+
+@supports not (overflow: clip) {
+  @media (max-width: 640px) {
+    body {
+      overflow-x: hidden;
+    }
+  }
+}
