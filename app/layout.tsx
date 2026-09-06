@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./global-polish.css";
 import "./global-interactions.css";
 import "./theme.css";
 import "./dark-theme-overrides.css";
