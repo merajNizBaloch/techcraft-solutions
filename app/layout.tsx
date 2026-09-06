@@ -26,6 +26,7 @@ import "./components/loading-screen.css";
 import Navbar from "./components/navbar";
 import GlobalMouseEffect from "./components/global-mouse-effect";
 import GlobalScrollMotion from "./components/global-scroll-motion";
+import HomePerformance from "./components/home-performance";
 import HomeProductsReplacement from "./components/home-products-replacement";
 import IdeBinaryBackground from "./components/ide-binary-background";
 import LoadingScreen from "./components/loading-screen";
@@ -105,6 +106,7 @@ export default function RootLayout({
         <IdeBinaryBackground />
         <Navbar />
         <GlobalMouseEffect />
+        <HomePerformance />
         <GlobalScrollMotion>
           {children}
           <HomeProductsReplacement />
