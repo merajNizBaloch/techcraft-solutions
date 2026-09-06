@@ -30,6 +30,7 @@ import HomePerformance from "./components/home-performance";
 import HomeProductsReplacement from "./components/home-products-replacement";
 import IdeBinaryBackground from "./components/ide-binary-background";
 import LoadingScreen from "./components/loading-screen";
+import SeoStructuredData from "./components/seo-structured-data";
 
 const siteUrl = "https://www.techcraftsolution.com";
 
@@ -107,6 +108,7 @@ export default function RootLayout({
         <Navbar />
         <GlobalMouseEffect />
         <HomePerformance />
+        <SeoStructuredData />
         <GlobalScrollMotion>
           {children}
           <HomeProductsReplacement />
