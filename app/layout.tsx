@@ -30,10 +30,53 @@ import HomeProductsReplacement from "./components/home-products-replacement";
 import IdeBinaryBackground from "./components/ide-binary-background";
 import LoadingScreen from "./components/loading-screen";
 
+const siteUrl = "https://www.techcraftsolution.com";
+
 export const metadata: Metadata = {
-  title: "TechCraft Solutions",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "TechCraft Solutions — Design, Engineering & AI",
+    template: "%s | TechCraft Solutions",
+  },
   description:
-    "TechCraft Solutions — digital product design, software engineering and intelligent technology.",
+    "TechCraft Solutions designs and engineers digital products, websites, software systems and AI-powered experiences.",
+  applicationName: "TechCraft Solutions",
+  authors: [{ name: "TechCraft Solutions" }],
+  creator: "TechCraft Solutions",
+  publisher: "TechCraft Solutions",
+  keywords: [
+    "TechCraft Solutions",
+    "software house",
+    "UI UX design",
+    "web development",
+    "software development",
+    "AI solutions",
+    "digital products",
+    "Pakistan software house",
+    "Balochistan software house",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: siteUrl,
+    siteName: "TechCraft Solutions",
+    title: "TechCraft Solutions — Design, Engineering & AI",
+    description:
+      "Digital product design, software engineering and intelligent technology from TechCraft Solutions.",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "TechCraft Solutions — Design, Engineering & AI",
+    description:
+      "Digital product design, software engineering and intelligent technology.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 const themeInitScript = `(() => {
