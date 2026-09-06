@@ -4,6 +4,14 @@
    Keep route-specific visual systems in their existing CSS files.
 ========================================================= */
 
+/* The theme switcher owns dark/IDE state. Prevent the browser's
+   OS-level dark preference from silently changing the light theme. */
+html:not([data-theme]) {
+  color-scheme: light;
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
 html {
   text-rendering: optimizeLegibility;
   -webkit-text-size-adjust: 100%;
