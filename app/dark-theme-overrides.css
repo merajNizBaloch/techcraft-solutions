@@ -1,16 +1,4 @@
 /* DARK MODE ONLY — preserve layout, spacing, sizing and animation geometry. */
-html[data-theme="dark"] body,
-html[data-theme="dark"] main,
-html[data-theme="dark"] .techcraft,
-html[data-theme="dark"] .about-page,
-html[data-theme="dark"] .services-page,
-html[data-theme="dark"] .products-page,
-html[data-theme="dark"] .freebies-page,
-html[data-theme="dark"] .contact-page,
-html[data-theme="dark"] .portfolio-page {
-  background-color: #0d0f12 !important;
-  color: #d7dee8 !important;
-}
 
 /* Generic light surfaces */
 html[data-theme="dark"] main [class*="bg-white"],
