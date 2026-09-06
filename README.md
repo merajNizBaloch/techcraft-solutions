@@ -1,36 +1,100 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TechCraft Solutions
 
-## Getting Started
+**Design to Development Solutions**
 
-First, run the development server:
+TechCraft Solutions is a digital product and software studio focused on UI/UX design, web and software engineering, AI-powered solutions, and practical digital products.
+
+## What we build
+
+- UI/UX and product design
+- Modern websites and web applications
+- Business software and management systems
+- AI integrations and intelligent workflows
+- Digital products and internal tools
+- Free developer/design utilities and resources
+
+## Products
+
+TechCraft also develops its own products, including:
+
+- **Academiq** — school management platform
+- **Estara** — real-estate management platform
+- **ConvertX** — browser-based file conversion hub
+
+## Tech stack
+
+- Next.js / React / TypeScript
+- Tailwind CSS
+- Framer Motion and GSAP
+- Lucide Icons
+- Vercel
+
+## Local development
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Production checks
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Run linting:
 
-## Learn More
+```bash
+npm run lint
+```
 
-To learn more about Next.js, take a look at the following resources:
+Create a production build:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run build
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Run the production server:
 
-## Deploy on Vercel
+```bash
+npm run start
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Project structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```text
+app/
+├── about/
+├── components/
+├── contact/
+├── freebies/
+├── portfolio/
+├── products/
+├── services/
+├── team/
+├── layout.tsx
+└── page.tsx
+public/
+└── images/
+```
+
+The project uses the Next.js App Router. Shared navigation, global interactions, themes, and visual effects live under `app/components` and the application shell in `app/layout.tsx`.
+
+## Deployment
+
+The site is designed for deployment on Vercel. Pushes to the production branch can be connected to a Vercel project for automatic deployments.
+
+## Repository
+
+GitHub: `merajNizBaloch/techcraft-solutions`
+
+Website: `https://www.techcraftsolution.com/`
+
+---
+
+© TechCraft Solutions. All rights reserved.
