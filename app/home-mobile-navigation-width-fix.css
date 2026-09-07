@@ -51,6 +51,12 @@
   .techcraft .hero-buttons .secondary-action:active {
     transform: translateY(1px) !important;
   }
+
+  /* Keep the light homepage visually light when Explore scrolls to Products. */
+  html:not([data-theme="dark"]):not([data-theme="ide"]) .techcraft .work {
+    background: #ffffff !important;
+    color: #111318 !important;
+  }
 }
 
 @media (max-width: 520px) {
@@ -67,8 +73,23 @@
     padding-right: 11px !important;
   }
 
+  /* Hero CTAs are truly edge-to-edge on small screens. */
+  .techcraft .hero-buttons {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin-left: calc((100% - 100vw) / 2) !important;
+    padding-left: 11px !important;
+    padding-right: 11px !important;
+    box-sizing: border-box !important;
+  }
+
   .techcraft .hero-buttons .primary-action,
   .techcraft .hero-buttons .secondary-action {
-    min-height: 48px !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-height: 50px !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    box-sizing: border-box !important;
   }
 }
