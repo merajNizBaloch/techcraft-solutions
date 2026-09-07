@@ -3,7 +3,7 @@
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import ThemeSwitcher from "./theme-switcher";
 
 const sections = [
@@ -36,6 +36,26 @@ export default function Navbar() {
 
   useEffect(() => {
     setMobileOpen(false);
+  }, [pathname]);
+
+  useLayoutEffect(() => {
+    if (pathname !== "/") return;
+
+    const handleExploreWork = (event: MouseEvent) => {
+      const target = event.target as Element | null;
+      const button = target?.closest(".techcraft .secondary-action");
+      if (!button) return;
+
+      event.preventDefault();
+      event.stopPropagation();
+      window.location.assign("/portfolio");
+    };
+
+    document.addEventListener("click", handleExploreWork, true);
+
+    return () => {
+      document.removeEventListener("click", handleExploreWork, true);
+    };
   }, [pathname]);
 
   const renderItem = ([label, id]: (typeof sections)[number]) => {
