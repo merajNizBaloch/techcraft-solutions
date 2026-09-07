@@ -35,6 +35,36 @@ export default function ThemeSwitcher() {
           : "light";
 
     setTheme(initial);
+
+    // Explore work must be navigation only. Capture the pointer gesture before
+    // the homepage button's React handler can run or any delegated interaction
+    // can interpret the click as a theme action.
+    const handleExplorePointerDown = (event: PointerEvent) => {
+      const target = event.target as Element | null;
+      const explore = target?.closest(".techcraft .secondary-action");
+      if (!explore) return;
+
+      event.preventDefault();
+      event.stopPropagation();
+      window.location.assign("/portfolio");
+    };
+
+    const handleExploreClick = (event: MouseEvent) => {
+      const target = event.target as Element | null;
+      const explore = target?.closest(".techcraft .secondary-action");
+      if (!explore) return;
+
+      event.preventDefault();
+      event.stopPropagation();
+    };
+
+    document.addEventListener("pointerdown", handleExplorePointerDown, true);
+    document.addEventListener("click", handleExploreClick, true);
+
+    return () => {
+      document.removeEventListener("pointerdown", handleExplorePointerDown, true);
+      document.removeEventListener("click", handleExploreClick, true);
+    };
   }, []);
 
   const cycleTheme = () => {
