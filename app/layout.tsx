@@ -27,6 +27,7 @@ import "./components/global-neural-background.css";
 import "./theme-final-overrides.css";
 import "./mobile-nav-light-fix.css";
 import "./home-mobile-responsive.css";
+import "./home-mobile-service-fix.css";
 import Navbar from "./components/navbar";
 import GlobalMouseEffect from "./components/global-mouse-effect";
 import GlobalScrollMotion from "./components/global-scroll-motion";
