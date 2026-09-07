@@ -49,7 +49,7 @@ export default function GlobalMouseEffect() {
       opacity: number,
       widthPx = 1,
     ) => {
-      const start = 21;
+      const start = 13;
       const end = start + length;
       const cos = Math.cos(angle);
       const sin = Math.sin(angle);
@@ -94,34 +94,34 @@ export default function GlobalMouseEffect() {
         // Design/dev rays: four primary axes plus four diagonal accents.
         for (let i = 0; i < 8; i += 1) {
           const angle = (Math.PI * 2 * i) / 8 - Math.PI / 8;
-          const length = (i % 2 === 0 ? 42 : 27) * rayBoost;
+          const length = (i % 2 === 0 ? 28 : 18) * rayBoost;
           drawRay(0, 0, angle, length, (i % 2 === 0 ? 0.42 : 0.2) * pulse);
         }
 
         // Soft technical halo.
-        const halo = ctx.createRadialGradient(0, 0, 5, 0, 0, 43 + speed * 13);
+        const halo = ctx.createRadialGradient(0, 0, 4, 0, 0, 28 + speed * 8);
         halo.addColorStop(0, "rgba(37, 99, 255, 0.14)");
         halo.addColorStop(0.45, "rgba(37, 99, 255, 0.045)");
         halo.addColorStop(1, "rgba(37, 99, 255, 0)");
         ctx.fillStyle = halo;
         ctx.beginPath();
-        ctx.arc(0, 0, 43 + speed * 13, 0, Math.PI * 2);
+        ctx.arc(0, 0, 28 + speed * 8, 0, Math.PI * 2);
         ctx.fill();
 
         // Outer precision ring.
         ctx.strokeStyle = "rgba(37, 99, 255, 0.48)";
         ctx.lineWidth = 1;
         ctx.beginPath();
-        ctx.arc(0, 0, 17 + speed * 2, 0, Math.PI * 2);
+        ctx.arc(0, 0, 12 + speed * 1.5, 0, Math.PI * 2);
         ctx.stroke();
 
         // Rotating engineering guides.
         ctx.save();
         ctx.rotate(time * 0.00045);
         ctx.strokeStyle = "rgba(37, 99, 255, 0.34)";
-        ctx.setLineDash([5, 5]);
+        ctx.setLineDash([4, 4]);
         ctx.beginPath();
-        ctx.arc(0, 0, 23, -0.9, 1.15);
+        ctx.arc(0, 0, 16, -0.9, 1.15);
         ctx.stroke();
         ctx.restore();
 
@@ -129,27 +129,27 @@ export default function GlobalMouseEffect() {
         ctx.rotate(Math.PI / 4);
         ctx.fillStyle = "rgba(244, 246, 248, 0.96)";
         ctx.strokeStyle = "#111318";
-        ctx.lineWidth = 1.1;
-        ctx.fillRect(-7, -7, 14, 14);
-        ctx.strokeRect(-7, -7, 14, 14);
+        ctx.lineWidth = 1;
+        ctx.fillRect(-5, -5, 10, 10);
+        ctx.strokeRect(-5, -5, 10, 10);
         ctx.fillStyle = "#2563ff";
-        ctx.fillRect(-2.5, -2.5, 5, 5);
+        ctx.fillRect(-1.8, -1.8, 3.6, 3.6);
         ctx.restore();
 
         // Code markers: < />
         ctx.save();
         ctx.fillStyle = "rgba(37, 99, 255, 0.88)";
-        ctx.font = "600 11px SFMono-Regular, Consolas, Liberation Mono, monospace";
+        ctx.font = "600 8px SFMono-Regular, Consolas, Liberation Mono, monospace";
         ctx.textBaseline = "middle";
         ctx.textAlign = "center";
-        ctx.fillText("<", cursor.x - 30 - speed * 3, cursor.y);
-        ctx.fillText("/>", cursor.x + 32 + speed * 3, cursor.y);
+        ctx.fillText("<", cursor.x - 21 - speed * 2, cursor.y);
+        ctx.fillText("/>", cursor.x + 22 + speed * 2, cursor.y);
         ctx.restore();
 
         // Tiny live status point.
         ctx.fillStyle = "#c83a32";
         ctx.beginPath();
-        ctx.arc(cursor.x + 0, cursor.y - 27, 2.4 + speed * 1.2, 0, Math.PI * 2);
+        ctx.arc(cursor.x + 0, cursor.y - 18, 1.8 + speed * 0.9, 0, Math.PI * 2);
         ctx.fill();
       }
 
