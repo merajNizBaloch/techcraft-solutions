@@ -1,0 +1,44 @@
+/* Mobile home — service card spacing fix */
+
+@media (max-width: 900px) {
+  .techcraft .service-item {
+    grid-template-columns: 30px 46px minmax(0, 1fr) 18px !important;
+    gap: 10px !important;
+    padding: 17px 6px !important;
+  }
+
+  .techcraft .service-icon {
+    width: 40px !important;
+    height: 40px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    justify-self: start !important;
+    margin-left: 2px !important;
+  }
+
+  .techcraft .service-title {
+    min-width: 0 !important;
+    padding-left: 4px !important;
+    line-height: 1.05 !important;
+  }
+}
+
+@media (max-width: 520px) {
+  .techcraft .service-item {
+    grid-template-columns: 27px 42px minmax(0, 1fr) 17px !important;
+    gap: 8px !important;
+    padding: 15px 5px !important;
+  }
+
+  .techcraft .service-icon {
+    width: 37px !important;
+    height: 37px !important;
+    margin-left: 1px !important;
+  }
+
+  .techcraft .service-title {
+    padding-left: 4px !important;
+    line-height: 1.08 !important;
+  }
+}
