@@ -30,32 +30,17 @@ export default function ThemeSwitcher() {
     setTheme(initial);
     applyTheme(initial);
 
-    // Explore work is a navigation action, not a theme action. Intercept it
-    // before document-level click handlers can accidentally alter the theme.
+    // Explore work is a navigation action, not a theme action.
+    // Route it directly to the portfolio page instead of changing theme.
     const handleExploreClick = (event: MouseEvent) => {
       const target = event.target as Element | null;
-      const button = target?.closest(".techcraft .secondary-action");
+      const button = target?.closest(".techcraft .secondary-action") as HTMLAnchorElement | null;
       if (!button) return;
 
       event.preventDefault();
       event.stopPropagation();
 
-      const root = document.documentElement;
-      const activeTheme = root.dataset.theme as Theme | undefined;
-
-      document.getElementById("work")?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-
-      // Preserve the theme that was active before navigation.
-      window.requestAnimationFrame(() => {
-        if (activeTheme && themes.includes(activeTheme)) {
-          root.dataset.theme = activeTheme;
-        } else {
-          root.removeAttribute("data-theme");
-        }
-      });
+      window.location.assign("/portfolio");
     };
 
     document.addEventListener("click", handleExploreClick, true);
