@@ -41,7 +41,11 @@ export default function Navbar() {
   useLayoutEffect(() => {
     if (pathname !== "/") return;
 
-    const handleExploreWork = (event: MouseEvent) => {
+    const isMobile = () => window.matchMedia("(max-width: 900px)").matches;
+
+    const handleExploreWork = (event: Event) => {
+      if (!isMobile()) return;
+
       const target = event.target as Element | null;
       const button = target?.closest(".techcraft .secondary-action");
       if (!button) return;
@@ -51,9 +55,16 @@ export default function Navbar() {
       window.location.assign("/portfolio");
     };
 
+    document.addEventListener("pointerdown", handleExploreWork, true);
+    document.addEventListener("touchstart", handleExploreWork, {
+      capture: true,
+      passive: false,
+    });
     document.addEventListener("click", handleExploreWork, true);
 
     return () => {
+      document.removeEventListener("pointerdown", handleExploreWork, true);
+      document.removeEventListener("touchstart", handleExploreWork, true);
       document.removeEventListener("click", handleExploreWork, true);
     };
   }, [pathname]);
