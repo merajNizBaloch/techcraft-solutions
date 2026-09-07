@@ -1061,7 +1061,7 @@ export default function Home() {
                   <ArrowUpRight size={17} />
                 </button>
 
-                                <Link
+                <Link
                   href="/portfolio"
                   className="secondary-action"
                   aria-label="Explore TechCraft portfolio"
