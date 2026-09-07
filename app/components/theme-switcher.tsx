@@ -29,6 +29,40 @@ export default function ThemeSwitcher() {
     const initial = saved && themes.includes(saved) ? saved : "light";
     setTheme(initial);
     applyTheme(initial);
+
+    // Explore work is a navigation action, not a theme action. Intercept it
+    // before document-level click handlers can accidentally alter the theme.
+    const handleExploreClick = (event: MouseEvent) => {
+      const target = event.target as Element | null;
+      const button = target?.closest(".techcraft .secondary-action");
+      if (!button) return;
+
+      event.preventDefault();
+      event.stopPropagation();
+
+      const root = document.documentElement;
+      const activeTheme = root.dataset.theme as Theme | undefined;
+
+      document.getElementById("work")?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+
+      // Preserve the theme that was active before navigation.
+      window.requestAnimationFrame(() => {
+        if (activeTheme && themes.includes(activeTheme)) {
+          root.dataset.theme = activeTheme;
+        } else {
+          root.removeAttribute("data-theme");
+        }
+      });
+    };
+
+    document.addEventListener("click", handleExploreClick, true);
+
+    return () => {
+      document.removeEventListener("click", handleExploreClick, true);
+    };
   }, []);
 
   const cycleTheme = () => {
