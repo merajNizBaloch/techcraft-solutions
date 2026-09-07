@@ -110,10 +110,11 @@ html[data-theme="ide"] .about-page .about-cta-button:hover { background: #111827
     z-index: 1001;
     padding: 10px;
     flex-direction: column;
-    border: 1px solid rgba(255,255,255,.16);
+    border: 1px solid rgba(17,19,24,.10);
     border-radius: 18px;
-    background: rgba(17,24,39,.92);
-    box-shadow: 0 20px 60px rgba(0,0,0,.20);
+    background: rgba(255,255,255,.96);
+    color: #111318;
+    box-shadow: 0 20px 60px rgba(17,19,24,.12);
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
     opacity: 0;
@@ -123,23 +124,26 @@ html[data-theme="ide"] .about-page .about-cta-button:hover { background: #111827
   }
   .site-navbar-mobile-menu.open { opacity: 1; pointer-events: auto; transform: translateY(0); }
   .site-navbar-mobile-theme { display: flex !important; }
+
+  .site-navbar-mobile-menu a,
+  .site-navbar-mobile-menu button {
+    color: #111318 !important;
+  }
 }
 
-/* LIGHT MODE: light is the default theme and has no data-theme attribute. */
-html:not([data-theme="dark"]):not([data-theme="ide"]) .site-navbar-mobile-menu {
-  background: rgba(255,255,255,.96) !important;
-  border-color: rgba(17,19,24,.10) !important;
-  box-shadow: 0 20px 60px rgba(17,19,24,.12) !important;
+html[data-theme="dark"] .site-navbar-mobile-menu {
+  background: rgba(17,24,39,.95) !important;
+  border-color: rgba(255,255,255,.16) !important;
+  box-shadow: 0 20px 60px rgba(0,0,0,.20) !important;
 }
-html:not([data-theme="dark"]):not([data-theme="ide"]) .site-navbar-mobile-menu a,
-html:not([data-theme="dark"]):not([data-theme="ide"]) .site-navbar-mobile-menu button {
-  color: #111318 !important;
-}
-
-html[data-theme="dark"] .site-navbar-mobile-menu,
-html[data-theme="ide"] .site-navbar-mobile-menu { background: rgba(17,24,39,.95) !important; }
 html[data-theme="dark"] .site-navbar-mobile-menu a,
 html[data-theme="dark"] .site-navbar-mobile-menu button { color: #d7dee8 !important; }
+
+html[data-theme="ide"] .site-navbar-mobile-menu {
+  background: #111827 !important;
+  border-color: rgba(88,166,255,.16) !important;
+  box-shadow: 0 20px 60px rgba(0,0,0,.24) !important;
+}
 html[data-theme="ide"] .site-navbar-mobile-menu a,
 html[data-theme="ide"] .site-navbar-mobile-menu button { color: #c9d7ea !important; }
 
