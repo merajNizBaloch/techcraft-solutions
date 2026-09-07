@@ -98,6 +98,7 @@ export default function Navbar() {
       <nav
         className={`site-navbar-mobile-menu${mobileOpen ? " open" : ""}`}
         aria-label="Mobile navigation"
+        style={{ backgroundColor: "#ffffff" }}
       >
         {sections.map(renderItem)}
         <div className="site-navbar-mobile-theme">
