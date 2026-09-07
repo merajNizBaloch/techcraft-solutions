@@ -85,11 +85,8 @@ export const metadata: Metadata = {
 const themeInitScript = `(() => {
   try {
     const saved = localStorage.getItem("techcraft-theme");
-    if (saved === "dark" || saved === "ide") {
-      document.documentElement.dataset.theme = saved;
-    } else {
-      document.documentElement.removeAttribute("data-theme");
-    }
+    const theme = saved === "dark" || saved === "ide" || saved === "light" ? saved : "light";
+    document.documentElement.dataset.theme = theme;
   } catch {}
 })();`;
 
