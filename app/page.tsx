@@ -16,6 +16,7 @@ import {
   X,
   Zap,
 } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 /* =========================================================
@@ -1060,13 +1061,14 @@ export default function Home() {
                   <ArrowUpRight size={17} />
                 </button>
 
-                <button
+                                <Link
+                  href="/portfolio"
                   className="secondary-action"
-                  onClick={() => scrollTo("work")}
+                  aria-label="Explore TechCraft portfolio"
                 >
                   Explore work
-                  <ArrowRight size={16} />
-                </button>
+                  <ArrowRight size={16} aria-hidden="true" />
+                </Link>
 
               </div>
 

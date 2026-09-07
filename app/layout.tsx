@@ -28,13 +28,11 @@ import "./theme-final-overrides.css";
 import "./mobile-nav-light-fix.css";
 import "./home-mobile-responsive.css";
 import "./home-mobile-service-fix.css";
-import "./home-hero-explore-link.css";
 import Navbar from "./components/navbar";
 import GlobalMouseEffect from "./components/global-mouse-effect";
 import GlobalScrollMotion from "./components/global-scroll-motion";
 import HomePerformance from "./components/home-performance";
 import HomeProductsReplacement from "./components/home-products-replacement";
-import HomeHeroExploreLink from "./components/home-hero-explore-link";
 import IdeBinaryBackground from "./components/ide-binary-background";
 import GlobalNeuralBackground from "./components/global-neural-background";
 import LoadingScreen from "./components/loading-screen";
@@ -118,7 +116,6 @@ export default function RootLayout({
         <GlobalMouseEffect />
         <HomePerformance />
         <SeoStructuredData />
-        <HomeHeroExploreLink />
         <GlobalScrollMotion>
           {children}
           <HomeProductsReplacement />
