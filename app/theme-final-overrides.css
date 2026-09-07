@@ -107,7 +107,7 @@ html[data-theme="ide"] .about-page .about-cta-button:hover { background: #111827
     left: 10px;
     right: 10px;
     top: 76px;
-    z-index: 1001;
+    z-index: 10001;
     padding: 10px;
     flex-direction: column;
     border: 1px solid rgba(17,19,24,.10);
@@ -134,13 +134,46 @@ html[data-theme="ide"] .about-page .about-cta-button:hover { background: #111827
     color: #111318 !important;
     border-color: rgba(17,19,24,.10) !important;
     box-shadow: 0 20px 60px rgba(17,19,24,.12) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
 
   html:not([data-theme="dark"]):not([data-theme="ide"]) .site-navbar-mobile-menu a,
   html:not([data-theme="dark"]):not([data-theme="ide"]) .site-navbar-mobile-menu button {
+    display: flex !important;
+    align-items: center;
+    width: 100%;
+    min-height: 46px;
     color: #111318 !important;
+    background: transparent !important;
     background-color: transparent !important;
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 2;
+    transition: color .2s ease, background .2s ease, transform .2s ease, padding-left .2s ease !important;
   }
+
+  html:not([data-theme="dark"]):not([data-theme="ide"]) .site-navbar-mobile-menu a:hover,
+  html:not([data-theme="dark"]):not([data-theme="ide"]) .site-navbar-mobile-menu button:hover,
+  html:not([data-theme="dark"]):not([data-theme="ide"]) .site-navbar-mobile-menu a:focus-visible,
+  html:not([data-theme="dark"]):not([data-theme="ide"]) .site-navbar-mobile-menu button:focus-visible {
+    color: #2563ff !important;
+    background: rgba(37,99,255,.08) !important;
+    background-color: rgba(37,99,255,.08) !important;
+    transform: translateX(2px);
+    outline: none;
+  }
+
+  html:not([data-theme="dark"]):not([data-theme="ide"]) .site-navbar-mobile-menu a.active {
+    color: #2563ff !important;
+    background: rgba(37,99,255,.08) !important;
+    background-color: rgba(37,99,255,.08) !important;
+  }
+}
+
+/* The custom design cursor must render above the expanded mobile menu. */
+@media (hover: hover) and (pointer: fine) {
+  .global-network-canvas { z-index: 10002 !important; }
 }
 
 html[data-theme="dark"] .site-navbar-mobile-menu {
