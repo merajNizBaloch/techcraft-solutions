@@ -25,29 +25,16 @@ export default function ThemeSwitcher() {
   const [theme, setTheme] = useState<Theme>("light");
 
   useEffect(() => {
+    const rootTheme = document.documentElement.dataset.theme as Theme | undefined;
     const saved = window.localStorage.getItem("techcraft-theme") as Theme | null;
-    const initial = saved && themes.includes(saved) ? saved : "light";
+    const initial =
+      rootTheme && themes.includes(rootTheme)
+        ? rootTheme
+        : saved && themes.includes(saved)
+          ? saved
+          : "light";
+
     setTheme(initial);
-    applyTheme(initial);
-
-    // Explore work is a navigation action, not a theme action.
-    // Route it directly to the portfolio page instead of changing theme.
-    const handleExploreClick = (event: MouseEvent) => {
-      const target = event.target as Element | null;
-      const button = target?.closest(".techcraft .secondary-action") as HTMLAnchorElement | null;
-      if (!button) return;
-
-      event.preventDefault();
-      event.stopPropagation();
-
-      window.location.assign("/portfolio");
-    };
-
-    document.addEventListener("click", handleExploreClick, true);
-
-    return () => {
-      document.removeEventListener("click", handleExploreClick, true);
-    };
   }, []);
 
   const cycleTheme = () => {
