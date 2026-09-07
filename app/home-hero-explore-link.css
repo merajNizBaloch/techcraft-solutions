@@ -1,0 +1,15 @@
+/* Homepage Explore CTA isolation.
+   The legacy button in app/page.tsx is intentionally made non-interactive;
+   the React-managed .hero-explore-action is the only Explore control users can reach. */
+
+.techcraft .hero-buttons > button.secondary-action {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.techcraft .hero-buttons .hero-explore-action {
+  text-decoration: none !important;
+  pointer-events: auto !important;
+  touch-action: manipulation !important;
+}
