@@ -36,10 +36,25 @@ export default function ThemeSwitcher() {
 
     setTheme(initial);
 
-    // Explore work must be navigation only. Capture the pointer gesture before
-    // the homepage button's React handler can run or any delegated interaction
-    // can interpret the click as a theme action.
+    // On mobile only, Explore work is navigation rather than a theme interaction.
+    // Capture the pointer gesture before the homepage React handler can process it.
+    const isMobile = () => window.matchMedia("(max-width: 900px)").matches;
+
     const handleExplorePointerDown = (event: PointerEvent) => {
+      if (!isMobile()) return;
+
+      const target = event.target as Element | null;
+      const explore = target?.closest(".techcraft .secondary-action");
+      if (!explore) return;
+
+      event.preventDefault();
+      event.stopPropagation();
+      window.location.assign("/portfolio");
+    };
+
+    const handleExploreTouchStart = (event: TouchEvent) => {
+      if (!isMobile()) return;
+
       const target = event.target as Element | null;
       const explore = target?.closest(".techcraft .secondary-action");
       if (!explore) return;
@@ -50,6 +65,8 @@ export default function ThemeSwitcher() {
     };
 
     const handleExploreClick = (event: MouseEvent) => {
+      if (!isMobile()) return;
+
       const target = event.target as Element | null;
       const explore = target?.closest(".techcraft .secondary-action");
       if (!explore) return;
@@ -59,10 +76,12 @@ export default function ThemeSwitcher() {
     };
 
     document.addEventListener("pointerdown", handleExplorePointerDown, true);
+    document.addEventListener("touchstart", handleExploreTouchStart, true);
     document.addEventListener("click", handleExploreClick, true);
 
     return () => {
       document.removeEventListener("pointerdown", handleExplorePointerDown, true);
+      document.removeEventListener("touchstart", handleExploreTouchStart, true);
       document.removeEventListener("click", handleExploreClick, true);
     };
   }, []);
