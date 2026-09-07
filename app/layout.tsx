@@ -24,6 +24,7 @@ import "./portfolio/portfolio-vision.css";
 import "./team/team.css";
 import "./components/loading-screen.css";
 import "./components/global-neural-background.css";
+import "./pencil-craft.css";
 import "./theme-final-overrides.css";
 import "./mobile-nav-light-fix.css";
 import "./home-mobile-responsive.css";
@@ -34,6 +35,7 @@ import HomePerformance from "./components/home-performance";
 import HomeProductsReplacement from "./components/home-products-replacement";
 import IdeBinaryBackground from "./components/ide-binary-background";
 import GlobalNeuralBackground from "./components/global-neural-background";
+import PencilCraftHero from "./components/pencil-craft-hero";
 import LoadingScreen from "./components/loading-screen";
 import SeoStructuredData from "./components/seo-structured-data";
 
@@ -114,6 +116,7 @@ export default function RootLayout({
         <Navbar />
         <GlobalMouseEffect />
         <HomePerformance />
+        <PencilCraftHero />
         <SeoStructuredData />
         <GlobalScrollMotion>
           {children}
