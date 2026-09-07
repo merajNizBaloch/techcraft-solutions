@@ -23,7 +23,7 @@ const team = [
     accent: "blue",
     bio: "Leads TechCraft across product direction, design and development — connecting business thinking, user experience and engineering into products built to work in the real world.",
     focus: ["Product strategy", "UI / UX", "Web engineering"],
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/meraj-niaz-baloch/",
   },
   {
     name: "Hamza Shah",
@@ -33,7 +33,7 @@ const team = [
     accent: "green",
     bio: "Builds robust application foundations across backend services, business logic and APIs, with Laravel at the centre of dependable production systems.",
     focus: ["Laravel", "PHP", "APIs"],
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/hamza-shah-7542a52b6/",
   },
   {
     name: "Niyaz Phullain",
@@ -43,7 +43,7 @@ const team = [
     accent: "purple",
     bio: "Turns product ideas and interface systems into fast, responsive front ends using modern React and Next.js architecture with a strong eye for interaction detail.",
     focus: ["Next.js", "React", "Front-end systems"],
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/niyaz-phullain-7a2878246/",
   },
   {
     name: "Javed Khan",
@@ -53,7 +53,7 @@ const team = [
     accent: "gold",
     bio: "Works across the full application stack, shaping practical business software from database and backend logic through to usable production interfaces.",
     focus: ["Full-stack", "Laravel", "Business software"],
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/javed-khan-6699b3290/",
   },
   {
     name: "Kashif Baloch",
