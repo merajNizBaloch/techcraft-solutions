@@ -1,0 +1,108 @@
+name: Fix Explore CTA on working
+
+on:
+  push:
+    branches:
+      - working
+
+permissions:
+  contents: write
+
+jobs:
+  fix-explore:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout working
+        uses: actions/checkout@v4
+        with:
+          ref: working
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Replace legacy Explore button in source
+        shell: bash
+        run: |
+          python <<'PY'
+          from pathlib import Path
+
+          page_path = Path('app/page.tsx')
+          page = page_path.read_text()
+
+          import_anchor = '} from "lucide-react";\nimport { useEffect, useRef, useState } from "react";'
+          import_replacement = '} from "lucide-react";\nimport Link from "next/link";\nimport { useEffect, useRef, useState } from "react";'
+          if 'import Link from "next/link";' not in page:
+              if page.count(import_anchor) != 1:
+                  raise SystemExit('Could not uniquely locate homepage import anchor')
+              page = page.replace(import_anchor, import_replacement, 1)
+
+          old = '''                <button
+                  className="secondary-action"
+                  onClick={() => scrollTo("work")}
+                >
+                  Explore work
+                  <ArrowRight size={16} />
+                </button>'''
+
+          new = '''                <Link
+                  href="/portfolio"
+                  className="secondary-action"
+                  aria-label="Explore TechCraft portfolio"
+                >
+                  Explore work
+                  <ArrowRight size={16} aria-hidden="true" />
+                </Link>'''
+
+          if page.count(old) != 1:
+              raise SystemExit(f'Expected exactly one legacy Explore button, found {page.count(old)}')
+          page = page.replace(old, new, 1)
+          page_path.write_text(page)
+
+          layout_path = Path('app/layout.tsx')
+          layout = layout_path.read_text()
+          layout = layout.replace('import "./home-hero-explore-link.css";\n', '')
+          layout = layout.replace('import HomeHeroExploreLink from "./components/home-hero-explore-link";\n', '')
+          layout = layout.replace('        <HomeHeroExploreLink />\n', '')
+          layout_path.write_text(layout)
+
+          for path in [
+              Path('app/components/home-hero-explore-link.tsx'),
+              Path('app/home-hero-explore-link.css'),
+          ]:
+              if path.exists():
+                  path.unlink()
+
+          workflow = Path('.github/workflows/fix-explore-working.yml')
+          if workflow.exists():
+              workflow.unlink()
+
+          final_page = page_path.read_text()
+          if 'onClick={() => scrollTo("work")}' in final_page[final_page.find('<div className="hero-buttons">'):final_page.find('<KeyboardHint />')]:
+              raise SystemExit('Legacy Explore click handler still exists in hero')
+          if 'href="/portfolio"' not in final_page[final_page.find('<div className="hero-buttons">'):final_page.find('<KeyboardHint />')]:
+              raise SystemExit('New portfolio link missing from hero')
+          PY
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+      - name: Commit validated source fix
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --check
+          git commit -m "fix: replace homepage Explore button with portfolio link"
+          git push origin HEAD:working
