@@ -21,41 +21,6 @@ function applyTheme(theme: Theme) {
   }
 }
 
-function replaceHeroExploreControl() {
-  const existing = document.querySelector<HTMLElement>(
-    ".hero-buttons .secondary-action"
-  );
-
-  if (!existing || document.querySelector(".hero-buttons .hero-explore-action")) {
-    return;
-  }
-
-  const link = document.createElement("a");
-  link.href = "/portfolio";
-  link.className = "hero-explore-action";
-  link.setAttribute("aria-label", "Explore work");
-  link.innerHTML = `
-    <span>Explore work</span>
-    <span aria-hidden="true">→</span>
-  `;
-
-  Object.assign(link.style, {
-    display: "inline-flex",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: "10px",
-    minHeight: "46px",
-    padding: "12px 18px",
-    textDecoration: "none",
-    cursor: "pointer",
-    touchAction: "manipulation",
-    position: "relative",
-    zIndex: "6",
-  });
-
-  existing.replaceWith(link);
-}
-
 export default function ThemeSwitcher() {
   const [theme, setTheme] = useState<Theme>("light");
 
@@ -70,7 +35,6 @@ export default function ThemeSwitcher() {
           : "light";
 
     setTheme(initial);
-    replaceHeroExploreControl();
   }, []);
 
   const cycleTheme = () => {
