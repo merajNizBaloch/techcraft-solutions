@@ -22,7 +22,7 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
 
       - name: Replace legacy Explore button in source
@@ -30,6 +30,7 @@ jobs:
         run: |
           python <<'PY'
           from pathlib import Path
+          import re
 
           page_path = Path('app/page.tsx')
           page = page_path.read_text()
@@ -41,26 +42,24 @@ jobs:
                   raise SystemExit('Could not uniquely locate homepage import anchor')
               page = page.replace(import_anchor, import_replacement, 1)
 
-          old = '''                <button
-                  className="secondary-action"
-                  onClick={() => scrollTo("work")}
-                >
-                  Explore work
-                  <ArrowRight size={16} />
-                </button>'''
+          pattern = re.compile(
+              r'<button\s+className="secondary-action"\s+onClick=\{\(\) => scrollTo\("work"\)\}\s*>\s*Explore work\s*<ArrowRight size=\{16\} />\s*</button>'
+          )
+          matches = list(pattern.finditer(page))
+          if len(matches) != 1:
+              raise SystemExit(f'Expected exactly one legacy Explore button, found {len(matches)}')
 
-          new = '''                <Link
-                  href="/portfolio"
-                  className="secondary-action"
-                  aria-label="Explore TechCraft portfolio"
-                >
-                  Explore work
-                  <ArrowRight size={16} aria-hidden="true" />
-                </Link>'''
-
-          if page.count(old) != 1:
-              raise SystemExit(f'Expected exactly one legacy Explore button, found {page.count(old)}')
-          page = page.replace(old, new, 1)
+          replacement = (
+              '                <Link\n'
+              '                  href="/portfolio"\n'
+              '                  className="secondary-action"\n'
+              '                  aria-label="Explore TechCraft portfolio"\n'
+              '                >\n'
+              '                  Explore work\n'
+              '                  <ArrowRight size={16} aria-hidden="true" />\n'
+              '                </Link>'
+          )
+          page = pattern.sub(replacement, page, count=1)
           page_path.write_text(page)
 
           layout_path = Path('app/layout.tsx')
@@ -81,11 +80,17 @@ jobs:
           if workflow.exists():
               workflow.unlink()
 
-          final_page = page_path.read_text()
-          if 'onClick={() => scrollTo("work")}' in final_page[final_page.find('<div className="hero-buttons">'):final_page.find('<KeyboardHint />')]:
+          hero_start = page.find('<div className="hero-buttons">')
+          hero_end = page.find('<KeyboardHint />', hero_start)
+          hero = page[hero_start:hero_end]
+          if hero_start < 0 or hero_end < 0:
+              raise SystemExit('Could not locate hero action region after replacement')
+          if 'onClick={() => scrollTo("work")}' in hero:
               raise SystemExit('Legacy Explore click handler still exists in hero')
-          if 'href="/portfolio"' not in final_page[final_page.find('<div className="hero-buttons">'):final_page.find('<KeyboardHint />')]:
+          if 'href="/portfolio"' not in hero:
               raise SystemExit('New portfolio link missing from hero')
+          if '<button\n                  className="secondary-action"' in hero:
+              raise SystemExit('Legacy Explore button still exists in hero')
           PY
 
       - name: Install dependencies
