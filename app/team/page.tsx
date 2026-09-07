@@ -171,13 +171,21 @@ export default function TeamPage() {
 
           <div className="grid gap-px border border-black/10 bg-black/10 md:grid-cols-2">
             {team.map((member, index) => (
-              <article key={member.name} className={`team-member-card team-member-${member.accent}`}>
+              <a
+                key={member.name}
+                href={member.linkedin === "#" ? undefined : member.linkedin}
+                target={member.linkedin === "#" ? undefined : "_blank"}
+                rel={member.linkedin === "#" ? undefined : "noopener noreferrer"}
+                aria-label={member.linkedin === "#" ? member.name : `Open ${member.name}'s LinkedIn profile`}
+                className={`team-member-card team-member-${member.accent}`}
+                style={member.linkedin === "#" ? { cursor: "default" } : undefined}
+              >
                 <div className="team-member-top">
                   <span className="font-mono text-[8px] tracking-[.16em] text-black/32">0{index + 1} / TEAM</span>
-                  <Link href={member.linkedin} aria-label={`${member.name} social profile`} className="team-member-link">
+                  <span className="team-member-link">
                     <span className="font-mono text-[7px] tracking-[.08em]">PROFILE</span>
                     <ArrowUpRight size={13} />
-                  </Link>
+                  </span>
                 </div>
 
                 <div className="team-member-body">
@@ -201,7 +209,7 @@ export default function TeamPage() {
                     ))}
                   </div>
                 </div>
-              </article>
+              </a>
             ))}
           </div>
         </div>
