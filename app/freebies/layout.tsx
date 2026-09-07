@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import "./freebies-catalog.css";
 
 export const metadata: Metadata = {
   title: "Free Tools & Resources",
