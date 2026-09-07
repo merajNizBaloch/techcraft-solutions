@@ -1,0 +1,74 @@
+/* TechCraft Home — mobile navigation + full-width layout fix */
+
+@media (max-width: 900px) {
+  .techcraft .hero-container,
+  .techcraft .about-grid,
+  .techcraft .services-layout,
+  .techcraft .culture,
+  .techcraft .work-list,
+  .techcraft .process-grid,
+  .techcraft .contact-grid,
+  .techcraft .contact-footer {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  .techcraft .hero-container,
+  .techcraft .about-grid,
+  .techcraft .services-layout,
+  .techcraft .work-list,
+  .techcraft .process-grid,
+  .techcraft .contact-grid,
+  .techcraft .contact-footer {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+
+  .techcraft .culture {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+
+  .techcraft .hero-buttons {
+    position: relative !important;
+    z-index: 5 !important;
+  }
+
+  .techcraft .hero-buttons .primary-action,
+  .techcraft .hero-buttons .secondary-action {
+    position: relative !important;
+    z-index: 6 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 46px !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    touch-action: manipulation !important;
+  }
+
+  .techcraft .hero-buttons .primary-action:active,
+  .techcraft .hero-buttons .secondary-action:active {
+    transform: translateY(1px) !important;
+  }
+}
+
+@media (max-width: 520px) {
+  .techcraft .hero-container,
+  .techcraft .about-grid,
+  .techcraft .services-layout,
+  .techcraft .work-list,
+  .techcraft .process-grid,
+  .techcraft .contact-grid,
+  .techcraft .contact-footer,
+  .techcraft .culture {
+    width: 100% !important;
+    padding-left: 11px !important;
+    padding-right: 11px !important;
+  }
+
+  .techcraft .hero-buttons .primary-action,
+  .techcraft .hero-buttons .secondary-action {
+    min-height: 48px !important;
+  }
+}
