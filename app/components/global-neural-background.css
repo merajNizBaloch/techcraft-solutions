@@ -1,0 +1,153 @@
+/* =========================================================
+   GLOBAL NEURAL NETWORK BACKGROUND
+   Quiet technical texture shared by every route.
+========================================================= */
+
+.global-neural-background {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: .42;
+  mix-blend-mode: multiply;
+  contain: paint;
+}
+
+.global-neural-svg {
+  position: absolute;
+  inset: -8%;
+  width: 116%;
+  height: 116%;
+  color: rgba(37, 99, 255, .7);
+  transform: translate3d(0, 0, 0) scale(1.02);
+  animation: neuralDrift 26s ease-in-out infinite alternate;
+}
+
+.neural-network {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.neural-network-a {
+  opacity: .19;
+  stroke-dasharray: 1 9;
+  animation: neuralDash 20s linear infinite;
+}
+
+.neural-network-b {
+  opacity: .11;
+  stroke-dasharray: 1 12;
+  animation: neuralDashReverse 29s linear infinite;
+}
+
+.neural-nodes {
+  fill: currentColor;
+  opacity: .3;
+  filter: drop-shadow(0 0 5px rgba(37, 99, 255, .14));
+  animation: neuralNodes 5.5s ease-in-out infinite;
+}
+
+.neural-pulses {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1;
+  opacity: .13;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: neuralPulse 4.8s ease-in-out infinite;
+}
+
+.neural-pulses circle:nth-child(2) { animation-delay: -1.1s; }
+.neural-pulses circle:nth-child(3) { animation-delay: -2.2s; }
+.neural-pulses circle:nth-child(4) { animation-delay: -3.1s; }
+.neural-pulses circle:nth-child(5) { animation-delay: -4s; }
+
+.global-neural-vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 35%, transparent 0 26%, rgba(255,255,255,.16) 58%, rgba(255,255,255,.42) 100%),
+    linear-gradient(180deg, rgba(255,255,255,.07), transparent 18%, transparent 82%, rgba(255,255,255,.08));
+}
+
+html[data-theme="dark"] .global-neural-background {
+  opacity: .34;
+  mix-blend-mode: screen;
+}
+
+html[data-theme="dark"] .global-neural-svg {
+  color: rgba(112, 167, 255, .8);
+}
+
+html[data-theme="dark"] .global-neural-vignette {
+  background:
+    radial-gradient(circle at 50% 35%, transparent 0 28%, rgba(13,15,18,.18) 64%, rgba(13,15,18,.52) 100%);
+}
+
+html[data-theme="ide"] .global-neural-background {
+  opacity: .3;
+  mix-blend-mode: screen;
+}
+
+html[data-theme="ide"] .global-neural-svg {
+  color: rgba(88, 166, 255, .75);
+}
+
+html[data-theme="ide"] .neural-network-a { opacity: .16; }
+html[data-theme="ide"] .neural-network-b { opacity: .08; }
+html[data-theme="ide"] .neural-nodes { opacity: .24; }
+
+html[data-theme="ide"] .global-neural-vignette {
+  background: radial-gradient(circle at 50% 35%, transparent 0 28%, rgba(11,16,32,.12) 58%, rgba(11,16,32,.5) 100%);
+}
+
+@keyframes neuralDrift {
+  0% { transform: translate3d(-10px, 8px, 0) scale(1.02); }
+  100% { transform: translate3d(12px, -10px, 0) scale(1.055); }
+}
+
+@keyframes neuralDash {
+  to { stroke-dashoffset: -120; }
+}
+
+@keyframes neuralDashReverse {
+  to { stroke-dashoffset: 160; }
+}
+
+@keyframes neuralNodes {
+  0%, 100% { transform: translate3d(0, 0, 0); opacity: .26; }
+  50% { transform: translate3d(0, -2px, 0); opacity: .38; }
+}
+
+@keyframes neuralPulse {
+  0%, 100% { opacity: .06; transform: scale(.7); }
+  50% { opacity: .22; transform: scale(1.55); }
+}
+
+@media (max-width: 900px) {
+  .global-neural-background { opacity: .27; }
+  .global-neural-svg { inset: -14%; width: 128%; height: 128%; }
+  .neural-network-a { opacity: .13; }
+  .neural-network-b { opacity: .07; }
+  .neural-nodes { opacity: .22; }
+}
+
+@media (max-width: 520px) {
+  .global-neural-background { opacity: .21; }
+  .neural-network { stroke-width: 1.35; }
+  .neural-pulses { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .global-neural-svg,
+  .neural-network-a,
+  .neural-network-b,
+  .neural-nodes,
+  .neural-pulses circle {
+    animation: none !important;
+  }
+}
