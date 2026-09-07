@@ -64,27 +64,54 @@ export default function FreebiesPage() {
         <div className="freebies-grid" />
         <div className="freebies-glow freebies-glow-a" />
         <div className="freebies-glow freebies-glow-b" />
-        <div className="relative z-10 grid items-center gap-14 lg:grid-cols-[.9fr_1.1fr]">
-          <div>
-            <p className="font-mono text-[8px] tracking-[.18em] text-[#2563ff]">01 / FREEBIES</p>
-            <h1 className="freebies-title mt-7 max-w-[920px] text-[clamp(70px,11vw,156px)] font-medium leading-[.78] tracking-[-.1em]">Useful tools.<br /><span className="text-[#2563ff]">No paywall.</span></h1>
-            <p className="mt-10 max-w-[650px] text-[15px] leading-[1.9] text-black/50">A growing collection of small tools built by TechCraft for the things people need to get done every day. Free to use, simple by design.</p>
+
+        <div className="freebies-lab-corner freebies-lab-corner-tl"><span>TC / LAB-01</span><span>FREE TOOLS DIVISION</span></div>
+        <div className="freebies-lab-corner freebies-lab-corner-tr"><span className="freebies-live-dot" /> LIVE / OPEN ACCESS</div>
+
+        <div className="relative z-10 grid items-center gap-14 lg:grid-cols-[.88fr_1.12fr]">
+          <div className="freebies-hero-copy">
+            <div className="freebies-hero-kicker"><span className="freebies-kicker-mark">✦</span><span>THE TECHCRAFT FREE TOOL LAB</span><i /></div>
+            <p className="mt-7 font-mono text-[8px] tracking-[.2em] text-black/35">TOOLS FOR THE BORING STUFF</p>
+            <h1 className="freebies-title mt-6 max-w-[900px] text-[clamp(68px,10.5vw,150px)] font-medium leading-[.76] tracking-[-.105em]">Useful work.<br /><span className="text-[#2563ff]">Zero cost.</span></h1>
+            <p className="mt-9 max-w-[620px] text-[15px] leading-[1.9] text-black/50">We build the little utilities that should already exist. Convert, compress, resize, generate and clean up your files directly in the browser—without accounts, clutter or a paywall.</p>
+
+            <div className="freebies-hero-actions">
+              <a href="#free-tool-list" className="techcraft-button techcraft-button-primary">Open the free lab <ArrowRight size={15} /></a>
+              <div className="freebies-free-badge"><span>10</span><div><strong>TOOLS LIVE</strong><small>AND GROWING</small></div></div>
+            </div>
+
+            <div className="freebies-principles">
+              <span><Check size={11} /> NO ACCOUNT</span>
+              <span><Check size={11} /> NO PAYWALL</span>
+              <span><Check size={11} /> BROWSER FIRST</span>
+            </div>
           </div>
 
           <div className="freebies-hero-machine" aria-hidden="true">
+            <div className="freebies-machine-label label-top"><span>FREE TOOL LAB</span><b>01 / 10</b></div>
+            <div className="freebies-machine-label label-bottom"><span>DROP</span><span>PROCESS</span><span>GET RESULT</span></div>
             <div className="freebies-machine-grid" />
+            <div className="freebies-machine-scan" />
             <div className="freebies-machine-orbit machine-orbit-a" />
             <div className="freebies-machine-orbit machine-orbit-b" />
             <div className="freebies-machine-beam beam-one" />
             <div className="freebies-machine-beam beam-two" />
-            <div className="freebies-machine-node machine-node-image"><FileImage size={18} /><strong>PNG</strong><small>INPUT FILE</small></div>
-            <div className="freebies-machine-node machine-node-pdf"><FileText size={18} /><strong>PDF</strong><small>DOCUMENT</small></div>
-            <div className="freebies-machine-core"><div className="machine-core-halo" /><div className="machine-core-inner"><Zap size={22} /><strong>FREE</strong><small>TOOL ENGINE</small></div></div>
-            <div className="freebies-machine-node machine-node-output"><Sparkles size={18} /><strong>READY</strong><small>USEFUL OUTPUT</small></div>
-            <div className="freebies-machine-status"><i /> BROWSER PROCESSING / LOCAL WORKFLOW</div>
+
+            <div className="freebies-tool-chip chip-image"><FileImage size={15} /><span>IMAGE</span><b>CONVERT</b></div>
+            <div className="freebies-tool-chip chip-pdf"><FileText size={15} /><span>PDF</span><b>COMPRESS</b></div>
+            <div className="freebies-tool-chip chip-qr"><QrCode size={15} /><span>QR</span><b>GENERATE</b></div>
+            <div className="freebies-tool-chip chip-json"><Braces size={15} /><span>JSON</span><b>FORMAT</b></div>
+
+            <div className="freebies-machine-node machine-node-image"><FileImage size={17} /><strong>PNG → JPG</strong><small>IMAGE / CONVERT</small></div>
+            <div className="freebies-machine-node machine-node-pdf"><FileText size={17} /><strong>PDF</strong><small>DOCUMENT / INPUT</small></div>
+            <div className="freebies-machine-core"><div className="machine-core-halo" /><div className="machine-core-inner"><Zap size={20} /><strong>FREE</strong><small>TOOL ENGINE</small></div></div>
+            <div className="freebies-machine-node machine-node-output"><Sparkles size={17} /><strong>READY</strong><small>RESULT / OUTPUT</small></div>
+            <div className="freebies-machine-status"><i /> LOCAL BROWSER WORKFLOW / NO ACCOUNT REQUIRED</div>
             <span className="machine-particle particle-one" /><span className="machine-particle particle-two" /><span className="machine-particle particle-three" /><span className="machine-particle particle-four" />
           </div>
         </div>
+
+        <div className="freebies-scroll-cue"><span>SCROLL TO THE TOOLKIT</span><i /></div>
       </section>
 
       <section className="freebie-factory-section relative overflow-hidden border-y border-black/10 bg-[#0b1120] px-[7vw] py-24 text-white">
