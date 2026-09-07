@@ -25,6 +25,7 @@ import "./team/team.css";
 import "./components/loading-screen.css";
 import "./theme-final-overrides.css";
 import "./mobile-nav-light-fix.css";
+import "./home-mobile-responsive.css";
 import Navbar from "./components/navbar";
 import GlobalMouseEffect from "./components/global-mouse-effect";
 import GlobalScrollMotion from "./components/global-scroll-motion";
