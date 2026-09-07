@@ -1,0 +1,301 @@
+/* TechCraft Home — mobile-first reflow overrides */
+
+@media (max-width: 900px) {
+  html, body { max-width: 100%; overflow-x: clip !important; }
+  .techcraft { width: 100% !important; max-width: 100% !important; overflow-x: clip !important; }
+  .techcraft *, .techcraft *::before, .techcraft *::after { box-sizing: border-box; min-width: 0; }
+
+  /* Hero */
+  .techcraft .hero {
+    min-height: auto !important;
+    padding: 92px 0 28px !important;
+  }
+  .techcraft .hero-container {
+    width: calc(100% - 28px) !important;
+    max-width: 680px !important;
+    min-height: auto !important;
+    margin-inline: auto !important;
+  }
+  .techcraft .hero-grid {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 34px !important;
+    padding: 24px 0 20px !important;
+    align-items: stretch !important;
+  }
+  .techcraft .hero-copy,
+  .techcraft .hero-product { width: 100% !important; max-width: 100% !important; }
+  .techcraft .hero h1 {
+    max-width: 100% !important;
+    font-size: clamp(46px, 13.2vw, 78px) !important;
+    line-height: .88 !important;
+    letter-spacing: -.07em !important;
+  }
+  .techcraft .hero-text {
+    max-width: 100% !important;
+    margin-top: 22px !important;
+    font-size: 14px !important;
+    line-height: 1.72 !important;
+  }
+  .techcraft .hero-buttons {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 9px !important;
+    margin-top: 22px !important;
+  }
+  .techcraft .primary-action,
+  .techcraft .secondary-action {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    justify-content: center !important;
+    padding: 13px 10px !important;
+    white-space: normal !important;
+  }
+  .techcraft .keyboard-hint {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-top: 25px !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+  .techcraft .keyboard-items { flex-wrap: wrap !important; justify-content: flex-start !important; }
+
+  /* Hero showcase: turn fixed desktop composition into a contained mobile card */
+  .techcraft .hero-product { min-height: 0 !important; display: block !important; }
+  .techcraft .screen-scene,
+  .techcraft .preview-shell,
+  .techcraft .studio-screen,
+  .techcraft .screen-frame,
+  .techcraft .screen-display,
+  .techcraft .preview-card,
+  .techcraft .laptop-scene,
+  .techcraft .laptop {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+  .techcraft .screen-scene,
+  .techcraft .laptop-scene { height: auto !important; min-height: 0 !important; }
+  .techcraft .studio-screen,
+  .techcraft .preview-card,
+  .techcraft .laptop { transform: none !important; }
+  .techcraft .screen-frame,
+  .techcraft .preview-card { overflow: hidden !important; }
+  .techcraft .software-body { grid-template-columns: 40px minmax(0, 1fr) !important; }
+  .techcraft .software-sidebar { padding-inline: 5px !important; }
+  .techcraft .ide-panel { display: none !important; }
+  .techcraft .design-area,
+  .techcraft .design-canvas,
+  .techcraft .preview-main,
+  .techcraft .preview-body,
+  .techcraft .preview-dashboard { min-width: 0 !important; max-width: 100% !important; }
+  .techcraft .design-toolbar { padding-inline: 8px !important; }
+  .techcraft .design-actions { gap: 4px !important; }
+  .techcraft .fake-button { padding-inline: 8px !important; white-space: nowrap !important; }
+  .techcraft .design-canvas { min-height: 235px !important; }
+  .techcraft .canvas-card {
+    width: min(82%, 320px) !important;
+    max-width: calc(100% - 24px) !important;
+    padding: 17px !important;
+  }
+  .techcraft .canvas-heading { font-size: clamp(25px, 7vw, 40px) !important; }
+  .techcraft .canvas-description { max-width: 100% !important; font-size: 10px !important; }
+  .techcraft .canvas-buttons { flex-wrap: wrap !important; gap: 6px !important; }
+  .techcraft .hero-floating-mark {
+    width: 56px !important;
+    height: 56px !important;
+    right: 0 !important;
+    top: -10px !important;
+  }
+  .techcraft .hero-micro-pattern { display: none !important; }
+
+  /* Sections */
+  .techcraft .about,
+  .techcraft .services,
+  .techcraft .culture,
+  .techcraft .work,
+  .techcraft .process,
+  .techcraft .contact {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+  }
+  .techcraft .about-grid,
+  .techcraft .services-layout,
+  .techcraft .process-grid,
+  .techcraft .contact-grid,
+  .techcraft .work-list {
+    width: calc(100% - 28px) !important;
+    max-width: 680px !important;
+    margin-inline: auto !important;
+  }
+
+  .techcraft .about-grid,
+  .techcraft .services-layout,
+  .techcraft .process-grid,
+  .techcraft .contact-grid,
+  .techcraft .culture,
+  .techcraft .work-project {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .techcraft .about-grid,
+  .techcraft .services-layout,
+  .techcraft .process-grid,
+  .techcraft .contact-grid,
+  .techcraft .culture { gap: 30px !important; }
+
+  .techcraft .about-grid { padding-block: 68px !important; }
+  .techcraft .services-layout { padding-block: 68px !important; }
+  .techcraft .process-grid { padding-block: 68px !important; }
+  .techcraft .contact { padding-block: 68px 24px !important; }
+  .techcraft .culture { width: calc(100% - 28px) !important; max-width: 680px !important; margin-inline: auto !important; padding-block: 68px !important; }
+
+  .techcraft .about h2,
+  .techcraft .services-title h2,
+  .techcraft .culture-copy h2,
+  .techcraft .products-heading h2,
+  .techcraft .process-heading h2,
+  .techcraft .contact h2 {
+    max-width: 100% !important;
+    font-size: clamp(40px, 11.5vw, 70px) !important;
+    line-height: .92 !important;
+    letter-spacing: -.065em !important;
+  }
+  .techcraft .about-side,
+  .techcraft .culture-copy,
+  .techcraft .process-list,
+  .techcraft .contact-side,
+  .techcraft .products-heading,
+  .techcraft .work-copy,
+  .techcraft .service-list { max-width: 100% !important; min-width: 0 !important; }
+  .techcraft .about-side p,
+  .techcraft .culture-copy p,
+  .techcraft .contact-side p,
+  .techcraft .products-heading p,
+  .techcraft .work-copy p,
+  .techcraft .service-description,
+  .techcraft .process-row p { max-width: 100% !important; overflow-wrap: anywhere !important; }
+
+  /* Services */
+  .techcraft .service-item {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: grid !important;
+    grid-template-columns: 30px 30px minmax(0, 1fr) 18px !important;
+    gap: 9px !important;
+    padding: 16px 0 !important;
+  }
+  .techcraft .service-description { grid-column: 3 / -1 !important; padding-right: 16px !important; }
+  .techcraft .service-accent { grid-column: 1 / -1 !important; width: 100% !important; }
+
+  /* Culture */
+  .techcraft .culture-graphic {
+    width: min(82vw, 330px) !important;
+    max-width: 100% !important;
+    min-height: 255px !important;
+    margin-inline: auto !important;
+  }
+  .techcraft .culture-details {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  /* Products */
+  .techcraft .products-heading { padding: 68px 0 26px !important; }
+  .techcraft .work-project {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    display: grid !important;
+    gap: 0 !important;
+  }
+  .techcraft .work-visual,
+  .techcraft .work-copy,
+  .techcraft .project-visual,
+  .techcraft .project-copy {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+  .techcraft .work-visual { min-height: 255px !important; overflow: hidden !important; }
+  .techcraft .work-copy { padding: 25px 0 44px !important; }
+  .techcraft .work-copy h3 { font-size: clamp(34px, 9vw, 54px) !important; line-height: .95 !important; }
+  .techcraft .work-visual > * { max-width: 100% !important; }
+
+  /* Process */
+  .techcraft .process-row {
+    width: 100% !important;
+    grid-template-columns: 30px minmax(0, 1fr) !important;
+    gap: 7px 13px !important;
+    padding: 18px 0 !important;
+  }
+  .techcraft .process-row p { grid-column: 2 !important; }
+
+  /* Contact */
+  .techcraft .contact-grid { grid-template-columns: minmax(0, 1fr) !important; }
+  .techcraft .contact-circle {
+    width: min(185px, 56vw) !important;
+    height: min(185px, 56vw) !important;
+    margin-inline: auto !important;
+  }
+  .techcraft .contact-pattern {
+    width: min(42vw, 150px) !important;
+    height: min(42vw, 150px) !important;
+    margin: 30px auto !important;
+  }
+  .techcraft .contact-footer {
+    width: calc(100% - 28px) !important;
+    max-width: 680px !important;
+    margin-inline: auto !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px 16px !important;
+  }
+
+  /* Never let media or decorative SVGs establish a desktop-sized viewport */
+  .techcraft img,
+  .techcraft video,
+  .techcraft iframe,
+  .techcraft svg,
+  .techcraft canvas { max-width: 100%; }
+}
+
+@media (max-width: 520px) {
+  .techcraft .hero-container,
+  .techcraft .about-grid,
+  .techcraft .services-layout,
+  .techcraft .culture,
+  .techcraft .work-list,
+  .techcraft .process-grid,
+  .techcraft .contact-grid,
+  .techcraft .contact-footer { width: calc(100% - 22px) !important; }
+
+  .techcraft .hero-grid { gap: 28px !important; }
+  .techcraft .hero h1 { font-size: clamp(42px, 14.2vw, 62px) !important; }
+  .techcraft .hero-buttons { grid-template-columns: minmax(0, 1fr) !important; }
+  .techcraft .keyboard-hint { align-items: flex-start !important; }
+  .techcraft .keyboard-items { justify-content: flex-start !important; }
+
+  .techcraft .software-topbar {
+    grid-template-columns: auto minmax(0, 1fr) auto !important;
+    padding-inline: 7px !important;
+  }
+  .techcraft .software-title,
+  .techcraft .software-status { font-size: 6px !important; }
+  .techcraft .design-canvas { min-height: 215px !important; }
+  .techcraft .canvas-card { width: calc(100% - 24px) !important; }
+
+  .techcraft .service-item {
+    grid-template-columns: 27px 29px minmax(0, 1fr) 17px !important;
+    gap: 7px !important;
+  }
+  .techcraft .service-title { font-size: 14px !important; }
+  .techcraft .service-description { font-size: 11px !important; padding-right: 8px !important; }
+
+  .techcraft .culture-graphic { min-height: 220px !important; }
+  .techcraft .work-visual { min-height: 220px !important; }
+  .techcraft .contact-circle { width: 158px !important; height: 158px !important; }
+}
