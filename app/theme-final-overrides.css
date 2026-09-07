@@ -113,6 +113,8 @@ html[data-theme="ide"] .about-page .about-cta-button:hover { background: #111827
     border: 1px solid rgba(17,19,24,.10);
     border-radius: 18px;
     background: rgba(255,255,255,.96);
+    background-color: #ffffff;
+    background-image: none;
     color: #111318;
     box-shadow: 0 20px 60px rgba(17,19,24,.12);
     backdrop-filter: blur(25px);
@@ -125,9 +127,19 @@ html[data-theme="ide"] .about-page .about-cta-button:hover { background: #111827
   .site-navbar-mobile-menu.open { opacity: 1; pointer-events: auto; transform: translateY(0); }
   .site-navbar-mobile-theme { display: flex !important; }
 
-  .site-navbar-mobile-menu a,
-  .site-navbar-mobile-menu button {
+  html:not([data-theme="dark"]):not([data-theme="ide"]) .site-navbar-mobile-menu {
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    background-image: none !important;
     color: #111318 !important;
+    border-color: rgba(17,19,24,.10) !important;
+    box-shadow: 0 20px 60px rgba(17,19,24,.12) !important;
+  }
+
+  html:not([data-theme="dark"]):not([data-theme="ide"]) .site-navbar-mobile-menu a,
+  html:not([data-theme="dark"]):not([data-theme="ide"]) .site-navbar-mobile-menu button {
+    color: #111318 !important;
+    background-color: transparent !important;
   }
 }
 
