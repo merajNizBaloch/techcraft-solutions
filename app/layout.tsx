@@ -23,6 +23,7 @@ import "./portfolio/portfolio-hero-fix.css";
 import "./portfolio/portfolio-vision.css";
 import "./team/team.css";
 import "./components/loading-screen.css";
+import "./components/global-neural-background.css";
 import "./theme-final-overrides.css";
 import "./mobile-nav-light-fix.css";
 import "./home-mobile-responsive.css";
@@ -32,6 +33,7 @@ import GlobalScrollMotion from "./components/global-scroll-motion";
 import HomePerformance from "./components/home-performance";
 import HomeProductsReplacement from "./components/home-products-replacement";
 import IdeBinaryBackground from "./components/ide-binary-background";
+import GlobalNeuralBackground from "./components/global-neural-background";
 import LoadingScreen from "./components/loading-screen";
 import SeoStructuredData from "./components/seo-structured-data";
 
@@ -107,6 +109,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col">
         <LoadingScreen />
+        <GlobalNeuralBackground />
         <IdeBinaryBackground />
         <Navbar />
         <GlobalMouseEffect />
