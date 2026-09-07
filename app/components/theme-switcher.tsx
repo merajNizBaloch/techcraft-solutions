@@ -14,7 +14,11 @@ const labels: Record<Theme, string> = {
 
 function applyTheme(theme: Theme) {
   const root = document.documentElement;
-  root.dataset.theme = theme;
+  if (theme === "light") {
+    root.removeAttribute("data-theme");
+  } else {
+    root.dataset.theme = theme;
+  }
 }
 
 export default function ThemeSwitcher() {
