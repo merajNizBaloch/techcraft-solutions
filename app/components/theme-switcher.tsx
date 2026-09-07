@@ -35,55 +35,6 @@ export default function ThemeSwitcher() {
           : "light";
 
     setTheme(initial);
-
-    // On mobile only, Explore work is navigation rather than a theme interaction.
-    // Capture the pointer gesture before the homepage React handler can process it.
-    const isMobile = () => window.matchMedia("(max-width: 900px)").matches;
-
-    const handleExplorePointerDown = (event: PointerEvent) => {
-      if (!isMobile()) return;
-
-      const target = event.target as Element | null;
-      const explore = target?.closest(".techcraft .secondary-action");
-      if (!explore) return;
-
-      event.preventDefault();
-      event.stopPropagation();
-      window.location.assign("/portfolio");
-    };
-
-    const handleExploreTouchStart = (event: TouchEvent) => {
-      if (!isMobile()) return;
-
-      const target = event.target as Element | null;
-      const explore = target?.closest(".techcraft .secondary-action");
-      if (!explore) return;
-
-      event.preventDefault();
-      event.stopPropagation();
-      window.location.assign("/portfolio");
-    };
-
-    const handleExploreClick = (event: MouseEvent) => {
-      if (!isMobile()) return;
-
-      const target = event.target as Element | null;
-      const explore = target?.closest(".techcraft .secondary-action");
-      if (!explore) return;
-
-      event.preventDefault();
-      event.stopPropagation();
-    };
-
-    document.addEventListener("pointerdown", handleExplorePointerDown, true);
-    document.addEventListener("touchstart", handleExploreTouchStart, true);
-    document.addEventListener("click", handleExploreClick, true);
-
-    return () => {
-      document.removeEventListener("pointerdown", handleExplorePointerDown, true);
-      document.removeEventListener("touchstart", handleExploreTouchStart, true);
-      document.removeEventListener("click", handleExploreClick, true);
-    };
   }, []);
 
   const cycleTheme = () => {
