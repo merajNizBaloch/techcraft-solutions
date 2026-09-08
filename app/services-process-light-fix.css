@@ -1,0 +1,20 @@
+/* Ensure Services > Our Process cards remain readable in light mode. */
+html:not([data-theme="dark"]):not([data-theme="ide"]) body.brand-theme .services-page .service-process {
+  color: var(--brand-ink) !important;
+}
+
+html:not([data-theme="dark"]):not([data-theme="ide"]) body.brand-theme .services-page .service-process h3 {
+  color: var(--brand-ink) !important;
+}
+
+html:not([data-theme="dark"]):not([data-theme="ide"]) body.brand-theme .services-page .service-process p {
+  color: var(--brand-muted) !important;
+}
+
+html:is([data-theme="dark"], [data-theme="ide"]) body.brand-theme .services-page .service-process h3 {
+  color: var(--brand-ink) !important;
+}
+
+html:is([data-theme="dark"], [data-theme="ide"]) body.brand-theme .services-page .service-process p {
+  color: var(--brand-muted) !important;
+}

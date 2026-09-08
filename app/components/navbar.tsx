@@ -13,7 +13,7 @@ const sections = [
   ["Products", "products"],
   ["Portfolio", "portfolio"],
   ["Freebies", "freebies"],
-  ["About", "about"],
+  ["DevCanvas", "about"],
   ["Our Team", "team"],
   ["Contact", "contact"],
 ] as const;

@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
+import "./dev-canvas.css";
 
 export const metadata: Metadata = {
-  title: "About TechCraft Solutions",
+  title: "DevCanvas — TechCraft Solutions",
   description:
-    "Learn how TechCraft Solutions combines product design, software engineering and AI to build intentional digital products from Balochistan for a wider world.",
+    "Explore DevCanvas, the TechCraft Solutions story of product design, engineering, culture and useful technology shaped by roots in Balochistan.",
   alternates: { canonical: "/about" },
   openGraph: {
-    title: "About TechCraft Solutions",
+    title: "DevCanvas — TechCraft Solutions",
     description:
-      "The story, principles and working approach behind TechCraft Solutions.",
+      "A visual story of how TechCraft turns Balochistan-inspired craft, product thinking and engineering into useful digital products.",
     url: "/about",
     type: "website",
   },
