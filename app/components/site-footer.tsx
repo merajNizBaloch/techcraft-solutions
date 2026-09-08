@@ -4,10 +4,17 @@ import {
   Instagram,
   Linkedin,
   MessageCircle,
-  Music2,
   Youtube,
 } from "lucide-react";
 import BrandLogo from "./brand-logo";
+
+function TikTokIcon({ size = 17 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M14.2 4.2c.8 1.8 2.1 3 4.1 3.5v3.1a9 9 0 0 1-4.1-1.4v5.1a5.6 5.6 0 1 1-4.8-5.5v3.2a2.5 2.5 0 1 0 1.7 2.3V4.2h3.1Z" fill="currentColor" />
+    </svg>
+  );
+}
 
 const socialLinks = [
   {
@@ -18,7 +25,7 @@ const socialLinks = [
   {
     label: "TikTok",
     href: "https://www.tiktok.com/@techcraft12?_r=1&_t=ZS-99Z0PoljAp7",
-    Icon: Music2,
+    Icon: TikTokIcon,
   },
   {
     label: "LinkedIn",
@@ -93,8 +100,8 @@ export default function SiteFooter() {
               <div className="site-footer-label">SOCIAL</div>
               <div className="site-footer-socials">
                 {socialLinks.map(({ label, href, Icon }) => (
-                  <a href={href} target="_blank" rel="noreferrer" key={label}>
-                    <span className="site-footer-social-icon"><Icon size={17} strokeWidth={1.7} /></span>
+                  <a href={href} target="_blank" rel="noreferrer" key={label} aria-label={`TechCraft on ${label}`}>
+                    <span className="site-footer-social-icon"><Icon size={17} /></span>
                     <span>{label}</span>
                     <ArrowUpRight size={14} />
                   </a>
@@ -108,7 +115,7 @@ export default function SiteFooter() {
           <div className="site-footer-bottom">
             <span>© {new Date().getFullYear()} TechCraft Solutions</span>
             <span>FROM BALOCHISTAN / BUILDING FOR PEOPLE</span>
-            <a href="mailto:hello@techcraftsolution.com">hello@techcraftsolution.com</a>
+            <a href={whatsappUrl} target="_blank" rel="noreferrer">+92 333 6077281</a>
           </div>
         </div>
       </footer>
