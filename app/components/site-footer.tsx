@@ -1,17 +1,42 @@
 import Link from "next/link";
-import {
-  ArrowUpRight,
-  Instagram,
-  Linkedin,
-  MessageCircle,
-  Youtube,
-} from "lucide-react";
+import { ArrowUpRight, MessageCircle } from "lucide-react";
 import BrandLogo from "./brand-logo";
 
-function TikTokIcon({ size = 17 }: { size?: number }) {
+type SocialIconProps = { size?: number };
+
+function InstagramIcon({ size = 17 }: SocialIconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5.2" stroke="currentColor" strokeWidth="1.8" />
+      <circle cx="12" cy="12" r="4.1" stroke="currentColor" strokeWidth="1.8" />
+      <circle cx="17.5" cy="6.8" r="1.1" fill="currentColor" />
+    </svg>
+  );
+}
+
+function TikTokIcon({ size = 17 }: SocialIconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path d="M14.2 4.2c.8 1.8 2.1 3 4.1 3.5v3.1a9 9 0 0 1-4.1-1.4v5.1a5.6 5.6 0 1 1-4.8-5.5v3.2a2.5 2.5 0 1 0 1.7 2.3V4.2h3.1Z" fill="currentColor" />
+    </svg>
+  );
+}
+
+function LinkedInIcon({ size = 17 }: SocialIconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" strokeWidth="1.8" />
+      <circle cx="8" cy="8.2" r="1.25" fill="currentColor" />
+      <path d="M7 10.5v6.5M11 17v-6.5m0 2.7c.8-1.7 4.7-2.1 4.7 1.2V17" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function YouTubeIcon({ size = 17 }: SocialIconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M20.2 7.1c-.2-1-1-1.8-2-2-1.7-.4-4.3-.4-6.2-.4s-4.5 0-6.2.4c-1 .2-1.8 1-2 2-.3 1.4-.3 3.2-.3 4.9s0 3.5.3 4.9c.2 1 1 1.8 2 2 1.7.4 4.3.4 6.2.4s4.5 0 6.2-.4c1-.2 1.8-1 2-2 .3-1.4.3-3.2.3-4.9s0-3.5-.3-4.9Z" stroke="currentColor" strokeWidth="1.6" />
+      <path d="m10 9 5 3-5 3V9Z" fill="currentColor" />
     </svg>
   );
 }
@@ -20,7 +45,7 @@ const socialLinks = [
   {
     label: "Instagram",
     href: "https://www.instagram.com/techcraft__solution?stkn=c3BwbXVuZXVscHlx",
-    Icon: Instagram,
+    Icon: InstagramIcon,
   },
   {
     label: "TikTok",
@@ -30,12 +55,12 @@ const socialLinks = [
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/company/techcraftsolution/",
-    Icon: Linkedin,
+    Icon: LinkedInIcon,
   },
   {
     label: "YouTube",
     href: "https://youtube.com/@greenscreensolutions7140?si=Wv_22InXIwNx9PFo",
-    Icon: Youtube,
+    Icon: YouTubeIcon,
   },
 ] as const;
 
