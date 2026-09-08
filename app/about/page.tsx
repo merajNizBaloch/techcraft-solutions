@@ -5,7 +5,6 @@ import {
   Code2,
   HeartHandshake,
   MapPin,
-  Mountain,
   Palette,
   Sparkles,
 } from "lucide-react";
@@ -36,8 +35,8 @@ export default function AboutPage() {
               TechCraft is a product studio from Balochistan. We design digital products that help people, and we bring the place we come from into the way those products feel — through rhythm, geometry, landscape and craft.
             </p>
             <div className="dc-actions">
-              <Link href="/#contact" className="dc-button dc-button-primary">Build something useful <ArrowUpRight size={16} /></Link>
-              <Link href="/#work" className="dc-button">See the work <ArrowRight size={15} /></Link>
+              <Link href="/contact" className="dc-button dc-button-primary">Build something useful <ArrowUpRight size={16} /></Link>
+              <Link href="/portfolio" className="dc-button">See the work <ArrowRight size={15} /></Link>
             </div>
           </div>
 
@@ -179,7 +178,7 @@ export default function AboutPage() {
 
           <div className="dc-signoff">
             <div><span>FROM BALOCHISTAN / BUILT FOR PEOPLE</span><strong>TechCraft Solutions</strong></div>
-            <Link href="/#contact" className="dc-button dc-button-primary">Start a project <Sparkles size={15} /></Link>
+            <Link href="/contact" className="dc-button dc-button-primary">Start a project <Sparkles size={15} /></Link>
           </div>
         </div>
       </section>
