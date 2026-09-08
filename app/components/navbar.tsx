@@ -97,7 +97,6 @@ export default function Navbar() {
         aria-label="Mobile navigation"
         aria-hidden={!mobileOpen}
         inert={!mobileOpen}
-        style={{ backgroundColor: "#ffffff" }}
       >
         {sections.map(renderItem)}
         <div className="site-navbar-mobile-theme">
