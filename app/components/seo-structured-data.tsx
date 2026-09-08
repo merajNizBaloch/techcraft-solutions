@@ -3,6 +3,7 @@ export default function SeoStructuredData() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "TechCraft Solutions",
+    logo: "https://www.techcraftsolution.com/images/techcraft-logomark.svg",
     url: "https://www.techcraftsolution.com",
     description:
       "TechCraft Solutions designs and engineers digital products, websites, software systems and AI-powered experiences.",

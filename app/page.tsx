@@ -17,6 +17,7 @@ import {
   Zap,
 } from "lucide-react";
 import Link from "next/link";
+import BrandLogo from "./components/brand-logo";
 import { useEffect, useRef, useState } from "react";
 
 /* =========================================================
@@ -264,7 +265,7 @@ function NetworkCanvas() {
           if (distance < 125) {
             const opacity = (1 - distance / 125) * 0.12;
 
-            ctx.strokeStyle = `rgba(37, 99, 255, ${opacity})`;
+            ctx.strokeStyle = `rgba(0,155,190, ${opacity})`;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
@@ -299,8 +300,8 @@ function NetworkCanvas() {
           radius,
         );
 
-        gradient.addColorStop(0, "rgba(37, 99, 255, 0.10)");
-        gradient.addColorStop(1, "rgba(37, 99, 255, 0)");
+        gradient.addColorStop(0, "rgba(0,155,190, 0.10)");
+        gradient.addColorStop(1, "rgba(0,155,190, 0)");
 
         ctx.fillStyle = gradient;
         ctx.beginPath();
@@ -311,7 +312,7 @@ function NetworkCanvas() {
       /* Draw nodes */
       for (const node of nodes) {
         ctx.beginPath();
-        ctx.fillStyle = "rgba(37, 99, 255, 0.26)";
+        ctx.fillStyle = "rgba(0,155,190, 0.26)";
         ctx.arc(node.x, node.y, node.r, 0, Math.PI * 2);
         ctx.fill();
       }
@@ -530,7 +531,7 @@ function ProductPreview() {
               <aside className="software-sidebar">
 
                 <div className="software-logo">
-                  TC
+                  <BrandLogo height={20} />
                 </div>
 
                 <div className="tool-icon active">
@@ -880,11 +881,7 @@ export default function Home() {
             onClick={() => scrollTo("home")}
           >
 
-            <span className="brand-symbol">
-              <span />
-              <span />
-              <span />
-            </span>
+            <BrandLogo />
 
             <span className="brand-name">
               TECH<span>CRAFT</span>
@@ -1636,7 +1633,7 @@ export default function Home() {
         }
 
         ::selection {
-          background: #2563ff;
+          background: #087e9b;
           color: white;
         }
 
@@ -1651,7 +1648,7 @@ export default function Home() {
           background:
             radial-gradient(
               circle at 78% 8%,
-              rgba(37,99,255,.075),
+              rgba(0,155,190,.075),
               transparent 25%
             ),
             #f4f6f8;
@@ -1679,7 +1676,7 @@ export default function Home() {
         .ambient-one {
           top: -180px;
           right: -130px;
-          background: rgba(37,99,255,.09);
+          background: rgba(0,155,190,.09);
         }
 
         .ambient-two {
@@ -1696,7 +1693,7 @@ export default function Home() {
           width: 100%;
           height: 2px;
           transform-origin: left;
-          background: #2563ff;
+          background: #087e9b;
         }
 
         /* =====================================================
@@ -1764,7 +1761,7 @@ export default function Home() {
             ),
             radial-gradient(
               circle at 88% 100%,
-              rgba(37,99,255,.11),
+              rgba(0,155,190,.11),
               transparent 33%
             );
         }
@@ -1792,7 +1789,7 @@ export default function Home() {
         }
 
         .brand-name span {
-          color: #2563ff;
+          color: #087e9b;
         }
 
         .brand-symbol {
@@ -1806,7 +1803,7 @@ export default function Home() {
         .brand-symbol span {
           position: absolute;
           inset: 4px;
-          border: 1px solid #2563ff;
+          border: 1px solid #087e9b;
         }
 
         .brand-symbol span:nth-child(2) {
@@ -1892,7 +1889,7 @@ export default function Home() {
             translate(-12px,-50%)
             scale(.7);
 
-          color: #2563ff;
+          color: #087e9b;
 
           font-family:
             "SFMono-Regular",
@@ -1936,7 +1933,7 @@ export default function Home() {
             translate(12px,-50%)
             scale(.7);
 
-          color: #2563ff;
+          color: #087e9b;
 
           font-family:
             "SFMono-Regular",
@@ -1990,7 +1987,7 @@ export default function Home() {
         .main-nav button:hover {
           box-shadow:
             inset 0 1px 0 rgba(255,255,255,.95),
-            inset 0 -1px 0 rgba(37,99,255,.12),
+            inset 0 -1px 0 rgba(0,155,190,.12),
             0 5px 18px rgba(17,24,39,.06);
         }
 
@@ -1999,7 +1996,7 @@ export default function Home() {
             linear-gradient(
               90deg,
               transparent 0%,
-              rgba(37,99,255,.04) 45%,
+              rgba(0,155,190,.04) 45%,
               transparent 100%
             );
           background-size: 200% 100%;
@@ -2058,7 +2055,7 @@ export default function Home() {
           gap: 8px;
 
           border: 0;
-          background: #2563ff;
+          background: #087e9b;
           color: white;
 
           padding: 10px 15px;
@@ -2069,7 +2066,7 @@ export default function Home() {
           cursor: pointer;
 
           box-shadow:
-            0 6px 20px rgba(37,99,255,.2),
+            0 6px 20px rgba(0,155,190,.2),
             inset 0 1px 0 rgba(255,255,255,.3);
 
           transition: .25s ease;
@@ -2185,7 +2182,7 @@ export default function Home() {
         }
 
         .command-option:hover {
-          background: rgba(37,99,255,.08);
+          background: rgba(0,155,190,.08);
         }
 
         .command-option span {
@@ -2197,7 +2194,7 @@ export default function Home() {
         }
 
         .command-option span svg {
-          color: #2563ff;
+          color: #087e9b;
         }
 
         .command-option kbd {
@@ -2273,7 +2270,7 @@ export default function Home() {
         }
 
         .hero h1 span {
-          color: #2563ff;
+          color: #087e9b;
         }
 
         .hero-text {
@@ -2317,8 +2314,8 @@ export default function Home() {
         }
 
         .primary-action:hover {
-          background: #2563ff;
-          border-color: #2563ff;
+          background: #087e9b;
+          border-color: #087e9b;
           transform: translateY(-2px);
         }
 
@@ -2330,8 +2327,8 @@ export default function Home() {
 
         .secondary-action:hover {
           background: white;
-          border-color: rgba(37,99,255,.35);
-          color: #2563ff;
+          border-color: rgba(0,155,190,.35);
+          color: #087e9b;
         }
 
         .keyboard-hint {
@@ -2451,7 +2448,7 @@ export default function Home() {
 
           border-radius: 50%;
 
-          background: rgba(37,99,255,.11);
+          background: rgba(0,155,190,.11);
 
           filter: blur(80px);
         }
@@ -2512,7 +2509,7 @@ export default function Home() {
         }
 
         .window-dots span:first-child {
-          background: #2563ff;
+          background: #087e9b;
         }
 
         .preview-address {
@@ -2564,7 +2561,7 @@ export default function Home() {
 
         .preview-sidebar > .sidebar-active {
           width: 24px;
-          background: #2563ff;
+          background: #087e9b;
         }
 
         .preview-main {
@@ -2629,7 +2626,7 @@ export default function Home() {
         .chart i {
           flex: 1;
           display: block;
-          background: #2563ff;
+          background: #087e9b;
           opacity: .18;
         }
 
@@ -2660,7 +2657,7 @@ export default function Home() {
         }
 
         .pattern-box {
-          color: rgba(37,99,255,.45);
+          color: rgba(0,155,190,.45);
           background: rgba(245,247,250,.65);
         }
 
@@ -2676,10 +2673,10 @@ export default function Home() {
 
           padding: 12px;
 
-          background: #2563ff;
+          background: #087e9b;
           color: white;
 
-          border-color: #2563ff;
+          border-color: #087e9b;
         }
 
         .blue-box span {
@@ -2718,7 +2715,7 @@ export default function Home() {
           width: 108px;
           height: 108px;
 
-          color: rgba(37,99,255,.5);
+          color: rgba(0,155,190,.5);
 
           animation: motifFloat 7s ease-in-out infinite;
         }
@@ -2895,7 +2892,7 @@ export default function Home() {
         }
 
         .software-dots span:first-child {
-          background: #2563ff;
+          background: #087e9b;
         }
 
         .software-title {
@@ -2904,7 +2901,7 @@ export default function Home() {
 
         .software-status {
           text-align: right;
-          color: #2563ff;
+          color: #087e9b;
         }
 
         .software-body {
@@ -2960,8 +2957,8 @@ export default function Home() {
         }
 
         .tool-icon.active {
-          color: #2563ff;
-          background: rgba(37,99,255,.1);
+          color: #087e9b;
+          background: rgba(0,155,190,.1);
         }
 
         .tool-icon svg {
@@ -3023,8 +3020,8 @@ export default function Home() {
 
         .fake-button.primary {
           color: white;
-          background: #2563ff;
-          border-color: #2563ff;
+          background: #087e9b;
+          border-color: #087e9b;
 
           animation-delay: 2.1s;
         }
@@ -3062,12 +3059,12 @@ export default function Home() {
 
           background:
             linear-gradient(
-              rgba(37,99,255,.035) 1px,
+              rgba(0,155,190,.035) 1px,
               transparent 1px
             ),
             linear-gradient(
               90deg,
-              rgba(37,99,255,.035) 1px,
+              rgba(0,155,190,.035) 1px,
               transparent 1px
             );
 
@@ -3109,7 +3106,7 @@ export default function Home() {
         }
 
         .canvas-eyebrow {
-          color: #2563ff;
+          color: #087e9b;
 
           font-family:
             ui-monospace,
@@ -3133,7 +3130,7 @@ export default function Home() {
         }
 
         .canvas-heading span {
-          color: #2563ff;
+          color: #087e9b;
         }
 
         .canvas-description {
@@ -3179,7 +3176,7 @@ export default function Home() {
           right: -15px;
           bottom: -12px;
 
-          color: rgba(37,99,255,.18);
+          color: rgba(0,155,190,.18);
 
           animation:
             canvasMotif 9s linear infinite;
@@ -3206,7 +3203,7 @@ export default function Home() {
           right: 11%;
           bottom: 16%;
 
-          border: 1px dashed rgba(37,99,255,.45);
+          border: 1px dashed rgba(0,155,190,.45);
 
           animation:
             selectionMove 7s ease-in-out infinite;
@@ -3231,7 +3228,7 @@ export default function Home() {
           width: 5px;
           height: 5px;
 
-          border: 1px solid #2563ff;
+          border: 1px solid #087e9b;
           background: white;
         }
 
@@ -3352,7 +3349,7 @@ export default function Home() {
           bottom: 0;
 
           background:
-            rgba(37,99,255,.09);
+            rgba(0,155,190,.09);
 
           opacity: 0;
 
@@ -3543,7 +3540,7 @@ export default function Home() {
           background: #5d97ff;
 
           box-shadow:
-            0 0 6px rgba(37,99,255,.75);
+            0 0 6px rgba(0,155,190,.75);
 
           animation:
             caretMove 8s steps(1, end) infinite,
@@ -3670,7 +3667,7 @@ export default function Home() {
 
         .live-code-active {
           background:
-            rgba(37,99,255,.10);
+            rgba(0,155,190,.10);
         }
 
         .live-line-number {
@@ -3718,7 +3715,7 @@ export default function Home() {
           background: #64a0ff;
 
           box-shadow:
-            0 0 7px rgba(37,99,255,.8);
+            0 0 7px rgba(0,155,190,.8);
 
           animation:
             typingCaretBlink .72s steps(2,end) infinite;
@@ -3848,7 +3845,7 @@ export default function Home() {
 
           border-radius: 4px;
 
-          background: #2563ff;
+          background: #087e9b;
           color: white;
 
           font-family:
@@ -3868,7 +3865,7 @@ export default function Home() {
           width: 11px;
           height: 11px;
 
-          border: 1px solid #2563ff;
+          border: 1px solid #087e9b;
           border-radius: 50%;
 
           opacity: 0;
@@ -4068,7 +4065,7 @@ export default function Home() {
             linear-gradient(
               180deg,
               #5e95ff 0%,
-              #2563ff 100%
+              #087e9b 100%
             );
 
           border-top-color:
@@ -4076,7 +4073,7 @@ export default function Home() {
 
           box-shadow:
             0 2px 0 #1748b0,
-            0 3px 6px rgba(37,99,255,.28);
+            0 3px 6px rgba(0,155,190,.28);
 
           animation:
             physicalKeyPress 4.2s ease-in-out infinite;
@@ -4104,7 +4101,7 @@ export default function Home() {
 
             box-shadow:
               0 2px 0 #1748b0,
-              0 3px 6px rgba(37,99,255,.28);
+              0 3px 6px rgba(0,155,190,.28);
           }
 
           71% {
@@ -4474,7 +4471,7 @@ export default function Home() {
         }
 
         .software-dots span:first-child {
-          background: #2563ff;
+          background: #087e9b;
         }
 
         .software-title {
@@ -4483,7 +4480,7 @@ export default function Home() {
 
         .software-status {
           text-align: right;
-          color: #2563ff;
+          color: #087e9b;
         }
 
         .software-body {
@@ -4539,8 +4536,8 @@ export default function Home() {
         }
 
         .tool-icon.active {
-          color: #2563ff;
-          background: rgba(37,99,255,.1);
+          color: #087e9b;
+          background: rgba(0,155,190,.1);
         }
 
         .tool-icon svg {
@@ -4602,8 +4599,8 @@ export default function Home() {
 
         .fake-button.primary {
           color: white;
-          background: #2563ff;
-          border-color: #2563ff;
+          background: #087e9b;
+          border-color: #087e9b;
 
           animation-delay: 2.1s;
         }
@@ -4641,12 +4638,12 @@ export default function Home() {
 
           background:
             linear-gradient(
-              rgba(37,99,255,.035) 1px,
+              rgba(0,155,190,.035) 1px,
               transparent 1px
             ),
             linear-gradient(
               90deg,
-              rgba(37,99,255,.035) 1px,
+              rgba(0,155,190,.035) 1px,
               transparent 1px
             );
 
@@ -4688,7 +4685,7 @@ export default function Home() {
         }
 
         .canvas-eyebrow {
-          color: #2563ff;
+          color: #087e9b;
 
           font-family:
             ui-monospace,
@@ -4712,7 +4709,7 @@ export default function Home() {
         }
 
         .canvas-heading span {
-          color: #2563ff;
+          color: #087e9b;
         }
 
         .canvas-description {
@@ -4758,7 +4755,7 @@ export default function Home() {
           right: -15px;
           bottom: -12px;
 
-          color: rgba(37,99,255,.18);
+          color: rgba(0,155,190,.18);
 
           animation:
             canvasMotif 9s linear infinite;
@@ -4785,7 +4782,7 @@ export default function Home() {
           right: 11%;
           bottom: 16%;
 
-          border: 1px dashed rgba(37,99,255,.45);
+          border: 1px dashed rgba(0,155,190,.45);
 
           animation:
             selectionMove 7s ease-in-out infinite;
@@ -4810,7 +4807,7 @@ export default function Home() {
           width: 5px;
           height: 5px;
 
-          border: 1px solid #2563ff;
+          border: 1px solid #087e9b;
           background: white;
         }
 
@@ -5078,7 +5075,7 @@ export default function Home() {
 
           border-radius: 4px;
 
-          background: #2563ff;
+          background: #087e9b;
           color: white;
 
           font-family:
@@ -5098,7 +5095,7 @@ export default function Home() {
           width: 11px;
           height: 11px;
 
-          border: 1px solid #2563ff;
+          border: 1px solid #087e9b;
           border-radius: 50%;
 
           opacity: 0;
@@ -5171,7 +5168,7 @@ export default function Home() {
         }
 
         .key.highlighted {
-          background: #2563ff;
+          background: #087e9b;
 
           animation:
             keyPress 4s ease-in-out infinite;
@@ -5659,8 +5656,8 @@ export default function Home() {
               circle,
               rgba(255,255,255,.42) 0%,
               rgba(143,183,255,.24) 16%,
-              rgba(37,99,255,.14) 34%,
-              rgba(37,99,255,.05) 52%,
+              rgba(0,155,190,.14) 34%,
+              rgba(0,155,190,.05) 52%,
               transparent 72%
             );
 
@@ -5719,7 +5716,7 @@ export default function Home() {
         }
 
         .interactive-ticker .ticker-item:hover b {
-          color: #70a7ff;
+          color: #65d9ee;
           transform: rotate(45deg) scale(1.15);
         }
 
@@ -5791,7 +5788,7 @@ export default function Home() {
         }
 
         .about h2 strong {
-          color: #2563ff;
+          color: #087e9b;
           font-weight: 500;
         }
 
@@ -5806,7 +5803,7 @@ export default function Home() {
 
           margin-bottom: 30px;
 
-          background: #2563ff;
+          background: #087e9b;
         }
 
         .about-side p {
@@ -5842,7 +5839,7 @@ export default function Home() {
         }
 
         .text-link svg {
-          color: #2563ff;
+          color: #087e9b;
         }
 
         /* =====================================================
@@ -5969,7 +5966,7 @@ export default function Home() {
             linear-gradient(
               90deg,
               #111318 0%,
-              #2563ff 50%,
+              #087e9b 50%,
               #111318 100%
             );
 
@@ -5983,7 +5980,7 @@ export default function Home() {
             linear-gradient(
               90deg,
               rgba(255,255,255,.5),
-              rgba(37,99,255,.08),
+              rgba(0,155,190,.08),
               rgba(255,255,255,.5)
             );
 
@@ -5996,9 +5993,9 @@ export default function Home() {
           background:
             linear-gradient(
               90deg,
-              #2563ff,
+              #087e9b,
               #4c82ff,
-              #2563ff
+              #087e9b
             );
 
           background-size: 220% 100%;
@@ -6010,7 +6007,7 @@ export default function Home() {
           background:
             linear-gradient(
               135deg,
-              #2563ff,
+              #087e9b,
               #4b82ff
             );
 
@@ -6047,12 +6044,12 @@ export default function Home() {
         @keyframes contactButtonPulse {
           from {
             box-shadow:
-              0 0 0 0 rgba(37,99,255,.2);
+              0 0 0 0 rgba(0,155,190,.2);
           }
 
           to {
             box-shadow:
-              0 0 0 12px rgba(37,99,255,0);
+              0 0 0 12px rgba(0,155,190,0);
           }
         }
 
@@ -6089,7 +6086,7 @@ export default function Home() {
         }
 
         .services-title h2 span {
-          color: #2563ff;
+          color: #087e9b;
         }
 
         .services-title .micro-pattern {
@@ -6153,7 +6150,7 @@ export default function Home() {
         }
 
         .service-index {
-          color: #2563ff;
+          color: #087e9b;
 
           font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
           font-size: 8px;
@@ -6168,15 +6165,15 @@ export default function Home() {
 
           border: 1px solid rgba(17,19,24,.12);
 
-          color: #2563ff;
+          color: #087e9b;
 
           transition: .35s ease;
         }
 
         .service-item:hover .service-icon,
         .service-active .service-icon {
-          background: #2563ff;
-          border-color: #2563ff;
+          background: #087e9b;
+          border-color: #087e9b;
           color: white;
           transform: rotate(45deg);
         }
@@ -6210,7 +6207,7 @@ export default function Home() {
 
         .service-item:hover .service-arrow,
         .service-active .service-arrow {
-          color: #2563ff;
+          color: #087e9b;
           transform: translate(3px,-3px);
         }
 
@@ -6255,7 +6252,7 @@ export default function Home() {
         }
 
         .culture-copy h2 span {
-          color: #70a7ff;
+          color: #65d9ee;
         }
 
         .culture-copy > p {
@@ -6374,7 +6371,7 @@ export default function Home() {
           align-self: start;
           padding-top: 25px;
 
-          color: #2563ff;
+          color: #087e9b;
 
           font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
           font-size: 8px;
@@ -6398,7 +6395,7 @@ export default function Home() {
               rgba(255,255,255,.18),
               transparent 36%
             ),
-            #2563ff;
+            #087e9b;
         }
 
         .work-project.light .work-visual {
@@ -6421,7 +6418,7 @@ export default function Home() {
         }
 
         .work-project.light .work-visual > .balochi-mark {
-          color: rgba(37,99,255,.38);
+          color: rgba(0,155,190,.38);
         }
 
         .work-project:hover .work-visual > .balochi-mark {
@@ -6473,7 +6470,7 @@ export default function Home() {
         .interface-bars i {
           display: block;
           width: 23px;
-          background: #2563ff;
+          background: #087e9b;
         }
 
         .interface-bars i:nth-child(1) {
@@ -6598,7 +6595,7 @@ export default function Home() {
         }
 
         .work-copy > span {
-          color: #2563ff;
+          color: #087e9b;
 
           font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
           font-size: 8px;
@@ -6645,7 +6642,7 @@ export default function Home() {
         }
 
         .work-copy button svg {
-          color: #2563ff;
+          color: #087e9b;
         }
 
         /* =====================================================
@@ -6700,7 +6697,7 @@ export default function Home() {
           align-items: center;
           gap: 6px;
 
-          color: #70a7ff !important;
+          color: #65d9ee !important;
         }
 
         .intelligent-live i {
@@ -6737,7 +6734,7 @@ export default function Home() {
           overflow: hidden;
 
           border:
-            1px solid rgba(112,167,255,.22);
+            1px solid rgba(101,217,238,.22);
 
           background:
             linear-gradient(
@@ -6849,7 +6846,7 @@ export default function Home() {
         }
 
         .process-heading span {
-          color: #2563ff;
+          color: #087e9b;
         }
 
         .process-list {
@@ -6868,7 +6865,7 @@ export default function Home() {
         }
 
         .process-row > span {
-          color: #2563ff;
+          color: #087e9b;
 
           font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
           font-size: 8px;
@@ -6925,7 +6922,7 @@ export default function Home() {
         }
 
         .contact .section-kicker {
-          color: #70a7ff;
+          color: #65d9ee;
         }
 
         .contact h2 {
@@ -6938,7 +6935,7 @@ export default function Home() {
         }
 
         .contact h2 span {
-          color: #70a7ff;
+          color: #65d9ee;
         }
 
         .contact-side {
@@ -6967,10 +6964,10 @@ export default function Home() {
 
           gap: 8px;
 
-          border: 1px solid rgba(112,167,255,.65);
+          border: 1px solid rgba(101,217,238,.65);
           border-radius: 50%;
 
-          background: #2563ff;
+          background: #087e9b;
           color: white;
 
           cursor: pointer;

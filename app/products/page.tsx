@@ -125,7 +125,7 @@ function AcademiqVisual() {
         <div className="academiq-windowbar">
           <div className="flex gap-1.5"><span /><span /><span /></div>
           <span>ACADEMIQ / ADMIN</span>
-          <span className="text-[#2563ff]">● LIVE</span>
+          <span className="text-[#087e9b]">● LIVE</span>
         </div>
         <div className="academiq-layout">
           <aside className="academiq-sidebar">
@@ -208,7 +208,7 @@ function ProductVisual({ type }: { type: "academiq" | "estara" }) {
 export default function ProductsPage() {
   return (
     <main className="products-page min-h-screen overflow-hidden bg-[#f4f6f8] text-[#111318]">
-      <div className="fixed inset-x-0 top-0 z-40 h-0.5 bg-[#2563ff]" />
+      <div className="fixed inset-x-0 top-0 z-40 h-0.5 bg-[#087e9b]" />
 
       <section className="products-hero relative flex min-h-[92vh] items-center overflow-hidden px-[7vw] pb-24 pt-36">
         <div className="products-hero-grid absolute inset-0" />
@@ -216,8 +216,8 @@ export default function ProductsPage() {
         <div className="products-hero-glow products-hero-glow-b" />
         <div className="relative z-10 grid w-full items-center gap-14 lg:grid-cols-[.85fr_1.15fr] lg:gap-[5vw]">
           <div className="max-w-[820px]">
-            <p className="font-mono text-[8px] tracking-[.18em] text-[#2563ff]">01 / PRODUCTS</p>
-            <h1 className="products-hero-title mt-7 text-[clamp(64px,10.5vw,150px)] font-medium leading-[.8] tracking-[-.09em]">We build<br />for <span className="text-[#2563ff]">real life.</span></h1>
+            <p className="font-mono text-[8px] tracking-[.18em] text-[#087e9b]">01 / PRODUCTS</p>
+            <h1 className="products-hero-title mt-7 text-[clamp(64px,10.5vw,150px)] font-medium leading-[.8] tracking-[-.09em]">We build<br />for <span className="text-[#087e9b]">real life.</span></h1>
             <p className="mt-10 max-w-[640px] text-[15px] leading-[1.9] text-black/50">TechCraft creates focused software for problems we understand closely. Academiq organizes the work of schools. Estara organizes the work of property businesses.</p>
             <div className="mt-9 flex flex-col gap-2.5 sm:flex-row">
               <a href="#product-list" className="techcraft-button techcraft-button-primary">Explore products <ArrowRight size={16} /></a>
@@ -246,7 +246,7 @@ export default function ProductsPage() {
         <div className="mb-14 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
           <div>
             <p className="font-mono text-[8px] tracking-[.16em] text-black/35">02 / LIVE PRODUCTS</p>
-            <h2 className="mt-6 text-[clamp(48px,6vw,88px)] font-medium leading-[.88] tracking-[-.08em]">Software for <span className="text-[#2563ff]">specific worlds.</span></h2>
+            <h2 className="mt-6 text-[clamp(48px,6vw,88px)] font-medium leading-[.88] tracking-[-.08em]">Software for <span className="text-[#087e9b]">specific worlds.</span></h2>
           </div>
           <p className="max-w-[360px] text-xs leading-7 text-black/40">These products are developed systems, not concept projects. Visit the live product environments directly.</p>
         </div>
@@ -261,16 +261,16 @@ export default function ProductsPage() {
                   <div className="flex flex-col justify-between p-8 sm:p-10 lg:p-14">
                     <div>
                       <div className="flex items-center justify-between gap-4">
-                        <span className="font-mono text-[8px] text-[#2563ff]">{product.number}</span>
+                        <span className="font-mono text-[8px] text-[#087e9b]">{product.number}</span>
                         <span className="font-mono text-[8px] tracking-[.14em] text-black/30">{product.eyebrow}</span>
                       </div>
-                      <div className="mt-10 flex items-center gap-2 font-mono text-[8px] tracking-[.12em] text-[#2563ff]"><CheckCircle2 size={14} /> {product.status}</div>
+                      <div className="mt-10 flex items-center gap-2 font-mono text-[8px] tracking-[.12em] text-[#087e9b]"><CheckCircle2 size={14} /> {product.status}</div>
                       <h3 className="mt-5 text-[clamp(52px,7vw,92px)] font-medium leading-[.84] tracking-[-.08em]">{product.name}</h3>
                       <p className="mt-7 max-w-[560px] text-sm leading-7 text-black/45">{product.description}</p>
                     </div>
                     <div className="mt-12">
                       <div className="grid border-y border-black/10 sm:grid-cols-2">
-                        {product.stats.map(([label, value]) => <div key={label} className="border-b border-black/10 py-4 text-[10px] last:border-0 sm:even:border-l"><strong className="mr-2 text-[#2563ff]">{label}</strong><span className="text-black/40">{value}</span></div>)}
+                        {product.stats.map(([label, value]) => <div key={label} className="border-b border-black/10 py-4 text-[10px] last:border-0 sm:even:border-l"><strong className="mr-2 text-[#087e9b]">{label}</strong><span className="text-black/40">{value}</span></div>)}
                       </div>
                       <a href={product.href} target="_blank" rel="noreferrer" className="techcraft-button techcraft-button-primary mt-8">Visit {product.name} <ArrowUpRight size={16} /></a>
                       <div className="mt-5 flex items-center gap-2 font-mono text-[8px] tracking-[.12em] text-black/30"><ProductIcon size={14} /> OPEN PRODUCT ENVIRONMENT</div>
@@ -286,8 +286,8 @@ export default function ProductsPage() {
       <section className="product-lab-section relative overflow-hidden border-t border-black/10 px-[7vw] py-24">
         <div className="product-lab-grid absolute inset-0" />
         <div className="relative z-10 mb-14 max-w-[900px]">
-          <p className="font-mono text-[8px] tracking-[.16em] text-[#2563ff]">03 / PRODUCT LAB</p>
-          <h2 className="mt-6 text-[clamp(48px,6vw,90px)] font-medium leading-[.88] tracking-[-.08em]">Next in the <span className="text-[#2563ff]">pipeline.</span></h2>
+          <p className="font-mono text-[8px] tracking-[.16em] text-[#087e9b]">03 / PRODUCT LAB</p>
+          <h2 className="mt-6 text-[clamp(48px,6vw,90px)] font-medium leading-[.88] tracking-[-.08em]">Next in the <span className="text-[#087e9b]">pipeline.</span></h2>
           <p className="mt-7 max-w-[650px] text-sm leading-7 text-black/45">Four management systems are under development, each focused on a specific operational world. They will move from workflow research to product releases through the same TechCraft design and engineering process.</p>
         </div>
 
@@ -304,7 +304,7 @@ export default function ProductsPage() {
                 <p className="mt-8 font-mono text-[8px] tracking-[.14em] text-black/35">{product.eyebrow}</p>
                 <h3 className="mt-3 text-[34px] font-medium tracking-[-.06em]">{product.name}</h3>
                 <p className="mt-4 max-w-[500px] text-xs leading-7 text-black/45">{product.description}</p>
-                <div className="mt-7 grid gap-2 border-t border-black/10 pt-6">{product.modules.map((module) => <div key={module} className="flex items-center gap-2 text-[10px] text-black/50"><span className="h-1.5 w-1.5 border border-[#2563ff]" />{module}</div>)}</div>
+                <div className="mt-7 grid gap-2 border-t border-black/10 pt-6">{product.modules.map((module) => <div key={module} className="flex items-center gap-2 text-[10px] text-black/50"><span className="h-1.5 w-1.5 border border-[#087e9b]" />{module}</div>)}</div>
                 <div className="mt-8 flex items-center gap-2 font-mono text-[8px] tracking-[.12em] text-black/30"><ShieldCheck size={14} /> ROADMAP / DISCOVERY → BUILD → RELEASE</div>
               </article>
             );
@@ -313,10 +313,10 @@ export default function ProductsPage() {
       </section>
 
       <section className="relative overflow-hidden bg-[#07182f] px-[7vw] py-28 text-white">
-        <div className="absolute inset-0 opacity-40 [background-image:linear-gradient(rgba(112,167,255,.08)_1px,transparent_1px),linear-gradient(90deg,rgba(112,167,255,.08)_1px,transparent_1px)] [background-size:72px_72px]" />
+        <div className="absolute inset-0 opacity-40 [background-image:linear-gradient(rgba(101,217,238,.08)_1px,transparent_1px),linear-gradient(90deg,rgba(101,217,238,.08)_1px,transparent_1px)] [background-size:72px_72px]" />
         <div className="relative z-10 max-w-[950px]">
-          <p className="font-mono text-[8px] tracking-[.16em] text-[#70a7ff]">04 / BUILD WITH US</p>
-          <h2 className="mt-7 text-[clamp(52px,7vw,100px)] font-medium leading-[.85] tracking-[-.08em]">Have a workflow<br /><span className="text-[#70a7ff]">worth building?</span></h2>
+          <p className="font-mono text-[8px] tracking-[.16em] text-[#65d9ee]">04 / BUILD WITH US</p>
+          <h2 className="mt-7 text-[clamp(52px,7vw,100px)] font-medium leading-[.85] tracking-[-.08em]">Have a workflow<br /><span className="text-[#65d9ee]">worth building?</span></h2>
           <p className="mt-9 max-w-[620px] text-sm leading-7 text-white/45">From a software idea to a management system for a specific industry, tell us what the real workflow looks like.</p>
           <Link href="/#contact" className="techcraft-button mt-9 inline-flex border-white/15 bg-white/10 text-white">Talk to TechCraft <ArrowUpRight size={16} /></Link>
         </div>

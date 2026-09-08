@@ -28,6 +28,7 @@ import "./theme-final-overrides.css";
 import "./mobile-nav-light-fix.css";
 import "./home-mobile-responsive.css";
 import "./home-mobile-service-fix.css";
+import "./brand-theme.css";
 import Navbar from "./components/navbar";
 import GlobalMouseEffect from "./components/global-mouse-effect";
 import GlobalScrollMotion from "./components/global-scroll-motion";
@@ -108,7 +109,7 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
-      <body className="min-h-full flex flex-col">
+      <body className="brand-theme min-h-full flex flex-col">
         <LoadingScreen />
         <GlobalNeuralBackground />
         <IdeBinaryBackground />

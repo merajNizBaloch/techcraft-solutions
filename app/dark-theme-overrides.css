@@ -71,7 +71,7 @@ html[data-theme="dark"] .contact-satellite-network,
 html[data-theme="dark"] .contact-connection,
 html[data-theme="dark"] .freebies-hero-machine {
   background: #111720 !important;
-  border-color: rgba(112,167,255,.14) !important;
+  border-color: rgba(101,217,238,.14) !important;
 }
 html[data-theme="dark"] .vision-node,
 html[data-theme="dark"] .contact-network-node,
@@ -81,7 +81,7 @@ html[data-theme="dark"] .freebies-machine-node,
 html[data-theme="dark"] .freebies-machine-status {
   background: #151c28 !important;
   color: #d7dee8 !important;
-  border-color: rgba(112,167,255,.16) !important;
+  border-color: rgba(101,217,238,.16) !important;
   box-shadow: 0 18px 45px rgba(0,0,0,.30) !important;
 }
 html[data-theme="dark"] .vision-node small,

@@ -19,7 +19,7 @@
   inset: -8%;
   width: 116%;
   height: 116%;
-  color: rgba(37, 99, 255, .7);
+  color: rgba(0,155,190, .7);
   transform: translate3d(0, 0, 0) scale(1.02);
   animation: neuralDrift 26s ease-in-out infinite alternate;
 }
@@ -47,7 +47,7 @@
 .neural-nodes {
   fill: currentColor;
   opacity: .3;
-  filter: drop-shadow(0 0 5px rgba(37, 99, 255, .14));
+  filter: drop-shadow(0 0 5px rgba(0,155,190, .14));
   animation: neuralNodes 5.5s ease-in-out infinite;
 }
 
@@ -80,7 +80,7 @@ html[data-theme="dark"] .global-neural-background {
 }
 
 html[data-theme="dark"] .global-neural-svg {
-  color: rgba(112, 167, 255, .8);
+  color: rgba(101,217,238, .8);
 }
 
 html[data-theme="dark"] .global-neural-vignette {
@@ -94,7 +94,7 @@ html[data-theme="ide"] .global-neural-background {
 }
 
 html[data-theme="ide"] .global-neural-svg {
-  color: rgba(88, 166, 255, .75);
+  color: rgba(73,199,223, .75);
 }
 
 html[data-theme="ide"] .neural-network-a { opacity: .16; }

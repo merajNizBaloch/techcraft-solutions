@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import BrandLogo from "../components/brand-logo";
 import {
   ArrowRight,
   Check,
@@ -41,7 +42,7 @@ export default function ContactPage() {
 
   return (
     <main className="contact-page min-h-screen overflow-hidden bg-[#f4f6f8] text-[#111318]">
-      <div className="fixed inset-x-0 top-0 z-40 h-0.5 bg-[#2563ff]" />
+      <div className="fixed inset-x-0 top-0 z-40 h-0.5 bg-[#087e9b]" />
 
       <section className="contact-hero relative px-[7vw] pb-20 pt-36">
         <div className="contact-grid" />
@@ -49,8 +50,8 @@ export default function ContactPage() {
         <div className="contact-glow contact-glow-b" />
         <div className="relative z-10 grid items-center gap-12 lg:grid-cols-[.85fr_1.15fr] lg:gap-16">
           <div>
-            <p className="font-mono text-[8px] tracking-[.18em] text-[#2563ff]">01 / CONTACT</p>
-            <h1 className="contact-title mt-7 max-w-[900px] text-[clamp(68px,10.5vw,148px)] font-medium leading-[.8] tracking-[-.1em]">Let&apos;s build<br /><span className="text-[#2563ff]">something useful.</span></h1>
+            <p className="font-mono text-[8px] tracking-[.18em] text-[#087e9b]">01 / CONTACT</p>
+            <h1 className="contact-title mt-7 max-w-[900px] text-[clamp(68px,10.5vw,148px)] font-medium leading-[.8] tracking-[-.1em]">Let&apos;s build<br /><span className="text-[#087e9b]">something useful.</span></h1>
             <p className="mt-10 max-w-[620px] text-[15px] leading-[1.9] text-black/50">Tell us what you are trying to solve. We&apos;ll turn the first conversation into a clear direction, practical scope and a path to build it.</p>
           </div>
 
@@ -83,7 +84,7 @@ export default function ContactPage() {
             </div>
 
             <div className="contact-network-node contact-network-techcraft">
-              <div className="contact-techcraft-mark">TC</div>
+              <BrandLogo height={32} />
               <span>TECHCRAFT</span>
               <small>DESIGN / BUILD</small>
             </div>
@@ -104,7 +105,7 @@ export default function ContactPage() {
         <div className="grid gap-12 lg:grid-cols-[.72fr_1.28fr]">
           <div>
             <p className="font-mono text-[8px] tracking-[.16em] text-black/35">02 / START A CONVERSATION</p>
-            <h2 className="mt-6 text-[clamp(50px,6vw,88px)] font-medium leading-[.86] tracking-[-.08em]">Give us the<br /><span className="text-[#2563ff]">starting point.</span></h2>
+            <h2 className="mt-6 text-[clamp(50px,6vw,88px)] font-medium leading-[.86] tracking-[-.08em]">Give us the<br /><span className="text-[#087e9b]">starting point.</span></h2>
             <p className="mt-8 max-w-[460px] text-sm leading-7 text-black/45">No formal proposal is needed. A rough idea, a business problem or an existing product is enough to start.</p>
             <div className="contact-ways mt-12 border-t border-black/10">
               <a href={whatsappHref} target="_blank" rel="noreferrer" className="contact-way"><span className="contact-way-icon contact-way-whatsapp"><MessageCircle size={18} /></span><span><strong>WhatsApp directly</strong><small>Fastest way to reach us</small></span><MoveRight size={18} /></a>
@@ -122,7 +123,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="contact-footer-cta bg-[#111318] px-[7vw] py-24 text-white"><div className="contact-footer-network" aria-hidden="true" /><div className="relative z-10 flex flex-col justify-between gap-10 lg:flex-row lg:items-end"><div><p className="font-mono text-[8px] tracking-[.16em] text-[#70a7ff]">03 / FROM IDEA TO SYSTEM</p><h2 className="mt-6 max-w-[900px] text-[clamp(50px,6vw,90px)] font-medium leading-[.86] tracking-[-.08em]">A good project starts with a <span className="text-[#70a7ff]">good conversation.</span></h2></div><a href={whatsappHref} target="_blank" rel="noreferrer" className="techcraft-button techcraft-button-primary">Open WhatsApp <ArrowRight size={16} /></a></div></section>
+      <section className="contact-footer-cta bg-[#111318] px-[7vw] py-24 text-white"><div className="contact-footer-network" aria-hidden="true" /><div className="relative z-10 flex flex-col justify-between gap-10 lg:flex-row lg:items-end"><div><p className="font-mono text-[8px] tracking-[.16em] text-[#65d9ee]">03 / FROM IDEA TO SYSTEM</p><h2 className="mt-6 max-w-[900px] text-[clamp(50px,6vw,90px)] font-medium leading-[.86] tracking-[-.08em]">A good project starts with a <span className="text-[#65d9ee]">good conversation.</span></h2></div><a href={whatsappHref} target="_blank" rel="noreferrer" className="techcraft-button techcraft-button-primary">Open WhatsApp <ArrowRight size={16} /></a></div></section>
     </main>
   );
 }

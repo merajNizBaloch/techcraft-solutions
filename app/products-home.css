@@ -21,7 +21,7 @@
   inset: 0;
   pointer-events: none;
   opacity: .55;
-  background-image: linear-gradient(rgba(37,99,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,255,.04) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(0,155,190,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,155,190,.04) 1px, transparent 1px);
   background-size: 72px 72px;
 }
 
@@ -56,7 +56,7 @@
 }
 
 .home-products-heading h2 span {
-  color: #2563ff;
+  color: #087e9b;
 }
 
 .home-products-heading p {
@@ -134,7 +134,7 @@
 
 .home-product-preview-academiq {
   padding: 42px 28px 30px;
-  background: radial-gradient(circle at 68% 45%, rgba(37,99,255,.18), transparent 34%);
+  background: radial-gradient(circle at 68% 45%, rgba(0,155,190,.18), transparent 34%);
 }
 
 .home-product-window {
@@ -168,7 +168,7 @@
 }
 
 .home-product-windowbar b {
-  color: #70a7ff;
+  color: #65d9ee;
   font-weight: 500;
 }
 
@@ -220,7 +220,7 @@
 }
 
 .home-product-dashboard aside span.active {
-  background: #2563ff;
+  background: #087e9b;
   color: white;
 }
 
@@ -281,7 +281,7 @@
 .home-product-metrics em {
   display: block;
   margin-top: 2px;
-  color: #2563ff;
+  color: #087e9b;
   font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
   font-size: 7px;
   font-style: normal;
@@ -317,7 +317,7 @@
 .home-product-chart-lines i {
   flex: 1;
   min-width: 8px;
-  background: linear-gradient(to top, #2563ff 0 48%, rgba(37,99,255,.16) 48% 100%);
+  background: linear-gradient(to top, #087e9b 0 48%, rgba(0,155,190,.16) 48% 100%);
   animation: homeProductPulse 2.8s ease-in-out infinite;
 }
 
@@ -340,7 +340,7 @@
   bottom: 20px;
   max-width: 250px;
   padding-left: 13px;
-  border-left: 1px solid rgba(112,167,255,.45);
+  border-left: 1px solid rgba(101,217,238,.45);
   font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
   font-size: 7px;
   line-height: 1.7;
@@ -357,7 +357,7 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  border: 1px solid rgba(37,99,255,.16);
+  border: 1px solid rgba(0,155,190,.16);
   border-radius: 999px;
   transform: translate(-50%, -50%);
 }
@@ -396,7 +396,7 @@
   box-shadow: 0 28px 70px rgba(17,24,39,.18);
 }
 
-.home-estara-core svg { color: #70a7ff; }
+.home-estara-core svg { color: #65d9ee; }
 .home-estara-core span { font-size: 23px; font-weight: 600; letter-spacing: -.06em; }
 .home-estara-core small { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 6px; letter-spacing: .13em; color: rgba(255,255,255,.36); }
 
@@ -414,7 +414,7 @@
   font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
 }
 
-.home-estara-node span { font-size: 6px; color: #2563ff; }
+.home-estara-node span { font-size: 6px; color: #087e9b; }
 .home-estara-node b { font-size: 7px; font-weight: 500; letter-spacing: .08em; }
 .home-estara-node.node-a { left: 15%; top: 17%; }
 .home-estara-node.node-b { right: 12%; top: 23%; }
@@ -424,7 +424,7 @@
 .home-estara-line {
   position: absolute;
   height: 1px;
-  background: linear-gradient(90deg, rgba(37,99,255,0), rgba(37,99,255,.48), rgba(37,99,255,0));
+  background: linear-gradient(90deg, rgba(0,155,190,0), rgba(0,155,190,.48), rgba(0,155,190,0));
   transform-origin: left center;
   animation: homeEstaraData 2.7s ease-in-out infinite;
 }
@@ -463,8 +463,8 @@
   width: 38px;
   height: 38px;
   margin-bottom: 18px;
-  border: 1px solid rgba(37,99,255,.22);
-  color: #2563ff;
+  border: 1px solid rgba(0,155,190,.22);
+  color: #087e9b;
 }
 
 .home-product-card-copy h3 {
@@ -531,7 +531,7 @@
   text-decoration: none;
 }
 
-.home-products-footer a:hover { color: #2563ff; }
+.home-products-footer a:hover { color: #087e9b; }
 
 @media (max-width: 900px) {
   .home-products-heading { align-items: flex-start; flex-direction: column; }

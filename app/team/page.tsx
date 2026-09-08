@@ -1,4 +1,5 @@
 import Link from "next/link";
+import BrandLogo from "../components/brand-logo";
 import {
   ArrowUpRight,
   BrainCircuit,
@@ -93,21 +94,21 @@ const principles = [
 export default function TeamPage() {
   return (
     <main className="team-page min-h-screen overflow-hidden bg-[#f4f6f8] text-[#111318]">
-      <div className="fixed inset-x-0 top-0 z-50 h-0.5 bg-[#2563ff]" />
+      <div className="fixed inset-x-0 top-0 z-50 h-0.5 bg-[#087e9b]" />
 
       <section className="team-hero relative flex min-h-[78vh] items-center overflow-hidden px-[7vw] pb-24 pt-36">
         <div className="team-hero-grid absolute inset-0" aria-hidden="true" />
         <div className="team-hero-glow team-hero-glow-a" aria-hidden="true" />
         <div className="team-hero-glow team-hero-glow-b" aria-hidden="true" />
         <div className="relative z-10 max-w-[860px]">
-          <div className="team-reveal font-mono text-[8px] tracking-[.18em] text-[#2563ff]">
+          <div className="team-reveal font-mono text-[8px] tracking-[.18em] text-[#087e9b]">
             01 / OUR TEAM
           </div>
           <div className="mt-7 overflow-hidden">
             <h1 className="team-title team-reveal text-[clamp(64px,10vw,154px)] font-medium leading-[.8] tracking-[-.09em]">
               People behind
               <br />
-              <span className="text-[#2563ff]">the craft.</span>
+              <span className="text-[#087e9b]">the craft.</span>
             </h1>
           </div>
           <p className="team-reveal team-delay-2 mt-10 max-w-[650px] text-[15px] leading-[1.9] text-black/55">
@@ -115,9 +116,9 @@ export default function TeamPage() {
           </p>
           <div className="team-reveal team-delay-3 mt-9 flex flex-wrap items-center gap-x-8 gap-y-3 font-mono text-[8px] tracking-[.14em] text-black/38">
             <span>PRODUCT</span>
-            <span className="text-[#2563ff]">●</span>
+            <span className="text-[#087e9b]">●</span>
             <span>ENGINEERING</span>
-            <span className="text-[#7a58c6]">●</span>
+            <span className="text-[#68477d]">●</span>
             <span>DESIGN SYSTEMS</span>
             <span className="text-[#d7a52a]">●</span>
             <span>GROWTH</span>
@@ -130,7 +131,7 @@ export default function TeamPage() {
           <div className="team-hero-ring team-ring-c" />
           <div className="team-hero-core">
             <Sparkles size={19} />
-            <span>TC</span>
+            <BrandLogo height={48} />
             <small>PEOPLE / CRAFT / BUILD</small>
           </div>
           <span className="team-hero-label team-hero-label-a">IDEA → TEAM</span>
@@ -144,7 +145,7 @@ export default function TeamPage() {
             <div key={title} className="team-discipline group border-l border-black/10 pl-5">
               <div className="flex items-center justify-between">
                 <span className="font-mono text-[8px] text-black/30">0{index + 1}</span>
-                <Icon size={17} className="text-[#2563ff] transition duration-300 group-hover:scale-110" strokeWidth={1.4} />
+                <Icon size={17} className="text-[#087e9b] transition duration-300 group-hover:scale-110" strokeWidth={1.4} />
               </div>
               <h2 className="mt-8 text-[24px] font-medium tracking-[-.05em]">{title}</h2>
               <p className="mt-2 max-w-[260px] text-xs leading-6 text-black/45">{description}</p>
@@ -161,7 +162,7 @@ export default function TeamPage() {
               <h2 className="mt-6 text-[clamp(48px,6vw,94px)] font-medium leading-[.87] tracking-[-.08em]">
                 Six disciplines.
                 <br />
-                <span className="text-[#2563ff]">One team.</span>
+                <span className="text-[#087e9b]">One team.</span>
               </h2>
             </div>
             <p className="max-w-[390px] text-xs leading-7 text-black/42">
@@ -219,11 +220,11 @@ export default function TeamPage() {
         <div className="team-code-grid absolute inset-0" aria-hidden="true" />
         <div className="relative z-10 mx-auto grid max-w-[1420px] gap-14 lg:grid-cols-[.85fr_1.15fr] lg:gap-[10vw]">
           <div>
-            <div className="font-mono text-[8px] tracking-[.16em] text-[#70a7ff]">03 / HOW WE COLLABORATE</div>
+            <div className="font-mono text-[8px] tracking-[.16em] text-[#65d9ee]">03 / HOW WE COLLABORATE</div>
             <h2 className="mt-7 text-[clamp(50px,6vw,92px)] font-medium leading-[.87] tracking-[-.08em]">
               One room.
               <br />
-              <span className="text-[#70a7ff]">Many disciplines.</span>
+              <span className="text-[#65d9ee]">Many disciplines.</span>
             </h2>
             <p className="mt-8 max-w-[470px] text-sm leading-[1.9] text-white/45">
               We keep the team intentionally close. That means the person shaping the interface can speak directly with the person building it, and the person integrating the technology can challenge both when the product needs a simpler answer.
@@ -233,7 +234,7 @@ export default function TeamPage() {
           <div className="border-t border-white/10">
             {principles.map(([number, title, description]) => (
               <div key={number} className="team-principle grid gap-5 border-b border-white/10 py-7 sm:grid-cols-[52px_1fr]">
-                <span className="font-mono text-[8px] text-[#70a7ff]">{number}</span>
+                <span className="font-mono text-[8px] text-[#65d9ee]">{number}</span>
                 <div>
                   <h3 className="text-[26px] font-medium tracking-[-.05em]">{title}</h3>
                   <p className="mt-2 max-w-[560px] text-xs leading-7 text-white/40">{description}</p>
@@ -247,16 +248,16 @@ export default function TeamPage() {
       <section className="px-[7vw] py-28">
         <div className="mx-auto grid max-w-[1420px] gap-12 border-t border-black/10 pt-10 lg:grid-cols-[1fr_auto] lg:items-end">
           <div>
-            <div className="font-mono text-[8px] tracking-[.16em] text-[#2563ff]">04 / WORK WITH US</div>
+            <div className="font-mono text-[8px] tracking-[.16em] text-[#087e9b]">04 / WORK WITH US</div>
             <h2 className="mt-6 max-w-[900px] text-[clamp(48px,7vw,104px)] font-medium leading-[.86] tracking-[-.08em]">
               The right work needs
               <br />
-              the <span className="text-[#2563ff]">right people.</span>
+              the <span className="text-[#087e9b]">right people.</span>
             </h2>
           </div>
           <Link
             href="/contact"
-            className="inline-flex w-fit items-center gap-2 border border-[#111318] bg-[#111318] px-5 py-3.5 font-mono text-[9px] tracking-[.08em] text-white transition hover:-translate-y-1 hover:border-[#2563ff] hover:bg-[#2563ff]"
+            className="inline-flex w-fit items-center gap-2 border border-[#111318] bg-[#111318] px-5 py-3.5 font-mono text-[9px] tracking-[.08em] text-white transition hover:-translate-y-1 hover:border-[#087e9b] hover:bg-[#087e9b]"
           >
             START A CONVERSATION <ArrowUpRight size={16} />
           </Link>

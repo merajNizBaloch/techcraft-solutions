@@ -79,7 +79,7 @@ body {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(circle at 18% 0%, rgba(255,255,255,.95), transparent 28%), radial-gradient(circle at 88% 100%, rgba(37,99,255,.11), transparent 33%);
+  background: radial-gradient(circle at 18% 0%, rgba(255,255,255,.95), transparent 28%), radial-gradient(circle at 88% 100%, rgba(0,155,190,.11), transparent 33%);
 }
 
 .site-navbar-home,
@@ -88,11 +88,11 @@ body {
 .site-navbar-home { display: flex; align-items: center; padding: 7px 9px; color: #111318; text-decoration: none; }
 .site-navbar-brand { display: flex; align-items: center; gap: 10px; }
 .site-navbar-symbol { position: relative; width: 25px; height: 25px; flex: 0 0 auto; border: 1px solid #111318; transform: rotate(45deg); }
-.site-navbar-symbol span { position: absolute; inset: 4px; border: 1px solid #2563ff; }
+.site-navbar-symbol span { position: absolute; inset: 4px; border: 1px solid #087e9b; }
 .site-navbar-symbol span:nth-child(2) { inset: 8px; }
 .site-navbar-symbol span:nth-child(3) { inset: 11px; border: 0; background: #c83a32; }
 .site-navbar-name { font-size: 13px; font-weight: 800; letter-spacing: -.05em; }
-.site-navbar-name span { color: #2563ff; }
+.site-navbar-name span { color: #087e9b; }
 
 .site-navbar-nav { display: flex; align-items: center; gap: 3px; }
 .site-navbar-nav a,
@@ -125,7 +125,7 @@ body {
   left: 7px;
   top: 50%;
   transform: translate(-12px,-50%) scale(.7);
-  color: #2563ff;
+  color: #087e9b;
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   font-size: 11px;
   font-weight: 500;
@@ -140,7 +140,7 @@ body {
   right: 7px;
   top: 50%;
   transform: translate(12px,-50%) scale(.7);
-  color: #2563ff;
+  color: #087e9b;
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   font-size: 10px;
   font-weight: 500;
@@ -154,7 +154,7 @@ body {
 .site-navbar-nav button:focus-visible {
   color: #111318;
   background: linear-gradient(135deg, rgba(255,255,255,.78), rgba(255,255,255,.34));
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.95), inset 0 -1px 0 rgba(37,99,255,.12), 0 5px 18px rgba(17,24,39,.06);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.95), inset 0 -1px 0 rgba(0,155,190,.12), 0 5px 18px rgba(17,24,39,.06);
   transform: translateY(-1px);
   padding-left: 25px;
   padding-right: 25px;
@@ -183,7 +183,7 @@ body {
 .site-navbar-nav button:not(.active):hover,
 .site-navbar-nav a:not(.active):focus-visible,
 .site-navbar-nav button:not(.active):focus-visible {
-  background-image: linear-gradient(90deg, transparent 0%, rgba(37,99,255,.04) 45%, transparent 100%);
+  background-image: linear-gradient(90deg, transparent 0%, rgba(0,155,190,.04) 45%, transparent 100%);
   background-size: 200% 100%;
   animation: siteNavbarCodeSweep 1.2s linear infinite;
 }
@@ -191,7 +191,7 @@ body {
 .site-navbar-nav button.active {
   color: #111318;
   background: linear-gradient(135deg, rgba(255,255,255,.78), rgba(255,255,255,.34));
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.95), inset 0 -1px 0 rgba(37,99,255,.12), 0 5px 18px rgba(17,24,39,.06);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.95), inset 0 -1px 0 rgba(0,155,190,.12), 0 5px 18px rgba(17,24,39,.06);
   padding-left: 25px;
   padding-right: 25px;
 }
@@ -206,17 +206,17 @@ body {
   border: 0;
   padding: 10px 15px;
   border-radius: 13px;
-  background: #2563ff;
+  background: #087e9b;
   color: #fff;
   font-size: 10px;
   text-decoration: none;
   cursor: pointer;
-  box-shadow: 0 6px 20px rgba(37,99,255,.2), inset 0 1px 0 rgba(255,255,255,.3);
+  box-shadow: 0 6px 20px rgba(0,155,190,.2), inset 0 1px 0 rgba(255,255,255,.3);
   transition: background .25s ease, transform .25s ease, padding .25s ease;
 }
 .site-navbar-cta:hover {
   transform: translateY(-1px);
-  background: linear-gradient(90deg,#2563ff,#4c82ff,#2563ff);
+  background: linear-gradient(90deg,#087e9b,#4c82ff,#087e9b);
   background-size: 220% 100%;
   animation: siteNavbarCodeSweep 1.3s linear infinite;
   padding-left: 24px;
@@ -305,7 +305,7 @@ body {
   position: absolute;
   top: 50%;
   z-index: 1;
-  color: #2563ff;
+  color: #087e9b;
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   font-size: 10px;
   opacity: 0;
@@ -335,9 +335,9 @@ body {
   padding-left: 29px;
   padding-right: 29px;
   color: #111318;
-  border-color: rgba(37,99,255,.24);
+  border-color: rgba(0,155,190,.24);
   background: linear-gradient(135deg, rgba(255,255,255,.94), rgba(239,244,255,.76));
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.98), 0 15px 35px rgba(17,24,39,.1), 0 0 0 1px rgba(37,99,255,.035);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.98), 0 15px 35px rgba(17,24,39,.1), 0 0 0 1px rgba(0,155,190,.035);
   outline: none;
 }
 
@@ -355,11 +355,11 @@ body {
 }
 
 .techcraft-button::selection,
-.about-button::selection { background: rgba(37,99,255,.2); }
+.about-button::selection { background: rgba(0,155,190,.2); }
 
 .techcraft-button-primary,
 .about-button-dark {
-  border-color: #2563ff;
+  border-color: #087e9b;
   background: #111318;
   color: #fff;
   box-shadow: 0 8px 24px rgba(17,19,24,.15), inset 0 1px 0 rgba(255,255,255,.12);
@@ -376,20 +376,20 @@ body {
 .techcraft-button-primary:focus-visible,
 .about-button-dark:hover,
 .about-button-dark:focus-visible {
-  border-color: #2563ff;
-  background: linear-gradient(90deg,#111318,#2563ff,#111318);
+  border-color: #087e9b;
+  background: linear-gradient(90deg,#111318,#087e9b,#111318);
   background-size: 220% 100%;
   color: #fff;
   animation: siteButtonSweep 1.25s linear infinite;
-  box-shadow: 0 15px 38px rgba(37,99,255,.2), inset 0 1px 0 rgba(255,255,255,.18);
+  box-shadow: 0 15px 38px rgba(0,155,190,.2), inset 0 1px 0 rgba(255,255,255,.18);
 }
 
 .techcraft-button-accent,
 .about-button-accent {
-  background: #2563ff;
-  border-color: #2563ff;
+  background: #087e9b;
+  border-color: #087e9b;
   color: #fff;
-  box-shadow: 0 8px 24px rgba(37,99,255,.2), inset 0 1px 0 rgba(255,255,255,.28);
+  box-shadow: 0 8px 24px rgba(0,155,190,.2), inset 0 1px 0 rgba(255,255,255,.28);
 }
 
 .techcraft-button-accent::before,
@@ -401,12 +401,12 @@ body {
 .techcraft-button-accent:focus-visible,
 .about-button-accent:hover,
 .about-button-accent:focus-visible {
-  background: linear-gradient(90deg,#2563ff,#4c82ff,#2563ff);
+  background: linear-gradient(90deg,#087e9b,#4c82ff,#087e9b);
   background-size: 220% 100%;
   color: #fff;
   animation: siteButtonSweep 1.25s linear infinite;
-  border-color: #2563ff;
-  box-shadow: 0 16px 38px rgba(37,99,255,.25), inset 0 1px 0 rgba(255,255,255,.3);
+  border-color: #087e9b;
+  box-shadow: 0 16px 38px rgba(0,155,190,.25), inset 0 1px 0 rgba(255,255,255,.3);
 }
 
 @keyframes siteButtonSweep {
@@ -439,7 +439,7 @@ body {
 
 .about-page .about-grid {
   opacity: .72;
-  background-image: linear-gradient(rgba(37,99,255,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,255,.045) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(0,155,190,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(0,155,190,.045) 1px, transparent 1px);
   background-size: 75px 75px;
   mask-image: linear-gradient(to bottom, black, transparent 88%);
 }
@@ -463,8 +463,8 @@ body {
 @keyframes aboutOrbitSpin { to { transform: rotate(405deg); } }
 @keyframes aboutOrbitSpinReverse { to { transform: rotate(-315deg); } }
 @keyframes aboutCoreFloat {
-  0%,100% { transform: translate(-50%,-50%) scale(1); box-shadow: 0 20px 70px rgba(37,99,255,.14); }
-  50% { transform: translate(-50%,-50%) scale(1.045); box-shadow: 0 28px 85px rgba(37,99,255,.2); }
+  0%,100% { transform: translate(-50%,-50%) scale(1); box-shadow: 0 20px 70px rgba(0,155,190,.14); }
+  50% { transform: translate(-50%,-50%) scale(1.045); box-shadow: 0 28px 85px rgba(0,155,190,.2); }
 }
 @keyframes aboutDotPulse {
   0%,100% { transform: scale(.75); opacity: .5; }
@@ -501,7 +501,7 @@ body {
   height: 2px;
   transform: scaleX(0);
   transform-origin: left;
-  background: #2563ff;
+  background: #087e9b;
   transition: transform .5s cubic-bezier(.16,1,.3,1);
 }
 .about-page .about-capability:hover::after { transform: scaleX(1); }
@@ -513,15 +513,15 @@ body {
   top: -1px;
   height: 1px;
   width: 0;
-  background: #70a7ff;
+  background: #65d9ee;
   transition: width .55s cubic-bezier(.16,1,.3,1);
 }
 .about-page .about-process:hover::before { width: 100%; }
 .about-page .about-cta-button { animation: aboutCtaPulse 4s ease-in-out infinite; }
 .about-page .about-cta-button:hover { transform: scale(1.06) rotate(-2deg); background: #fff; color: #111318; }
 @keyframes aboutCtaPulse {
-  0%,100% { box-shadow: 0 20px 60px rgba(37,99,255,.22); }
-  50% { box-shadow: 0 28px 85px rgba(37,99,255,.38); }
+  0%,100% { box-shadow: 0 20px 60px rgba(0,155,190,.22); }
+  50% { box-shadow: 0 28px 85px rgba(0,155,190,.38); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -592,7 +592,7 @@ body {
   .site-navbar-mobile-menu a:hover,
   .site-navbar-mobile-menu button:hover,
   .site-navbar-mobile-menu a.active,
-  .site-navbar-mobile-menu button.active { background: rgba(37,99,255,.08); color: #2563ff; }
+  .site-navbar-mobile-menu button.active { background: rgba(0,155,190,.08); color: #087e9b; }
 
   .techcraft-button,
   .about-button {

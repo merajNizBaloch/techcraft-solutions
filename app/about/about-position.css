@@ -33,7 +33,7 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  filter: drop-shadow(0 0 12px rgba(37, 99, 255, 0.12));
+  filter: drop-shadow(0 0 12px rgba(0,155,190, 0.12));
 }
 
 .about-page .about-orbit-core::after {
@@ -46,7 +46,7 @@
   margin-left: -39px;
   margin-top: -39px;
   border-radius: 999px;
-  border: 1px solid rgba(37, 99, 255, .1);
+  border: 1px solid rgba(0,155,190, .1);
   animation: about-neural-pulse 3.4s ease-in-out infinite;
 }
 

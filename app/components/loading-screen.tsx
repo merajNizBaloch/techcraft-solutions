@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import BrandLogo from "./brand-logo";
 
 const CODE_LINES = [
   ["01", "const", " techcraft = {"],
@@ -90,7 +91,7 @@ export default function LoadingScreen() {
 
         <div className="boot-window-body">
           <aside className="boot-sidebar">
-            <strong>TC</strong>
+            <BrandLogo height={28} />
             <span>⌘</span>
             <span>&lt;/&gt;</span>
             <span>⌁</span>

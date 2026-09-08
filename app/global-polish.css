@@ -55,12 +55,12 @@ button:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
-  outline: 2px solid rgba(37, 99, 255, 0.72);
+  outline: 2px solid rgba(0,155,190, 0.72);
   outline-offset: 3px;
 }
 
 ::selection {
-  background: rgba(37, 99, 255, 0.18);
+  background: rgba(0,155,190, 0.18);
   color: inherit;
 }
 

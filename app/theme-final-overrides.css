@@ -27,7 +27,7 @@ html[data-theme="dark"] .home-product-chart-head { color: #cfd8e5 !important; }
 html[data-theme="dark"] .home-product-windowbar { background: #0b1020 !important; }
 html[data-theme="dark"] .home-products-index,
 html[data-theme="dark"] .home-products-heading p { color: rgba(215,222,232,.55) !important; border-color: rgba(255,255,255,.10) !important; }
-html[data-theme="dark"] .home-estara-node span { color: #70a7ff !important; }
+html[data-theme="dark"] .home-estara-node span { color: #65d9ee !important; }
 html[data-theme="dark"] .freebies-tool-card { background: #151922 !important; color: #d7dee8 !important; }
 html[data-theme="dark"] .freebies-tool-card:hover { background: #1a202b !important; }
 html[data-theme="dark"] .freebies-tool-card-top,
@@ -40,7 +40,7 @@ html[data-theme="dark"] .freebies-tool-footer,
 html[data-theme="dark"] .freebies-upcoming-card,
 html[data-theme="dark"] .freebies-upcoming-list { border-color: rgba(255,255,255,.09) !important; }
 html[data-theme="dark"] .freebies-upcoming-section { background: #11151b !important; }
-html[data-theme="dark"] .portfolio-hero-orbit { background: #111720 !important; border-color: rgba(112,167,255,.14) !important; }
+html[data-theme="dark"] .portfolio-hero-orbit { background: #111720 !important; border-color: rgba(101,217,238,.14) !important; }
 html[data-theme="dark"] .portfolio-hero-label,
 html[data-theme="dark"] .portfolio-hero-pulse,
 html[data-theme="dark"] .portfolio-hero-index { color: rgba(233,237,243,.48) !important; }
@@ -51,15 +51,15 @@ html[data-theme="dark"] .about-page .about-cta-button:hover { background: #15192
    IDE MODE — remaining light surfaces
 ========================= */
 html[data-theme="ide"] .home-products-content { background: #0b1020 !important; }
-html[data-theme="ide"] .home-products-grid { background: rgba(88,166,255,.08) !important; border-color: rgba(88,166,255,.14) !important; }
+html[data-theme="ide"] .home-products-grid { background: rgba(73,199,223,.08) !important; border-color: rgba(73,199,223,.14) !important; }
 html[data-theme="ide"] .home-product-card-estara { background: #111827 !important; color: #c9d7ea !important; }
 html[data-theme="ide"] .home-product-card-meta,
-html[data-theme="ide"] .home-product-card-copy { border-color: rgba(88,166,255,.12) !important; color: #8fa0b5 !important; }
+html[data-theme="ide"] .home-product-card-copy { border-color: rgba(73,199,223,.12) !important; color: #8fa0b5 !important; }
 html[data-theme="ide"] .home-product-window,
 html[data-theme="ide"] .home-product-dashboard aside,
 html[data-theme="ide"] .home-product-metrics > div,
 html[data-theme="ide"] .home-product-preview-estara,
-html[data-theme="ide"] .home-estara-node { background: #111827 !important; color: #c9d7ea !important; border-color: rgba(88,166,255,.13) !important; }
+html[data-theme="ide"] .home-estara-node { background: #111827 !important; color: #c9d7ea !important; border-color: rgba(73,199,223,.13) !important; }
 html[data-theme="ide"] .home-product-dashboard aside { background: #0f172a !important; }
 html[data-theme="ide"] .home-product-topline small,
 html[data-theme="ide"] .home-product-metrics small,
@@ -70,8 +70,8 @@ html[data-theme="ide"] .home-estara-node b { color: #8292a8 !important; }
 html[data-theme="ide"] .home-product-chart-head { color: #c9d7ea !important; }
 html[data-theme="ide"] .home-product-windowbar { background: #0b1020 !important; }
 html[data-theme="ide"] .home-products-index,
-html[data-theme="ide"] .home-products-heading p { color: #8292a8 !important; border-color: rgba(88,166,255,.12) !important; }
-html[data-theme="ide"] .home-estara-node span { color: #58a6ff !important; }
+html[data-theme="ide"] .home-products-heading p { color: #8292a8 !important; border-color: rgba(73,199,223,.12) !important; }
+html[data-theme="ide"] .home-estara-node span { color: #49c7df !important; }
 html[data-theme="ide"] .freebies-tool-card { background: #111827 !important; color: #c9d7ea !important; }
 html[data-theme="ide"] .freebies-tool-card:hover { background: #162033 !important; }
 html[data-theme="ide"] .freebies-tool-card-top,
@@ -82,9 +82,9 @@ html[data-theme="ide"] .freebies-count-box small { color: #8292a8 !important; }
 html[data-theme="ide"] .freebies-tool-description { color: #8fa0b5 !important; }
 html[data-theme="ide"] .freebies-tool-footer,
 html[data-theme="ide"] .freebies-upcoming-card,
-html[data-theme="ide"] .freebies-upcoming-list { border-color: rgba(88,166,255,.12) !important; }
+html[data-theme="ide"] .freebies-upcoming-list { border-color: rgba(73,199,223,.12) !important; }
 html[data-theme="ide"] .freebies-upcoming-section { background: #0f1726 !important; }
-html[data-theme="ide"] .portfolio-hero-orbit { background: #0f1726 !important; border-color: rgba(88,166,255,.14) !important; }
+html[data-theme="ide"] .portfolio-hero-orbit { background: #0f1726 !important; border-color: rgba(73,199,223,.14) !important; }
 html[data-theme="ide"] .portfolio-hero-label,
 html[data-theme="ide"] .portfolio-hero-pulse,
 html[data-theme="ide"] .portfolio-hero-index { color: #8292a8 !important; }
@@ -147,7 +147,7 @@ html[data-theme="ide"] .about-page .about-cta-button:hover { background: #111827
     color: #111318 !important;
     background: transparent !important;
     background-color: transparent !important;
-    pointer-events: auto !important;
+    pointer-events: inherit;
     position: relative;
     z-index: 2;
     transition: color .2s ease, background .2s ease, transform .2s ease, padding-left .2s ease !important;
@@ -157,17 +157,17 @@ html[data-theme="ide"] .about-page .about-cta-button:hover { background: #111827
   html:not([data-theme="dark"]):not([data-theme="ide"]) .site-navbar-mobile-menu button:hover,
   html:not([data-theme="dark"]):not([data-theme="ide"]) .site-navbar-mobile-menu a:focus-visible,
   html:not([data-theme="dark"]):not([data-theme="ide"]) .site-navbar-mobile-menu button:focus-visible {
-    color: #2563ff !important;
-    background: rgba(37,99,255,.08) !important;
-    background-color: rgba(37,99,255,.08) !important;
+    color: #087e9b !important;
+    background: rgba(0,155,190,.08) !important;
+    background-color: rgba(0,155,190,.08) !important;
     transform: translateX(2px);
     outline: none;
   }
 
   html:not([data-theme="dark"]):not([data-theme="ide"]) .site-navbar-mobile-menu a.active {
-    color: #2563ff !important;
-    background: rgba(37,99,255,.08) !important;
-    background-color: rgba(37,99,255,.08) !important;
+    color: #087e9b !important;
+    background: rgba(0,155,190,.08) !important;
+    background-color: rgba(0,155,190,.08) !important;
   }
 }
 
@@ -186,7 +186,7 @@ html[data-theme="dark"] .site-navbar-mobile-menu button { color: #d7dee8 !import
 
 html[data-theme="ide"] .site-navbar-mobile-menu {
   background: #111827 !important;
-  border-color: rgba(88,166,255,.16) !important;
+  border-color: rgba(73,199,223,.16) !important;
   box-shadow: 0 20px 60px rgba(0,0,0,.24) !important;
 }
 html[data-theme="ide"] .site-navbar-mobile-menu a,

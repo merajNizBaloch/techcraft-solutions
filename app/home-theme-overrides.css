@@ -8,7 +8,7 @@
 ========================= */
 html[data-theme="dark"] .techcraft .hero {
   background:
-    radial-gradient(circle at 78% 8%, rgba(37,99,255,.12), transparent 28%),
+    radial-gradient(circle at 78% 8%, rgba(0,155,190,.12), transparent 28%),
     radial-gradient(circle at 12% 72%, rgba(200,58,50,.045), transparent 24%),
     linear-gradient(180deg, #0d0f12 0%, #0d1117 100%) !important;
   color: #e9edf3 !important;
@@ -44,10 +44,10 @@ html[data-theme="dark"] .techcraft .secondary-action {
 }
 
 html[data-theme="dark"] .techcraft .primary-action {
-  background: #2563ff !important;
-  border: 1px solid #70a7ff !important;
+  background: #087e9b !important;
+  border: 1px solid #65d9ee !important;
   color: #fff !important;
-  box-shadow: 0 8px 24px rgba(37,99,255,.20), inset 0 1px 0 rgba(255,255,255,.18) !important;
+  box-shadow: 0 8px 24px rgba(0,155,190,.20), inset 0 1px 0 rgba(255,255,255,.18) !important;
 }
 
 html[data-theme="dark"] .techcraft .secondary-action {
@@ -59,22 +59,22 @@ html[data-theme="dark"] .techcraft .secondary-action {
 
 html[data-theme="dark"] .techcraft .primary-action:hover,
 html[data-theme="dark"] .techcraft .primary-action:focus-visible {
-  background: linear-gradient(90deg,#2563ff,#4c82ff,#2563ff) !important;
+  background: linear-gradient(90deg,#087e9b,#4c82ff,#087e9b) !important;
   background-size: 220% 100% !important;
-  border-color: #70a7ff !important;
+  border-color: #65d9ee !important;
   color: #fff !important;
   transform: translateY(-3px) !important;
   animation: siteButtonSweep 1.25s linear infinite;
-  box-shadow: 0 16px 38px rgba(37,99,255,.25), inset 0 1px 0 rgba(255,255,255,.2) !important;
+  box-shadow: 0 16px 38px rgba(0,155,190,.25), inset 0 1px 0 rgba(255,255,255,.2) !important;
 }
 
 html[data-theme="dark"] .techcraft .secondary-action:hover,
 html[data-theme="dark"] .techcraft .secondary-action:focus-visible {
   background: #1a202b !important;
-  border-color: #2563ff !important;
+  border-color: #087e9b !important;
   color: #fff !important;
   transform: translateY(-3px) !important;
-  box-shadow: 0 15px 35px rgba(0,0,0,.2), 0 0 0 1px rgba(37,99,255,.08) !important;
+  box-shadow: 0 15px 35px rgba(0,0,0,.2), 0 0 0 1px rgba(0,155,190,.08) !important;
 }
 
 /* The homepage studio mockup had several fixed light-grey editor surfaces. */
@@ -106,7 +106,7 @@ html[data-theme="dark"] .techcraft .canvas-button.light {
   border-color: rgba(255,255,255,.14) !important;
 }
 html[data-theme="dark"] .techcraft .canvas-button.dark {
-  background: #2563ff !important;
+  background: #087e9b !important;
   color: #fff !important;
 }
 html[data-theme="dark"] .techcraft .fake-button {
@@ -115,9 +115,9 @@ html[data-theme="dark"] .techcraft .fake-button {
   border-color: rgba(255,255,255,.12) !important;
 }
 html[data-theme="dark"] .techcraft .fake-button.primary {
-  background: #2563ff !important;
+  background: #087e9b !important;
   color: #fff !important;
-  border-color: #70a7ff !important;
+  border-color: #65d9ee !important;
 }
 html[data-theme="dark"] .techcraft .live-code-editor,
 html[data-theme="dark"] .techcraft .terminal-line { color: #c9d7ea !important; }
@@ -128,7 +128,7 @@ html[data-theme="dark"] .techcraft .live-line-number { color: #617086 !important
 ========================= */
 html[data-theme="ide"] .techcraft .hero {
   background:
-    radial-gradient(circle at 78% 8%, rgba(88,166,255,.12), transparent 28%),
+    radial-gradient(circle at 78% 8%, rgba(73,199,223,.12), transparent 28%),
     radial-gradient(circle at 16% 72%, rgba(188,140,255,.045), transparent 24%),
     linear-gradient(180deg, #0b1020 0%, #0b1121 100%) !important;
   color: #d7e3f4 !important;
@@ -172,9 +172,9 @@ html[data-theme="ide"] .techcraft .primary-action {
 
 html[data-theme="ide"] .techcraft .secondary-action {
   background: #111827 !important;
-  border: 1px solid rgba(88,166,255,.24) !important;
+  border: 1px solid rgba(73,199,223,.24) !important;
   color: #c9d7ea !important;
-  box-shadow: 0 8px 24px rgba(0,0,0,.15), inset 0 1px 0 rgba(88,166,255,.04) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,.15), inset 0 1px 0 rgba(73,199,223,.04) !important;
 }
 
 html[data-theme="ide"] .techcraft .primary-action:hover,
@@ -189,10 +189,10 @@ html[data-theme="ide"] .techcraft .primary-action:focus-visible {
 html[data-theme="ide"] .techcraft .secondary-action:hover,
 html[data-theme="ide"] .techcraft .secondary-action:focus-visible {
   background: #162033 !important;
-  border-color: #58a6ff !important;
+  border-color: #49c7df !important;
   color: #f0f6fc !important;
   transform: translateY(-3px) !important;
-  box-shadow: 0 15px 35px rgba(0,0,0,.2), 0 0 0 1px rgba(88,166,255,.08) !important;
+  box-shadow: 0 15px 35px rgba(0,0,0,.2), 0 0 0 1px rgba(73,199,223,.08) !important;
 }
 
 /* The homepage studio mockup now follows the IDE palette instead of grey UI chrome. */
@@ -204,7 +204,7 @@ html[data-theme="ide"] .techcraft .design-canvas,
 html[data-theme="ide"] .techcraft .ide-panel {
   background: #111827 !important;
   color: #c9d7ea !important;
-  border-color: rgba(88,166,255,.13) !important;
+  border-color: rgba(73,199,223,.13) !important;
 }
 
 html[data-theme="ide"] .techcraft .software-topbar { background: #0b1020 !important; }
@@ -214,14 +214,14 @@ html[data-theme="ide"] .techcraft .design-canvas { background: #0f1726 !importan
 html[data-theme="ide"] .techcraft .canvas-card {
   background: #111827 !important;
   color: #d7e3f4 !important;
-  border-color: rgba(88,166,255,.16) !important;
+  border-color: rgba(73,199,223,.16) !important;
   box-shadow: 0 24px 55px rgba(0,0,0,.28) !important;
 }
 html[data-theme="ide"] .techcraft .canvas-description { color: #8fa0b5 !important; }
 html[data-theme="ide"] .techcraft .canvas-button.light {
   background: #0f172a !important;
   color: #c9d7ea !important;
-  border-color: rgba(88,166,255,.20) !important;
+  border-color: rgba(73,199,223,.20) !important;
 }
 html[data-theme="ide"] .techcraft .canvas-button.dark {
   background: #238636 !important;
@@ -230,7 +230,7 @@ html[data-theme="ide"] .techcraft .canvas-button.dark {
 html[data-theme="ide"] .techcraft .fake-button {
   background: #111827 !important;
   color: #c9d7ea !important;
-  border-color: rgba(88,166,255,.18) !important;
+  border-color: rgba(73,199,223,.18) !important;
 }
 html[data-theme="ide"] .techcraft .fake-button.primary {
   background: #238636 !important;
@@ -248,5 +248,5 @@ html[data-theme="dark"] .techcraft .hero h3 { color: #f6f8fb !important; }
 html[data-theme="dark"] .techcraft .hero-text { color: rgba(233,237,243,.68) !important; }
 html[data-theme="ide"] .techcraft .hero h1,
 html[data-theme="ide"] .techcraft .hero h2,
-html[data-theme="ide"] .techcraft .hero h3 { color: #79c7ff !important; }
+html[data-theme="ide"] .techcraft .hero h3 { color: #83deef !important; }
 html[data-theme="ide"] .techcraft .hero-text { color: #8fa0b5 !important; }

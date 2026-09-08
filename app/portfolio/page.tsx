@@ -1,4 +1,5 @@
 import type { LucideIcon } from "lucide-react";
+import BrandLogo from "../components/brand-logo";
 import { ArrowUpRight, Compass, Layers3, MapPin, Sparkles } from "lucide-react";
 
 export const metadata = {
@@ -38,7 +39,7 @@ function LivePreview({ src, title, label }: { src: string; title: string; label:
 export default function PortfolioPage() {
   return (
     <main className="portfolio-page min-h-screen overflow-hidden bg-[#f4f6f8] text-[#111318]">
-      <div className="fixed inset-x-0 top-0 z-40 h-0.5 bg-[#2563ff]" />
+      <div className="fixed inset-x-0 top-0 z-40 h-0.5 bg-[#087e9b]" />
 
       <section className="portfolio-hero relative px-[7vw] pb-20 pt-36">
         <div className="portfolio-grid" />
@@ -47,14 +48,14 @@ export default function PortfolioPage() {
         <div className="relative z-10 grid items-center gap-16 lg:grid-cols-[.92fr_1.08fr]">
           <div>
             <p className="font-mono text-[9px] tracking-[.2em] text-black/38">OUR APPROACH</p>
-            <h1 className="portfolio-title mt-7 max-w-[920px] text-[clamp(68px,10.5vw,150px)] font-medium leading-[.8] tracking-[-.1em]">Work that<br /><span className="text-[#2563ff]">gets built.</span></h1>
+            <h1 className="portfolio-title mt-7 max-w-[920px] text-[clamp(68px,10.5vw,150px)] font-medium leading-[.8] tracking-[-.1em]">Work that<br /><span className="text-[#087e9b]">gets built.</span></h1>
             <p className="mt-10 max-w-[650px] text-[15px] leading-[1.9] text-black/50">Selected client work where strategy, interface design and engineering come together to create a useful digital presence.</p>
             <div className="portfolio-hero-index mt-9"><span>CRAFT</span><span>DESIGN</span><span>DEVELOPMENT</span><span>CULTURE</span></div>
           </div>
           <div className="portfolio-vision" aria-label="TechCraft vision: craft, design, development and culture">
             <div className="vision-orbit vision-orbit-a" /><div className="vision-orbit vision-orbit-b" /><div className="vision-orbit vision-orbit-c" />
             <div className="vision-thread thread-a" /><div className="vision-thread thread-b" /><div className="vision-thread thread-c" />
-            <div className="vision-core"><div className="vision-core-mark">TC</div><span>TECHCRAFT</span><small>CRAFTING DIGITAL EXPERIENCES</small></div>
+            <div className="vision-core"><BrandLogo height={56} /><span>TECHCRAFT</span><small>CRAFTING DIGITAL EXPERIENCES</small></div>
             <div className="vision-node node-craft"><strong>CRAFT</strong><small>DETAIL</small></div>
             <div className="vision-node node-design"><strong>DESIGN</strong><small>FORM</small></div>
             <div className="vision-node node-development"><strong>DEVELOPMENT</strong><small>BUILD</small></div>
@@ -67,7 +68,7 @@ export default function PortfolioPage() {
 
       <section id="rehaan" className="portfolio-feature border-t border-black/10 bg-white/65 px-[7vw] py-24">
         <div className="mb-14 flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
-          <div><p className="font-mono text-[8px] tracking-[.16em] text-black/35">FEATURED CLIENT WORK</p><h2 className="mt-6 text-[clamp(52px,7vw,96px)] font-medium leading-[.84] tracking-[-.08em]">Rehaan <span className="text-[#2563ff]">&amp; Associates.</span></h2><p className="mt-7 max-w-[680px] text-sm leading-7 text-black/45">A website created for a civil engineering firm in Balochistan, combining an architectural visual language with a clear digital presentation of the firm's work and capabilities.</p></div>
+          <div><p className="font-mono text-[8px] tracking-[.16em] text-black/35">FEATURED CLIENT WORK</p><h2 className="mt-6 text-[clamp(52px,7vw,96px)] font-medium leading-[.84] tracking-[-.08em]">Rehaan <span className="text-[#087e9b]">&amp; Associates.</span></h2><p className="mt-7 max-w-[680px] text-sm leading-7 text-black/45">A website created for a civil engineering firm in Balochistan, combining an architectural visual language with a clear digital presentation of the firm's work and capabilities.</p></div>
           <div className="portfolio-client-meta"><span>CLIENT</span><strong>CIVIL ENGINEERING</strong><small>BALOCHISTAN / PAKISTAN</small><a href="https://rehanconsultants.com/" target="_blank" rel="noreferrer" className="portfolio-site-link">rehanconsultants.com <ArrowUpRight size={13} /></a></div>
         </div>
         <div className="portfolio-project-shell">
@@ -78,7 +79,7 @@ export default function PortfolioPage() {
 
       <section id="hopline" className="portfolio-feature portfolio-feature-secondary border-t border-black/10 bg-white/40 px-[7vw] py-24">
         <div className="mb-14 flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
-          <div><p className="font-mono text-[8px] tracking-[.16em] text-black/35">SELECTED DIGITAL WORK</p><h2 className="mt-6 text-[clamp(52px,7vw,96px)] font-medium leading-[.84] tracking-[-.08em]">Hopline <span className="text-[#2563ff]">platform.</span></h2><p className="mt-7 max-w-[680px] text-sm leading-7 text-black/45">A TechCraft-built digital product focused on creating a fast, modern and connected web experience.</p></div>
+          <div><p className="font-mono text-[8px] tracking-[.16em] text-black/35">SELECTED DIGITAL WORK</p><h2 className="mt-6 text-[clamp(52px,7vw,96px)] font-medium leading-[.84] tracking-[-.08em]">Hopline <span className="text-[#087e9b]">platform.</span></h2><p className="mt-7 max-w-[680px] text-sm leading-7 text-black/45">A TechCraft-built digital product focused on creating a fast, modern and connected web experience.</p></div>
           <div className="portfolio-client-meta"><span>PROJECT</span><strong>DIGITAL PLATFORM</strong><small>TECHCRAFT / WEB EXPERIENCE</small><a href="https://hopline.techcraftsolution.com/" target="_blank" rel="noreferrer" className="portfolio-site-link">hopline.techcraftsolution.com <ArrowUpRight size={13} /></a></div>
         </div>
         <div className="portfolio-project-shell portfolio-hopline-shell">
@@ -89,7 +90,7 @@ export default function PortfolioPage() {
 
       <section id="shop-balochistan" className="portfolio-feature border-t border-black/10 bg-[#eef2f6] px-[7vw] py-24">
         <div className="mb-14 flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
-          <div><p className="font-mono text-[8px] tracking-[.16em] text-black/35">SELECTED DIGITAL WORK</p><h2 className="mt-6 text-[clamp(52px,7vw,96px)] font-medium leading-[.84] tracking-[-.08em]">Shop <span className="text-[#2563ff]">Balochistan.</span></h2><p className="mt-7 max-w-[680px] text-sm leading-7 text-black/45">A digital commerce experience built around a regional identity, bringing local culture and modern web technology together.</p></div>
+          <div><p className="font-mono text-[8px] tracking-[.16em] text-black/35">SELECTED DIGITAL WORK</p><h2 className="mt-6 text-[clamp(52px,7vw,96px)] font-medium leading-[.84] tracking-[-.08em]">Shop <span className="text-[#087e9b]">Balochistan.</span></h2><p className="mt-7 max-w-[680px] text-sm leading-7 text-black/45">A digital commerce experience built around a regional identity, bringing local culture and modern web technology together.</p></div>
           <div className="portfolio-client-meta"><span>PROJECT</span><strong>DIGITAL COMMERCE</strong><small>WEB EXPERIENCE</small><a href="https://www.shopbalochistan.store/" target="_blank" rel="noreferrer" className="portfolio-site-link">shopbalochistan.store <ArrowUpRight size={13} /></a></div>
         </div>
         <div className="portfolio-project-shell">
@@ -100,7 +101,7 @@ export default function PortfolioPage() {
 
       <section id="quetta-dry-fruit" className="portfolio-feature portfolio-feature-secondary border-t border-black/10 bg-white/65 px-[7vw] py-24">
         <div className="mb-14 flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
-          <div><p className="font-mono text-[8px] tracking-[.16em] text-black/35">SELECTED DIGITAL WORK</p><h2 className="mt-6 text-[clamp(52px,7vw,96px)] font-medium leading-[.84] tracking-[-.08em]">Quetta <span className="text-[#2563ff]">Dry Fruit.</span></h2><p className="mt-7 max-w-[680px] text-sm leading-7 text-black/45">A focused digital storefront experience created to present a local dry-fruit business with a clean, accessible and commerce-ready web presence.</p></div>
+          <div><p className="font-mono text-[8px] tracking-[.16em] text-black/35">SELECTED DIGITAL WORK</p><h2 className="mt-6 text-[clamp(52px,7vw,96px)] font-medium leading-[.84] tracking-[-.08em]">Quetta <span className="text-[#087e9b]">Dry Fruit.</span></h2><p className="mt-7 max-w-[680px] text-sm leading-7 text-black/45">A focused digital storefront experience created to present a local dry-fruit business with a clean, accessible and commerce-ready web presence.</p></div>
           <div className="portfolio-client-meta"><span>PROJECT</span><strong>DIGITAL COMMERCE</strong><small>QUETTA / PAKISTAN</small><a href="https://quettadryfruit.binarygenius.tech/" target="_blank" rel="noreferrer" className="portfolio-site-link">quettadryfruit.binarygenius.tech <ArrowUpRight size={13} /></a></div>
         </div>
         <div className="portfolio-project-shell">
@@ -109,7 +110,7 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      <section className="portfolio-details border-t border-black/10 px-[7vw] py-24"><div className="grid gap-14 lg:grid-cols-[.72fr_1.28fr]"><div><p className="font-mono text-[8px] tracking-[.16em] text-[#2563ff]">WHAT WE DID</p><h2 className="mt-6 text-[clamp(48px,6vw,84px)] font-medium leading-[.86] tracking-[-.08em]">Design the<br /><span className="text-[#2563ff]">whole experience.</span></h2></div><div className="grid border-t border-black/10 sm:grid-cols-2">{rehaanPoints.map((point) => { const Icon = point.icon; return <article key={point.number} className="portfolio-detail-card"><div className="flex items-center justify-between"><span>{point.number}</span><Icon size={17} /></div><h3>{point.title}</h3><p>{point.description}</p></article>; })}</div></div></section>
+      <section className="portfolio-details border-t border-black/10 px-[7vw] py-24"><div className="grid gap-14 lg:grid-cols-[.72fr_1.28fr]"><div><p className="font-mono text-[8px] tracking-[.16em] text-[#087e9b]">WHAT WE DID</p><h2 className="mt-6 text-[clamp(48px,6vw,84px)] font-medium leading-[.86] tracking-[-.08em]">Design the<br /><span className="text-[#087e9b]">whole experience.</span></h2></div><div className="grid border-t border-black/10 sm:grid-cols-2">{rehaanPoints.map((point) => { const Icon = point.icon; return <article key={point.number} className="portfolio-detail-card"><div className="flex items-center justify-between"><span>{point.number}</span><Icon size={17} /></div><h3>{point.title}</h3><p>{point.description}</p></article>; })}</div></div></section>
     </main>
   );
 }

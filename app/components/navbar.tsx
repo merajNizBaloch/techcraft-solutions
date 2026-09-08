@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import ThemeSwitcher from "./theme-switcher";
+import BrandLogo from "./brand-logo";
 
 const sections = [
   ["Home", "home"],
@@ -60,11 +61,7 @@ export default function Navbar() {
       <div className="site-navbar">
         <Link href="/" className="site-navbar-home" aria-label="TechCraft home">
           <span className="site-navbar-brand">
-            <span className="site-navbar-symbol" aria-hidden="true">
-              <span />
-              <span />
-              <span />
-            </span>
+            <BrandLogo />
             <span className="site-navbar-name">
               TECH<span>CRAFT</span>
             </span>
@@ -98,6 +95,8 @@ export default function Navbar() {
       <nav
         className={`site-navbar-mobile-menu${mobileOpen ? " open" : ""}`}
         aria-label="Mobile navigation"
+        aria-hidden={!mobileOpen}
+        inert={!mobileOpen}
         style={{ backgroundColor: "#ffffff" }}
       >
         {sections.map(renderItem)}

@@ -60,9 +60,9 @@ export default function GlobalMouseEffect() {
         centerX + cos * end,
         centerY + sin * end,
       );
-      gradient.addColorStop(0, `rgba(37, 99, 255, ${opacity})`);
-      gradient.addColorStop(0.55, `rgba(37, 99, 255, ${opacity * 0.62})`);
-      gradient.addColorStop(1, "rgba(37, 99, 255, 0)");
+      gradient.addColorStop(0, `rgba(0,155,190, ${opacity})`);
+      gradient.addColorStop(0.55, `rgba(0,155,190, ${opacity * 0.62})`);
+      gradient.addColorStop(1, "rgba(0,155,190, 0)");
 
       ctx.strokeStyle = gradient;
       ctx.lineWidth = widthPx;
@@ -100,16 +100,16 @@ export default function GlobalMouseEffect() {
 
         // Soft technical halo.
         const halo = ctx.createRadialGradient(0, 0, 3, 0, 0, 19 + speed * 5);
-        halo.addColorStop(0, "rgba(37, 99, 255, 0.14)");
-        halo.addColorStop(0.45, "rgba(37, 99, 255, 0.045)");
-        halo.addColorStop(1, "rgba(37, 99, 255, 0)");
+        halo.addColorStop(0, "rgba(0,155,190, 0.14)");
+        halo.addColorStop(0.45, "rgba(0,155,190, 0.045)");
+        halo.addColorStop(1, "rgba(0,155,190, 0)");
         ctx.fillStyle = halo;
         ctx.beginPath();
         ctx.arc(0, 0, 19 + speed * 5, 0, Math.PI * 2);
         ctx.fill();
 
         // Outer precision ring.
-        ctx.strokeStyle = "rgba(37, 99, 255, 0.48)";
+        ctx.strokeStyle = "rgba(0,155,190, 0.48)";
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.arc(0, 0, 8.5 + speed, 0, Math.PI * 2);
@@ -118,7 +118,7 @@ export default function GlobalMouseEffect() {
         // Rotating engineering guide.
         ctx.save();
         ctx.rotate(time * 0.00045);
-        ctx.strokeStyle = "rgba(37, 99, 255, 0.34)";
+        ctx.strokeStyle = "rgba(0,155,190, 0.34)";
         ctx.setLineDash([3, 3]);
         ctx.beginPath();
         ctx.arc(0, 0, 11.5, -0.9, 1.15);
@@ -132,13 +132,13 @@ export default function GlobalMouseEffect() {
         ctx.lineWidth = 0.9;
         ctx.fillRect(-3.8, -3.8, 7.6, 7.6);
         ctx.strokeRect(-3.8, -3.8, 7.6, 7.6);
-        ctx.fillStyle = "#2563ff";
+        ctx.fillStyle = "#087e9b";
         ctx.fillRect(-1.4, -1.4, 2.8, 2.8);
         ctx.restore();
 
         // Code markers: < />
         ctx.save();
-        ctx.fillStyle = "rgba(37, 99, 255, 0.88)";
+        ctx.fillStyle = "rgba(0,155,190, 0.88)";
         ctx.font = "600 6.5px SFMono-Regular, Consolas, Liberation Mono, monospace";
         ctx.textBaseline = "middle";
         ctx.textAlign = "center";
