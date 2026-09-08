@@ -18,7 +18,6 @@ export default function GlobalMouseEffect() {
     let dpr = 1;
     let visible = false;
 
-    const pointer = { x: -1000, y: -1000 };
     const cursor = { x: -1000, y: -1000 };
     const velocity = { x: 0, y: 0 };
 
@@ -32,8 +31,15 @@ export default function GlobalMouseEffect() {
     };
 
     const move = (event: MouseEvent) => {
-      pointer.x = event.clientX;
-      pointer.y = event.clientY;
+      // Track the real OS/browser pointer 1:1. The previous implementation
+      // interpolated toward the pointer each frame, which made the custom
+      // cursor visibly trail behind on desktop.
+      cursor.x = event.clientX;
+      cursor.y = event.clientY;
+
+      // Keep motion-reactive effects without adding positional latency.
+      velocity.x = event.movementX;
+      velocity.y = event.movementY;
       visible = true;
     };
 
@@ -76,17 +82,13 @@ export default function GlobalMouseEffect() {
       ctx.clearRect(0, 0, width, height);
 
       if (visible) {
-        cursor.x += (pointer.x - cursor.x) * 0.2;
-        cursor.y += (pointer.y - cursor.y) * 0.2;
-
-        velocity.x += (pointer.x - cursor.x) * 0.02;
-        velocity.y += (pointer.y - cursor.y) * 0.02;
-        velocity.x *= 0.82;
-        velocity.y *= 0.82;
-
-        const speed = Math.min(1, Math.hypot(velocity.x, velocity.y) / 5);
+        const speed = Math.min(1, Math.hypot(velocity.x, velocity.y) / 18);
         const pulse = 0.92 + Math.sin(time * 0.006) * 0.08;
         const rayBoost = 0.75 + speed * 0.55;
+
+        // Let the reactive motion effect decay independently from cursor position.
+        velocity.x *= 0.72;
+        velocity.y *= 0.72;
 
         ctx.save();
         ctx.translate(cursor.x, cursor.y);
