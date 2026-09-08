@@ -29,6 +29,7 @@ import "./mobile-nav-light-fix.css";
 import "./home-mobile-responsive.css";
 import "./home-mobile-service-fix.css";
 import "./brand-theme.css";
+import "./components/site-footer.css";
 import Navbar from "./components/navbar";
 import GlobalMouseEffect from "./components/global-mouse-effect";
 import GlobalScrollMotion from "./components/global-scroll-motion";
@@ -38,6 +39,7 @@ import IdeBinaryBackground from "./components/ide-binary-background";
 import GlobalNeuralBackground from "./components/global-neural-background";
 import LoadingScreen from "./components/loading-screen";
 import SeoStructuredData from "./components/seo-structured-data";
+import SiteFooter from "./components/site-footer";
 
 const siteUrl = "https://www.techcraftsolution.com";
 
@@ -121,6 +123,7 @@ export default function RootLayout({
           {children}
           <HomeProductsReplacement />
         </GlobalScrollMotion>
+        <SiteFooter />
       </body>
     </html>
   );
