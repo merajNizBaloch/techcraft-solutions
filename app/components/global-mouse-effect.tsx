@@ -3,180 +3,163 @@
 import { useEffect, useRef } from "react";
 
 export default function GlobalMouseEffect() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const cursorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    const cursor = cursorRef.current;
+    if (!cursor) return;
 
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+    const finePointer = window.matchMedia("(pointer: fine)");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
     let frame = 0;
-    let width = 0;
-    let height = 0;
-    let dpr = 1;
+    let x = -100;
+    let y = -100;
     let visible = false;
 
-    const cursor = { x: -1000, y: -1000 };
-    const velocity = { x: 0, y: 0 };
-
-    const resize = () => {
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas.width = width * dpr;
-      canvas.height = height * dpr;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const render = () => {
+      frame = 0;
+      cursor.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+      cursor.style.opacity = visible ? "1" : "0";
     };
 
-    const move = (event: MouseEvent) => {
-      // Track the real OS/browser pointer 1:1. The previous implementation
-      // interpolated toward the pointer each frame, which made the custom
-      // cursor visibly trail behind on desktop.
-      cursor.x = event.clientX;
-      cursor.y = event.clientY;
+    const scheduleRender = () => {
+      if (!frame) frame = requestAnimationFrame(render);
+    };
 
-      // Keep motion-reactive effects without adding positional latency.
-      velocity.x = event.movementX;
-      velocity.y = event.movementY;
+    const move = (event: PointerEvent) => {
+      x = event.clientX;
+      y = event.clientY;
       visible = true;
+      scheduleRender();
     };
 
     const leave = () => {
       visible = false;
+      scheduleRender();
     };
 
-    const drawRay = (
-      centerX: number,
-      centerY: number,
-      angle: number,
-      length: number,
-      opacity: number,
-      widthPx = 1,
-    ) => {
-      const start = 9;
-      const end = start + length;
-      const cos = Math.cos(angle);
-      const sin = Math.sin(angle);
-
-      const gradient = ctx.createLinearGradient(
-        centerX + cos * start,
-        centerY + sin * start,
-        centerX + cos * end,
-        centerY + sin * end,
-      );
-      gradient.addColorStop(0, `rgba(0,155,190, ${opacity})`);
-      gradient.addColorStop(0.55, `rgba(0,155,190, ${opacity * 0.62})`);
-      gradient.addColorStop(1, "rgba(0,155,190, 0)");
-
-      ctx.strokeStyle = gradient;
-      ctx.lineWidth = widthPx;
-      ctx.beginPath();
-      ctx.moveTo(centerX + cos * start, centerY + sin * start);
-      ctx.lineTo(centerX + cos * end, centerY + sin * end);
-      ctx.stroke();
+    const applyPreference = () => {
+      const enabled = finePointer.matches && !reducedMotion.matches;
+      cursor.style.display = enabled ? "block" : "none";
+      if (!enabled) visible = false;
     };
 
-    const draw = (time: number) => {
-      ctx.clearRect(0, 0, width, height);
-
-      if (visible) {
-        const speed = Math.min(1, Math.hypot(velocity.x, velocity.y) / 18);
-        const pulse = 0.92 + Math.sin(time * 0.006) * 0.08;
-        const rayBoost = 0.75 + speed * 0.55;
-
-        // Let the reactive motion effect decay independently from cursor position.
-        velocity.x *= 0.72;
-        velocity.y *= 0.72;
-
-        ctx.save();
-        ctx.translate(cursor.x, cursor.y);
-
-        // Design/dev rays: compact four-axis + diagonal accents.
-        for (let i = 0; i < 8; i += 1) {
-          const angle = (Math.PI * 2 * i) / 8 - Math.PI / 8;
-          const length = (i % 2 === 0 ? 20 : 13) * rayBoost;
-          drawRay(0, 0, angle, length, (i % 2 === 0 ? 0.42 : 0.2) * pulse);
-        }
-
-        // Soft technical halo.
-        const halo = ctx.createRadialGradient(0, 0, 3, 0, 0, 19 + speed * 5);
-        halo.addColorStop(0, "rgba(0,155,190, 0.14)");
-        halo.addColorStop(0.45, "rgba(0,155,190, 0.045)");
-        halo.addColorStop(1, "rgba(0,155,190, 0)");
-        ctx.fillStyle = halo;
-        ctx.beginPath();
-        ctx.arc(0, 0, 19 + speed * 5, 0, Math.PI * 2);
-        ctx.fill();
-
-        // Outer precision ring.
-        ctx.strokeStyle = "rgba(0,155,190, 0.48)";
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.arc(0, 0, 8.5 + speed, 0, Math.PI * 2);
-        ctx.stroke();
-
-        // Rotating engineering guide.
-        ctx.save();
-        ctx.rotate(time * 0.00045);
-        ctx.strokeStyle = "rgba(0,155,190, 0.34)";
-        ctx.setLineDash([3, 3]);
-        ctx.beginPath();
-        ctx.arc(0, 0, 11.5, -0.9, 1.15);
-        ctx.stroke();
-        ctx.restore();
-
-        // Central diamond / design marker.
-        ctx.rotate(Math.PI / 4);
-        ctx.fillStyle = "rgba(244, 246, 248, 0.96)";
-        ctx.strokeStyle = "#111318";
-        ctx.lineWidth = 0.9;
-        ctx.fillRect(-3.8, -3.8, 7.6, 7.6);
-        ctx.strokeRect(-3.8, -3.8, 7.6, 7.6);
-        ctx.fillStyle = "#087e9b";
-        ctx.fillRect(-1.4, -1.4, 2.8, 2.8);
-        ctx.restore();
-
-        // Code markers: < />
-        ctx.save();
-        ctx.fillStyle = "rgba(0,155,190, 0.88)";
-        ctx.font = "600 6.5px SFMono-Regular, Consolas, Liberation Mono, monospace";
-        ctx.textBaseline = "middle";
-        ctx.textAlign = "center";
-        ctx.fillText("<", cursor.x - 15 - speed * 1.5, cursor.y);
-        ctx.fillText("/>", cursor.x + 16 + speed * 1.5, cursor.y);
-        ctx.restore();
-
-        // Tiny live status point.
-        ctx.fillStyle = "#c83a32";
-        ctx.beginPath();
-        ctx.arc(cursor.x, cursor.y - 13, 1.3 + speed * 0.6, 0, Math.PI * 2);
-        ctx.fill();
-      }
-
-      frame = requestAnimationFrame(draw);
-    };
-
-    resize();
-    window.addEventListener("resize", resize);
-    window.addEventListener("mousemove", move, { passive: true });
-    window.addEventListener("mouseleave", leave);
-    frame = requestAnimationFrame(draw);
+    applyPreference();
+    window.addEventListener("pointermove", move, { passive: true });
+    window.addEventListener("pointerleave", leave, { passive: true });
+    finePointer.addEventListener("change", applyPreference);
+    reducedMotion.addEventListener("change", applyPreference);
 
     return () => {
-      cancelAnimationFrame(frame);
-      window.removeEventListener("resize", resize);
-      window.removeEventListener("mousemove", move);
-      window.removeEventListener("mouseleave", leave);
+      if (frame) cancelAnimationFrame(frame);
+      window.removeEventListener("pointermove", move);
+      window.removeEventListener("pointerleave", leave);
+      finePointer.removeEventListener("change", applyPreference);
+      reducedMotion.removeEventListener("change", applyPreference);
     };
   }, []);
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="global-network-canvas"
-      aria-hidden="true"
-    />
+    <>
+      <div ref={cursorRef} className="global-tech-cursor" aria-hidden="true">
+        <span className="global-tech-cursor__ring" />
+        <span className="global-tech-cursor__diamond" />
+        <span className="global-tech-cursor__left">&lt;</span>
+        <span className="global-tech-cursor__right">/&gt;</span>
+        <span className="global-tech-cursor__status" />
+      </div>
+
+      <style jsx global>{`
+        .global-tech-cursor {
+          position: fixed;
+          left: 0;
+          top: 0;
+          width: 34px;
+          height: 34px;
+          margin-left: -17px;
+          margin-top: -17px;
+          z-index: 99999;
+          pointer-events: none;
+          opacity: 0;
+          transform: translate3d(-100px, -100px, 0);
+          will-change: transform;
+          contain: layout paint style;
+          transition: opacity 120ms ease;
+        }
+
+        .global-tech-cursor__ring {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 20px;
+          height: 20px;
+          border: 1px solid rgba(0, 155, 190, 0.52);
+          border-radius: 50%;
+          transform: translate(-50%, -50%);
+          box-shadow: 0 0 12px rgba(0, 155, 190, 0.1);
+        }
+
+        .global-tech-cursor__ring::after {
+          content: "";
+          position: absolute;
+          inset: 3px;
+          border-top: 1px dashed rgba(0, 155, 190, 0.45);
+          border-right: 1px dashed rgba(0, 155, 190, 0.2);
+          border-radius: 50%;
+          animation: techCursorSpin 3.8s linear infinite;
+        }
+
+        .global-tech-cursor__diamond {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 7px;
+          height: 7px;
+          background: #f4f6f8;
+          border: 1px solid #111318;
+          transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        .global-tech-cursor__diamond::after {
+          content: "";
+          position: absolute;
+          inset: 2px;
+          background: #087e9b;
+        }
+
+        .global-tech-cursor__left,
+        .global-tech-cursor__right {
+          position: absolute;
+          top: 50%;
+          color: rgba(0, 155, 190, 0.9);
+          font: 600 6.5px/1 SFMono-Regular, Consolas, "Liberation Mono", monospace;
+          transform: translateY(-50%);
+        }
+
+        .global-tech-cursor__left { left: -2px; }
+        .global-tech-cursor__right { right: -4px; }
+
+        .global-tech-cursor__status {
+          position: absolute;
+          left: 50%;
+          top: -1px;
+          width: 3px;
+          height: 3px;
+          border-radius: 50%;
+          background: #c83a32;
+          transform: translateX(-50%);
+        }
+
+        @keyframes techCursorSpin {
+          to { transform: rotate(360deg); }
+        }
+
+        @media (pointer: coarse), (prefers-reduced-motion: reduce) {
+          .global-tech-cursor { display: none !important; }
+          .global-tech-cursor__ring::after { animation: none; }
+        }
+      `}</style>
+    </>
   );
 }
