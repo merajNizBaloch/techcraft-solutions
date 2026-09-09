@@ -64,6 +64,32 @@ select:focus-visible {
   color: inherit;
 }
 
+/*
+ * Keep every section and visual intact, but let the browser skip layout/paint
+ * work for long page sections while they are well outside the viewport.
+ * The intrinsic size prevents scroll jumps while a section is skipped.
+ */
+.techcraft main section:not(.hero),
+.about-page > section:not(.about-hero),
+.services-page > section:not(:first-child),
+.products-page > section:not(:first-child),
+.freebies-page > section:not(:first-child),
+.contact-page > section:not(:first-child),
+.portfolio-page > section:not(.portfolio-hero) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 760px;
+}
+
+/* Promote frequently transformed UI to compositor layers without forcing
+   large page sections into permanent layers. */
+.global-tech-cursor,
+.global-neural-svg,
+.network-canvas,
+.ticker-light {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto !important;
