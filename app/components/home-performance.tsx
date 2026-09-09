@@ -3,8 +3,8 @@
 import { useEffect } from "react";
 
 /**
- * Keeps the existing visual system intact while reducing the cost of
- * animation-heavy effects on touch devices and for reduced-motion users.
+ * Keeps the visual system intact while reducing expensive motion on
+ * touch/coarse-pointer devices and for reduced-motion users.
  */
 export default function HomePerformance() {
   useEffect(() => {
@@ -14,14 +14,20 @@ export default function HomePerformance() {
     const apply = () => {
       const shouldReduce = reducedMotion.matches || coarsePointer.matches;
 
-      document.querySelectorAll<HTMLCanvasElement>("canvas.network-canvas").forEach((canvas) => {
-        canvas.style.display = shouldReduce ? "none" : "";
+      document.querySelectorAll<HTMLElement>(
+        ".global-tech-cursor, canvas.network-canvas, canvas.global-network-canvas",
+      ).forEach((element) => {
+        element.style.display = shouldReduce ? "none" : "";
       });
 
       document.querySelectorAll<HTMLElement>(
-        ".animate-marquee-left, .animate-marquee-right"
+        ".animate-marquee-left, .animate-marquee-right",
       ).forEach((element) => {
         element.style.animationPlayState = reducedMotion.matches ? "paused" : "";
+      });
+
+      document.querySelectorAll<HTMLElement>(".global-neural-svg").forEach((element) => {
+        element.style.animationPlayState = shouldReduce ? "paused" : "";
       });
     };
 
