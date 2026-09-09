@@ -47,12 +47,11 @@ function setInitialState(targets: HTMLElement[]) {
     target.dataset.scrollReveal = "pending";
     target.style.opacity = "0";
     target.style.transform = index % 3 === 0
-      ? "translate3d(-54px, 18px, 0)"
+      ? "translate3d(-42px, 14px, 0)"
       : index % 3 === 1
-        ? "translate3d(0, 54px, 0)"
-        : "translate3d(54px, 18px, 0)";
-    target.style.filter = "blur(5px)";
-    target.style.willChange = "opacity, transform, filter";
+        ? "translate3d(0, 42px, 0)"
+        : "translate3d(42px, 14px, 0)";
+    target.style.willChange = "opacity, transform";
   });
 }
 
@@ -66,7 +65,7 @@ function animateTargets(
   targets.forEach((target, index) => {
     void animate(
       target,
-      { opacity: 1, x: 0, y: 0, filter: "blur(0px)" },
+      { opacity: 1, x: 0, y: 0 },
       {
         duration,
         ease: [0.16, 1, 0.3, 1],
@@ -101,16 +100,15 @@ export default function GlobalScrollMotion({ children }: { children: ReactNode }
     heroTargets.forEach((target, index) => {
       target.style.opacity = "0";
       target.style.transform = index % 2 === 0
-        ? "translate3d(-32px, 18px, 0)"
-        : "translate3d(32px, 24px, 0)";
-      target.style.filter = "blur(4px)";
-      target.style.willChange = "opacity, transform, filter";
+        ? "translate3d(-28px, 14px, 0)"
+        : "translate3d(28px, 18px, 0)";
+      target.style.willChange = "opacity, transform";
     });
 
     const heroTimer = window.setTimeout(() => {
       if (heroTargets.length === 0) return;
-      animateTargets(animate, heroTargets, 0.9, 0.08, 0.1);
-    }, 40);
+      animateTargets(animate, heroTargets, 0.75, 0.05, 0.07);
+    }, 24);
 
     sections.forEach((section) => setInitialState(getTargets(section)));
 
@@ -127,13 +125,13 @@ export default function GlobalScrollMotion({ children }: { children: ReactNode }
             return;
           }
 
-          animateTargets(animate, targets, 0.78, 0.03, 0.09);
+          animateTargets(animate, targets, 0.64, 0.02, 0.06);
           observer.unobserve(entry.target);
         });
       },
       {
-        threshold: 0.14,
-        rootMargin: "0px 0px -12% 0px",
+        threshold: 0.12,
+        rootMargin: "0px 0px -10% 0px",
       },
     );
 
