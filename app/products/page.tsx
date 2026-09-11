@@ -220,9 +220,126 @@ function EstaraVisual() {
   );
 }
 
+function DineCoreVisual() {
+  const orderItems = [
+    ["Chicken Karahi", "2 × PKR 1,250"],
+    ["Garlic Naan", "4 × PKR 120"],
+    ["Mint Margarita", "2 × PKR 235"],
+  ] as const;
+
+  return (
+    <div className="product-visual product-visual-academiq" style={{ background: "#fff4ed" }}>
+      <div className="product-visual-grid" style={{ backgroundImage: "linear-gradient(rgba(240,91,42,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(240,91,42,.07) 1px,transparent 1px)" }} />
+      <div className="academiq-orbit orbit-one" style={{ borderColor: "rgba(240,91,42,.2)" }} />
+      <div className="academiq-orbit orbit-two" style={{ borderColor: "rgba(17,19,24,.1)" }} />
+      <div className="academiq-dashboard" style={{ background: "#fffdfb", boxShadow: "0 28px 90px rgba(157,62,25,.14)" }}>
+        <div className="academiq-windowbar">
+          <div className="flex gap-1.5"><span /><span /><span /></div>
+          <span>DINECORE / POS</span>
+          <span style={{ color: "#f05b2a" }}>● DINNER SERVICE</span>
+        </div>
+        <div className="grid min-h-[385px] grid-cols-[1.12fr_.88fr] gap-2 p-4">
+          <div className="border border-black/10 bg-white p-4">
+            <div className="flex items-center justify-between">
+              <div><span className="font-mono text-[6px] tracking-[.12em] text-black/35">ACTIVE ORDER</span><strong className="mt-1 block text-sm tracking-[-.03em]">Table 08 · Ali</strong></div>
+              <span className="rounded-full bg-[#fff0e9] px-2 py-1 font-mono text-[6px] text-[#d84d1d]">OPEN</span>
+            </div>
+            <div className="mt-4 grid gap-1">
+              {orderItems.map(([item, price]) => (
+                <div key={item} className="flex items-center justify-between border-t border-black/10 py-3 text-[8px]">
+                  <span>{item}</span><strong>{price}</strong>
+                </div>
+              ))}
+            </div>
+            <div className="mt-2 flex items-end justify-between border-t border-black/10 pt-4">
+              <div><span className="font-mono text-[6px] tracking-[.12em] text-black/35">TOTAL</span><strong className="mt-1 block text-xl tracking-[-.05em]">PKR 3,450</strong></div>
+              <span className="rounded-lg bg-[#111318] px-3 py-2 font-mono text-[7px] text-white">PAY & PRINT</span>
+            </div>
+          </div>
+          <div className="grid content-start gap-2">
+            <div className="border border-black/10 bg-[#fff8f4] p-3">
+              <span className="font-mono text-[6px] tracking-[.12em] text-[#d84d1d]">TABLE FLOOR</span>
+              <div className="mt-3 grid grid-cols-3 gap-1.5">
+                {[1, 2, 3, 4, 5, 6].map((table) => (
+                  <div key={table} className={`grid aspect-square place-items-center border text-[8px] font-semibold ${[2, 5, 6].includes(table) ? "border-[#f05b2a]/30 bg-[#fff0e9] text-[#d84d1d]" : "border-black/10 bg-white text-black/45"}`}>T{table}</div>
+                ))}
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-2">
+              <div className="border border-black/10 bg-white p-3"><span className="font-mono text-[6px] text-black/35">ORDERS</span><strong className="mt-2 block text-lg">18</strong></div>
+              <div className="border border-black/10 bg-white p-3"><span className="font-mono text-[6px] text-black/35">TABLES</span><strong className="mt-2 block text-lg">12</strong></div>
+            </div>
+            <div className="border border-black/10 bg-[#111318] p-3 text-white"><span className="font-mono text-[6px] tracking-[.12em] text-white/45">SERVICE STATUS</span><strong className="mt-2 block text-[10px]">KITCHEN + POS CONNECTED</strong></div>
+          </div>
+        </div>
+      </div>
+      <div className="product-floating-tag academiq-tag-a" style={{ color: "#d84d1d" }}>TABLES → ORDERS → BILLING</div>
+      <div className="product-floating-tag academiq-tag-b">POS / PRINT-READY RECEIPTS</div>
+      <div className="product-status-dot" style={{ background: "#f05b2a", boxShadow: "0 0 0 5px rgba(240,91,42,.1)" }} />
+    </div>
+  );
+}
+
+function ResumlyVisual() {
+  return (
+    <div className="product-visual product-visual-academiq" style={{ background: "#eef3ff" }}>
+      <div className="product-visual-grid" style={{ backgroundImage: "linear-gradient(rgba(83,91,211,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(83,91,211,.06) 1px,transparent 1px)" }} />
+      <div className="academiq-orbit orbit-one" style={{ borderColor: "rgba(83,91,211,.18)" }} />
+      <div className="academiq-orbit orbit-two" style={{ borderColor: "rgba(8,126,155,.12)" }} />
+      <div className="academiq-dashboard" style={{ background: "#fbfcff", boxShadow: "0 28px 90px rgba(65,76,165,.14)" }}>
+        <div className="academiq-windowbar">
+          <div className="flex gap-1.5"><span /><span /><span /></div>
+          <span>RESUMLY / CV BUILDER</span>
+          <span style={{ color: "#535bd3" }}>● AUTOSAVED</span>
+        </div>
+        <div className="grid min-h-[385px] grid-cols-[1.15fr_.85fr] gap-3 p-4">
+          <div className="bg-white p-5 shadow-[0_10px_35px_rgba(17,24,39,.08)]">
+            <div className="border-b border-black/10 pb-4">
+              <span className="font-mono text-[6px] tracking-[.12em] text-[#535bd3]">CURRICULUM VITAE</span>
+              <strong className="mt-2 block text-xl tracking-[-.05em]">Ayaan Khan</strong>
+              <span className="mt-1 block text-[7px] text-black/40">Computer Science Graduate · Quetta</span>
+            </div>
+            <div className="mt-4">
+              <span className="font-mono text-[6px] tracking-[.12em] text-[#535bd3]">PROFILE</span>
+              <div className="mt-2 grid gap-1.5"><i className="h-1.5 w-full bg-black/10" /><i className="h-1.5 w-[88%] bg-black/10" /><i className="h-1.5 w-[72%] bg-black/10" /></div>
+            </div>
+            <div className="mt-5">
+              <span className="font-mono text-[6px] tracking-[.12em] text-[#535bd3]">EXPERIENCE</span>
+              <div className="mt-3 grid gap-3">
+                <div><strong className="block text-[8px]">UI / UX Intern</strong><span className="text-[7px] text-black/35">Tech Studio · 2026</span></div>
+                <div><strong className="block text-[8px]">Freelance Designer</strong><span className="text-[7px] text-black/35">Independent · 2025</span></div>
+              </div>
+            </div>
+            <div className="mt-5 flex gap-1.5"><span className="bg-[#eef0ff] px-2 py-1 text-[6px] text-[#535bd3]">Figma</span><span className="bg-[#eef0ff] px-2 py-1 text-[6px] text-[#535bd3]">React</span><span className="bg-[#eef0ff] px-2 py-1 text-[6px] text-[#535bd3]">Design</span></div>
+          </div>
+          <div className="grid content-start gap-2">
+            <div className="border border-[#535bd3]/15 bg-white p-4">
+              <div className="flex items-center justify-between"><span className="font-mono text-[6px] tracking-[.12em] text-[#535bd3]">CV SCORE</span><strong className="text-lg text-[#535bd3]">86%</strong></div>
+              <div className="mt-3 h-1.5 overflow-hidden bg-black/10"><div className="h-full w-[86%] bg-[#535bd3]" /></div>
+              <span className="mt-2 block text-[7px] leading-4 text-black/40">Strong structure. Add one measurable achievement to improve the score.</span>
+            </div>
+            <div className="border border-black/10 bg-white p-4">
+              <span className="font-mono text-[6px] tracking-[.12em] text-black/35">SECTIONS</span>
+              {["Contact details", "Profile summary", "Experience", "Education", "Skills"].map((item) => (
+                <div key={item} className="mt-2 flex items-center gap-2 text-[7px] text-black/55"><CheckCircle2 size={10} className="text-[#535bd3]" /> {item}</div>
+              ))}
+            </div>
+            <div className="flex items-center justify-between bg-[#111318] p-3 text-white"><span className="font-mono text-[7px]">READY TO EXPORT</span><FileText size={15} /></div>
+          </div>
+        </div>
+      </div>
+      <div className="product-floating-tag academiq-tag-a" style={{ color: "#535bd3" }}>BUILD → REVIEW → EXPORT</div>
+      <div className="product-floating-tag academiq-tag-b">SAVE & UPDATE LATER</div>
+      <div className="product-status-dot" style={{ background: "#535bd3", boxShadow: "0 0 0 5px rgba(83,91,211,.1)" }} />
+    </div>
+  );
+}
+
 function ProductVisual({ product }: { product: (typeof products)[number] }) {
   if (product.name === "Academiq") return <AcademiqVisual />;
   if (product.name === "Estara") return <EstaraVisual />;
+  if (product.name === "DineCore") return <DineCoreVisual />;
+  if (product.name === "Resumly") return <ResumlyVisual />;
   const Icon = product.icon;
   return (
     <div className="product-visual product-visual-academiq flex items-center justify-center p-8 sm:p-12">
