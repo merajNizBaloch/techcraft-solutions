@@ -9,13 +9,12 @@ import {
   CheckCircle2,
   ChevronUp,
   CircleDashed,
-  ClipboardList,
+  FileText,
   GraduationCap,
   LayoutDashboard,
   MapPin,
   PackageSearch,
   Pill,
-  ReceiptText,
   ShieldCheck,
   Stethoscope,
   UsersRound,
@@ -26,7 +25,7 @@ import {
 export const metadata = {
   title: "Products — TechCraft Solutions",
   description:
-    "Products built by TechCraft Solutions, including Academiq and Estara, plus upcoming management systems.",
+    "Products built by TechCraft Solutions, including Academiq, Estara, DineCore and Resumly, plus upcoming management systems.",
 };
 
 const products = [
@@ -62,6 +61,36 @@ const products = [
     ],
     href: "https://estara.techcraftsolution.com",
   },
+  {
+    number: "03",
+    name: "DineCore",
+    eyebrow: "RESTAURANT / MANAGEMENT SYSTEM",
+    status: "LIVE PRODUCT",
+    description: "Manage menus, tables, waiters, orders, discounts and billing in one restaurant workspace, with printable receipts for your POS workflow.",
+    icon: UtensilsCrossed,
+    stats: [
+      ["Orders", "Table & waiter management"],
+      ["Menus", "Dishes & pricing"],
+      ["Billing", "Payments & discounts"],
+      ["Receipts", "Print-ready bills"],
+    ],
+    href: "https://dinecore.techcraftsolution.com",
+  },
+  {
+    number: "04",
+    name: "Resumly",
+    eyebrow: "CAREERS / CV BUILDER",
+    status: "LIVE PRODUCT",
+    description: "Create a professional CV with a guided editor, preview your progress and export your application. Save your work for future updates, with free starter downloads and credit packs for more exports.",
+    icon: FileText,
+    stats: [
+      ["Create", "Guided CV editor"],
+      ["Preview", "Review your CV"],
+      ["Save", "Import & update later"],
+      ["Export", "Download your CV"],
+    ],
+    href: "https://resumly.techcraftsolution.com",
+  },
 ] as const;
 
 const upcomingProducts: {
@@ -74,17 +103,7 @@ const upcomingProducts: {
   accent: string;
 }[] = [
   {
-    number: "03",
-    name: "DineCore",
-    eyebrow: "RESTAURANT / MANAGEMENT SYSTEM",
-    description:
-      "A restaurant operations system for menus, tables, orders, kitchen workflow, billing, inventory and day-to-day performance.",
-    icon: UtensilsCrossed,
-    modules: ["Table & order management", "Kitchen workflow", "Billing & receipts", "Inventory & menu control"],
-    accent: "blue",
-  },
-  {
-    number: "04",
+    number: "05",
     name: "PharmaOS",
     eyebrow: "PHARMACY / MANAGEMENT SYSTEM",
     description:
@@ -94,7 +113,7 @@ const upcomingProducts: {
     accent: "red",
   },
   {
-    number: "05",
+    number: "06",
     name: "Dentora",
     eyebrow: "DENTAL / CLINIC MANAGEMENT SYSTEM",
     description:
@@ -104,7 +123,7 @@ const upcomingProducts: {
     accent: "gold",
   },
   {
-    number: "06",
+    number: "07",
     name: "LogiCore",
     eyebrow: "LOGISTICS / OPERATIONS MANAGEMENT",
     description:
@@ -201,8 +220,27 @@ function EstaraVisual() {
   );
 }
 
-function ProductVisual({ type }: { type: "academiq" | "estara" }) {
-  return type === "academiq" ? <AcademiqVisual /> : <EstaraVisual />;
+function ProductVisual({ product }: { product: (typeof products)[number] }) {
+  if (product.name === "Academiq") return <AcademiqVisual />;
+  if (product.name === "Estara") return <EstaraVisual />;
+  const Icon = product.icon;
+  return (
+    <div className="product-visual product-visual-academiq flex items-center justify-center p-8 sm:p-12">
+      <div className="product-visual-grid" />
+      <div className="relative z-10 w-full max-w-md rounded-2xl border p-6 sm:p-8" style={{ background: "var(--brand-soft, #f8fafc)", color: "var(--brand-ink, #111318)", borderColor: "var(--brand-line, rgba(0,0,0,.1))" }}>
+        <Icon size={36} className="text-[#087e9b]" />
+        <p className="mt-6 text-sm text-[#087e9b]">{product.eyebrow}</p>
+        <h4 className="mt-3 text-4xl font-medium tracking-tight">{product.name}</h4>
+        <div className="mt-8 grid gap-4">
+          {product.stats.map(([label, value]) => (
+            <div key={label} className="flex flex-wrap items-center justify-between gap-2 border-t border-black/10 pt-4 text-sm">
+              <strong>{label}</strong><span>{value}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default function ProductsPage() {
@@ -218,7 +256,7 @@ export default function ProductsPage() {
           <div className="max-w-[820px]">
             <p className="font-mono text-[8px] tracking-[.18em] text-[#087e9b]">01 / PRODUCTS</p>
             <h1 className="products-hero-title mt-7 text-[clamp(64px,10.5vw,150px)] font-medium leading-[.8] tracking-[-.09em]">We build<br />for <span className="text-[#087e9b]">real life.</span></h1>
-            <p className="mt-10 max-w-[640px] text-[15px] leading-[1.9] text-black/50">TechCraft creates focused software for problems we understand closely. Academiq organizes the work of schools. Estara organizes the work of property businesses.</p>
+            <p className="mt-10 max-w-[640px] text-[15px] leading-[1.9] text-black/50">TechCraft creates focused software for problems we understand closely. Academiq organizes the work of schools. Estara organizes property businesses. DineCore keeps restaurants running, and Resumly helps people prepare their next application.</p>
             <div className="mt-9 flex flex-col gap-2.5 sm:flex-row">
               <a href="#product-list" className="techcraft-button techcraft-button-primary">Explore products <ArrowRight size={16} /></a>
               <Link href="/services" className="techcraft-button">See our capabilities <ArrowUpRight size={16} /></Link>
@@ -236,7 +274,7 @@ export default function ProductsPage() {
             <div className="hero-system-node node-school"><GraduationCap size={18} /><span>ACADEMIQ</span><small>SCHOOL OS</small></div>
             <div className="hero-system-node node-estate"><Building2 size={18} /><span>ESTARA</span><small>PROPERTY OS</small></div>
             <div className="hero-system-signal signal-a">DATA FLOW / ACTIVE</div>
-            <div className="hero-system-signal signal-b">2 LIVE PRODUCTS / 4 IN LAB</div>
+            <div className="hero-system-signal signal-b">{products.length} LIVE PRODUCTS / {upcomingProducts.length} IN LAB</div>
             <span className="hero-system-pulse pulse-a" /><span className="hero-system-pulse pulse-b" /><span className="hero-system-pulse pulse-c" />
           </div>
         </div>
@@ -257,7 +295,7 @@ export default function ProductsPage() {
             return (
               <article key={product.name} className="product-showcase overflow-hidden border border-black/10 bg-[#f8fafc]">
                 <div className="grid lg:grid-cols-[1.08fr_.92fr]">
-                  <ProductVisual type={product.name.toLowerCase() as "academiq" | "estara"} />
+                  <ProductVisual product={product} />
                   <div className="flex flex-col justify-between p-8 sm:p-10 lg:p-14">
                     <div>
                       <div className="flex items-center justify-between gap-4">
@@ -288,7 +326,7 @@ export default function ProductsPage() {
         <div className="relative z-10 mb-14 max-w-[900px]">
           <p className="font-mono text-[8px] tracking-[.16em] text-[#087e9b]">03 / PRODUCT LAB</p>
           <h2 className="mt-6 text-[clamp(48px,6vw,90px)] font-medium leading-[.88] tracking-[-.08em]">Next in the <span className="text-[#087e9b]">pipeline.</span></h2>
-          <p className="mt-7 max-w-[650px] text-sm leading-7 text-black/45">Four management systems are under development, each focused on a specific operational world. They will move from workflow research to product releases through the same TechCraft design and engineering process.</p>
+          <p className="mt-7 max-w-[650px] text-sm leading-7 text-black/45">Three management systems are under development, each focused on a specific operational world. They will move from workflow research to product releases through the same TechCraft design and engineering process.</p>
         </div>
 
         <div className="relative z-10 grid gap-px border border-black/10 bg-black/10 md:grid-cols-2">
