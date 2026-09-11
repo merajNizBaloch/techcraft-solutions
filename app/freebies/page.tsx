@@ -48,15 +48,31 @@ const freeTools: FreeTool[] = [
 ];
 
 const upcomingTools = [
-  ["12", "HEIC to JPG", "Convert phone photos into widely compatible JPG images.", ImageIcon],
-  ["13", "Image Background Remover", "Quickly isolate a subject from a simple image background.", Wand2],
-  ["14", "URL Shortener", "Turn long links into short, shareable URLs.", Link2],
-  ["15", "Text to QR", "Generate QR codes directly from text, notes or messages.", Braces],
-  ["16", "Favicon Generator", "Create browser-ready favicon assets from a single image.", Sparkles],
-  ["17", "More free utilities", "A growing list of small tools for files, images and everyday work.", Zap],
+  ["13", "HEIC to JPG", "Convert phone photos into widely compatible JPG images.", ImageIcon],
+  ["14", "Image Background Remover", "Quickly isolate a subject from a simple image background.", Wand2],
+  ["15", "URL Shortener", "Turn long links into short, shareable URLs.", Link2],
+  ["16", "Text to QR", "Generate QR codes directly from text, notes or messages.", Braces],
+  ["17", "Favicon Generator", "Create browser-ready favicon assets from a single image.", Sparkles],
+  ["18", "More free utilities", "A growing list of small tools for files, images and everyday work.", Zap],
 ] as const;
 
-const gradlyUrl = "https://gradly.techcraftsolution.com/";
+const academicTools = [
+  {
+    name: "Gradly",
+    description: "Create school report cards with marks, grades, totals, percentages and academic summaries.",
+    icon: GraduationCap,
+    status: "FREE",
+    href: "https://gradly.techcraftsolution.com/",
+  },
+  {
+    name: "Resumly",
+    description: "Build a professional CV for internships, scholarships and job applications. Free to start, with download credits available for more exports.",
+    icon: FileText,
+    status: "FREE TO START",
+    href: "https://resumly.techcraftsolution.com/",
+  },
+] as const;
+const liveToolCount = freeTools.length + academicTools.length;
 
 export default function FreebiesPage() {
   return (
@@ -72,16 +88,16 @@ export default function FreebiesPage() {
             <p className="mt-7 font-mono text-[8px] tracking-[.2em] text-black/35">TOOLS FOR THE BORING STUFF</p>
             <h1 className="freebies-title mt-6 max-w-[900px] text-[clamp(68px,10.5vw,150px)] font-medium leading-[.76] tracking-[-.105em]">Useful work.<br /><span className="text-[#087e9b]">Zero cost.</span></h1>
             <p className="mt-9 max-w-[620px] text-[15px] leading-[1.9] text-black/50">We build the little utilities that should already exist. Convert, compress, resize, generate and simplify everyday work directly in the browser.</p>
-            <div className="freebies-hero-actions"><a href="#free-tool-list" className="techcraft-button techcraft-button-primary">Open the free lab <ArrowRight size={15} /></a><div className="freebies-free-badge"><span>11</span><div><strong>TOOLS LIVE</strong><small>AND GROWING</small></div></div></div>
-            <div className="freebies-principles"><span><Check size={11} /> NO ACCOUNT</span><span><Check size={11} /> NO PAYWALL</span><span><Check size={11} /> BROWSER FIRST</span></div>
+            <div className="freebies-hero-actions"><a href="#free-tool-list" className="techcraft-button techcraft-button-primary">Open the free lab <ArrowRight size={15} /></a><div className="freebies-free-badge"><span>{liveToolCount}</span><div><strong>TOOLS LIVE</strong><small>AND GROWING</small></div></div></div>
+            <div className="freebies-principles"><span><Check size={11} /> FREE TO START</span><span><Check size={11} /> EVERYDAY TOOLS</span><span><Check size={11} /> BROWSER FIRST</span></div>
           </div>
           <div className="freebies-hero-machine" aria-hidden="true">
-            <div className="freebies-machine-label label-top"><span>FREE TOOL LAB</span><b>01 / 11</b></div><div className="freebies-machine-label label-bottom"><span>DROP</span><span>PROCESS</span><span>GET RESULT</span></div>
+            <div className="freebies-machine-label label-top"><span>FREE TOOL LAB</span><b>01 / {liveToolCount}</b></div><div className="freebies-machine-label label-bottom"><span>DROP</span><span>PROCESS</span><span>GET RESULT</span></div>
             <div className="freebies-machine-grid" /><div className="freebies-machine-scan" /><div className="freebies-machine-orbit machine-orbit-a" /><div className="freebies-machine-orbit machine-orbit-b" /><div className="freebies-machine-beam beam-one" /><div className="freebies-machine-beam beam-two" />
             <div className="freebies-tool-chip chip-image"><FileImage size={15} /><span>IMAGE</span><b>CONVERT</b></div><div className="freebies-tool-chip chip-pdf"><FileText size={15} /><span>PDF</span><b>CONVERT</b></div><div className="freebies-tool-chip chip-qr"><ScanLine size={15} /><span>RESIZE</span><b>IMAGE</b></div><div className="freebies-tool-chip chip-json"><Shrink size={15} /><span>COMPRESS</span><b>IMAGE</b></div>
             <div className="freebies-machine-node machine-node-image"><FileImage size={17} /><strong>PNG → JPG</strong><small>IMAGE / CONVERT</small></div><div className="freebies-machine-node machine-node-pdf"><FileText size={17} /><strong>PDF</strong><small>DOCUMENT / INPUT</small></div>
             <div className="freebies-machine-core"><div className="machine-core-halo" /><div className="machine-core-inner"><Zap size={20} /><strong>FREE</strong><small>TOOL ENGINE</small></div></div><div className="freebies-machine-node machine-node-output"><Sparkles size={17} /><strong>READY</strong><small>RESULT / OUTPUT</small></div>
-            <div className="freebies-machine-status"><i /> LOCAL BROWSER WORKFLOW / NO ACCOUNT REQUIRED</div><span className="machine-particle particle-one" /><span className="machine-particle particle-two" /><span className="machine-particle particle-three" /><span className="machine-particle particle-four" />
+            <div className="freebies-machine-status"><i /> IMAGE & PDF TOOLS / NO ACCOUNT REQUIRED</div><span className="machine-particle particle-one" /><span className="machine-particle particle-two" /><span className="machine-particle particle-three" /><span className="machine-particle particle-four" />
           </div>
         </div><div className="freebies-scroll-cue"><span>SCROLL TO THE TOOLKIT</span><i /></div>
       </section>
@@ -99,8 +115,24 @@ export default function FreebiesPage() {
       </section>
 
       <section id="academic-tools" className="border-t border-black/10 bg-[#eef4ff] px-[7vw] py-24">
-        <div className="mb-14 flex flex-col justify-between gap-6 lg:flex-row lg:items-end"><div><p className="font-mono text-[8px] tracking-[.16em] text-[#087e9b]">04 / ACADEMICS</p><h2 className="mt-6 text-[clamp(50px,6vw,90px)] font-medium leading-[.86] tracking-[-.08em]">School work.<br /><span className="text-[#087e9b]">Simplified.</span></h2><p className="mt-7 max-w-[560px] text-sm leading-7 text-black/45">Academic tools from TechCraft, starting with Gradly for fast and clean student report-card generation.</p></div><div className="freebies-count-box"><strong>01</strong><span>ACADEMIC TOOL</span><small>FROM TECHCRAFT</small></div></div>
-        <div className="max-w-[720px]"><a href={gradlyUrl} target="_blank" rel="noopener noreferrer" aria-label="Open Gradly school report card generator" className="freebies-tool-card block text-inherit no-underline"><div className="freebies-tool-card-top"><span>01</span><span className="freebie-status"><Check size={11} /> FREE</span></div><div className="freebies-tool-icon"><GraduationCap size={21} /></div><p className="mt-7 font-mono text-[7px] tracking-[.16em] text-[#087e9b]">SCHOOL REPORT CARDS</p><h3>Gradly</h3><p className="freebies-tool-description">A school report card generator for creating student results with marks, grades, totals, percentages and academic summaries.</p><div className="freebies-tool-footer"><span>ACADEMIC</span><span className="freebies-tool-action">OPEN GRADLY <ArrowRight size={13} /></span></div></a></div>
+        <div className="mb-14 flex flex-col justify-between gap-6 lg:flex-row lg:items-end"><div><p className="font-mono text-[8px] tracking-[.16em] text-[#087e9b]">04 / ACADEMICS</p><h2 className="mt-6 text-[clamp(50px,6vw,90px)] font-medium leading-[.86] tracking-[-.08em]">School & career.<br /><span className="text-[#087e9b]">Simplified.</span></h2><p className="mt-7 max-w-[560px] text-sm leading-7 text-black/45">Create student report cards with Gradly and prepare your next application with Resumly.</p></div><div className="freebies-count-box"><strong>{String(academicTools.length).padStart(2, "0")}</strong><span>ACADEMIC TOOLS</span><small>FROM TECHCRAFT</small></div></div>
+        <div className="academic-tool-grid">
+          {academicTools.map((tool) => {
+            const Icon = tool.icon;
+            return (
+              <a key={tool.name} href={tool.href} target="_blank" rel="noopener noreferrer" aria-label={`Open ${tool.name}`} className="freebies-tool-card block text-inherit no-underline">
+                <div className="freebies-tool-icon"><Icon size={21} /></div>
+                <h3>{tool.name}</h3>
+                <p className="freebies-tool-description">{tool.description}</p>
+                <div className="freebies-tool-footer">
+                  <span>ACADEMIC</span>
+                  <span className="freebie-status"><Check size={11} /> {tool.status}</span>
+                  <span className="freebies-tool-action">OPEN {tool.name.toUpperCase()} <ArrowRight size={13} /></span>
+                </div>
+              </a>
+            );
+          })}
+        </div>
       </section>
 
       <section className="freebies-upcoming-section border-t border-black/10 px-[7vw] py-24"><div className="grid gap-14 lg:grid-cols-[.72fr_1.28fr]"><div><p className="font-mono text-[8px] tracking-[.16em] text-[#c83a32]">05 / UPCOMING</p><h2 className="mt-6 text-[clamp(52px,6vw,92px)] font-medium leading-[.84] tracking-[-.08em]">More useful<br /><span className="text-[#c83a32]">things coming.</span></h2><p className="mt-8 max-w-[480px] text-sm leading-7 text-black/45">We are building the next batch around repetitive jobs involving files, images, links, web assets and everyday work.</p></div><div className="freebies-upcoming-list">{upcomingTools.map(([number, name, description, Icon], index) => <article key={name} className="freebies-upcoming-card" style={{ animationDelay: `${index * 90}ms` }}><span className="freebies-upcoming-number">{number}</span><span className="freebies-upcoming-icon"><Icon size={18} /></span><div><div className="flex items-center gap-3"><h3>{name}</h3><span className="freebies-soon">COMING SOON</span></div><p>{description}</p></div></article>)}</div></div></section>
