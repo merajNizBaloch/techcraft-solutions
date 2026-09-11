@@ -340,24 +340,7 @@ function ProductVisual({ product }: { product: (typeof products)[number] }) {
   if (product.name === "Estara") return <EstaraVisual />;
   if (product.name === "DineCore") return <DineCoreVisual />;
   if (product.name === "Resumly") return <ResumlyVisual />;
-  const Icon = product.icon;
-  return (
-    <div className="product-visual product-visual-academiq flex items-center justify-center p-8 sm:p-12">
-      <div className="product-visual-grid" />
-      <div className="relative z-10 w-full max-w-md rounded-2xl border p-6 sm:p-8" style={{ background: "var(--brand-soft, #f8fafc)", color: "var(--brand-ink, #111318)", borderColor: "var(--brand-line, rgba(0,0,0,.1))" }}>
-        <Icon size={36} className="text-[#087e9b]" />
-        <p className="mt-6 text-sm text-[#087e9b]">{product.eyebrow}</p>
-        <h4 className="mt-3 text-4xl font-medium tracking-tight">{product.name}</h4>
-        <div className="mt-8 grid gap-4">
-          {product.stats.map(([label, value]) => (
-            <div key={label} className="flex flex-wrap items-center justify-between gap-2 border-t border-black/10 pt-4 text-sm">
-              <strong>{label}</strong><span>{value}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
+  return null;
 }
 
 export default function ProductsPage() {
