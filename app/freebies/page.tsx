@@ -10,9 +10,13 @@ import {
   ImageIcon,
   Images,
   Link2,
+  MessageCircle,
+  QrCode,
   ScanLine,
+  ScanSearch,
   Shrink,
   Sparkles,
+  Tags,
   Wand2,
   Zap,
 } from "lucide-react";
@@ -47,13 +51,22 @@ const freeTools: FreeTool[] = [
   { number: "10", name: "Split PDF", eyebrow: "DOCUMENT UTILITY", description: "Split a PDF into smaller documents or selected pages.", icon: FileText, tag: "PDF", tool: "split" },
 ];
 
+const linkcraftTools = [
+  { number: "11", name: "URL Shortener", eyebrow: "LINK UTILITY", description: "Turn long URLs into persistent, shareable short links with LinkCraft.", icon: Link2, tag: "LINK", href: "https://linkcraft.techcraftsolution.com/shorten" },
+  { number: "12", name: "QR Code Generator", eyebrow: "QR UTILITY", description: "Create branded QR codes with custom styling and downloadable formats.", icon: QrCode, tag: "QR", href: "https://linkcraft.techcraftsolution.com/free-qr-code-generator" },
+  { number: "13", name: "QR Scanner", eyebrow: "QR UTILITY", description: "Scan QR codes using your camera or an uploaded image.", icon: ScanLine, tag: "QR", href: "https://linkcraft.techcraftsolution.com/qr-scanner" },
+  { number: "14", name: "URL Cleaner", eyebrow: "LINK CLEANER", description: "Remove UTM tags and common advertising trackers from a URL.", icon: Wand2, tag: "PRIVACY", href: "https://linkcraft.techcraftsolution.com/?tool=clean#workspace" },
+  { number: "15", name: "UTM Builder", eyebrow: "CAMPAIGN TOOL", description: "Build correctly formatted campaign URLs for marketing and analytics.", icon: Tags, tag: "MARKETING", href: "https://linkcraft.techcraftsolution.com/?tool=utm#workspace" },
+  { number: "16", name: "WhatsApp Link Generator", eyebrow: "SHARING TOOL", description: "Create click-to-chat WhatsApp links with a phone number and message.", icon: MessageCircle, tag: "SHARE", href: "https://linkcraft.techcraftsolution.com/?tool=whatsapp#workspace" },
+  { number: "17", name: "URL Encoder / Decoder", eyebrow: "URL UTILITY", description: "Encode special URL characters or decode percent-encoded text.", icon: Braces, tag: "URL", href: "https://linkcraft.techcraftsolution.com/?tool=codec#workspace" },
+  { number: "18", name: "URL Inspector", eyebrow: "LINK INSPECTOR", description: "Inspect a URL's protocol, host, path, fragment and query parameters.", icon: ScanSearch, tag: "INSPECT", href: "https://linkcraft.techcraftsolution.com/?tool=inspect#workspace" },
+] as const;
+
 const upcomingTools = [
-  ["13", "HEIC to JPG", "Convert phone photos into widely compatible JPG images.", ImageIcon],
-  ["14", "Image Background Remover", "Quickly isolate a subject from a simple image background.", Wand2],
-  ["15", "URL Shortener", "Turn long links into short, shareable URLs.", Link2],
-  ["16", "Text to QR", "Generate QR codes directly from text, notes or messages.", Braces],
-  ["17", "Favicon Generator", "Create browser-ready favicon assets from a single image.", Sparkles],
-  ["18", "More free utilities", "A growing list of small tools for files, images and everyday work.", Zap],
+  ["21", "HEIC to JPG", "Convert phone photos into widely compatible JPG images.", ImageIcon],
+  ["22", "Image Background Remover", "Quickly isolate a subject from a simple image background.", Wand2],
+  ["23", "Favicon Generator", "Create browser-ready favicon assets from a single image.", Sparkles],
+  ["24", "More free utilities", "A growing list of small tools for files, images and everyday work.", Zap],
 ] as const;
 
 const academicTools = [
@@ -72,7 +85,7 @@ const academicTools = [
     href: "https://resumly.techcraftsolution.com/",
   },
 ] as const;
-const liveToolCount = freeTools.length + academicTools.length;
+const liveToolCount = freeTools.length + linkcraftTools.length + academicTools.length;
 
 export default function FreebiesPage() {
   return (
@@ -114,8 +127,34 @@ export default function FreebiesPage() {
         <div className="freebies-tool-grid">{freeTools.map((tool) => { const Icon = tool.icon; return <ConvertXToolLink key={tool.name} tool={tool.tool} ariaLabel={`Open ${tool.name} in ConvertX`} className="freebies-tool-card block text-inherit no-underline"><div className="freebies-tool-card-top"><span>{tool.number}</span><span className="freebie-status"><Check size={11} /> FREE</span></div><div className="freebies-tool-icon"><Icon size={21} /></div><p className="mt-7 font-mono text-[7px] tracking-[.16em] text-[#087e9b]">{tool.eyebrow}</p><h3>{tool.name}</h3><p className="freebies-tool-description">{tool.description}</p><div className="freebies-tool-footer"><span>{tool.tag}</span><span className="freebies-tool-action">OPEN IN CONVERTX <ArrowRight size={13} /></span></div></ConvertXToolLink>; })}</div>
       </section>
 
+      <section id="linkcraft-tools" className="border-t border-black/10 bg-[#fff7f3] px-[7vw] py-24">
+        <div className="mb-14 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+          <div>
+            <p className="font-mono text-[8px] tracking-[.16em] text-[#ff5c35]">04 / LINK TOOLS</p>
+            <h2 className="mt-6 text-[clamp(50px,6vw,90px)] font-medium leading-[.86] tracking-[-.08em]">Links, QR & campaigns.<br /><span className="text-[#ff5c35]">One toolkit.</span></h2>
+            <p className="mt-7 max-w-[600px] text-sm leading-7 text-black/45">Shorten, generate, scan, clean, build and inspect links with LinkCraft. Each card opens the exact tool you selected.</p>
+          </div>
+          <div className="freebies-count-box"><strong>{String(linkcraftTools.length).padStart(2, "0")}</strong><span>LINK TOOLS</span><small>POWERED BY LINKCRAFT</small></div>
+        </div>
+        <div className="freebies-tool-grid">
+          {linkcraftTools.map((tool) => {
+            const Icon = tool.icon;
+            return (
+              <a key={tool.name} href={tool.href} target="_blank" rel="noopener noreferrer" aria-label={`Open ${tool.name} in LinkCraft`} className="freebies-tool-card block text-inherit no-underline">
+                <div className="freebies-tool-card-top"><span>{tool.number}</span><span className="freebie-status"><Check size={11} /> FREE</span></div>
+                <div className="freebies-tool-icon"><Icon size={21} /></div>
+                <p className="mt-7 font-mono text-[7px] tracking-[.16em] text-[#ff5c35]">{tool.eyebrow}</p>
+                <h3>{tool.name}</h3>
+                <p className="freebies-tool-description">{tool.description}</p>
+                <div className="freebies-tool-footer"><span>{tool.tag}</span><span className="freebies-tool-action">OPEN IN LINKCRAFT <ArrowRight size={13} /></span></div>
+              </a>
+            );
+          })}
+        </div>
+      </section>
+
       <section id="academic-tools" className="border-t border-black/10 bg-[#eef4ff] px-[7vw] py-24">
-        <div className="mb-14 flex flex-col justify-between gap-6 lg:flex-row lg:items-end"><div><p className="font-mono text-[8px] tracking-[.16em] text-[#087e9b]">04 / ACADEMICS</p><h2 className="mt-6 text-[clamp(50px,6vw,90px)] font-medium leading-[.86] tracking-[-.08em]">School & career.<br /><span className="text-[#087e9b]">Simplified.</span></h2><p className="mt-7 max-w-[560px] text-sm leading-7 text-black/45">Create student report cards with Gradly and prepare your next application with Resumly.</p></div><div className="freebies-count-box"><strong>{String(academicTools.length).padStart(2, "0")}</strong><span>ACADEMIC TOOLS</span><small>FROM TECHCRAFT</small></div></div>
+        <div className="mb-14 flex flex-col justify-between gap-6 lg:flex-row lg:items-end"><div><p className="font-mono text-[8px] tracking-[.16em] text-[#087e9b]">05 / ACADEMICS</p><h2 className="mt-6 text-[clamp(50px,6vw,90px)] font-medium leading-[.86] tracking-[-.08em]">School & career.<br /><span className="text-[#087e9b]">Simplified.</span></h2><p className="mt-7 max-w-[560px] text-sm leading-7 text-black/45">Create student report cards with Gradly and prepare your next application with Resumly.</p></div><div className="freebies-count-box"><strong>{String(academicTools.length).padStart(2, "0")}</strong><span>ACADEMIC TOOLS</span><small>FROM TECHCRAFT</small></div></div>
         <div className="academic-tool-grid">
           {academicTools.map((tool) => {
             const Icon = tool.icon;
@@ -135,8 +174,8 @@ export default function FreebiesPage() {
         </div>
       </section>
 
-      <section className="freebies-upcoming-section border-t border-black/10 px-[7vw] py-24"><div className="grid gap-14 lg:grid-cols-[.72fr_1.28fr]"><div><p className="font-mono text-[8px] tracking-[.16em] text-[#c83a32]">05 / UPCOMING</p><h2 className="mt-6 text-[clamp(52px,6vw,92px)] font-medium leading-[.84] tracking-[-.08em]">More useful<br /><span className="text-[#c83a32]">things coming.</span></h2><p className="mt-8 max-w-[480px] text-sm leading-7 text-black/45">We are building the next batch around repetitive jobs involving files, images, links, web assets and everyday work.</p></div><div className="freebies-upcoming-list">{upcomingTools.map(([number, name, description, Icon], index) => <article key={name} className="freebies-upcoming-card" style={{ animationDelay: `${index * 90}ms` }}><span className="freebies-upcoming-number">{number}</span><span className="freebies-upcoming-icon"><Icon size={18} /></span><div><div className="flex items-center gap-3"><h3>{name}</h3><span className="freebies-soon">COMING SOON</span></div><p>{description}</p></div></article>)}</div></div></section>
-      <section className="freebies-cta border-t border-black/10 bg-[#111318] px-[7vw] py-24 text-white"><div className="flex flex-col justify-between gap-10 lg:flex-row lg:items-end"><div><p className="font-mono text-[8px] tracking-[.16em] text-[#65d9ee]">06 / KEEP IT FREE</p><h2 className="mt-6 max-w-[850px] text-[clamp(48px,6vw,86px)] font-medium leading-[.87] tracking-[-.08em]">Small tools can solve <span className="text-[#65d9ee]">big annoyances.</span></h2></div><a href="#free-tool-list" className="techcraft-button techcraft-button-primary">Explore the toolkit <ArrowRight size={16} /></a></div></section>
+      <section className="freebies-upcoming-section border-t border-black/10 px-[7vw] py-24"><div className="grid gap-14 lg:grid-cols-[.72fr_1.28fr]"><div><p className="font-mono text-[8px] tracking-[.16em] text-[#c83a32]">06 / UPCOMING</p><h2 className="mt-6 text-[clamp(52px,6vw,92px)] font-medium leading-[.84] tracking-[-.08em]">More useful<br /><span className="text-[#c83a32]">things coming.</span></h2><p className="mt-8 max-w-[480px] text-sm leading-7 text-black/45">We are building the next batch around repetitive jobs involving files, images, links, web assets and everyday work.</p></div><div className="freebies-upcoming-list">{upcomingTools.map(([number, name, description, Icon], index) => <article key={name} className="freebies-upcoming-card" style={{ animationDelay: `${index * 90}ms` }}><span className="freebies-upcoming-number">{number}</span><span className="freebies-upcoming-icon"><Icon size={18} /></span><div><div className="flex items-center gap-3"><h3>{name}</h3><span className="freebies-soon">COMING SOON</span></div><p>{description}</p></div></article>)}</div></div></section>
+      <section className="freebies-cta border-t border-black/10 bg-[#111318] px-[7vw] py-24 text-white"><div className="flex flex-col justify-between gap-10 lg:flex-row lg:items-end"><div><p className="font-mono text-[8px] tracking-[.16em] text-[#65d9ee]">07 / KEEP IT FREE</p><h2 className="mt-6 max-w-[850px] text-[clamp(48px,6vw,86px)] font-medium leading-[.87] tracking-[-.08em]">Small tools can solve <span className="text-[#65d9ee]">big annoyances.</span></h2></div><a href="#free-tool-list" className="techcraft-button techcraft-button-primary">Explore the toolkit <ArrowRight size={16} /></a></div></section>
     </main>
   );
 }
