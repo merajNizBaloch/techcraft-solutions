@@ -75,7 +75,7 @@ const academicTools = [
     description: "Write and format Balochi documents with Arabic and Roman keyboards, Balochi fonts, images, tables and Word document export.",
     icon: FileText,
     status: "FREE",
-    href: "https://zuban-open-balochi-ai.vercel.app/docs/editor",
+    href: "https://zuban.techcraftsolution.com/docs/editor",
   },
   {
     name: "Gradly",
