@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import BrandLogo from "./components/brand-logo";
+import HomeProductsReplacement from "./components/home-products-replacement";
 import { useEffect, useRef, useState } from "react";
 
 /* =========================================================
@@ -72,24 +73,7 @@ const keyboardItems = [
   ["ESC", "", "CLOSE"],
 ];
 
-const projects = [
-  {
-    number: "01",
-    category: "PRODUCT / EDUCATION",
-    title: "Academiq",
-    description:
-      "A school operating system bringing students, teachers, attendance, fees, exams and reporting into one connected digital workspace.",
-    mode: "blue",
-  },
-  {
-    number: "02",
-    category: "PRODUCT / DIGITAL PLATFORM",
-    title: "Estara",
-    description:
-      "A focused digital product built around a clear experience, connected workflows and a foundation designed to evolve with its users.",
-    mode: "light",
-  },
-];
+
 
 /* =========================================================
    ANIMATED NETWORK BACKGROUND
@@ -1357,126 +1341,7 @@ export default function Home() {
           PRODUCTS
       ====================================================== */}
 
-      <section id="work" aria-label="Products" className="work products-section section">
-
-  <div className="products-heading">
-  <div>
-    <span className="section-kicker">05 / PRODUCTS</span>
-    <h2>We build <span>products</span> too.</h2>
-    <p>Our own digital products are where strategy, design and engineering come together to solve problems we understand deeply.</p>
-  </div>
-</div>
-
-<div className="work-list">
-
-          {projects.map((project) => (
-            <article
-              className={`work-project ${project.mode}`}
-              key={project.number}
-            >
-
-              <div className="work-number">
-                {project.number}
-              </div>
-
-              <div className="work-visual">
-
-                {project.mode === "blue" && (
-                  <>
-                    <div className="work-interface-card">
-
-                      <span>
-        
-                      </span>
-
-                      <strong>
-                        BUILD
-                        <br />
-                        DIFFERENT.
-                      </strong>
-
-                      <div className="interface-bars">
-                        <i />
-                        <i />
-                        <i />
-                      </div>
-
-                    </div>
-
-                    <BalochiMark />
-
-                  </>
-                )}
-
-                {project.mode === "light" && (
-                  <>
-                    <div className="floating-ui ui-one" />
-                    <div className="floating-ui ui-two" />
-                    <div className="floating-ui ui-three" />
-                    <BalochiMark />
-                  </>
-                )}
-
-                {project.mode === "dark" && (
-                  <div className="intelligent-visual">
-
-                    <div className="intelligent-heading">
-
-                      <span className="intelligent-live">
-                        <i />
-                        LIVE
-                      </span>
-
-                    </div>
-
-                    <div className="intelligent-editor">
-
-                      <div className="intelligent-editor-bar">
-                        <span>
-                          APP.TSX
-                        </span>
-
-                        <span>
-                          TECHCRAFT
-                        </span>
-                      </div>
-
-                      <LiveCodeEditor />
-
-                    </div>
-
-                  </div>
-                )}
-
-              </div>
-
-              <div className="work-copy">
-
-                <span>
-                  {project.category}
-                </span>
-
-                <h3>
-                  {project.title}
-                </h3>
-
-                <p>
-                  {project.description}
-                </p>
-
-                <button>
-                  View project
-                  <ArrowUpRight size={15} />
-                </button>
-
-              </div>
-
-            </article>
-          ))}
-
-        </div>
-
-      </section>
+      <section id="work" aria-label="Products" className="work products-section section"><HomeProductsReplacement /></section>
 
       {/* =====================================================
           PROCESS

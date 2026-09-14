@@ -5,10 +5,10 @@ import type { ReactNode } from "react";
 import { useEffect, useLayoutEffect } from "react";
 
 const SECTION_SELECTORS = [
-  ".techcraft main section:not(.hero)",
+  ".techcraft main section:not(.hero):not(#work)",
   ".about-page > section:not(.about-hero)",
   ".services-page > section:not(:first-child)",
-  ".products-page > section:not(:first-child)",
+  ".products-page > section:not(:first-child):not(#product-list):not(.catalog-overview)",
   ".freebies-page > section:not(:first-child)",
   ".contact-page > section:not(:first-child)",
   ".portfolio-page > section:not(.portfolio-hero)",

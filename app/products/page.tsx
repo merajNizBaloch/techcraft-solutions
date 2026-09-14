@@ -1,5 +1,7 @@
 import type { LucideIcon } from "lucide-react";
 import Link from "next/link";
+import { products } from "../data/catalog";
+import ProductGrid from "../components/product-grid";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -14,84 +16,17 @@ import {
   LayoutDashboard,
   MapPin,
   PackageSearch,
-  Pill,
   ShieldCheck,
   Stethoscope,
   UsersRound,
   WalletCards,
-  UtensilsCrossed,
 } from "lucide-react";
 
 export const metadata = {
   title: "Products — TechCraft Solutions",
   description:
-    "Products built by TechCraft Solutions, including Academiq, Estara, DineCore and Resumly, plus upcoming management systems.",
+    "Products built by TechCraft Solutions, including Academiq, Estara, DineCore, Resumly, PharmaFlow, Real CRM and MartEdge.",
 };
-
-const products = [
-  {
-    number: "01",
-    name: "Academiq",
-    eyebrow: "EDTECH / SCHOOL MANAGEMENT SYSTEM",
-    status: "LIVE PRODUCT",
-    description:
-      "A complete school management system designed to bring administration, students, teachers, attendance, fees, exams and reporting into one connected workspace.",
-    icon: GraduationCap,
-    stats: [
-      ["Students", "Central student records"],
-      ["Attendance", "Daily tracking"],
-      ["Fees", "Payment management"],
-      ["Exams", "Results & grading"],
-    ],
-    href: "https://academiq.techcraftsolution.com",
-  },
-  {
-    number: "02",
-    name: "Estara",
-    eyebrow: "REAL ESTATE / PROPERTY MANAGEMENT",
-    status: "LIVE PRODUCT",
-    description:
-      "A real-estate management platform built around properties, listings, leads, clients, agents and transactions — giving property businesses one operational view.",
-    icon: Building2,
-    stats: [
-      ["Properties", "Portfolio management"],
-      ["Listings", "Inventory & status"],
-      ["Leads", "Client pipeline"],
-      ["Transactions", "Deal workflow"],
-    ],
-    href: "https://estara.techcraftsolution.com",
-  },
-  {
-    number: "03",
-    name: "DineCore",
-    eyebrow: "RESTAURANT / MANAGEMENT SYSTEM",
-    status: "LIVE PRODUCT",
-    description: "Manage menus, tables, waiters, orders, discounts and billing in one restaurant workspace, with printable receipts for your POS workflow.",
-    icon: UtensilsCrossed,
-    stats: [
-      ["Orders", "Table & waiter management"],
-      ["Menus", "Dishes & pricing"],
-      ["Billing", "Payments & discounts"],
-      ["Receipts", "Print-ready bills"],
-    ],
-    href: "https://dinecore.techcraftsolution.com",
-  },
-  {
-    number: "04",
-    name: "Resumly",
-    eyebrow: "CAREERS / CV BUILDER",
-    status: "LIVE PRODUCT",
-    description: "Create a professional CV with a guided editor, preview your progress and export your application. Save your work for future updates, with free starter downloads and credit packs for more exports.",
-    icon: FileText,
-    stats: [
-      ["Create", "Guided CV editor"],
-      ["Preview", "Review your CV"],
-      ["Save", "Import & update later"],
-      ["Export", "Download your CV"],
-    ],
-    href: "https://resumly.techcraftsolution.com",
-  },
-] as const;
 
 const upcomingProducts: {
   number: string;
@@ -103,17 +38,7 @@ const upcomingProducts: {
   accent: string;
 }[] = [
   {
-    number: "05",
-    name: "PharmaOS",
-    eyebrow: "PHARMACY / MANAGEMENT SYSTEM",
-    description:
-      "A pharmacy management platform focused on stock, medicines, suppliers, sales, expiry tracking and operational visibility.",
-    icon: Pill,
-    modules: ["Medicine inventory", "Expiry & batch tracking", "Sales & purchases", "Supplier management"],
-    accent: "red",
-  },
-  {
-    number: "06",
+    number: "08",
     name: "Dentora",
     eyebrow: "DENTAL / CLINIC MANAGEMENT SYSTEM",
     description:
@@ -123,7 +48,7 @@ const upcomingProducts: {
     accent: "gold",
   },
   {
-    number: "07",
+    number: "09",
     name: "LogiCore",
     eyebrow: "LOGISTICS / OPERATIONS MANAGEMENT",
     description:
@@ -340,7 +265,16 @@ function ProductVisual({ product }: { product: (typeof products)[number] }) {
   if (product.name === "Estara") return <EstaraVisual />;
   if (product.name === "DineCore") return <DineCoreVisual />;
   if (product.name === "Resumly") return <ResumlyVisual />;
-  return null;
+  const Icon = product.icon;
+  return (
+    <div className={"catalog-feature-preview catalog-card-" + product.id}>
+      <div className="catalog-preview-window">
+        <div className="catalog-preview-title"><Icon size={24} /><strong>{product.name}</strong><span>WORKSPACE PREVIEW</span></div>
+        <h4>Everything in one workspace.</h4>
+        <div className="catalog-preview-modules">{product.stats.map(([label, value]) => <div key={label}><CheckCircle2 size={20} /><strong>{label}</strong><span>{value}</span></div>)}</div>
+      </div>
+    </div>
+  );
 }
 
 export default function ProductsPage() {
@@ -348,7 +282,7 @@ export default function ProductsPage() {
     <main className="products-page min-h-screen overflow-hidden bg-[#f4f6f8] text-[#111318]">
       <div className="fixed inset-x-0 top-0 z-40 h-0.5 bg-[#087e9b]" />
 
-      <section className="products-hero relative flex min-h-[92vh] items-center overflow-hidden px-[7vw] pb-24 pt-36">
+      <section className="products-hero catalog-products-hero relative flex items-center overflow-hidden px-[7vw] pb-24 pt-36">
         <div className="products-hero-grid absolute inset-0" />
         <div className="products-hero-glow products-hero-glow-a" />
         <div className="products-hero-glow products-hero-glow-b" />
@@ -356,7 +290,7 @@ export default function ProductsPage() {
           <div className="max-w-[820px]">
             <p className="font-mono text-[8px] tracking-[.18em] text-[#087e9b]">01 / PRODUCTS</p>
             <h1 className="products-hero-title mt-7 text-[clamp(64px,10.5vw,150px)] font-medium leading-[.8] tracking-[-.09em]">We build<br />for <span className="text-[#087e9b]">real life.</span></h1>
-            <p className="mt-10 max-w-[640px] text-[15px] leading-[1.9] text-black/50">TechCraft creates focused software for problems we understand closely. Academiq organizes the work of schools. Estara organizes property businesses. DineCore keeps restaurants running, and Resumly helps people prepare their next application.</p>
+            <p className="mt-10 max-w-[640px] text-[15px] leading-[1.9] text-black/50">Software for schools, property businesses, restaurants, pharmacies, sales teams and retail stores — plus a simpler way to create your next CV. Explore every TechCraft product below.</p>
             <div className="mt-9 flex flex-col gap-2.5 sm:flex-row">
               <a href="#product-list" className="techcraft-button techcraft-button-primary">Explore products <ArrowRight size={16} /></a>
               <Link href="/services" className="techcraft-button">See our capabilities <ArrowUpRight size={16} /></Link>
@@ -380,6 +314,11 @@ export default function ProductsPage() {
         </div>
       </section>
 
+      <section className="catalog-overview px-[7vw] py-12" aria-labelledby="catalog-heading">
+        <div className="catalog-overview-heading"><h2 id="catalog-heading">All {products.length} products. Find yours.</h2><p>Browse the full collection, then open a product or explore its details.</p></div>
+        <ProductGrid />
+      </section>
+
       <section id="product-list" className="products-list-section border-t border-black/10 bg-white/55 px-[7vw] py-24">
         <div className="mb-14 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
           <div>
@@ -393,7 +332,7 @@ export default function ProductsPage() {
           {products.map((product) => {
             const ProductIcon = product.icon;
             return (
-              <article key={product.name} className="product-showcase overflow-hidden border border-black/10 bg-[#f8fafc]">
+              <article id={product.id} key={product.name} className="product-showcase overflow-hidden border border-black/10 bg-[#f8fafc]">
                 <div className="grid lg:grid-cols-[1.08fr_.92fr]">
                   <ProductVisual product={product} />
                   <div className="flex flex-col justify-between p-8 sm:p-10 lg:p-14">
@@ -426,14 +365,14 @@ export default function ProductsPage() {
         <div className="relative z-10 mb-14 max-w-[900px]">
           <p className="font-mono text-[8px] tracking-[.16em] text-[#087e9b]">03 / PRODUCT LAB</p>
           <h2 className="mt-6 text-[clamp(48px,6vw,90px)] font-medium leading-[.88] tracking-[-.08em]">Next in the <span className="text-[#087e9b]">pipeline.</span></h2>
-          <p className="mt-7 max-w-[650px] text-sm leading-7 text-black/45">Three management systems are under development, each focused on a specific operational world. They will move from workflow research to product releases through the same TechCraft design and engineering process.</p>
+          <p className="mt-7 max-w-[650px] text-sm leading-7 text-black/45">Two management systems are under development, each focused on a specific operational world. They will move from workflow research to product releases through the same TechCraft design and engineering process.</p>
         </div>
 
         <div className="relative z-10 grid gap-px border border-black/10 bg-black/10 md:grid-cols-2">
           {upcomingProducts.map((product) => {
             const Icon = product.icon;
             return (
-              <article key={product.name} className={`product-lab-card product-lab-card-${product.accent} group bg-[#f8fafc] p-7 sm:p-9`}>
+              <article id={product.name.toLowerCase()} key={product.name} className={`product-lab-card product-lab-card-${product.accent} group bg-[#f8fafc] p-7 sm:p-9`}>
                 <div className="flex items-start justify-between gap-6">
                   <span className="font-mono text-[8px] text-black/35">{product.number}</span>
                   <div className="product-lab-status"><CircleDashed size={13} /> IN DEVELOPMENT</div>
