@@ -63,13 +63,20 @@ const linkcraftTools = [
 ] as const;
 
 const upcomingTools = [
-  ["21", "HEIC to JPG", "Convert phone photos into widely compatible JPG images.", ImageIcon],
-  ["22", "Image Background Remover", "Quickly isolate a subject from a simple image background.", Wand2],
-  ["23", "Favicon Generator", "Create browser-ready favicon assets from a single image.", Sparkles],
-  ["24", "More free utilities", "A growing list of small tools for files, images and everyday work.", Zap],
+  ["22", "HEIC to JPG", "Convert phone photos into widely compatible JPG images.", ImageIcon],
+  ["23", "Image Background Remover", "Quickly isolate a subject from a simple image background.", Wand2],
+  ["24", "Favicon Generator", "Create browser-ready favicon assets from a single image.", Sparkles],
+  ["25", "More free utilities", "A growing list of small tools for files, images and everyday work.", Zap],
 ] as const;
 
 const academicTools = [
+  {
+    name: "Zubán DocX",
+    description: "Write and format Balochi documents with Arabic and Roman keyboards, Balochi fonts, images, tables and Word document export.",
+    icon: FileText,
+    status: "FREE",
+    href: "https://zuban-open-balochi-ai.vercel.app/docs/editor",
+  },
   {
     name: "Gradly",
     description: "Create school report cards with marks, grades, totals, percentages and academic summaries.",
@@ -154,7 +161,7 @@ export default function FreebiesPage() {
       </section>
 
       <section id="academic-tools" className="border-t border-black/10 bg-[#eef4ff] px-[7vw] py-24">
-        <div className="mb-14 flex flex-col justify-between gap-6 lg:flex-row lg:items-end"><div><p className="font-mono text-[8px] tracking-[.16em] text-[#087e9b]">05 / ACADEMICS</p><h2 className="mt-6 text-[clamp(50px,6vw,90px)] font-medium leading-[.86] tracking-[-.08em]">School & career.<br /><span className="text-[#087e9b]">Simplified.</span></h2><p className="mt-7 max-w-[560px] text-sm leading-7 text-black/45">Create student report cards with Gradly and prepare your next application with Resumly.</p></div><div className="freebies-count-box"><strong>{String(academicTools.length).padStart(2, "0")}</strong><span>ACADEMIC TOOLS</span><small>FROM TECHCRAFT</small></div></div>
+        <div className="mb-14 flex flex-col justify-between gap-6 lg:flex-row lg:items-end"><div><p className="font-mono text-[8px] tracking-[.16em] text-[#087e9b]">05 / ACADEMICS</p><h2 className="mt-6 text-[clamp(50px,6vw,90px)] font-medium leading-[.86] tracking-[-.08em]">School & career.<br /><span className="text-[#087e9b]">Simplified.</span></h2><p className="mt-7 max-w-[560px] text-sm leading-7 text-black/45">Write Balochi documents with Zubán DocX, create student report cards with Gradly and prepare your next application with Resumly.</p></div><div className="freebies-count-box"><strong>{String(academicTools.length).padStart(2, "0")}</strong><span>ACADEMIC TOOLS</span><small>FROM TECHCRAFT</small></div></div>
         <div className="academic-tool-grid">
           {academicTools.map((tool) => {
             const Icon = tool.icon;

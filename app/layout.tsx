@@ -32,11 +32,11 @@ import "./services-process-light-fix.css";
 import "./about/dev-canvas.css";
 import "./about/dev-canvas-theme.css";
 import "./components/site-footer.css";
+import "./catalog-navigation.css";
 import Navbar from "./components/navbar";
 import GlobalMouseEffect from "./components/global-mouse-effect";
 import GlobalScrollMotion from "./components/global-scroll-motion";
 import HomePerformance from "./components/home-performance";
-import HomeProductsReplacement from "./components/home-products-replacement";
 import IdeBinaryBackground from "./components/ide-binary-background";
 import GlobalNeuralBackground from "./components/global-neural-background";
 import LoadingScreen from "./components/loading-screen";
@@ -123,7 +123,6 @@ export default function RootLayout({
         <SeoStructuredData />
         <GlobalScrollMotion>
           {children}
-          <HomeProductsReplacement />
         </GlobalScrollMotion>
         <SiteFooter />
       </body>
