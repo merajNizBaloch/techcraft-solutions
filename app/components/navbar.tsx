@@ -22,9 +22,9 @@ const productLinks = [
 
 const serviceLinks = [
   { label: "Custom development", description: "PHP, Laravel & tailored systems", href: "/services#development" },
-  { label: "Modernization", description: "Legacy upgrades & migrations", href: "/services#modernization" },
-  { label: "Digitization", description: "Manual work to digital systems", href: "/services#digitization" },
-  { label: "Cloud & data", description: "Cloud apps & database migrations", href: "/services#cloud-data" },
+  { label: "Modernize & migrate", description: "Legacy upgrades, redesigns & conversions", href: "/services#modernization" },
+  { label: "Digitize operations", description: "Manual work, Excel & static sites to systems", href: "/services#digitization" },
+  { label: "Cloud & data", description: "Cloud apps, backend & database migrations", href: "/services#cloud-data" },
 ];
 
 export default function Navbar() {
