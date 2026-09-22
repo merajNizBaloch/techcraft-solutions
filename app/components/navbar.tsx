@@ -14,6 +14,15 @@ const sections = [
   ["Our Team", "team"], ["Contact", "contact"],
 ] as const;
 
+const serviceLinks = [
+  { label: "Core services", description: "Design, software, mobile, AI, cloud & brand", href: "/services#service-list" },
+  { label: "Modernization & migration", description: "Upgrade, migrate and digitize existing systems", href: "/services#modernization" },
+  { label: "Code & framework", description: "PHP, Laravel, WordPress, React & Next.js", href: "/services#code-framework" },
+  { label: "Business & experience", description: "Websites, dashboards and business workflows", href: "/services#business-experience" },
+  { label: "Cloud & app delivery", description: "Databases, Supabase, PWA and Android", href: "/services#cloud-app-delivery" },
+  { label: "Our process", description: "Audit, plan, build and transition", href: "/services#process" },
+];
+
 const productLinks = [
   ...products.map((product) => ({ label: product.name, description: product.eyebrow.split(" / ")[0], href: "/products#" + product.id })),
   { label: "Dentora", description: "Dental · Coming soon", href: "/products#dentora" },
@@ -49,7 +58,7 @@ export default function Navbar() {
 
   const renderItem = ([label, id]: (typeof sections)[number], mobile = false) => {
     const href = id === "home" ? "/" : "/" + id;
-    const items = id === "products" ? productLinks : id === "freebies" ? freebieCategories : null;
+    const items = id === "services" ? serviceLinks : id === "products" ? productLinks : id === "freebies" ? freebieCategories : null;
     if (!items) return <Link key={id} href={href} onClick={closeMenus} className={isActive(id) ? "active" : ""} aria-current={isActive(id) ? "page" : undefined}><span>{label}</span></Link>;
 
     const menuId = (mobile ? "mobile-" : "desktop-") + id;
@@ -77,7 +86,7 @@ export default function Navbar() {
               }
             }}><ChevronDown size={14} /></button>
         </div>
-        <div id={menuId} className={"catalog-nav-panel" + (id === "products" ? " catalog-nav-products" : "")} hidden={!expanded}>
+        <div id={menuId} className={"catalog-nav-panel" + (id === "products" ? " catalog-nav-products" : id === "services" ? " catalog-nav-services" : "")} hidden={!expanded}>
           <Link className="catalog-nav-all" href={href} onClick={closeMenus}>Browse all {label.toLowerCase()} <ArrowUpRight size={14} /></Link>
           <ul>{items.map((item) => <li key={item.href}><Link href={item.href} onClick={closeMenus}><strong>{item.label}</strong><small>{item.description}</small></Link></li>)}</ul>
         </div>
