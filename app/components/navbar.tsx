@@ -20,6 +20,13 @@ const productLinks = [
   { label: "LogiCore", description: "Logistics · Coming soon", href: "/products#logicore" },
 ];
 
+const serviceLinks = [
+  { label: "Custom development", description: "PHP, Laravel & tailored systems", href: "/services#development" },
+  { label: "Modernization", description: "Legacy upgrades & migrations", href: "/services#modernization" },
+  { label: "Digitization", description: "Manual work to digital systems", href: "/services#digitization" },
+  { label: "Cloud & data", description: "Cloud apps & database migrations", href: "/services#cloud-data" },
+];
+
 export default function Navbar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -49,7 +56,7 @@ export default function Navbar() {
 
   const renderItem = ([label, id]: (typeof sections)[number], mobile = false) => {
     const href = id === "home" ? "/" : "/" + id;
-    const items = id === "products" ? productLinks : id === "freebies" ? freebieCategories : null;
+    const items = id === "services" ? serviceLinks : id === "products" ? productLinks : id === "freebies" ? freebieCategories : null;
     if (!items) return <Link key={id} href={href} onClick={closeMenus} className={isActive(id) ? "active" : ""} aria-current={isActive(id) ? "page" : undefined}><span>{label}</span></Link>;
 
     const menuId = (mobile ? "mobile-" : "desktop-") + id;

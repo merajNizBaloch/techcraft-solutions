@@ -6,8 +6,15 @@ import {
   Check,
   Cloud,
   Code2,
+  Database,
+  FileSpreadsheet,
+  Globe2,
   Layers3,
+  Monitor,
   Palette,
+  RefreshCw,
+  Server,
+  ShieldCheck,
   Smartphone,
   Sparkles,
 } from "lucide-react";
@@ -99,6 +106,202 @@ const services = [
   },
 ] as const;
 
+const modernizationGroups = [
+  {
+    id: "development",
+    label: "Custom development",
+    summary: "Build the system you need from the ground up.",
+    services: [
+      {
+        code: "01",
+        id: "custom-php-laravel",
+        title: "Custom PHP & Laravel Development",
+        fromLabel: "Business requirement",
+        toLabel: "Production system",
+        description:
+          "Custom web applications, dashboards, admin panels and APIs engineered around your actual workflow instead of forcing your business into a template.",
+        results: ["Web applications", "APIs & admin panels", "Maintenance-ready code"],
+        icon: Code2,
+      },
+    ],
+  },
+  {
+    id: "modernization",
+    label: "Modernization",
+    summary: "Upgrade older products without throwing away what already works.",
+    services: [
+      {
+        code: "02",
+        id: "legacy-php-upgrade",
+        title: "Legacy PHP Upgrade",
+        fromLabel: "PHP 5.x / 7.x",
+        toLabel: "Modern PHP",
+        description:
+          "Upgrade aging PHP applications to supported versions, clean up fragile code and improve security, compatibility and performance.",
+        results: ["Version upgrades", "Code refactoring", "Performance review"],
+        icon: RefreshCw,
+      },
+      {
+        code: "03",
+        id: "php-laravel-migration",
+        title: "PHP to Laravel Migration",
+        fromLabel: "Legacy PHP",
+        toLabel: "Modern Laravel",
+        description:
+          "Move custom PHP, CodeIgniter or Yii systems into a cleaner Laravel architecture while preserving the business logic that matters.",
+        results: ["Architecture migration", "Feature preservation", "Safer maintenance"],
+        icon: Code2,
+      },
+      {
+        code: "04",
+        id: "wordpress-nextjs",
+        title: "WordPress to Next.js",
+        fromLabel: "WordPress",
+        toLabel: "Modern Next.js",
+        description:
+          "Rebuild an aging WordPress experience as a fast, modern Next.js website with a cleaner frontend, stronger performance and flexible integrations.",
+        results: ["Modern frontend", "Performance focus", "SEO-ready structure"],
+        icon: Globe2,
+      },
+      {
+        code: "05",
+        id: "responsive-redesign",
+        title: "Old Website to Responsive Redesign",
+        fromLabel: "Outdated website",
+        toLabel: "Responsive experience",
+        description:
+          "Refresh dated websites with a modern interface, clearer content hierarchy and layouts that work properly across desktop, tablet and mobile.",
+        results: ["Modern UI", "Responsive layouts", "UX cleanup"],
+        icon: Monitor,
+      },
+      {
+        code: "06",
+        id: "react-nextjs-upgrade",
+        title: "React / Next.js Upgrade",
+        fromLabel: "Older codebase",
+        toLabel: "Current stack",
+        description:
+          "Modernize React and Next.js projects by updating dependencies, routing, patterns and performance without redesigning the product unless needed.",
+        results: ["Dependency upgrades", "Code cleanup", "Build modernization"],
+        icon: RefreshCw,
+      },
+      {
+        code: "07",
+        id: "saas-ui-modernization",
+        title: "Old UI to Modern SaaS Dashboard",
+        fromLabel: "Legacy interface",
+        toLabel: "Modern SaaS UI",
+        description:
+          "Keep the existing system logic while redesigning the interface, navigation and workflows into a clearer modern dashboard experience.",
+        results: ["Dashboard redesign", "Workflow improvement", "Responsive UI"],
+        icon: Palette,
+      },
+    ],
+  },
+  {
+    id: "digitization",
+    label: "Digitization",
+    summary: "Replace manual work with practical systems people can actually use.",
+    services: [
+      {
+        code: "08",
+        id: "excel-web-system",
+        title: "Excel / Registers to Web Management System",
+        fromLabel: "Sheets & registers",
+        toLabel: "Web dashboard",
+        description:
+          "Convert scattered spreadsheets and paper registers into a searchable multi-user system with records, reports, permissions and backups.",
+        results: ["Central records", "Reports & search", "Role-based access"],
+        icon: FileSpreadsheet,
+      },
+      {
+        code: "09",
+        id: "static-admin-site",
+        title: "Static Website to Admin-Controlled Website",
+        fromLabel: "Developer-only updates",
+        toLabel: "Admin control",
+        description:
+          "Give your team a simple admin area to update projects, products, notices, galleries and other website content without editing code.",
+        results: ["Content dashboard", "Media management", "Controlled publishing"],
+        icon: Layers3,
+      },
+      {
+        code: "10",
+        id: "manual-digital-system",
+        title: "Manual Business to Digital Management System",
+        fromLabel: "Manual operations",
+        toLabel: "Connected workflow",
+        description:
+          "Digitize everyday business processes such as customers, billing, inventory, attendance, tasks and reporting in one tailored system.",
+        results: ["Workflow automation", "Live records", "Business reporting"],
+        icon: Sparkles,
+      },
+      {
+        code: "11",
+        id: "website-pwa",
+        title: "Website to Installable Web App",
+        fromLabel: "Browser-only site",
+        toLabel: "Installable PWA",
+        description:
+          "Add app-like navigation, installability and selected offline capabilities so a compatible website can work more naturally on phones and desktops.",
+        results: ["Installable experience", "App-like navigation", "Offline options"],
+        icon: Smartphone,
+      },
+      {
+        code: "12",
+        id: "website-android",
+        title: "Website to Android App",
+        fromLabel: "Web product",
+        toLabel: "Android experience",
+        description:
+          "Extend an existing web product to Android using the approach that fits the product, from installable web technology to a dedicated mobile build.",
+        results: ["Mobile UX", "API integration", "Android delivery path"],
+        icon: Smartphone,
+      },
+    ],
+  },
+  {
+    id: "cloud-data",
+    label: "Cloud & data",
+    summary: "Move systems and data beyond a single machine.",
+    services: [
+      {
+        code: "13",
+        id: "desktop-cloud-app",
+        title: "Desktop Software to Cloud Web App",
+        fromLabel: "Single-device software",
+        toLabel: "Cloud web app",
+        description:
+          "Rebuild desktop-bound workflows as secure browser-based systems that authorized users can access across locations and devices.",
+        results: ["Remote access", "Central updates", "Multi-device workflows"],
+        icon: Cloud,
+      },
+      {
+        code: "14",
+        id: "firebase-supabase",
+        title: "Firebase to Supabase Migration",
+        fromLabel: "Firebase backend",
+        toLabel: "Supabase backend",
+        description:
+          "Plan and move authentication, database and storage workloads to Supabase with careful mapping of data, access rules and application integrations.",
+        results: ["Auth migration", "Database migration", "Storage migration"],
+        icon: Database,
+      },
+      {
+        code: "15",
+        id: "local-cloud-database",
+        title: "Local Database to Cloud Database",
+        fromLabel: "Local database",
+        toLabel: "Managed cloud data",
+        description:
+          "Move data from local or single-server databases into a managed cloud setup with controlled access, backups and a path for future growth.",
+        results: ["Data migration", "Backups", "Secure remote access"],
+        icon: Server,
+      },
+    ],
+  },
+] as const;
+
 const process = [
   ["01", "Discover", "Understand the problem, users, constraints and desired outcome."],
   ["02", "Shape", "Define the experience, system and technical direction before overbuilding."],
@@ -115,7 +318,7 @@ const principles = [
 export const metadata = {
   title: "Services — TechCraft Solutions",
   description:
-    "Digital product design, software engineering, mobile, AI, cloud and brand experience from TechCraft Solutions.",
+    "Digital product design, software engineering, modernization, migration, mobile, AI, cloud and brand experience from TechCraft Solutions.",
 };
 
 export default function ServicesPage() {
@@ -286,11 +489,94 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      <section id="modernization" className="relative scroll-mt-28 overflow-hidden bg-[#f7f8fa] px-[7vw] py-28">
+        <div className="absolute inset-0 opacity-50 [background-image:linear-gradient(rgba(0,155,190,.04)_1px,transparent_1px),linear-gradient(90deg,rgba(0,155,190,.04)_1px,transparent_1px)] [background-size:72px_72px]" />
+        <div className="relative z-10">
+          <div className="grid gap-10 lg:grid-cols-[130px_1fr] lg:gap-14">
+            <div className="font-mono text-[8px] tracking-[.16em] text-[var(--brand-muted)]">03 / MODERNIZE & MIGRATE</div>
+            <div>
+              <div className="max-w-[900px]">
+                <h2 className="text-[clamp(48px,6vw,88px)] font-medium leading-[.88] tracking-[-.08em] text-[var(--brand-ink)]">
+                  Keep the business.<br /><span>Upgrade the technology.</span>
+                </h2>
+                <p className="mt-7 max-w-[680px] text-sm leading-7 text-[var(--brand-muted)]">
+                  TechCraft can modernize an existing website, application, workflow or database without making the new experience feel disconnected from the rest of your business.
+                </p>
+              </div>
+
+              <nav className="mt-9 flex flex-wrap gap-2" aria-label="Modernization service categories">
+                {modernizationGroups.map((group) => (
+                  <a
+                    key={group.id}
+                    href={`#${group.id}`}
+                    className="rounded-full border border-[var(--brand-line)] bg-[var(--brand-surface)] px-4 py-2 font-mono text-[9px] tracking-[.08em] text-[var(--brand-muted)] transition hover:-translate-y-0.5 hover:border-[var(--brand-accent)] hover:text-[var(--brand-accent)]"
+                  >
+                    {group.label}
+                  </a>
+                ))}
+              </nav>
+            </div>
+          </div>
+
+          <div className="mt-16 space-y-20">
+            {modernizationGroups.map((group) => (
+              <div key={group.id} id={group.id} className="scroll-mt-32">
+                <div className="mb-8 grid gap-4 border-b border-[var(--brand-line)] pb-6 md:grid-cols-[1fr_1fr] md:items-end">
+                  <h3 className="text-[clamp(30px,4vw,52px)] font-medium tracking-[-.06em] text-[var(--brand-ink)]">{group.label}</h3>
+                  <p className="max-w-[540px] text-xs leading-6 text-[var(--brand-muted)] md:justify-self-end md:text-right">{group.summary}</p>
+                </div>
+
+                <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+                  {group.services.map(({ code, id, title, fromLabel, toLabel, description, results, icon: Icon }) => (
+                    <article
+                      key={id}
+                      id={id}
+                      className="service-detail-card group scroll-mt-32 p-7 transition duration-300 hover:-translate-y-1"
+                    >
+                      <div className="flex items-center justify-between gap-4">
+                        <span className="font-mono text-[8px] tracking-[.12em] text-[var(--brand-accent)]">M/{code}</span>
+                        <Icon size={19} strokeWidth={1.45} className="text-[var(--brand-accent)]" />
+                      </div>
+
+                      <div className="mt-7 flex items-center gap-2 font-mono text-[8px] uppercase tracking-[.1em] text-[var(--brand-muted)]">
+                        <span>{fromLabel}</span>
+                        <ArrowRight size={12} className="shrink-0 text-[var(--brand-accent)]" />
+                        <span>{toLabel}</span>
+                      </div>
+
+                      <h4 className="mt-5 text-[28px] font-medium leading-[1] tracking-[-.055em] text-[var(--brand-ink)]">{title}</h4>
+                      <p className="mt-4 text-xs leading-6 text-[var(--brand-muted)]">{description}</p>
+
+                      <div className="mt-6 space-y-2 border-t border-[var(--brand-line)] pt-5">
+                        {results.map((result) => (
+                          <div key={result} className="flex items-center gap-2 text-[10px] text-[var(--brand-muted)]">
+                            <ShieldCheck size={13} className="shrink-0 text-[var(--brand-accent)]" />
+                            <span>{result}</span>
+                          </div>
+                        ))}
+                      </div>
+
+                      <Link
+                        href="/contact"
+                        className="mt-7 inline-flex items-center gap-2 text-[11px] font-medium text-[var(--brand-accent)] transition group-hover:gap-3"
+                        aria-label={`Discuss ${title} with TechCraft`}
+                      >
+                        Discuss this service <ArrowUpRight size={14} />
+                      </Link>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="relative overflow-hidden bg-[#07182f] px-[7vw] py-28 text-white">
         <div className="absolute inset-0 opacity-50 [background-image:linear-gradient(rgba(101,217,238,.08)_1px,transparent_1px),linear-gradient(90deg,rgba(101,217,238,.08)_1px,transparent_1px)] [background-size:72px_72px]" />
         <div className="relative z-10 grid gap-14 lg:grid-cols-[.8fr_1.2fr] lg:gap-[10vw]">
           <div>
-            <p className="font-mono text-[8px] tracking-[.16em] text-[#65d9ee]">03 / OUR PROCESS</p>
+            <p className="font-mono text-[8px] tracking-[.16em] text-[#65d9ee]">04 / OUR PROCESS</p>
             <h2 className="mt-7 max-w-[600px] text-[clamp(50px,6vw,90px)] font-medium leading-[.87] tracking-[-.08em]">Built to keep <span className="text-[#65d9ee]">momentum.</span></h2>
             <p className="mt-8 max-w-[420px] text-sm leading-7 text-white/45">
               We keep decisions close to the work. That means fewer hand-offs, faster feedback and a clearer line between what we imagine and what actually ships.
@@ -313,7 +599,7 @@ export default function ServicesPage() {
 
       <section className="px-[7vw] py-28">
         <div className="grid gap-12 lg:grid-cols-[130px_1fr] lg:gap-14">
-          <div className="font-mono text-[8px] tracking-[.16em] text-black/35">04 / WHY TECHCRAFT</div>
+          <div className="font-mono text-[8px] tracking-[.16em] text-black/35">05 / WHY TECHCRAFT</div>
           <div>
             <div className="mb-12 max-w-[760px]">
               <h2 className="text-[clamp(48px,6vw,84px)] font-medium leading-[.9] tracking-[-.08em]">Different disciplines.<br /><span className="text-[#087e9b]">One point of view.</span></h2>
@@ -334,7 +620,7 @@ export default function ServicesPage() {
       <section className="relative overflow-hidden bg-[#f7f8fa] px-[7vw] py-28">
         <div className="absolute right-[8%] top-[15%] h-64 w-64 rounded-full border border-[#087e9b]/10" />
         <div className="relative z-10 max-w-[900px]">
-          <p className="font-mono text-[8px] tracking-[.16em] text-[#087e9b]">05 / START SOMETHING</p>
+          <p className="font-mono text-[8px] tracking-[.16em] text-[#087e9b]">06 / START SOMETHING</p>
           <h2 className="mt-7 text-[clamp(56px,8vw,120px)] font-medium leading-[.84] tracking-[-.09em]">
             Have a problem<br />worth <span className="text-[#087e9b]">building for?</span>
           </h2>
