@@ -335,14 +335,17 @@ export default function ServicesPage() {
               Design.<br />Build.<br /><span className="text-[#087e9b]">Evolve.</span>
             </h1>
             <p className="mt-10 max-w-[640px] text-[15px] leading-[1.9] text-black/50">
-              TechCraft brings product design, software engineering and intelligent technology together under one roof. From first idea to production system, we build digital experiences that are clear, useful and built to last.
+              TechCraft brings product design, software engineering and intelligent technology together under one roof. We build new digital products and modernize the systems businesses already depend on.
             </p>
-            <div className="mt-9 flex flex-col gap-2.5 sm:flex-row">
-              <Link href="/#contact" className="techcraft-button techcraft-button-primary">
+            <div className="mt-9 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap">
+              <Link href="/contact" className="techcraft-button techcraft-button-primary">
                 Start a project <ArrowUpRight size={16} />
               </Link>
               <a href="#service-list" className="techcraft-button">
-                Explore services <ArrowRight size={16} />
+                Core services <ArrowRight size={16} />
+              </a>
+              <a href="#modernization" className="techcraft-button">
+                Modernization <RefreshCw size={15} />
               </a>
             </div>
           </div>
