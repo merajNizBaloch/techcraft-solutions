@@ -67,6 +67,21 @@ const services = [
   },
 ];
 
+const conversionServices = [
+  { title: "WordPress → Next.js", detail: "Faster modern websites", href: "/services#wordpress-nextjs" },
+  { title: "Old Website → Responsive", detail: "Modern UI across every screen", href: "/services#responsive-redesign" },
+  { title: "Excel / Registers → Web System", detail: "Searchable records and reports", href: "/services#excel-web-system" },
+  { title: "Desktop Software → Cloud App", detail: "Access from anywhere", href: "/services#desktop-cloud-app" },
+  { title: "Static Website → Admin Control", detail: "Edit and publish without code", href: "/services#static-admin-site" },
+  { title: "Manual Business → Digital System", detail: "Connected everyday operations", href: "/services#manual-digital-system" },
+  { title: "Old React / Next.js → Latest", detail: "Cleaner, current codebase", href: "/services#react-nextjs-upgrade" },
+  { title: "Firebase → Supabase", detail: "Auth, database and storage", href: "/services#firebase-supabase" },
+  { title: "Local Database → Cloud", detail: "Backups and secure access", href: "/services#local-cloud-database" },
+  { title: "Website → Installable Web App", detail: "App-like PWA experience", href: "/services#website-pwa" },
+  { title: "Website → Android App", detail: "Extend your product to Android", href: "/services#website-android" },
+  { title: "Old UI → Modern SaaS Dashboard", detail: "Clearer workflows and interface", href: "/services#saas-ui-modernization" },
+] as const;
+
 const keyboardItems = [
   ["⌘", "K", "COMMAND"],
   ["⌘", "J", "JUMP"],
@@ -1281,6 +1296,68 @@ export default function Home() {
 
         </div>
 
+      </section>
+
+      {/* =====================================================
+          CONVERSION & MODERNIZATION SERVICES
+      ====================================================== */}
+
+      <section
+        aria-labelledby="conversion-services-title"
+        className="relative overflow-hidden border-y border-[var(--brand-line)] bg-[var(--brand-page)] px-[7vw] py-24"
+      >
+        <div className="pointer-events-none absolute inset-0 opacity-60 [background-image:linear-gradient(rgba(0,155,190,.035)_1px,transparent_1px),linear-gradient(90deg,rgba(0,155,190,.035)_1px,transparent_1px)] [background-size:72px_72px]" />
+        <div className="relative mx-auto grid max-w-[1500px] gap-12 lg:grid-cols-[.72fr_1.28fr] lg:gap-[7vw]">
+          <div className="lg:sticky lg:top-32 lg:self-start">
+            <p className="font-mono text-[9px] tracking-[.16em] text-[var(--brand-accent)]">
+              CONVERSION SERVICES
+            </p>
+            <h2
+              id="conversion-services-title"
+              className="mt-5 max-w-[560px] text-[clamp(44px,5.6vw,82px)] font-medium leading-[.9] tracking-[-.075em] text-[var(--brand-ink)]"
+            >
+              Modernize what
+              <br />
+              <span>already works.</span>
+            </h2>
+            <p className="mt-7 max-w-[520px] text-sm leading-7 text-[var(--brand-muted)]">
+              Upgrade websites, software, workflows and data without making the new system feel disconnected from your business.
+            </p>
+            <Link
+              href="/services#modernization"
+              className="mt-8 inline-flex min-h-11 items-center gap-2 rounded-xl border border-[var(--brand-line)] bg-[var(--brand-surface)] px-4 text-sm font-medium text-[var(--brand-ink)] shadow-[var(--brand-shadow)] transition hover:-translate-y-0.5 hover:border-[var(--brand-accent)] hover:text-[var(--brand-accent)]"
+            >
+              Explore all modernization services <ArrowUpRight size={15} />
+            </Link>
+          </div>
+
+          <div className="grid gap-3 sm:grid-cols-2">
+            {conversionServices.map((service, index) => (
+              <Link
+                key={service.href}
+                href={service.href}
+                className="group relative min-h-[142px] overflow-hidden rounded-2xl border border-[var(--brand-line)] bg-[var(--brand-surface)] p-5 text-[var(--brand-ink)] shadow-[var(--brand-shadow)] transition duration-300 hover:-translate-y-1 hover:border-[var(--brand-accent)]"
+              >
+                <div className="absolute inset-x-0 top-0 h-px origin-left scale-x-0 bg-[var(--brand-gradient)] transition duration-300 group-hover:scale-x-100" />
+                <div className="flex items-start justify-between gap-4">
+                  <span className="font-mono text-[8px] tracking-[.12em] text-[var(--brand-accent)]">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <ArrowUpRight
+                    size={16}
+                    className="text-[var(--brand-muted)] transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--brand-accent)]"
+                  />
+                </div>
+                <h3 className="mt-6 text-[21px] font-medium leading-[1.05] tracking-[-.04em]">
+                  {service.title}
+                </h3>
+                <p className="mt-2 text-[11px] leading-5 text-[var(--brand-muted)]">
+                  {service.detail}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* =====================================================
